@@ -49,7 +49,7 @@ INSERT INTO `ingredients` (`id_ingredient`, `name`, `calories`, `calories_unit`)
 (6, 'Enciam', 77.00, 4),
 (7, 'Escarola', 17.00, 4),
 (8, 'Tomàquet', 18.00, 4),
-(9, 'Oli d\'Oliva Verge Extra', 884.00, 4),
+(9, 'Oli de Oliva Verge Extra', 884.00, 4),
 (10, 'Llimona', 29.00, 4),
 (11, 'Llesca de Pa Integral', 92.00, 4),
 (12, 'Formatge Cottage', 98.00, 4),
@@ -176,7 +176,7 @@ INSERT INTO `dishes_ingredients` (`dishes_id_dishes`, `ingredients_id_ingredient
 --
 -- Volcado de datos para la tabla `diets`
 --
-INSERT INTO `diets` (`id_diet`, `name`, `calories`, `number_meals`, `type`) VALUES
+INSERT INTO `diets` (`id_diet`, `name`, `calories`, `number_meals`, `description`) VALUES
 (1, 'Dieta Estàndard', 105532.00, 5, 'Dieta Estàdard per Baixar el Nombre de kcal en la nostra alimentació');
 
 
@@ -243,8 +243,8 @@ INSERT INTO `nutricionist` (`id_nutricionist`) VALUES
 --
 
 INSERT INTO `pacient` (`id_pacient`, `assigned_nutricionist`, `email_pacient`, `phone_pacient`, `address_pacient`, `current_diet`) VALUES
-(1, 2, 'gcesar@milaifontanals.com', '656394050', 'Can Debot', 1),
-(4, 3, 'ipuga@milaifontanals.org', '656394051', NULL, 1),
+(1, 2, 'gcesar@milaifontanals.com', '+656394050', 'Can Debot', 1),
+(4, 3, 'ipuga@milaifontanals.org', '+656394051', NULL, 1),
 (5, NULL, NULL, NULL, NULL, 1),
 (6, 3, 'ntorregrosa@milaifontanals.org', NULL, NULL, NULL);
 
