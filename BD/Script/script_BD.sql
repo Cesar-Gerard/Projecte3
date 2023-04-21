@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`nutricionist` (
   CONSTRAINT `FK_USERS_ID`
     FOREIGN KEY (`id_nutricionist`)
     REFERENCES `projecte3`.`users` (`id_user`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS `projecte3`.`pacient` ;
 CREATE TABLE IF NOT EXISTS `projecte3`.`pacient` (
   `id_pacient` BIGINT(10) UNSIGNED NOT NULL,
   `assigned_nutricionist` BIGINT(10) UNSIGNED NULL,
-  `email_pacient` VARCHAR(45) null check (`email_pacient` LIKE '%@%.%'),
+  `email_pacient` VARCHAR(45) null check  (`email_pacient` LIKE '%@%.%'),
   `phone_pacient` VARCHAR(20) null CHECK (`phone_pacient` LIKE '%+%'),
   `address_pacient` VARCHAR(1000) NULL,
   `current_diet` BIGINT(10) UNSIGNED NULL,
@@ -72,18 +72,18 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`pacient` (
   CONSTRAINT `FK_PACIENT_DIETAS`
     FOREIGN KEY (`current_diet`)
     REFERENCES `projecte3`.`diets` (`id_diet`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT `FK_PACIENT_USERS`
     FOREIGN KEY (`id_pacient`)
     REFERENCES `projecte3`.`users` (`id_user`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `FK_PACIENT_NUTRICIONISTA`
     FOREIGN KEY (`assigned_nutricionist`)
     REFERENCES `projecte3`.`nutricionist` (`id_nutricionist`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE set NULL
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 CREATE INDEX `FK_PACIENT_DIETAS_idx` ON `projecte3`.`pacient` (`current_diet` ASC) ;
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`historial_pacient` (
   `id_historial` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
   `id_pacient` BIGINT(10) UNSIGNED NOT NULL,
-  `diet` BIGINT(10) UNSIGNED NOT NULL,
+  `diet` BIGINT(10) UNSIGNED NULL,
   `weigth` DECIMAL(6,2) NOT NULL,
   `heigth` DECIMAL(6,2) NOT NULL,
   `chest` DECIMAL(6,2) NULL,
@@ -111,13 +111,13 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`historial_pacient` (
   CONSTRAINT `FK_ID_PACIENT`
     FOREIGN KEY (`id_pacient`)
     REFERENCES `projecte3`.`pacient` (`id_pacient`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `FK_HISTORIAL_DIETA`
     FOREIGN KEY (`diet`)
     REFERENCES `projecte3`.`diets` (`id_diet`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE set NULL
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 CREATE INDEX `FK_HISTORIAL_DIETA_idx` ON `projecte3`.`historial_pacient` (`diet` ASC) ;
@@ -158,13 +158,13 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`ingredients` (
   `id_ingredient` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `calories` DECIMAL(10,2) NOT NULL,
-  `calories_unit` BIGINT(10) UNSIGNED NOT NULL,
+  `calories_unit` BIGINT(10) UNSIGNED NULL,
   PRIMARY KEY (`id_ingredient`),
   CONSTRAINT `FK_INGREDIENTS_MESURE`
     FOREIGN KEY (`calories_unit`)
     REFERENCES `projecte3`.`unit_mesure` (`id_unit`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE set NULL
+    ON UPDATE cascade )
 ENGINE = InnoDB;
 
 CREATE INDEX `FK_INGREDIENTS_MESURE_idx` ON `projecte3`.`ingredients` (`calories_unit` ASC) ;
@@ -200,31 +200,31 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projecte3`.`diets_dishes` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`diets_dishes` (
-  `dietas_id_dieta` BIGINT(10) UNSIGNED NOT NULL,
+  `dietas_id_dieta` BIGINT(10) UNSIGNED not NULL,
   `dishes_id_dishes` BIGINT(10) UNSIGNED NOT NULL,
-  `week_day` BIGINT(10) UNSIGNED NOT NULL,
-  `meal` BIGINT(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`dietas_id_dieta`, `dishes_id_dishes`, `week_day`, `meal`),
+  `week_day` BIGINT(10) UNSIGNED NULL,
+  `meal` BIGINT(10) UNSIGNED NULL,
+  PRIMARY KEY (`dietas_id_dieta`, `dishes_id_dishes`),
   CONSTRAINT `fk_Dietas_has_Dishes_Dietas1`
     FOREIGN KEY (`dietas_id_dieta`)
     REFERENCES `projecte3`.`diets` (`id_diet`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Dietas_has_Dishes_Dishes1`
     FOREIGN KEY (`dishes_id_dishes`)
     REFERENCES `projecte3`.`dishes` (`id_dishes`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `FK_DIETSDISHES_MEAL`
     FOREIGN KEY (`meal`)
     REFERENCES `projecte3`.`meal_dishes` (`id_meal`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE set null
+    ON UPDATE CASCADE,
   CONSTRAINT `FK_DIETDISHES_WEEKDAYS`
     FOREIGN KEY (`week_day`)
     REFERENCES `projecte3`.`week_days` (`id_day`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE set null
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 CREATE INDEX `fk_Dietas_has_Dishes_Dishes1_idx` ON `projecte3`.`diets_dishes` (`dishes_id_dishes` ASC) ;
@@ -250,18 +250,18 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`dishes_ingredients` (
   CONSTRAINT `fk_Ingridients_has_Dishes_Ingridients1`
     FOREIGN KEY (`ingredients_id_ingredient`)
     REFERENCES `projecte3`.`ingredients` (`id_ingredient`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Ingridients_has_Dishes_Dishes1`
     FOREIGN KEY (`dishes_id_dishes`)
     REFERENCES `projecte3`.`dishes` (`id_dishes`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Dishes_Ingredients_Unit Mesure1`
     FOREIGN KEY (`mesure`)
     REFERENCES `projecte3`.`unit_mesure` (`id_unit`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE set NULL
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 CREATE INDEX `fk_Ingridients_has_Dishes_Dishes1_idx` ON `projecte3`.`dishes_ingredients` (`dishes_id_dishes` ASC) ;
