@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`historial_pacient` (
   CONSTRAINT `FK_ID_PACIENT`
     FOREIGN KEY (`id_pacient`)
     REFERENCES `projecte3`.`pacient` (`id_pacient`)
-    ON DELETE CASCADE
+    ON DELETE no ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `FK_HISTORIAL_DIETA`
     FOREIGN KEY (`diet`)
