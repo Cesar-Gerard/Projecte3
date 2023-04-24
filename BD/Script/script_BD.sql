@@ -15,13 +15,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 DROP TABLE IF EXISTS `projecte3`.`users` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`users` (
-  `id_user` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name_user` VARCHAR(45) NOT NULL,
   `lastname_user` VARCHAR(45) NOT NULL,
   `nickname_user` VARCHAR(45) NOT NULL,
-  `password_user` VARCHAR(300) NOT NULL,
+  `password` VARCHAR(300) NOT NULL,
   `type_user` CHAR(1) NOT null CHECK (`type_user`="P" Or `type_user`="N"),
-  PRIMARY KEY (`id_user`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`nutricionist` (
   PRIMARY KEY (`id_nutricionist`),
   CONSTRAINT `FK_USERS_ID`
     FOREIGN KEY (`id_nutricionist`)
-    REFERENCES `projecte3`.`users` (`id_user`)
+    REFERENCES `projecte3`.`users` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`pacient` (
     ON UPDATE CASCADE,
   CONSTRAINT `FK_PACIENT_USERS`
     FOREIGN KEY (`id_pacient`)
-    REFERENCES `projecte3`.`users` (`id_user`)
+    REFERENCES `projecte3`.`users` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `FK_PACIENT_NUTRICIONISTA`

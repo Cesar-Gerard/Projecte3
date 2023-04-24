@@ -234,14 +234,15 @@ INSERT INTO `diets_dishes` (`dietas_id_dieta`, `dishes_id_dishes`, `week_day`, `
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_user`, `name_user`, `lastname_user`, `nickname_user`, `password_user`, `type_user`) VALUES
-(1, 'Gerard', 'César ', 'gcesar', '2003', 'P'),
-(2, 'Eric', 'Borràs', 'eborras', '2003', 'N'),
-(3, 'Laura', 'César', 'lcesar', '1990', 'N'),
-(4, 'Ivàn', 'Puga', 'ipuga', '1990', 'P'),
-(5, 'Yaiza', 'Castillo', 'ycastillo', '1990', 'P'),
-(6, 'Nerea', 'Torregrosa', 'ntorregrosa', '2003', 'P');
+INSERT INTO `users` (`id`, `name_user`, `lastname_user`, `nickname_user`, `password`, `type_user`) VALUES
+(1, 'Gerard', 'César ', 'gcesar', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P'),
+(2, 'Eric', 'Borràs', 'eborras', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'N'),
+(3, 'Laura', 'César', 'lcesar', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'N'),
+(4, 'Ivàn', 'Puga', 'ipuga', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P'),
+(5, 'Yaiza', 'Castillo', 'ycastillo', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P'),
+(6, 'Nerea', 'Torregrosa', 'ntorregrosa', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P');
 
+-- --------------------------------------------------------
 
 --
 -- Volcado de datos para la tabla `nutricionist`
