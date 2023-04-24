@@ -172,12 +172,25 @@ INSERT INTO `dishes_ingredients` (`dishes_id_dishes`, `ingredients_id_ingredient
 
 
 
+--
+-- Volcado de datos para la tabla `type_diets`
+--
+
+INSERT INTO `type_diets` (`id_type`, `name_type`) VALUES
+(1, 'Dieta Vegetariana'),
+(2, 'Dieta Baixa en Greixos');
+
+
+
+
 
 --
 -- Volcado de datos para la tabla `diets`
 --
-INSERT INTO `diets` (`id_diet`, `name`, `calories`, `number_meals`, `description`) VALUES
-(1, 'Dieta Estàndard', 105532.00, 5, 'Dieta Estàdard per Baixar el Nombre de kcal en la nostra alimentació');
+
+INSERT INTO `diets` (`id_diet`, `name`, `calories`, `number_meals`, `description`, `tipus_dieta`) VALUES
+(1, 'Dieta Estàndard', 105532.00, 5, 'Dieta Estàdard per Baixar el Nombre de kcal en la nostra alimentació', 2);
+
 
 
 
