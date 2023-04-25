@@ -11,6 +11,8 @@ class HistorialPacient extends Model
 
     public $table = "historial_pacient";
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_historial',
         'date',

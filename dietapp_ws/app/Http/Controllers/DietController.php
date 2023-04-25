@@ -22,7 +22,19 @@ class DietController extends Controller
      * Retorna totes les dietes
      */
     public function getDiets(){
-        $data = Diets::all();
+        
+        try{
+            $data = Diets::all();
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error: ".$ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => "General error: ".$ex
+            ], 400);
+        }
+
         return response()->json(compact('data'));
     }
 
@@ -32,10 +44,22 @@ class DietController extends Controller
      */
     public function getDishes($diet){
 
-        $data = Dishes::select('dishes.*')
-                ->join('diets_dishes', 'diets_dishes.dishes_id_dishes', '=', 'dishes.id_dishes')
+        try{
+
+            $data = Dishes::select('dishes.*')
+                >join('diets_dishes', 'diets_dishes.dishes_id_dishes', '=', 'dishes.id_dishes')
                 ->where('diets_dishes.dietas_id_dieta','=',$diet)
                 ->get();
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Databae error: ".$ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => "General error: ".$ex
+            ], 400);
+        }
 
         return response()->json(compact('data'));
 
@@ -47,7 +71,19 @@ class DietController extends Controller
      */
     public function getHistorialPacient($user){
 
-        $data = HistorialPacient::where('id_pacient','=',$user)->get();
+        try{
+            $data = HistorialPacient::where('id_pacient','=',$user)->get();
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database ".$ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => "Error general: ".$ex
+            ], 400);
+        }
+
+        
 
         return response()->json(compact('data'));
 
@@ -59,13 +95,125 @@ class DietController extends Controller
      */
     public function getIngredients($dish){
         
-        $data = Ingredients::select('ingredients.*')
+        try{
+
+            $data = Ingredients::select('ingredients.*')
                 ->join('dishes_ingredients','dishes_ingredients.ingredients_id_ingredient','=','ingredients.id_ingredient')
                 ->where('dishes_ingredients.dishes_id_dishes','=',$dish)
                 ->get();
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error: ".$ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => "General error: ".$ex
+            ], 400);
+        }
+        
+
+        
         
         return response()->json(compact('data'));
 
     }
+
+
+    /**
+     * Camps de filtre: meals_number(combobox) type(combobox)
+     */
+    public function filtrar_dietes(Request $request){
+
+        $meals_number = $request->meals_number;
+        $type = $request->type;
+
+        try{
+            $data = Diets::where('number_meals','=',$meals_number)->where('tipus_dieta','=',$type)->get();
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error: ".$ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => "General error: ".$ex
+            ], 400);
+        }
+
+        return response()->json(compact('data'));
+    }
+
+
+    /**
+     * Introduir historial del pacient 	
+     */
+    public function add_historial_pacient(Request $request){
+        //(`id_historial`, `date`, `id_pacient`, `diet`, `weigth`, `heigth`, `chest`, `leg`, `arm`, `hip`) VALUES
+        $id_pacient = $request->id_pacient;
+        $diet = $request->diet;
+        $weight = $request->weight;
+        $height = $request->height;
+        $chest = $request->chest;
+        $leg = $request->leg;
+        $arm = $request->arm;
+        $hip = $request->hip;
+
+        if($height == null || $weight == null){
+            return response()->json([
+                'error' => "L'amplada i l'alçada són obligatòries"
+            ], 400);
+        }
+
+        try{
+            //Crear una nova entrada d'historial
+            HistorialPacient::create([
+                'date' => Date('Y-m-d'),
+                'id_pacient' => $id_pacient,
+                'diet' => $diet,
+                'weigth' => $weight,
+                'heigth' => $height,
+                'chest' => $chest,
+                'leg' => $leg,
+                'arm' => $arm,
+                'hip' => $hip,
+
+            ]);
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error ".$ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => 'General error '.$ex
+            ], 400);
+        }
+
+        return response()->json([
+            'success' => "ok"
+        ], 200);
+        
+    }
+
+
+    
+
+
+
+
+/*
+  try{
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => $ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => $ex
+            ], 400);
+        }
+ */
+
+
 
 }

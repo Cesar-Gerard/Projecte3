@@ -11,6 +11,8 @@ class Nutricionist extends Model
 
     public $table = "nutricionist";
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_nutricionist',
     ]; 

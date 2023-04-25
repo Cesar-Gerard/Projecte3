@@ -11,6 +11,10 @@ class Pacient extends Model
 
     public $table = "pacient";
 
+    public $timestamps = false;
+
+    protected $primaryKey = 'id_pacient';
+
     protected $fillable = [
         'id_pacient',
         'assigned_nutricionist',

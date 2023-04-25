@@ -11,6 +11,8 @@ class UnitMesure extends Model
 
     public $table = "unit_mesure";
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_unit',
         'abreviation',

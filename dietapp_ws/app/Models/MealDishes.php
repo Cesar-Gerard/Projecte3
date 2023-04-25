@@ -11,6 +11,8 @@ class MealDishes extends Model
 
     public $table = "meal_dishes";
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_meal',
         'name_meal',

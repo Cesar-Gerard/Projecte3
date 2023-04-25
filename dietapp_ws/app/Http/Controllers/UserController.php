@@ -38,20 +38,131 @@ class UserController extends Controller
         return response()->json(compact('data'));
     }
 
+    
     public function getUser($id){
 
-        $user = User::where('id','=',$id)->first();
+        
+        try{
+            $user = User::where('id','=',$id)->first();
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error: ".$ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => "General error: ".$ex
+            ], 400);
+        }
 
         return response()->json(compact('user'));
     }
 
     public function getPacient($id){
         
-        $data = Pacient::where('id_pacient','=',$id)->first();
+        try{
+            $data = Pacient::where('id_pacient','=',$id)->first();
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error: ".$ex
+            ], 400);
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => "Error general: ".$ex
+            ], 400);
+        }
 
         return response()->json(compact('data'));
     }
 
     
+    /**
+     * Modificar la meva informació com a usuari i pacient
+     * INSERT INTO `users` (`id`, `name_user`, `lastname_user`, `nickname_user`, `password`, `type_user`) VALUES
+     * INSERT INTO `pacient` (`id_pacient`, `assigned_nutricionist`, `email_pacient`, `phone_pacient`, 
+     * `address_pacient`, `current_diet`) VALUES
+     */
+    public function update_user(Request $request){
+
+        $id_pacient = $request->id;
+        
+        $name_user = $request->name_user;
+        $lastname_user = $request->lastname_user;
+        $phone_pacient = $request->phone_pacient;
+        $address_pacient = $request->address_pacient;
+
+        try{
+            $user = User::where('id','=',$id_pacient)->first();
+            $pacient = Pacient::where('id_pacient','=',$id_pacient)->first();
+
+            if($user==null || $pacient == null){
+                return response()->json([
+                    'error' => "El pacient no conté l'identificador esperat"
+                ], 400);
+            }
+
+
+            $user->name_user = $name_user;
+            $user->lastname_user = $lastname_user;
+            $user->save();
+
+            $pacient->phone_pacient = $phone_pacient;
+            $pacient->address_pacient = $address_pacient;
+            $pacient->save();
+
+            return response()->json([
+                'success' => "ok"
+            ], 200);
+
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error ".$ex
+            ], 400);
+
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => 'General error '.$ex
+            ], 400);
+        }
+
+
+
+
+
+
+
+    }
+
+
+    /**
+     * Modificar la contrasenya de l'usuari
+     */
+    public function update_password(Request $request){
+        
+        $id_pacient = $request->id;
+        $password = $request->password;
+
+        try{
+
+            $user = User::where('id','=',$id_pacient)->first();
+            $user->password = bcrypt($request->password);
+            $user->save();
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error ".$ex
+            ], 400);
+
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => 'General error '.$ex
+            ], 400);
+        }
+
+    }
+
+    
+
+
 
 }

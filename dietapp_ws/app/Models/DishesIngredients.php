@@ -11,6 +11,8 @@ class DishesIngredients extends Model
 
     public $table = "dishes_ingredients";
 
+    public $timestamps = false;
+
     protected $fillable = [
         'dishes_id_dishes',
         'ingredients_id_ingredient',

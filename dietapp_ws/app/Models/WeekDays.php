@@ -11,6 +11,8 @@ class WeekDays extends Model
 
     public $table = "week_days";
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_day',
         'name_day',

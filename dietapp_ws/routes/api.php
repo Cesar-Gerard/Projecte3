@@ -25,4 +25,8 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('/historial/{usuari}',[DietController::class, 'getHistorialPacient']);
     Route::get('/ingredientsdish/{dish}',[DietController::class, 'getIngredients']);
     Route::get('/pacient/{id}',[UserController::class, 'getPacient']);
+    Route::post('/dietfilter', [DietController::class, 'filtrar_dietes']);
+    Route::post('/add_historial_pacient',[DietController::class, 'add_historial_pacient']);
+    Route::put('/update_user',[UserController::class, 'update_user']);
+    Route::put('/update_password',[UserController::class, 'update_password']);
 });
