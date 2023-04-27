@@ -16,11 +16,11 @@ use App\Http\Controllers\DietController;
 */
 
 Route::post('login',[UserController::class,'login']);
-
+Route::get('/diets', [DietController::class, 'getDiets']);
 
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('/user/{id}', [UserController::class,'getUser']);
-    Route::get('/diets', [DietController::class, 'getDiets']);
+    
     Route::get('/dishes/{dieta}',[DietController::class, 'getDishes']);
     Route::get('/historial/{usuari}',[DietController::class, 'getHistorialPacient']);
     Route::get('/ingredientsdish/{dish}',[DietController::class, 'getIngredients']);
