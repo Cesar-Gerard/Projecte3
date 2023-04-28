@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +17,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name("index");
+
+
+
+Route::get('/home', function(){
+    return view('home');
+})->name("home");
+
+
+Route::get("/logout", function()
+{
+    Auth::logout();
+    return redirect()->route("index");
+})->name("logout");
+
+
+Route::get('/forget_password', function()
+{
+    return view("forget_password");
+    
+})->name("forget_password");
+
+
+
+
+Route::post("user/login", [UserController::class, "login"])->name("user.login");
