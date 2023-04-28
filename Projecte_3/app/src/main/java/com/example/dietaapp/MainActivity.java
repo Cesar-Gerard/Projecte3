@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 //Registre_api.hacerSolicitud(queue, edtName);
 
                     String url = "http://169.254.70.172/Projecte3/dietapp_ws/public/api/login";
-                    String nickname = "gcesar";//edtName.getText().toString().trim();
-                    String password = "2003";//edtPassword.getText().toString().trim();
+                    String nickname = edtName.getText().toString().trim();
+                    String password = edtPassword.getText().toString().trim();
 
                     Registre_api.postRequest(queue, url, nickname, password, new Response.Listener<String>() {
                         @Override

@@ -1,62 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/txvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Nom usuari:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/edtName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gui1"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nom usuari:"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+         />
 
 
-        <EditText
-            android:layout_width="200px"
-            android:layout_height="wrap_content"
-            android:id="@+id/edtName"
-            android:hint="Insert your name"></EditText>
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:hint="Insert your name"
+        app:constraint_referenced_ids="txvName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txvName"
+        app:layout_constraintTop_toBottomOf="@+id/gui1"></EditText>
 
-    </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gui1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="10dp"></androidx.constraintlayout.widget.Guideline>
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/txtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Password"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/txvName"
+        app:layout_constraintTop_toBottomOf="@+id/txvName" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <EditText
 
+        android:id="@+id/edtPassword"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:hint="Insert your name"
+        app:layout_constraintEnd_toEndOf="@+id/edtName"
+        app:layout_constraintTop_toBottomOf="@+id/edtName"></EditText>
 
-        <EditText
-            android:layout_width="200px"
-            android:layout_height="wrap_content"
-            android:id="@+id/edtPassword"
-            android:hint="Insert your name"></EditText>
-
-    </LinearLayout>
 
     <Button
+        android:id="@+id/btn_Inici"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar sessió"
-        android:id="@+id/btn_Inici"></Button>
+        app:layout_constraintStart_toEndOf="@+id/txtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"></Button>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
