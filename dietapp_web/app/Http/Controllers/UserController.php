@@ -32,10 +32,10 @@ class UserController extends Controller
                 return 1;
 
             }else{
-                return array("status"=>"-2");
+                return -2;
             }
         }else{
-            return array("status"=>"-1");
+            return -1;
         }
     }
 
@@ -58,8 +58,32 @@ class UserController extends Controller
             return -1;
         }
 
-        
+    }
 
+
+
+
+    public function canvia_contrasenya(Request $request){
+
+        try{
+            $user = User::getUserById($request->usuari);
+
+            if($user!=null){
+
+                if(User::updatePassword($user,$request->password)){
+                    return 1;
+                }
+
+                return -1;
+
+            }else{
+                return -1;
+            }
+
+        }catch(\Throwable $ex){
+            echo $ex;
+            return -1;
+        }
 
 
     }

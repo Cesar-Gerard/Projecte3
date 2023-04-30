@@ -79,6 +79,7 @@ function f_login(){
     let usuari = document.getElementById('username').value.trim();
     let password = document.getElementById('password').value.trim();
 
+    document.getElementById('login').innerHTML = "<span><i style='#018F43' class='fa fa-spinner faa-spin animated faa-fast fa-xl'></i></span>";
 
     $.ajax({
         url: config.routes.zone_login,
@@ -90,9 +91,17 @@ function f_login(){
         type: 'POST'
     }).done(function (e)
     {
+        document.getElementById('login').innerHTML = "<i class='a-solid fa-right-to-bracket'></i> Inicia sessió";
         if(e==1){
             //Redirect a home
             window.location.href = config.routes.zone_home;
+        }else{
+            console.info('err');
+            Swal.fire(
+                'Inici de sessió',
+                'Usuari o contrasenya incorrectes',
+                'error'
+            );
         }
         
                       

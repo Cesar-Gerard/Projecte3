@@ -22,7 +22,11 @@ Route::get('/', function () {
 
 
 Route::get('/home', function(){
-    return view('home');
+    if(Auth::check()){
+        return view('home');
+    }
+    return redirect(route("index"));
+    
 })->name("home");
 
 
@@ -45,3 +49,6 @@ Route::get('/canvia_contrasenya/{id}',function ($id){
 
 Route::post("user/login", [UserController::class, "login"])->name("user.login");
 Route::post("user/recupera_password", [UserController::class, "recupera_password"])->name("user.recupera_password");
+Route::post("user/canvia_contrasenya",[UserController::class, "canvia_contrasenya"])->name("user.canvia_contrasenya");
+
+

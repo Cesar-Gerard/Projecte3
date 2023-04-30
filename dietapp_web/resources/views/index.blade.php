@@ -21,9 +21,11 @@
 
   <script src="{{asset('js/third_party/font-awesome.js')}}"></script>
   <script src="{{asset('js/login.js')}}"></script>
-  <script src="{{asset('js/thir_party/jquery-3.6.4.js')}}"></script>
+  <script src="{{asset('js/third_party/jquery-3.6.4.js')}}"></script>
+  <script src="{{asset('js/third_party/sweet-alert.js')}}"></script>
   
   <link rel="stylesheet" href="{{asset("css/login.css")}}" />
+  <link rel="stylesheet" href="{{asset('js/third_party/animations-font_awesome.min.css')}}" />
   
 
 </head>

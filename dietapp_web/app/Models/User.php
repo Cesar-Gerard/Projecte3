@@ -14,6 +14,7 @@ class User extends Authenticatable
 
 
     public $table = "users";
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -60,5 +61,16 @@ class User extends Authenticatable
 
         return User::where('email_user','=',$email)->first();
 
+    }
+
+    public static function getUserById($id){
+        return User::where('id','=',$id)->first();
+    }
+
+
+    public static function updatePassword(User $user, $password){
+        $user->password = bcrypt($password);
+        return $user->save();
+        
     }
 }

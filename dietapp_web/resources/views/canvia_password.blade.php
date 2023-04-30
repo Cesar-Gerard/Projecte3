@@ -13,7 +13,11 @@
         // global app configuration object
         var config = {
             routes: {
-                zone_recupera_contrasenya: "{{ route('user.recupera_password') }}",
+                zone_canvia_password: "{{ route('user.canvia_contrasenya') }}",
+                zone_login: "{{ route('index') }}",
+            },
+            vars: {
+                user: "{{$user}}"
             }
         };
     </script>
