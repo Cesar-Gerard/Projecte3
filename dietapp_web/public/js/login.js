@@ -8,9 +8,10 @@ let c_password = false;
 function f_main(){
 
     document.getElementById('login').addEventListener('click',f_login);
+    
 
-    //Fer-ho amb longclick!!
-    document.getElementById('see_password').addEventListener('longclick',f_veureContrasenya);
+    
+    document.getElementById('see_password').addEventListener('click',f_veureContrasenya);
 
 
     
@@ -18,12 +19,13 @@ function f_main(){
     f_comprovaObligatori('username','u');
     f_comprovaObligatori('password','p');
 
+
 }
 
 
 function f_comprovaObligatori(id,tipus_camp){
 
-    document.getElementById(id).addEventListener('change',f_comprova);
+    document.getElementById(id).addEventListener('input',f_comprova);
 
     function f_comprova(){
 
@@ -61,8 +63,6 @@ function f_veureContrasenya(){
     
     let passdocument = document.getElementById('password');
 
-    console.info(passdocument);
-
     //let passdocument = document.getElementById("l_password");
     if(passdocument.type == "password"){
         passdocument.type = "text";
@@ -98,3 +98,5 @@ function f_login(){
                       
     });
 }
+
+

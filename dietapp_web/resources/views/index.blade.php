@@ -19,9 +19,9 @@
         };
     </script>
 
-  <script src="{{asset('js/font-awesome.js')}}"></script>
+  <script src="{{asset('js/third_party/font-awesome.js')}}"></script>
   <script src="{{asset('js/login.js')}}"></script>
-  <script src="{{asset('js/jquery-3.6.4.js')}}"></script>
+  <script src="{{asset('js/thir_party/jquery-3.6.4.js')}}"></script>
   
   <link rel="stylesheet" href="{{asset("css/login.css")}}" />
   
@@ -38,23 +38,15 @@
             <span>Usuari o contrasenya incorrecte</span>
         </div>
         
-        <svg xmlns="http://www.w3.org/2000/svg" class="site__logo" width="56" height="84" viewBox="77.7 214.9 274.7 412">
-            <defs>
-                <linearGradient id="a" x1="0%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#8ceabb" />
-                <stop offset="100%" stop-color="#378f7b" />
-                </linearGradient>
-            </defs>
-            <path fill="url(#a)" d="M215 214.9c-83.6 123.5-137.3 200.8-137.3 275.9 0 75.2 61.4 136.1 137.3 136.1s137.3-60.9 137.3-136.1c0-75.1-53.7-152.4-137.3-275.9z" />
-        </svg>
+        <img src="{{asset('img/DietApp_Logo.png')}}" class="logo_dietapp" />
 
-        <h2>DietApp</h2>
+        <!--<h2>DietApp</h2>-->
 
         <div class="form">
 
             <div class="form__field">
                 <input type="text" name="username" id="username" placeholder="Usuari" class="inputs">
-                <span id="" style="display:none;"><i class="fa-solid fa-eye see_password"></i></span>
+                <span id="" style="visibility: hidden;"><i class="fa-solid fa-eye see_password"></i></span>
             </div>
 
             <div class="form__field">
@@ -62,8 +54,9 @@
                 <span id="see_password"><i class="fa-solid fa-eye see_password"></i></span>
             </div>
 
-            <div class="form__field">
-                <button id="login" class="disabled" disabled >Inicia sessió</button>
+            <div class="form__field space">
+                
+                <button id="login" class="button-3 disabled" disabled ><i class="fa-solid fa-right-to-bracket"></i> Inicia sessió</button>
             </div>
 
         </div>

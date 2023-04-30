@@ -19,7 +19,7 @@
     </script>
 
   <script src="{{asset('js/third_party/font-awesome.js')}}"></script>
-  <script src="{{asset('js/forget_password.js')}}"></script>
+  <script src="{{asset('js/canvia_password.js')}}"></script>
   <script src="{{asset('js/third_party/jquery-3.6.4.js')}}"></script>
   <script src="{{asset('js/third_party/sweet-alert.js')}}"></script>
   
@@ -34,10 +34,7 @@
   <div class="grid align__item">
 
     <div class="register">
-        <p class="title">Contrasenya oblidada</p>
-        <div class="errors" id="errors" style="display:none;">
-            <span>Email</span>
-        </div>
+        <p class="title">Canviar Contrasenya</p>
         
         <img src="{{asset('img/DietApp_Logo.png')}}" class="logo_dietapp" />
 
@@ -45,23 +42,29 @@
 
         <div class="form">
 
-            <label for="email_recupera">Introdueix el teu email</label>
+           
             <div class="form__field">
-                <input type="email" name="email_recupera" id="email_recupera" placeholder="Email" class="inputs">
+                <input type="password" name="canviar_password" id="canviar_password" placeholder="Escriu la nova contrasenya" class="inputs">
+                <span id="see_password"><i class="fa-solid fa-eye see_password"></i></span>
                 <br/>
-                <span class="mail_err" id="mail_err"></span>
             </div>
 
             
+            <div class="form__field">
+                <input type="password" name="canviar_password2" id="canviar_password2" placeholder="Torna a escriure-la" class="inputs">
+                <span id="see_password2"><i class="fa-solid fa-eye see_password"></i></span>
+                <br/>
+                <span id="err_password" class="mail_err"></span>
+            </div>
+
 
             <div class="form__field ">
-                <button id="btn_recupera_pw" class="button-3 disabled" disabled ><i class="fa-solid fa-envelope fa-beat"></i> Envia</button>
+                <button id="btn_canviar_password" class="button-3 disabled" disabled ><i class="fa-solid fa-key"></i> Canvia</button>
             </div>
 
         </div>
 
         <p><a href="{{route('index')}}" class="pw_oblidada">Inicia sessió</a></p>
-        <!--<span><i class="fa fa-spinner faa-spin animated faa-fast fa-xl loading_color"></i></span>-->
 
     </div>
 

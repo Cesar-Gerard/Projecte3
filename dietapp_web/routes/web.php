@@ -36,10 +36,12 @@ Route::get("/logout", function()
 Route::get('/forget_password', function()
 {
     return view("forget_password");
-    
 })->name("forget_password");
 
-
+Route::get('/canvia_contrasenya/{id}',function ($id){
+    return view("canvia_password",["user"=>$id]);
+})->name("canvia_contrasenya");
 
 
 Route::post("user/login", [UserController::class, "login"])->name("user.login");
+Route::post("user/recupera_password", [UserController::class, "recupera_password"])->name("user.recupera_password");

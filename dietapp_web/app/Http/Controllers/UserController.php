@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Mail\RecuperaPassword;
 
 use Auth;
+use Mail;
 
 class UserController extends Controller
 {
@@ -35,10 +37,30 @@ class UserController extends Controller
         }else{
             return array("status"=>"-1");
         }
+    }
+
+    public function recupera_password(Request $request){
+
+        try{
+            $user = User::getUserByEmail($request->email);
+
+            if($user!=null){
+                Mail::to($request->email)->send(new RecuperaPassword($user->name_user,$user->lastname_user,$user->id));
+            }else{
+                return -2;
+            }
+
+            return 1;
+
+        
+        }catch(\Throwable $ex){
+            echo $ex;
+            return -1;
+        }
+
+        
 
 
 
     }
-
-
 }

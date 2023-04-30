@@ -25,7 +25,8 @@ class User extends Authenticatable implements JWTSubject
         'lastname_user',
         'nickname_user',
         'password',
-        'type_user'
+        'type_user',
+		'email_user,
     ];
 
     public $timestamps = false;

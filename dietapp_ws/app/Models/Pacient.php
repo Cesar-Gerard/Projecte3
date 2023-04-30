@@ -18,7 +18,6 @@ class Pacient extends Model
     protected $fillable = [
         'id_pacient',
         'assigned_nutricionist',
-        'email_pacient',
         'phone_pacient',
         'address_pacient',
         'current_diet',

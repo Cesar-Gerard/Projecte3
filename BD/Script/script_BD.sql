@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`users` (
   `nickname_user` VARCHAR(45) NOT NULL,
   `password` VARCHAR(300) NOT NULL,
   `type_user` CHAR(1) NOT null CHECK (`type_user`="P" Or `type_user`="N"),
+  `email_user` VARCHAR(45) null check  (`email_user` LIKE '%@%.%'),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -86,7 +87,6 @@ DROP TABLE IF EXISTS `projecte3`.`pacient` ;
 CREATE TABLE IF NOT EXISTS `projecte3`.`pacient` (
   `id_pacient` BIGINT(10) UNSIGNED NOT NULL,
   `assigned_nutricionist` BIGINT(10) UNSIGNED NULL,
-  `email_pacient` VARCHAR(45) null check  (`email_pacient` LIKE '%@%.%'),
   `phone_pacient` VARCHAR(20) null CHECK (`phone_pacient` LIKE '%+%'),
   `address_pacient` VARCHAR(1000) NULL,
   `current_diet` BIGINT(10) UNSIGNED NULL,

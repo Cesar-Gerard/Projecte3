@@ -234,13 +234,13 @@ INSERT INTO `diets_dishes` (`dietas_id_dieta`, `dishes_id_dishes`, `week_day`, `
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name_user`, `lastname_user`, `nickname_user`, `password`, `type_user`) VALUES
-(1, 'Gerard', 'César ', 'gcesar', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P'),
-(2, 'Eric', 'Borràs', 'eborras', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'N'),
-(3, 'Laura', 'César', 'lcesar', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'N'),
-(4, 'Ivàn', 'Puga', 'ipuga', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P'),
-(5, 'Yaiza', 'Castillo', 'ycastillo', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P'),
-(6, 'Nerea', 'Torregrosa', 'ntorregrosa', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P');
+INSERT INTO `users` (`id`, `name_user`, `lastname_user`, `nickname_user`, `password`, `type_user`, email_user) VALUES
+(1, 'Gerard', 'César ', 'gcesar', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P', 'gcesar@milaifontanals.org'),
+(2, 'Eric', 'Borràs', 'eborras', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'N', 'eborras@milaifontanals.org'),
+(3, 'Laura', 'César', 'lcesar', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'N', 'lcesar2@milaifontanals.org'),
+(4, 'Ivàn', 'Puga', 'ipuga', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P','ipuga2@milaifontanals.org'),
+(5, 'Yaiza', 'Castillo', 'ycastillo', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P', 'ycastillo2@milaifontanals.org'),
+(6, 'Nerea', 'Torregrosa', 'ntorregrosa', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P', 'ntorregrosa2@milaifontanals.org');
 
 -- --------------------------------------------------------
 
@@ -256,11 +256,11 @@ INSERT INTO `nutricionist` (`id_nutricionist`) VALUES
 -- Volcado de datos para la tabla `pacient`
 --
 
-INSERT INTO `pacient` (`id_pacient`, `assigned_nutricionist`, `email_pacient`, `phone_pacient`, `address_pacient`, `current_diet`) VALUES
-(1, 2, 'gcesar@milaifontanals.com', '+656394050', 'Can Debot', 1),
-(4, 3, 'ipuga@milaifontanals.org', '+656394051', NULL, 1),
-(5, NULL, NULL, NULL, NULL, 1),
-(6, 3, 'ntorregrosa@milaifontanals.org', NULL, NULL, NULL);
+INSERT INTO `pacient` (`id_pacient`, `assigned_nutricionist`, `phone_pacient`, `address_pacient`, `current_diet`) VALUES
+(1, 2, '+656394050', 'Can Debot', 1),
+(4, 3, '+656394051', NULL, 1),
+(5, NULL, NULL, NULL, 1),
+(6, 3, NULL, NULL, NULL);
 
 
 --

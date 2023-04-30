@@ -26,7 +26,8 @@ class User extends Authenticatable
         'lastname_user',
         'nickname_user',
         'password',
-        'type_user'
+        'type_user',
+        'email_user'
     ];
 
     /**
@@ -53,6 +54,11 @@ class User extends Authenticatable
 
         return User::where('nickname_user','=',$nickname)->first();
 
+    }
+
+    public static function getUserByEmail($email){
+
+        return User::where('email_user','=',$email)->first();
 
     }
 }
