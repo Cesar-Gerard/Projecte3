@@ -31,40 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //--------------------------------//
-        edtName = findViewById(R.id.edtName);
-        edtPassword= findViewById(R.id.edtPassword);
-        btn_Log = findViewById(R.id.btn_Log);
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        programarBotons(queue);
 
     }
 
 
-    private void programarBotons(final RequestQueue queue) {
-        btn_Log.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Registre_api.hacerSolicitud(queue, edtName);
 
-                    String url = "http://169.254.70.172/Projecte3/dietapp_ws/public/api/login";
-                    String nickname = edtName.getText().toString().trim();
-                    String password = edtPassword.getText().toString().trim();
-
-                    Registre_api.postRequest(queue, url, nickname, password, new Response.Listener<User>() {
-                        @Override
-                        public void onResponse(User login) {
-                            edtName.setText(login.getEmail_user().toString());
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            edtName.setText("Error");
-                        }
-                    });
-
-            }
-        });
-    }
 }
