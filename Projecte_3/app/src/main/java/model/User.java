@@ -8,13 +8,20 @@ public class User {
     private long id;
     private String Last_Name;
 
+    private String email_user;
 
-    public User(String nickname_User) {
 
+    public User(long id,String name_User,String last_Name,String nickname_User, char type_User,String email,String token) {
+        Token = token;
         Nickname_User = nickname_User;
-
+        Type_User = type_User;
+        Name_User = name_User;
+        this.id = id;
+        Last_Name = last_Name;
+        this.email_user=email;
     }
 
+    //region $Properties
     public String getToken() {
         return Token;
     }
@@ -62,4 +69,13 @@ public class User {
     public void setLast_Name(String last_Name) {
         Last_Name = last_Name;
     }
+
+    public String getEmail_user() {
+        return email_user;
+    }
+
+    public void setEmail_user(String email_user) {
+        this.email_user = email_user;
+    }
+    //endregion
 }
