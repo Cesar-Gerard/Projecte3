@@ -40,4 +40,46 @@ class Pacient extends Model
         
     }
 
+
+    public static function getPacientsByFilter($nom,$cognom,$dieta,$nutricionist){
+
+
+        
+
+        $pacients = DB::table('pacient')
+            ->select('users.*','pacient.*','diets.*')
+            ->join('users','users.id','=','pacient.id_pacient')
+            ->join('diets','pacient.current_diet','=','diets.id_diet')
+            ->where('pacient.assigned_nutricionist','=',$nutricionist);
+
+        if(strlen($nom)!=0){
+            $pacients = $pacients->where('users.name_user','like','%'.$nom.'%');        
+        }
+
+        if(strlen($cognom)!=0){
+            $pacients = $pacients->where('users.lastname_user','like','%'.$cognom.'%');
+        }
+
+        if($dieta!=-1){
+            $pacients = $pacients->where('pacient.current_diet','=',$dieta);
+        }
+        
+
+        $pacients = $pacients->get();
+
+        $arr_pacients = array();
+        foreach($pacients as $pacient){
+            array_push($arr_pacients,$pacient);
+        }
+
+        return $arr_pacients;
+
+
+    
+        
+
+
+
+    }
+
 }

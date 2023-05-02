@@ -3,7 +3,18 @@
 
     <script src="{{asset('js/pacients.js')}}"></script>
 
-
+    <script>
+        // global app configuration object
+        var config = {
+            routes: {
+                zone_filtre_pacient: "{{ route('pacient.filtrar_pacient') }}",
+                zone_filtre_all_pacients: "{{ route('pacient.filtrar_all_pacients') }}"
+            },
+            vars: {
+                nutricionist: "{{Auth::user()->id}}",
+            }
+        };
+    </script>
 
     <div class="container">
 
@@ -48,7 +59,7 @@
                     <div class="row" style="margin-top:20px;">
                         <div class="col-12 d-flex ">
                             <div class="col-6">
-                                <a href="" id="cerca_search" class="button-3 btn-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                <button id="cerca_search" class="button-3 btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
 
                             <div class="col-6 d-flex justify-content-end">
@@ -96,17 +107,17 @@
                         ["assigned_nutricionist"]=> int(2) ["phone_pacient"]=> string(10) "+656394050" ["address_pacient"]=> string(9) 
                         "Can Debot" ["current_diet"]=> int(1) }
                     -->
-
-                    <td>{{$pacient->name_user}} {{$pacient->lastname_user}}</td>
-                    <td>{{$pacient->phone_pacient}}</td>
-                    <td>{{$pacient->address_pacient}}</td>
-                    <td>@if($pacient->name != null) {{$pacient->name}} @else Sense dieta assignada @endif</td>
-                    <td>
-                        
-                        <a href="" class="button-3 btn-edit"><i class="fa-solid fa-user-pen"></i></a>
-                        <a href="" class="button-3 btn-delete"><i class="fa-solid fa-user-slash"></i></a>
-                    </td>
-
+                    <tr>
+                        <td>{{$pacient->name_user}} {{$pacient->lastname_user}}</td>
+                        <td>{{$pacient->phone_pacient}}</td>
+                        <td>{{$pacient->address_pacient}}</td>
+                        <td>@if($pacient->name != null) {{$pacient->name}} @else Sense dieta assignada @endif</td>
+                        <td>
+                            
+                            <a href="" class="button-3 btn-edit"><i class="fa-solid fa-user-pen"></i></a>
+                            <a href="" class="button-3 btn-delete"><i class="fa-solid fa-user-slash"></i></a>
+                        </td>
+                    </tr>
 
                 @endforeach
                 </tbody>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PacientController;
 
 use App\Models\Pacient;
 use App\Models\Diets;
@@ -65,5 +66,7 @@ Route::get('/canvia_contrasenya/{id}',function ($id){
 Route::post("user/login", [UserController::class, "login"])->name("user.login");
 Route::post("user/recupera_password", [UserController::class, "recupera_password"])->name("user.recupera_password");
 Route::post("user/canvia_contrasenya",[UserController::class, "canvia_contrasenya"])->name("user.canvia_contrasenya");
+Route::post("pacient/filtrar_pacient",[PacientController::class, "filtrar_pacient"])->name("pacient.filtrar_pacient");
+Route::post("pacient/filtrar_all_pacients",[PacientController::class, "filtrar_all_pacients"])->name("pacient.filtrar_all_pacients");
 
 
