@@ -1,6 +1,15 @@
 @nav_background: rgb(31,58,28);
 @nav_hover: rgb(190,226,166);
 
+@warning-color: rgb(255,193,7);
+@warning-color-hover: rgb(245, 205, 85);
+
+@danger-color: rgb(220,53,69);
+@danger-color-hover: rgb(226, 89, 103);
+
+@color-primary: rgb(0,123,255);
+@color-primary-hover: rgb(109, 174, 244);
+
 .foto_logo{
     object-fit: contain;
     width: 125px;
@@ -248,4 +257,111 @@ a{
 
 a:hover{
     color: @nav_hover !important;
+}
+
+
+
+
+
+.titol{
+  margin-top:20px;
+  margin-bottom: 50px;
+}
+
+
+.estils_table{
+
+
+
+  thead{
+    background-color: @nav_background;
+    color:white;
+  }
+
+  tr:hover{
+    background-color: #b2edc2;
+    cursor: pointer;
+  }
+
+
+}
+
+
+
+/* CSS */
+.button-3 {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 4px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #74d790;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+
+.btn-edit{
+  background-color: @warning-color !important;
+}
+
+.btn-edit:hover{
+  background-color: @warning-color-hover  !important;
+}
+
+.btn-delete{
+  background-color: @danger-color !important;
+}
+
+.btn-delete:hover{
+  background-color: @danger-color-hover !important;
+}
+
+
+.btn-search{
+  background-color: @color-primary !important;
+}
+
+.btn-search:hover{
+  background-color: @color-primary-hover !important;
 }

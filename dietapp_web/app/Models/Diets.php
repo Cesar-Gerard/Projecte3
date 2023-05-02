@@ -17,4 +17,7 @@ class Diets extends Model
         'id_type',
         'name_type'
     ]; 
+
+
+    
 }

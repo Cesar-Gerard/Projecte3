@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 
+use App\Models\Pacient;
+use App\Models\Diets;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +31,18 @@ Route::get('/home', function(){
     return redirect(route("index"));
     
 })->name("home");
+
+Route::get('/pacients',function(){
+    if(Auth::check()){
+
+        //Llista de tots els pacients que té assignat el nutricionista
+        $pacients = Pacient::getPacientsFromNutricionist(Auth::user()->id);
+        $diets = Diets::all();
+        
+        return view('pacients',['pacients'=>$pacients,"diets"=>$diets]);
+    }
+    return redirect(route("index"));
+})->name("pacients");
 
 
 Route::get("/logout", function()
