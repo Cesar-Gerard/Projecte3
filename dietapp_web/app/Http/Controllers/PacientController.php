@@ -34,7 +34,7 @@ class PacientController extends Controller
     public function filtrar_all_pacients(Request $request){
 
        
-        $pacients = Pacient::getPacientsFromNutricionist($request->nutricionist);
+        $pacients = Pacient::getPacientsFromNutricionist(Auth::user()->id);
 
         return json_encode($pacients);
 
@@ -76,13 +76,15 @@ class PacientController extends Controller
 
     public function add_pacient(Request $request){
 
-        validar_pacients($request);
-
         
+            $this->validar_pacients($request);
 
+            if(User::addUser($request,Auth::user()->id)!=1){
+                return array("status"=>"error","missatge"=>"El pacient no s'ha pogut crear");
+            }
 
-
-        return array("status"=>"ok");
+            return array("status"=>"ok");
+        
     
     }
 

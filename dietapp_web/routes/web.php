@@ -39,11 +39,54 @@ Route::get('/pacients',function(){
         //Llista de tots els pacients que té assignat el nutricionista
         $pacients = Pacient::getPacientsFromNutricionist(Auth::user()->id);
         $diets = Diets::all();
+
         
         return view('pacients',['pacients'=>$pacients,"diets"=>$diets]);
     }
     return redirect(route("index"));
 })->name("pacients");
+
+Route::get('/pacient/{pacient}',function($pacient){
+
+    if(Auth::check()){
+
+        //En cas que posi la adreça i no sigui el seu pacient, no deixar entrar
+        $pacient = Pacient::getPacient($pacient,Auth::user()->id);
+        if($pacient !=null){
+            
+            return view('pacient_see',['pacient'=>$pacient]);
+
+        }else{
+            return redirect(route("pacients"));
+        }
+
+    }else{
+        return redirect(route("index"));
+    }
+
+})->name("pacient");
+
+
+Route::get('/pacient_edit/{id}',function($pacient){
+    
+    if(Auth::check()){
+
+        //En cas que posi la adreça i no sigui el seu pacient, no deixar entrar
+        $pacient = Pacient::getPacient($pacient,Auth::user()->id);
+        if($pacient != null){
+            
+            return view('pacient_edit',['pacient'=>$pacient]);
+
+        }else{
+            return redirect(route("pacients"));
+        }
+
+    }else{
+        return redirect(route("index"));
+    }
+
+
+})->name("pacient_edit");
 
 
 Route::get("/logout", function()

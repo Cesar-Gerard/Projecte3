@@ -74,11 +74,49 @@ class User extends Authenticatable
         
     }
 
-    public static function addUser($data){
+    public static function addUser($data,$nutricionist){
+
 
         
 
+        try{
 
+            \DB::beginTransaction();
+
+            $user = new User();
+
+            $user->name_user = $data->pacient_name;
+            $user->lastname_user = $data->pacient_cognoms;
+            $user->nickname_user = $data->pacient_username;
+            $user->password = bcrypt($data->pacient_password);
+            $user->type_user = "P";
+            $user->email_user = $data->pacient_email;
+
+            $user->save();
+
+
+            $pacient = new Pacient();
+            $pacient->id_pacient = $user->id;
+            $pacient->assigned_nutricionist = $nutricionist;
+            $pacient->phone_pacient = $data->pacient_phone;
+            $pacient->address_pacient = $data->pacient_address;
+            
+            $pacient->save();
+
+            \DB::commit();
+
+            return  1;
+        }catch(\Illuminate\Database\QueryException $ex){
+            echo "DB: ".$ex;
+            \DB::rollback();
+            return -1;
+        }catch(\Throwable $ex){
+            echo $ex;
+            \DB::rollback();
+            return -1;
+        }
+
+        
 
     }
 }

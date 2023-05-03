@@ -31,10 +31,11 @@ class Pacient extends Model
 
         $pacients = DB::table('pacient')
                     ->select('users.*','pacient.*','diets.*')
-                    ->join('users','users.id','=','pacient.id_pacient')
-                    ->join('diets','pacient.current_diet','=','diets.id_diet')
+                    ->leftJoin('users','users.id','=','pacient.id_pacient')
+                    ->leftJoin('diets','pacient.current_diet','=','diets.id_diet')
                     ->where('pacient.assigned_nutricionist','=',$id)
                     ->get();
+
 
         return $pacients;
         
@@ -74,12 +75,21 @@ class Pacient extends Model
 
         return $arr_pacients;
 
+    }
 
-    
-        
+
+    public static function getPacient($pacient,$nutricionist){
+
+        /**
+         * TODO: Falta fer la join amb taula USERS
+         */
+        return Pacient::where('id_pacient','=',$pacient)->where('assigned_nutricionist','=',$nutricionist)->first();
 
 
 
     }
+
+
+
 
 }

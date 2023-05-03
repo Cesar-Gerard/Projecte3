@@ -100,21 +100,15 @@
                 <tbody id="pacients_taula">
                 @foreach($pacients as $pacient)
                     
-                    <!-- 
-                        object(stdClass)#325 (12) { ["id"]=> int(1) ["name_user"]=> string(6) "Gerard" ["lastname_user"]=> string(7) "César " 
-                        ["nickname_user"]=> string(6) "gcesar" ["password"]=> string(60) "$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha" 
-                        ["type_user"]=> string(1) "P" ["email_user"]=> string(25) "gcesar@milaifontanals.org" ["id_pacient"]=> int(1) 
-                        ["assigned_nutricionist"]=> int(2) ["phone_pacient"]=> string(10) "+656394050" ["address_pacient"]=> string(9) 
-                        "Can Debot" ["current_diet"]=> int(1) }
-                    -->
-                    <tr>
+                    
+                    <tr onclick="window.location.href = '{{route('pacient',$pacient->id)}}';">
                         <td>{{$pacient->name_user}} {{$pacient->lastname_user}}</td>
                         <td>{{$pacient->phone_pacient}}</td>
                         <td>{{$pacient->address_pacient}}</td>
                         <td>@if($pacient->name != null) {{$pacient->name}} @else Sense dieta assignada @endif</td>
                         <td>
                             
-                            <a href="" class="button-3 btn-edit"><i class="fa-solid fa-user-pen"></i></a>
+                            <a href="{{route('pacient_edit',$pacient->id)}}" class="button-3 btn-edit"><i class="fa-solid fa-user-pen"></i></a>
                             <a href="" class="button-3 btn-delete"><i class="fa-solid fa-user-slash"></i></a>
                         </td>
                     </tr>

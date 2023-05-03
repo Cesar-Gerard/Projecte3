@@ -36,12 +36,12 @@
 
                 <div class="row form-group">
                     <div class="col-6">
-                        <label for="pacient_name">Nom</label>
+                        <label for="pacient_name">Nom</label><label class="text-danger">*</label>
                         <input type="text" class="form-control" id="pacient_name" name="pacient_name"  placeholder="Nom">
                     </div>
 
                     <div class="col-6">
-                        <label for="pacient_cognoms">Cognoms</label>
+                        <label for="pacient_cognoms">Cognoms</label><label class="text-danger">*</label>
                         <input type="text" class="form-control" id="pacient_cognoms" name="pacient_cognoms" placeholder="Cognoms">
                     </div>
 
@@ -51,12 +51,12 @@
 
                 <div class="row form-group">
                     <div class="col-6">
-                        <label for="pacient_username">Nom d'usuari</label>
+                        <label for="pacient_username">Nom d'usuari</label><label class="text-danger">*</label>
                         <input type="text" class="form-control" id="pacient_username" name="pacient_username" placeholder="Nom d'usuari">
                     </div>
 
                     <div class="col-6">
-                        <label for="pacient_password">Contrasenya</label>
+                        <label for="pacient_password">Contrasenya</label><label class="text-danger">*</label>
                         <input type="text" class="form-control" id="pacient_password" name="pacient_password" placeholder="Contrasenya">
                     </div>
 
@@ -65,7 +65,7 @@
 
                 <div class="row form-group">
                     <div class="col-6">
-                        <label for="pacient_email">Email usuari</label>
+                        <label for="pacient_email">Email usuari</label><label class="text-danger">*</label>
                         <input type="email" class="form-control" id="pacient_email" name="pacient_email"  placeholder="Email usuari">
                     </div>
 

@@ -6,6 +6,10 @@ function f_main(){
 
     document.getElementById('pacient_password').value = makePassword(5);
     
+   
+    //Millora: crear composició usuari(primera lletra nom + cognom(fins espai) )
+    //Treure caràcters especialss
+
 
     // initialize the validation library
     const validation = new JustValidate('#f_alta_pacient', {
