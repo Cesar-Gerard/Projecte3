@@ -73,4 +73,12 @@ class User extends Authenticatable
         return $user->save();
         
     }
+
+    public static function addUser($data){
+
+        
+
+
+
+    }
 }

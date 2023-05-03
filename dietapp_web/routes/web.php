@@ -63,10 +63,19 @@ Route::get('/canvia_contrasenya/{id}',function ($id){
 })->name("canvia_contrasenya");
 
 
+Route::get('/add_pacient', function(){
+    if(Auth::check()){
+        return view("add_pacient");
+    }
+
+    
+})->name("view_add_pacient");
+
+
 Route::post("user/login", [UserController::class, "login"])->name("user.login");
 Route::post("user/recupera_password", [UserController::class, "recupera_password"])->name("user.recupera_password");
 Route::post("user/canvia_contrasenya",[UserController::class, "canvia_contrasenya"])->name("user.canvia_contrasenya");
 Route::post("pacient/filtrar_pacient",[PacientController::class, "filtrar_pacient"])->name("pacient.filtrar_pacient");
 Route::post("pacient/filtrar_all_pacients",[PacientController::class, "filtrar_all_pacients"])->name("pacient.filtrar_all_pacients");
-
+Route::post("pacient/add_pacient",[PacientController::class, "add_pacient"])->name("pacient.add");
 

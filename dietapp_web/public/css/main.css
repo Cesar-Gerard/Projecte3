@@ -286,3 +286,16 @@ a:hover {
 .btn-search:hover {
   background-color: #6daef4 !important;
 }
+.brdcr_link {
+  color: blue !important;
+  text-decoration: underline !important;
+}
+.breadcrumbs {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.form_border {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px !important;
+}

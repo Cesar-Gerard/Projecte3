@@ -24,18 +24,10 @@ function f_main(){
 
 function f_netejaFiltres(){
 
-    document.getElementById('cerca_nom_pacient').value = "";
-    document.getElementById('cerca_cognom_pacient').value = "";
-    document.getElementById('cerca_tipus_dietes').value = "-1";
-
-
     //Retornar totes les dades
     $.ajax({
         url: config.routes.zone_filtre_all_pacients,
         data:{
-            'nom' : filtre_nom,
-            'cognom' : filtre_cognom,
-            'dieta' : dieta_selected,
             'nutricionist' : config.vars.nutricionist,
             '_token': $('meta[name="csrf-token"]').attr('content'),
         },

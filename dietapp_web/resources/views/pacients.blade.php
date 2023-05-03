@@ -22,8 +22,8 @@
 
         <h1 class="d-flex justify-content-center titol">Pacients</h1>
 
-        <button class="button-3 btn-search" id="btn_mostrar_filtre"><i class="fa-regular fa-eye"></i></button> 
-        <button class="button-3 btn-search" id="btn_amagar_filtre"><i class="fa-regular fa-eye-slash"></i></button>
+        <button class="button-3 btn-search" id="btn_mostrar_filtre"><i class="fa-regular fa-eye-slash"></i></button> 
+        <button class="button-3 btn-search" id="btn_amagar_filtre"><i class="fa-regular fa-eye"></i></button>
 
 
         <div class="row " style="margin-bottom:30px;" id="filtres_div">
@@ -82,7 +82,7 @@
 
         <div class="row">
             <div class="col-2">
-                <a href="" class="button-3 mb-2" style="background-color:green;"><i class="fa-solid fa-user-plus"></i></a> 
+                <a href="{{route('view_add_pacient')}}" class="button-3 mb-2" style="background-color:green;"><i class="fa-solid fa-user-plus"></i></a> 
             </div>
         </div>
 
