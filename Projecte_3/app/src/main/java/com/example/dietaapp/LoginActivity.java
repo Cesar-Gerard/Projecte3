@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity{
                     public void onResponse(User login) {
 
                         Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                       User.setUser(login);
                         startActivity(i);
 
 

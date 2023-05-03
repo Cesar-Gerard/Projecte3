@@ -22,15 +22,12 @@ import model.User;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_Log;
-    EditText edtName;
-    EditText edtPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
     }
 

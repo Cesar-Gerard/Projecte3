@@ -1,6 +1,19 @@
 package model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static User _user;
+    public static User getUser(){
+        return _user;
+
+    };
+
+    public static void setUser(User entrada){
+        _user = entrada;
+    }
+    //--------------------------------------------------------
+
     private String Token;
     private String Nickname_User;
     private char Type_User;
