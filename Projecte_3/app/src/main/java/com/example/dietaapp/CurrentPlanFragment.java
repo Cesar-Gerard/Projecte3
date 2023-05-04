@@ -1,5 +1,6 @@
 package com.example.dietaapp;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,8 +14,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 
 import org.json.JSONObject;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import api.Registre_api;
 import model.Historial_Pacient;
@@ -25,25 +30,16 @@ public class CurrentPlanFragment extends Fragment {
     User info;
 
 
-    //Creación de los contenedores
-    EditText edtPes;
-    EditText edtAlt;
-    EditText edtIMC;
-    EditText edtPit;
-    EditText edtBraç;
-    EditText edtCama;
-    EditText edtCintura;
+
+    FragmentCurrentPlanBinding binding;
+    private LocalDate selectedDate;
 
 
     RequestQueue queue=null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Rebem el user
-        info = User.getUser();
 
-        queue = Volley.newRequestQueue(this.getContext());
-        demanarHistorial(info,queue);
 
     }
 
@@ -51,10 +47,25 @@ public class CurrentPlanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            selectedDate= LocalDate.now();
+            setMonthView();
+        }
+
+
+        /*
+        //Rebem el user
+        info = User.getUser();
+
+        queue = Volley.newRequestQueue(this.getContext());
+        demanarHistorial(info,queue);
+
+*/
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_current_plan, container, false);
 
-        edtPes = v.findViewById(R.id.edtPes);
+
 
 
 
@@ -62,6 +73,13 @@ public class CurrentPlanFragment extends Fragment {
 
     }
 
+    private void setMonthView() {
+        binding.monthYear.setText();
+    }
+
+    private String monthYearFromDate(LocalDate date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
+    }
 
     private void demanarHistorial(User entrada,final RequestQueue queue){
 
@@ -76,7 +94,7 @@ public class CurrentPlanFragment extends Fragment {
                     public void onResponse(Historial_Pacient historial) {
                         String pes = String.valueOf(historial.getWeigth());
 
-                        edtPes.setText(pes);
+                        binding.edtPes.setText(pes);
                     }
                 },
                 new Response.ErrorListener() {
@@ -86,5 +104,11 @@ public class CurrentPlanFragment extends Fragment {
                         // ...
                     }
                 });
+    }
+
+    public void previousMonthAction(View view) {
+    }
+
+    public void nextMonthAction(View view) {
     }
 }

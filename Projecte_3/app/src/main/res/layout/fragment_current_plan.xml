@@ -20,10 +20,125 @@ android:background="@drawable/background_page">
     android:layout_marginTop="50dp"
     android:orientation="vertical">
 
+
     <TextView
+        android:id="@+id/txvhola"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bon dia User"/>
+        android:text="Hola User, aquest es el teu progres:"
+        android:paddingBottom="20dp"
+        />
+
+
+    <!--Mes, any i botons del calendari-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="previousMonthAction"
+            android:drawableLeft="@drawable/arrow_back"
+            android:textColor="@color/blue"
+            android:background="@null"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/monthYear"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Hello World"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/arrow_forward"
+            android:textColor="@color/blue"
+            android:onClick="nextMonthAction"
+            android:background="@null"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+
+
+    </LinearLayout>
+
+    <!--Dies de la setmana-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="MON"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TUE"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="WED"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="THUR"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FRI"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+
+
+    </LinearLayout>
+
+    <view class="androidx.appcompat.app.AlertController$RecycleListView"
+        android:id="@+id/calendarRecycleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </view>
+
+
+
+
+
 
 
     <!--Bloc de Dades 1 -->
