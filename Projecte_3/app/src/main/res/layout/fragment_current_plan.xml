@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
@@ -7,6 +7,9 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 android:orientation="vertical"
 tools:context=".CurrentPlanFragment"
 android:background="@drawable/background_page">
+
+
+
 
 
 
@@ -51,7 +54,8 @@ android:background="@drawable/background_page">
                 android:paddingBottom="10dp"
                 android:text="Pes:"
                 app:layout_constraintBottom_toBottomOf="@+id/edtPes"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
 
             <EditText
@@ -62,7 +66,9 @@ android:background="@drawable/background_page">
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintStart_toEndOf="@+id/txvPes" />
+                app:layout_constraintStart_toEndOf="@+id/txvPes"
+                android:enabled="false"
+                android:textAlignment="center"/>
             <!--endregion-->
 
             <!--region $Alçada-->
@@ -85,7 +91,9 @@ android:background="@drawable/background_page">
                 android:textColorHighlight="@color/cardview_dark_background"
                 app:layout_constraintBottom_toBottomOf="@+id/txvAlt"
                 app:layout_constraintEnd_toEndOf="@+id/edtPes"
-                app:layout_constraintTop_toBottomOf="@+id/edtPes" />
+                app:layout_constraintTop_toBottomOf="@+id/edtPes"
+                android:enabled="false"
+                android:textAlignment="center"/>
 
             <!--endregion-->
 
@@ -110,7 +118,9 @@ android:background="@drawable/background_page">
                 android:textColorHighlight="@color/cardview_dark_background"
                 app:layout_constraintBottom_toBottomOf="@+id/txvIMC"
                 app:layout_constraintEnd_toEndOf="@+id/edtAlt"
-                app:layout_constraintTop_toBottomOf="@+id/edtAlt"/>
+                app:layout_constraintTop_toBottomOf="@+id/edtAlt"
+                android:enabled="false"
+                android:textAlignment="center"/>
             <!--endregion-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -157,7 +167,9 @@ android:background="@drawable/background_page">
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintStart_toEndOf="@+id/txvPit" />
+                app:layout_constraintStart_toEndOf="@+id/txvPit"
+                android:enabled="false"
+                android:textAlignment="center"/>
             <!--endregion-->
 
             <!--region $Cintura-->
@@ -180,7 +192,9 @@ android:background="@drawable/background_page">
                 android:textColorHighlight="@color/cardview_dark_background"
                 app:layout_constraintBottom_toBottomOf="@+id/txvCintura"
                 app:layout_constraintEnd_toEndOf="@+id/edtPit"
-                app:layout_constraintTop_toBottomOf="@+id/edtPit" />
+                app:layout_constraintTop_toBottomOf="@+id/edtPit"
+                android:enabled="false"
+                android:textAlignment="center"/>
 
             <!--endregion-->
 
@@ -205,7 +219,9 @@ android:background="@drawable/background_page">
                 android:textColorHighlight="@color/cardview_dark_background"
                 app:layout_constraintBottom_toBottomOf="@+id/txvBraç"
                 app:layout_constraintEnd_toEndOf="@+id/edtCintura"
-                app:layout_constraintTop_toBottomOf="@+id/edtCintura" />
+                app:layout_constraintTop_toBottomOf="@+id/edtCintura"
+                android:enabled="false"
+                android:textAlignment="center"/>
             <!--endregion-->
 
             <!--region $Cama-->
@@ -215,7 +231,8 @@ android:background="@drawable/background_page">
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
                 android:text="Cama:"
-                app:layout_constraintTop_toBottomOf="@+id/txvBraç" />
+                app:layout_constraintTop_toBottomOf="@+id/txvBraç"
+                />
 
 
             <EditText
@@ -228,7 +245,9 @@ android:background="@drawable/background_page">
                 android:textColorHighlight="@color/cardview_dark_background"
                 app:layout_constraintBottom_toBottomOf="@+id/txvCama"
                 app:layout_constraintEnd_toEndOf="@+id/edtBraç"
-                app:layout_constraintTop_toBottomOf="@+id/edtBraç" />
+                app:layout_constraintTop_toBottomOf="@+id/edtBraç"
+                android:enabled="false"
+                android:textAlignment="center"/>
             <!--endregion-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -242,5 +261,5 @@ android:background="@drawable/background_page">
 
 
 
-</LinearLayout>
+</RelativeLayout>
 

@@ -23,7 +23,7 @@ public class User implements Serializable {
 
     private String email_user;
 
-
+    private Historial_Pacient historial;
     public User(long id,String name_User,String last_Name,String nickname_User, char type_User,String email,String token) {
         Token = token;
         Nickname_User = nickname_User;
@@ -32,6 +32,8 @@ public class User implements Serializable {
         this.id = id;
         Last_Name = last_Name;
         this.email_user=email;
+        this.historial=null;
+
     }
 
     //region $Properties
@@ -90,5 +92,14 @@ public class User implements Serializable {
     public void setEmail_user(String email_user) {
         this.email_user = email_user;
     }
+
+    public Historial_Pacient getHistorial() {
+        return historial;
+    }
+
+    public void setHistorial(Historial_Pacient historial) {
+        this.historial = historial;
+    }
+
     //endregion
 }

@@ -53,10 +53,10 @@ public class LoginActivity extends AppCompatActivity{
                 //Registre_api.hacerSolicitud(queue, edtName);
 
                 String url = "http://169.254.70.172/Projecte3/dietapp_ws/public/api/login";
-                String nickname = edtName.getText().toString().trim();
-                String password = edtPassword.getText().toString().trim();
+                String nickname = "gcesar";//edtName.getText().toString().trim();
+                String password = "2003";//edtPassword.getText().toString().trim();
 
-                Registre_api.postRequest(queue, url, nickname, password, new Response.Listener<User>() {
+                Registre_api.postLoginRequest(queue, url, nickname, password, new Response.Listener<User>() {
                     @Override
                     public void onResponse(User login) {
 
