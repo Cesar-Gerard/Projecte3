@@ -53,8 +53,21 @@ Route::get('/pacient/{pacient}',function($pacient){
         //En cas que posi la adreça i no sigui el seu pacient, no deixar entrar
         $pacient = Pacient::getPacient($pacient,Auth::user()->id);
         if($pacient !=null){
+
+            //Saber informació de la dieta actual (si té)
+            $diet = null;
+            if($pacient->current_diet != null){
+                $diet = Diets::getDietById($pacient->current_diet);
+
+
+            }
+
+
+
+
+
             
-            return view('pacient_see',['pacient'=>$pacient]);
+            return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet]);
 
         }else{
             return redirect(route("pacients"));
@@ -121,4 +134,4 @@ Route::post("user/canvia_contrasenya",[UserController::class, "canvia_contraseny
 Route::post("pacient/filtrar_pacient",[PacientController::class, "filtrar_pacient"])->name("pacient.filtrar_pacient");
 Route::post("pacient/filtrar_all_pacients",[PacientController::class, "filtrar_all_pacients"])->name("pacient.filtrar_all_pacients");
 Route::post("pacient/add_pacient",[PacientController::class, "add_pacient"])->name("pacient.add");
-
+Route::post("pacient/edit_pacient",[PacientController::class, "edit_pacient"])->name("pacient.edit");

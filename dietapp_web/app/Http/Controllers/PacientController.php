@@ -42,7 +42,7 @@ class PacientController extends Controller
 
 
 
-    public function validar_pacients(Request $request){
+    public function validar_pacients(Request $request, $type){
 
         if(strlen($request->pacient_name)<=2 || strlen($request->pacient_name)>45){
             return array("status"=>"error","missatge"=>"El nom del pacient és obligatori i no pot ser menor de 2 caràcters");
@@ -64,29 +64,50 @@ class PacientController extends Controller
             return array("status"=>"error","missatge"=>"L'email del pacient és obligatori i no pot ser menor de 9 caràcters");
         }
 
-        if(strlen($request->pacient_address)<=9 || strlen($request->pacient_address)>45){
-            return array("status"=>"error","missatge"=>"L'email del pacient és obligatori i no pot ser menor de 9 caràcters");
+        if(strlen($request->pacient_address)<=5 || strlen($request->pacient_address)>45){
+            return array("status"=>"error","missatge"=>"L'email del pacient és obligatori i no pot ser menor de 5 caràcters");
         }
 
-        if(strlen($request->pacient_password)<=9 || strlen($request->pacient_password)>45){
-            return array("status"=>"error","missatge"=>"L'email del pacient és obligatori i no pot ser menor de 9 caràcters");
+
+        //En cas de fer una alta, s'ha de comprovar la password
+        if($type){
+            if(strlen($request->pacient_password)<=9 || strlen($request->pacient_password)>45){
+                return array("status"=>"error","missatge"=>"L'email del pacient és obligatori i no pot ser menor de 9 caràcters");
+            }
         }
+
+        
 
     }
 
     public function add_pacient(Request $request){
 
         
-            $this->validar_pacients($request);
+        $this->validar_pacients($request,1);
 
-            if(User::addUser($request,Auth::user()->id)!=1){
-                return array("status"=>"error","missatge"=>"El pacient no s'ha pogut crear");
-            }
+        if(User::addUser($request,Auth::user()->id)!=1){
+            return array("status"=>"error","missatge"=>"El pacient no s'ha pogut crear");
+        }
 
-            return array("status"=>"ok");
+        return array("status"=>"ok");
         
     
     }
 
+
+
+    public function edit_pacient(Request $request){
+
+        $this->validar_pacients($request,2);
+
+        if(User::editUser($request)!=1){
+            return array("status"=>"error","missatge"=>"El pacient no s'ha pogut editar");
+        }
+
+
+        return array("status"=>"ok");
+
+
+    }
     
 }

@@ -79,17 +79,19 @@ class Pacient extends Model
 
 
     public static function getPacient($pacient,$nutricionist){
-
-        /**
-         * TODO: Falta fer la join amb taula USERS
-         */
-        return Pacient::where('id_pacient','=',$pacient)->where('assigned_nutricionist','=',$nutricionist)->first();
-
-
+        
+        return DB::table('pacient')
+                ->select('users.*','pacient.*')
+                ->leftJoin('users','users.id','=','pacient.id_pacient')
+                ->where('users.id','=',$pacient)
+                ->first();
 
     }
 
 
+    public static function getPacientById($id){
+        return Pacient::where('id_pacient','=',$id)->first();
+    }
 
 
 }

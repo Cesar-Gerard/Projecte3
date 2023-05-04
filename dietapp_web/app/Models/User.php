@@ -74,10 +74,51 @@ class User extends Authenticatable
         
     }
 
+
+    public static function editUser($data){
+        try{
+
+            \DB::beginTransaction();
+
+            $user = User::getUserById($data->id);
+
+            if($user!=null){
+
+                $user->name_user = $data->pacient_name;
+                $user->lastname_user = $data->pacient_cognoms;
+                $user->email_user = $data->pacient_email;
+    
+                $user->save();
+    
+    
+    
+                $pacient = Pacient::getPacientById($data->id);
+                if($pacient!=null){
+
+                    $pacient->phone_pacient = $data->pacient_phone;
+                    $pacient->address_pacient = $data->pacient_address;
+                    
+                    $pacient->save();
+
+                    \DB::commit();
+                    return 1;
+                }
+            }
+
+            return -1;
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            echo "DB: ".$ex;
+            \DB::rollback();
+            return -1;
+        }catch(\Throwable $ex){
+            echo $ex;
+            \DB::rollback();
+            return -1;
+        }
+    }
+
     public static function addUser($data,$nutricionist){
-
-
-        
 
         try{
 
@@ -116,7 +157,8 @@ class User extends Authenticatable
             return -1;
         }
 
-        
-
     }
+
+
+
 }

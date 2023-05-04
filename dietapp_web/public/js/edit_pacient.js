@@ -3,16 +3,13 @@ document.addEventListener('DOMContentLoaded',f_main);
 
 
 function f_main(){
-
-    document.getElementById('pacient_password').value = makePassword(5);
-    
    
     //Millora: crear composició usuari(primera lletra nom + cognom(fins espai) )
     //Treure caràcters especialss
 
 
     // initialize the validation library
-    const validation = new JustValidate('#f_alta_pacient', {
+    const validation = new JustValidate('#f_edit_pacient', {
         errorFieldCssClass: 'is-invalid',
     });
 
@@ -50,23 +47,6 @@ function f_main(){
             rule: 'maxLength',
             value: 45,
             errorMessage: 'El nom ha de tenir com a màxim 45 caràcters',
-        },
-    
-    ])
-    .addField('#pacient_username', [
-        {
-            rule: 'required',
-            errorMessage: "El nom d'usuari és obligatori",
-        },
-        {
-            rule: 'minLength',
-            value: 3,
-            errorMessage: "El nom d'usuari ha de tenir almenys 3 caràcters"
-        },
-        {
-            rule: 'maxLength',
-            value: 45,
-            errorMessage: "El nom d'usuari ha de tenir com a màxim 45 caràcters",
         },
     
     ])
@@ -123,47 +103,24 @@ function f_main(){
         
     
     ])
-    .addField('#pacient_password', [
-        {
-            rule: 'minLength',
-            value: 5,
-            errorMessage: "La contrasenya ha de tenir almenys 5 caràcters"
-        },
-        {
-            rule: 'required',
-            errorMessage: "La contrasenya és obligatòria",
-        },
-        
-    
-    ])
 
 
     .onSuccess((event) => {
-        f_afegirPacient();
+        f_editarPacient();
     });
-
-
-
-
-
 
 }
 
 
 
-function f_afegirPacient(){
-
-    
-    document.getElementById('submit_add_pacient').innerHTML = "<span><i style='#018F43' class='fa fa-spinner faa-spin animated faa-fast fa-xl'></i></span>";
-    
+function f_editarPacient(){
 
     $.ajax({
-        url: config.routes.zone_afegir_pacient,
+        url: config.routes.zone_editar_pacient,
         data:{
+            'id': config.vars.pacient,
             'pacient_name' : $('#pacient_name').val(),
             'pacient_cognoms' : $('#pacient_cognoms').val(),
-            'pacient_username' : $('#pacient_username').val(),
-            'pacient_password' : $('#pacient_password').val(),
             'pacient_email' : $('#pacient_email').val(),
             'pacient_phone' : $('#pacient_phone').val(),
             'pacient_address' : $('#pacient_address').val(),
@@ -212,16 +169,4 @@ function f_afegirPacient(){
 }
 
 
-
-function makePassword(length) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-}
 
