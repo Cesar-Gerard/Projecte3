@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.example.dietaapp.databinding.ActivityMainBinding;
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
@@ -22,6 +24,8 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import api.Registre_api;
+import model.Historial_Pacient;
 import model.User;
 
 public class CurrentPlanFragment extends Fragment{
@@ -38,11 +42,6 @@ public class CurrentPlanFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-        //demanarHistorial(info,queue);
 
     }
 
@@ -61,6 +60,8 @@ public class CurrentPlanFragment extends Fragment{
         // Inflate the layout for this fragment
         View v = binding.getRoot();
 
+        demanarHistorial(info,queue);
+
 
         return v;
 
@@ -71,7 +72,7 @@ public class CurrentPlanFragment extends Fragment{
 
 
 
-    /*private void demanarHistorial(User entrada,final RequestQueue queue){
+    private void demanarHistorial(User entrada,final RequestQueue queue){
 
 
         // Llamar al método getUserData
@@ -90,12 +91,12 @@ public class CurrentPlanFragment extends Fragment{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Manejar el error de la solicitud
+                        binding.edtPes.setText("Error");
                         // ...
                     }
                 });
     }
-    */
+
 
 
 

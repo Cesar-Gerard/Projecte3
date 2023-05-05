@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -52,10 +53,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         binding.drawerLayout.addDrawerListener(toogle);
         toogle.syncState();
 
-        if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CurrentPlanFragment()).commit();
-            navigationview.setCheckedItem(R.id.nav_home);
-        }
     }
 
 
@@ -78,7 +75,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(item.getItemId()==R.id.nav_home){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new CurrentPlanFragment()).commit();
 
-        }else if(item.getItemId()==R.id.nav_logout){
+        }else if(item.getItemId()==R.id.nav_user){
+
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.action_global_user_profile);
+        }
+
+        else if(item.getItemId()==R.id.nav_logout){
             finish();
 
         }
