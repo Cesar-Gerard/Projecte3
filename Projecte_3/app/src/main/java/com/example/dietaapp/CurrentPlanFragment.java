@@ -4,28 +4,27 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.example.dietaapp.databinding.ActivityMainBinding;
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 
-import org.json.JSONObject;
-
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
-import api.Registre_api;
-import model.Historial_Pacient;
 import model.User;
 
-public class CurrentPlanFragment extends Fragment {
+public class CurrentPlanFragment extends Fragment{
 
     User info;
 
@@ -41,47 +40,38 @@ public class CurrentPlanFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
+
+
+        //demanarHistorial(info,queue);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = FragmentCurrentPlanBinding.inflate(getLayoutInflater());
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            selectedDate= LocalDate.now();
-            setMonthView();
-        }
 
-
-        /*
-        //Rebem el user
         info = User.getUser();
 
         queue = Volley.newRequestQueue(this.getContext());
-        demanarHistorial(info,queue);
 
-*/
+
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_current_plan, container, false);
-
-
-
+        View v = binding.getRoot();
 
 
         return v;
 
     }
 
-    private void setMonthView() {
-        binding.monthYear.setText();
-    }
 
-    private String monthYearFromDate(LocalDate date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
-    }
 
-    private void demanarHistorial(User entrada,final RequestQueue queue){
+
+
+
+    /*private void demanarHistorial(User entrada,final RequestQueue queue){
 
 
         // Llamar al método getUserData
@@ -105,10 +95,15 @@ public class CurrentPlanFragment extends Fragment {
                     }
                 });
     }
+    */
 
-    public void previousMonthAction(View view) {
-    }
 
-    public void nextMonthAction(View view) {
-    }
+
+
+
+
+
+
+
+
 }
