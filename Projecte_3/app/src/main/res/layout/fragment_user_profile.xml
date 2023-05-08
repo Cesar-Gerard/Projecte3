@@ -7,9 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".user_profile">
 
+
+
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <View
                     android:id="@+id/view"
                     android:layout_width="wrap_content"
@@ -28,6 +35,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/imageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/trans"
+                    android:src="@drawable/baseline_menu_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="btnmenu_onClick"/>
+
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -176,12 +197,13 @@
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
-                        <Button
+                        <EditText
                             android:id="@+id/button2"
-                            android:layout_width="wrap_content"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Canviar" />
+                            android:background="@drawable/custom_edittext"
+                             />
 
 
                     </LinearLayout>
@@ -212,12 +234,12 @@
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
-                        <Button
+                        <EditText
                             android:id="@+id/button3"
-                            android:layout_width="wrap_content"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Canviar" />
+                            android:background="@drawable/custom_edittext" />
 
 
                     </LinearLayout>
@@ -249,12 +271,12 @@
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
-                        <Button
+                        <EditText
                             android:id="@+id/button4"
-                            android:layout_width="wrap_content"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Canviar" />
+                            android:background="@drawable/custom_edittext" />
 
 
                     </LinearLayout>
@@ -285,12 +307,12 @@
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
-                        <Button
+                        <EditText
                             android:id="@+id/button5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="120dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Canviar" />
+                            android:background="@drawable/custom_edittext" />
 
 
                     </LinearLayout>
@@ -316,16 +338,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/baseline_menu_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

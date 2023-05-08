@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         if(item.getItemId()==R.id.nav_home){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new CurrentPlanFragment()).commit();
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.action_global_currentPlanFragment);
 
         }else if(item.getItemId()==R.id.nav_user){
 
@@ -89,4 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        return true;
     }
 
+    public void btnmenu_onClick(View view) {
+        binding.drawerLayout.open();
+    }
 }

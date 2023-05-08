@@ -10,11 +10,12 @@ android:background="@drawable/background_page">
 
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:src="@drawable/baseline_menu_24"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:background="@color/trans"/>
 
 
 
