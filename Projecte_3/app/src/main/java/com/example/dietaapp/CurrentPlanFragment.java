@@ -1,44 +1,36 @@
 package com.example.dietaapp;
 
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
-import com.example.dietaapp.databinding.ActivityMainBinding;
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
-import api.Registre_api;
-import model.Historial_Pacient;
-import model.User;
+import api.ApiManager;
+import model.HistorialResponse;
+import model.User_Retro;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class CurrentPlanFragment extends Fragment{
+public class CurrentPlanFragment extends Fragment {
 
-    User info;
-
+    User_Retro user;
 
 
     FragmentCurrentPlanBinding binding;
     private LocalDate selectedDate;
 
 
-    RequestQueue queue=null;
+    RequestQueue queue = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +42,16 @@ public class CurrentPlanFragment extends Fragment{
                              Bundle savedInstanceState) {
         binding = FragmentCurrentPlanBinding.inflate(getLayoutInflater());
 
-
-
-        info = User.getUser();
-
-        queue = Volley.newRequestQueue(this.getContext());
-
-
         // Inflate the layout for this fragment
         View v = binding.getRoot();
 
-        demanarHistorial(info,queue);
+        //Rebem el usuari
+        user = User_Retro.getUser();
+
+
+        binding.txvuser.setText("Hola " + user.getNameUser().toString());
+
+        binding.edtPes.setText(User_Retro.getToken());
 
 
         return v;
@@ -68,43 +59,20 @@ public class CurrentPlanFragment extends Fragment{
     }
 
 
+    private void demanarHistorial() {
 
+        ApiManager.getInstance().getHistorialWithToken(User_Retro.getToken().toString(), user.getId().toString(), new Callback<HistorialResponse>() {
+            @Override
+            public void onResponse(Call<HistorialResponse> call, Response<HistorialResponse> response) {
+                binding.edtPes.setText("hola");
+            }
 
+            @Override
+            public void onFailure(Call<HistorialResponse> call, Throwable t) {
+                // Procesar el error aquí
+            }
+        });
 
-
-    private void demanarHistorial(User entrada,final RequestQueue queue){
-
-
-        // Llamar al método getUserData
-        String url = "http://169.254.70.172/Projecte3/dietapp_ws/public/api/historial";
-
-
-        Registre_api.getUserData(queue, url, entrada.getToken(),
-                new Response.Listener<Historial_Pacient>() {
-                    @Override
-                    public void onResponse(Historial_Pacient historial) {
-                        String pes = String.valueOf(historial.getWeigth());
-
-                        binding.edtPes.setText(pes);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        binding.edtPes.setText("Error");
-                        // ...
-                    }
-                });
     }
-
-
-
-
-
-
-
-
-
-
-
 }
+
