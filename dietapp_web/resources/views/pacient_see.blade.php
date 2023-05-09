@@ -2,6 +2,7 @@
 
     <script src="{{asset('js/third_party/just-validate.production.min.js')}}"></script>
     <script src="{{asset('js/pacient_see.js')}}"></script>
+    <script src="{{asset('js/third_party/canvas.js')}}"></script>
 
     <script>
         // global app configuration object
@@ -12,10 +13,12 @@
             },
             vars: {
                 nutricionist: "{{Auth::user()->id}}",
+                data_points: "{{json_encode($grafic_progres_actual)}}",
             }
         };
     </script>
 
+    
 
     <div class="container">
 
@@ -49,30 +52,88 @@
 
         </div>
 
-        <br/><br/>
-        <h2>Dieta actual</h2>
-        <hr/>
+        @if($current_diet!=null)
+            <br/><br/>
+            <h2>Dieta actual</h2>
+            <hr/>
 
-        <p>A Collapsible:</p>
-        <button class="collapsible">Open Collapsible</button>
-        <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
+            <button class="collapsible"><h2>{{$current_diet->name}}</h2></button>
+            <div class="content">
+                <br/>
+                <div class="row">
+                    <div class="col-9">
+                        <p>{{$current_diet->description}}</p>
+                    </div>
+                    <div class="col-3 d-flex justify-content-end" >
+                        <b>{{$current_diet->calories/1000}} kcal</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Tipus de dieta: {{$type_diet->name_type}}
+                    </div>
+                </div>
+
+                <br/><br/>
+                <div id="chartContainer_historic_actual" style="height: 370px; width: 100%;"></div>
+                
+                <br/>
+            </div>
+            
+        @endif
+
+
+
         
-        <p>Collapsible Set:</p>
-        <button class="collapsible">Open Section 1</button>
-        <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <button class="collapsible">Open Section 2</button>
-        <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <button class="collapsible">Open Section 3</button>
-        <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
+       
+        @php 
+        
+    @endphp
 
+
+        
+
+        <br/>
+        <h2>Dietes acabades</h2>
+        
+        @foreach($historial_diets as $historial)
+            @php 
+                
+
+            @endphp
+            <button class="collapsible"><h2>{{$current_diet->name}}</h2></button>
+            <div class="content">
+                <br/>
+                <div class="row">
+                    <div class="col-9">
+                        <p>{{$historial->description}}</p>
+                    </div>
+                    <div class="col-3 d-flex justify-content-end" >
+                        <b>{{$historial->calories/1000}} kcal</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Tipus de dieta: {{$historial->name_type}}
+                    </div>
+                </div>
+
+                <br/><br/>
+                <div id="chartContainer_historic_actual" style="height: 370px; width: 100%;"></div>
+                
+                <br/>
+            </div>
+
+        @endforeach
+
+
+        <!--Posar les dades inicials Hip,Arm,etc-->
+        <!--Calcular el IMC cada vegada que es faci-->
+        <!--POsar les dades finals, Hip,Arm,etc-->
+        <!--En cas que no hagi acabat, posar la ultima introduïda-->
+        <!--Fer un resum de les mides que s'han realitzat-->
+
+        <!--(IMC = peso (kg)/ [estatura (m)]2-->
 
 
         
@@ -80,9 +141,6 @@
 
 
     </div>
-
-
-
 
 
     <!-- 
@@ -109,9 +167,3 @@
 
 
     -->
-
-
-
-
-
-

@@ -13,8 +13,21 @@ class TypeDiets extends Model
 
     public $timestamps = false;
 
+    protected $primaryKey = 'id_type';
+
     protected $fillable = [
         'id_type',
         'name_type',
     ]; 
+
+
+    public static function getTypeById($diet_type){
+
+
+        $type_diet = TypeDiets::where('id_type','=',$diet_type)->first();
+
+
+        return $type_diet;
+
+    }
 }

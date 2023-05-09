@@ -7,6 +7,8 @@ use App\Http\Controllers\PacientController;
 
 use App\Models\Pacient;
 use App\Models\Diets;
+use App\Models\TypeDiets;
+use App\Models\HistorialPacient;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +60,33 @@ Route::get('/pacient/{pacient}',function($pacient){
             $diet = null;
             if($pacient->current_diet != null){
                 $diet = Diets::getDietById($pacient->current_diet);
+                $type_diet = TypeDiets::getTypeById($diet->id_diet);
+
+                //Dades directes (Sense formatar)
+                $historial_actual = HistorialPacient::getProgresActualPacient($pacient->id_pacient,$diet->id_diet);
+                $historial_diets = HistorialPacient::getProgresHistorialPacient($pacient->id);
+
+                $grafic_progres_actual = array();
+
+                
+                
+                foreach($historial_actual as $ha){
+
+                    array_push($grafic_progres_actual,
+                        array(
+                            "dia" => date("d",strtotime($ha->date)),
+                            "mes" => date("m",strtotime($ha->date)),
+                            "anyo" => date("Y",strtotime($ha->date)),
+                            "imc" => number_format((float)($ha->weigth / ($ha->heigth * $ha->heigth)),2), 
+                        )
+                    );
+                    
+                }
 
 
+                
+
+                
             }
 
 
@@ -67,7 +94,8 @@ Route::get('/pacient/{pacient}',function($pacient){
 
 
             
-            return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet]);
+            return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet,"type_diet"=>$type_diet,"historial_actual"=>$historial_actual,
+                        "historial_diets"=>$historial_diets,"grafic_progres_actual"=>$grafic_progres_actual]);
 
         }else{
             return redirect(route("pacients"));
