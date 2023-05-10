@@ -54,18 +54,29 @@ class HistorialPacient extends Model
 
     }
 
+    public static function getDietesAcabades($pacient,$dieta_actual){
 
-    public static function getProgresHistorialPacient($pacient){
+       
+        return $dietes_acabades =  DB::table('historial_pacient')
+                            ->select('diet')
+                            ->distinct()
+                            ->where('diet','!=',$dieta_actual)
+                            ->where('id_pacient','=',$pacient)
+                            ->get();
 
-        $progres = DB::table('historial_pacient')
-        ->select('historial_pacient.date','historial_pacient.heigth','historial_pacient.weigth','diets.*','type_diets.name_type')
-        ->join('diets','diets.id_diet','=','historial_pacient.diet')
-        ->join('pacient','pacient.id_pacient','=','historial_pacient.id_pacient')
-        ->join('type_diets','type_diets.id_type','=','diets.tipus_dieta')
-        ->where('pacient.id_pacient','=',$pacient)
-        ->get();
+    }
+
+
+    public static function getProgresHistorialPacient($pacient,$dieta_actual){
+        
+        /** 
+         * Ha de retornar la informació de la dieta excepte la última feta (dieta_actual de la taula pacient)
+         * Recorrer historial_pacient i quedar-se amb dietes sense repetir
+        */
+
+        $progres = HistorialPacient::where('diet','=',$dieta_actual)->get();
     
-    return $progres;
+        return $progres;
 
 
     }

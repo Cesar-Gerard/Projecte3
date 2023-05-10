@@ -16,9 +16,14 @@
                 data_points: "{{json_encode($grafic_progres_actual)}}",
             }
         };
+
+
+        let data_points_historics = [];
     </script>
 
     
+
+   
 
     <div class="container">
 
@@ -38,12 +43,12 @@
 
             <div class="row form-group">
                 <div class="col-6">
-                    <label for="pacient_email">Email:</label>
+                    <label for="pacient_email"><i class="fa-solid fa-envelope"></i></label>
                     <span>{{$pacient->email_user}}</span>
                 </div>
 
                 <div class="col-6">
-                    <label for="pacient_phone">Telèfon:</label>
+                    <label for="pacient_phone"><i class="fa-solid fa-phone"></i></label>
                     <span>{{$pacient->phone_pacient}}</span>
                 </div>
 
@@ -95,36 +100,52 @@
 
         <br/>
         <h2>Dietes acabades</h2>
-        
-        @foreach($historial_diets as $historial)
-            @php 
-                
 
+        <div id="dietes_acabades">
+            
+            @php $i=0;
+                //var_dump($dietes_acabades[0]['historial']);die();
             @endphp
-            <button class="collapsible"><h2>{{$current_diet->name}}</h2></button>
-            <div class="content">
-                <br/>
-                <div class="row">
-                    <div class="col-9">
-                        <p>{{$historial->description}}</p>
-                    </div>
-                    <div class="col-3 d-flex justify-content-end" >
-                        <b>{{$historial->calories/1000}} kcal</b>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        Tipus de dieta: {{$historial->name_type}}
-                    </div>
-                </div>
-
-                <br/><br/>
-                <div id="chartContainer_historic_actual" style="height: 370px; width: 100%;"></div>
+            @foreach($dietes_acabades as $dieta_acabada)
+            
                 
-                <br/>
-            </div>
+                <button class="collapsible"><h2>{{$dieta_acabada['dieta']->name}}</h2></button>
+                <div class="content">
+                    <br/>
+                    <div class="row">
+                        <div class="col-9">
+                            <p>{{$dieta_acabada['dieta']->description}}</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end" >
+                            <b>{{$dieta_acabada['dieta']->calories/1000}} kcal</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            Tipus de dieta: {{$dieta_acabada['dieta']->name_type}}
+                        </div>
+                    </div>
 
-        @endforeach
+                    <br/><br/>
+                    <div id="chartContainer_historic_acabat{{$i}}" style="height: 370px; width: 100%;"></div>
+                    
+                    <br/>
+                </div>
+
+                <script>
+                    data_points_historics.push("{{json_encode($dieta_acabada['historial'])}}");
+
+                </script>
+
+
+                @php $i++; @endphp
+
+            @endforeach
+            <script>
+                console.info(data_points_historics);
+            </script>
+
+        </div> 
 
 
         <!--Posar les dades inicials Hip,Arm,etc-->

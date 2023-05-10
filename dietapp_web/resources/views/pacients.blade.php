@@ -18,7 +18,10 @@
 
     <div class="container">
 
-
+        <div class="breadcrumbs">
+            <a href="{{route('home')}}" class="brdcr_link">Inici</a> >
+            <a href="{{route('pacients')}}" class="brdcr_link brdcr_selected">Pacients</a>
+        </div>
 
         <h1 class="d-flex justify-content-center titol">Pacients</h1>
 

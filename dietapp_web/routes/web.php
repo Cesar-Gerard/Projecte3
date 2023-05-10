@@ -64,11 +64,19 @@ Route::get('/pacient/{pacient}',function($pacient){
 
                 //Dades directes (Sense formatar)
                 $historial_actual = HistorialPacient::getProgresActualPacient($pacient->id_pacient,$diet->id_diet);
-                $historial_diets = HistorialPacient::getProgresHistorialPacient($pacient->id);
+               
+                $dietes_acabades_q = HistorialPacient::getDietesAcabades($pacient->id,$pacient->current_diet);
+                
+            
 
-                $grafic_progres_actual = array();
+                $grafic_progres_actual = array();//Array que mostra la info de la dieta actual
+                $grafic_historial_diets = array();//Array que guarda la info de totes les altres dietes ja acabades
+                $dietes_acabades = array();//Array que guarda els objectes de la dieta
+
+
 
                 
+
                 
                 foreach($historial_actual as $ha){
 
@@ -83,19 +91,54 @@ Route::get('/pacient/{pacient}',function($pacient){
                     
                 }
 
-
                 
 
+                foreach($dietes_acabades_q as $id_dieta){
+                    $dieta = Diets::getDietByIdType($id_dieta->diet);
+
+                    $historial_diets = HistorialPacient::getProgresHistorialPacient($pacient->id,$id_dieta->diet);
+
+                    $b_historial_diets = array();
+                    $b_historial_mesures = array();
+
+                    foreach($historial_diets as $hd){
+                        array_push($b_historial_diets,
+                            array(
+                                "dia" => date("d",strtotime($hd->date)),
+                                "mes" => date("m",strtotime($hd->date)),
+                                "anyo" => date("Y",strtotime($hd->date)),
+                                "imc" => number_format((float)($hd->weigth / ($hd->heigth * $hd->heigth)),2), 
+                            )
+                        );
+
+                        
+
+
+
+
+                    }
+                    //Per cada dieta hem de buscar els seus historials, les seves mesures (Inicials i finals)
+
+                    //$mesures_inicials = HistorialPacient::getMesuresInicials($pacient->id,$id_dieta->diet);
+                    //$mesures_finals = 
+
+                    $arr = array(
+                        "dieta" => $dieta,
+                        "historial" => $b_historial_diets,
+                    );
+
+                    array_push(
+                        $dietes_acabades,
+                        $arr
+                    );
+                }   
+                
                 
             }
 
-
-
-
-
             
             return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet,"type_diet"=>$type_diet,"historial_actual"=>$historial_actual,
-                        "historial_diets"=>$historial_diets,"grafic_progres_actual"=>$grafic_progres_actual]);
+                        "historial_diets"=>$historial_diets,"grafic_progres_actual"=>$grafic_progres_actual,"dietes_acabades"=>$dietes_acabades]);
 
         }else{
             return redirect(route("pacients"));
