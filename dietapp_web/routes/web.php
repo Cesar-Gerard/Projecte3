@@ -99,7 +99,10 @@ Route::get('/pacient/{pacient}',function($pacient){
                     $historial_diets = HistorialPacient::getProgresHistorialPacient($pacient->id,$id_dieta->diet);
 
                     $b_historial_diets = array();
-                    $b_historial_mesures = array();
+                    $b_historial_mesures_chest = array();
+                    $b_historial_mesures_leg = array();
+                    $b_historial_mesures_arm = array();
+                    $b_historical_mesures_hip = array();
 
                     foreach($historial_diets as $hd){
                         array_push($b_historial_diets,
@@ -111,20 +114,59 @@ Route::get('/pacient/{pacient}',function($pacient){
                             )
                         );
 
-                        
+                        array_push($b_historial_mesures_chest,
+                            array(
+                                "dia" => date("d",strtotime($hd->date)),
+                                "mes" => date("m",strtotime($hd->date)),
+                                "anyo" => date("Y",strtotime($hd->date)),
+                                "chest" => $hd->chest, 
+                            )   
+                        );
+
+                        array_push($b_historial_mesures_leg,
+                            array(
+                                "dia" => date("d",strtotime($hd->date)),
+                                "mes" => date("m",strtotime($hd->date)),
+                                "anyo" => date("Y",strtotime($hd->date)),
+                                "leg" => $hd->leg, 
+                            )   
+                        );
+
+                        array_push($b_historial_mesures_arm,
+                            array(
+                                "dia" => date("d",strtotime($hd->date)),
+                                "mes" => date("m",strtotime($hd->date)),
+                                "anyo" => date("Y",strtotime($hd->date)),
+                                "arm" => $hd->arm,
+                            )
+                        );
+
+                        array_push($b_historical_mesures_hip,
+                            array(
+                                "dia" => date("d",strtotime($hd->date)),
+                                "mes" => date("m",strtotime($hd->date)),
+                                "anyo" => date("Y",strtotime($hd->date)),
+                                "hip" => $hd->hip,
+                            )
+                        );
+
+
 
 
 
 
                     }
                     //Per cada dieta hem de buscar els seus historials, les seves mesures (Inicials i finals)
-
-                    //$mesures_inicials = HistorialPacient::getMesuresInicials($pacient->id,$id_dieta->diet);
-                    //$mesures_finals = 
+                    
 
                     $arr = array(
                         "dieta" => $dieta,
                         "historial" => $b_historial_diets,
+                        "chest" => $b_historial_mesures_chest,
+                        "leg" => $b_historial_mesures_leg,
+                        "arm" => $b_historial_mesures_arm,
+                        "hip" => $b_historical_mesures_hip,
+
                     );
 
                     array_push(
@@ -149,6 +191,8 @@ Route::get('/pacient/{pacient}',function($pacient){
     }
 
 })->name("pacient");
+
+
 
 
 Route::get('/pacient_edit/{id}',function($pacient){

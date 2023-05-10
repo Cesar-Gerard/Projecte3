@@ -19,6 +19,10 @@
 
 
         let data_points_historics = [];
+        let data_points_historics_chest = [];
+        let data_points_historics_leg = [];
+        let data_points_historics_arm = [];
+        let data_points_historics_hip = [];
     </script>
 
     
@@ -128,13 +132,18 @@
 
                     <br/><br/>
                     <div id="chartContainer_historic_acabat{{$i}}" style="height: 370px; width: 100%;"></div>
-                    
-                    <br/>
+                    <br/><br/><br/>
+                    <div id="chartContainer_historic_acabat_body{{$i}}" style="height: 370px; width: 100%;"></div>
+
+                    <br/><br/><br/>
                 </div>
 
                 <script>
                     data_points_historics.push("{{json_encode($dieta_acabada['historial'])}}");
-
+                    data_points_historics_chest.push("{{json_encode($dieta_acabada['chest'])}}");
+                    data_points_historics_leg.push("{{json_encode($dieta_acabada['leg'])}}");
+                    data_points_historics_arm.push("{{json_encode($dieta_acabada['arm'])}}");
+                    data_points_historics_hip.push("{{json_encode($dieta_acabada['hip'])}}");
                 </script>
 
 
@@ -146,20 +155,6 @@
             </script>
 
         </div> 
-
-
-        <!--Posar les dades inicials Hip,Arm,etc-->
-        <!--Calcular el IMC cada vegada que es faci-->
-        <!--POsar les dades finals, Hip,Arm,etc-->
-        <!--En cas que no hagi acabat, posar la ultima introduïda-->
-        <!--Fer un resum de les mides que s'han realitzat-->
-
-        <!--(IMC = peso (kg)/ [estatura (m)]2-->
-
-
-        
-
-
 
     </div>
 

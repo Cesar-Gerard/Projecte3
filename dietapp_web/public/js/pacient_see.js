@@ -23,12 +23,160 @@ function f_main(){
 
   f_dibuixar_grafica_actual();
   f_dibuixar_grafica_anteriors();
+  f_dibuixar_grafica_anteriors_body();
 
 }
 
+
+
+function f_dibuixar_grafica_anteriors_body(){
+
+  
+  for(let i=0;i<data_points_historics.length;i++){
+
+    let json_obj = data_points_historics_chest[i].replace(/&quot;/ig,'"');
+    let json_obj_leg = data_points_historics_leg[i].replace(/&quot;/ig,'"');
+    let json_obj_arm = data_points_historics_arm[i].replace(/&quot;/ig,'"');
+    let json_obj_hip = data_points_historics_hip[i].replace(/&quot;/ig,'"');
+    
+  
+    json_obj = JSON.parse(json_obj);
+    json_obj_leg = JSON.parse(json_obj_leg);
+    json_obj_arm = JSON.parse(json_obj_arm);
+    json_obj_hip = JSON.parse(json_obj_hip);
+    
+    
+    let arr_points = [];
+    let arr_points_leg = [];
+    let arr_points_arm = [];
+    let arr_points_hip = [];
+  
+
+    //Chest
+    for(let i=0;i<json_obj.length;i++){
+        let obj_point = {};
+        obj_point.x = new Date(json_obj[i].anyo,json_obj[i].mes-1,json_obj[i].dia);
+        obj_point.y = Number(json_obj[i].chest);
+    
+        arr_points.push(obj_point);
+    }
+
+    //Leg
+    for(let i=0;i<json_obj_leg.length;i++){
+      
+      let obj_point = {};
+      obj_point.x = new Date(json_obj_leg[i].anyo,json_obj_leg[i].mes-1,json_obj_leg[i].dia);
+      obj_point.y = Number(json_obj_leg[i].leg);
+      arr_points_leg.push(obj_point);
+    }
+
+    //Arm
+    for(let i=0;i<json_obj_arm.length;i++){
+      let obj_point = {};
+      obj_point.x = new Date(json_obj_arm[i].anyo,json_obj_arm[i].mes-1,json_obj_arm[i].dia);
+      console.info(json_obj_arm[i].arm);
+      obj_point.y = Number(json_obj_arm[i].arm);
+      arr_points_arm.push(obj_point);
+
+    }
+
+    //Hip
+    for(let i=0;i<json_obj_hip.length;i++){
+
+      let obj_point = {};
+      obj_point.x = new Date(json_obj_hip[i].anyo,json_obj_hip[i].mes-1,json_obj_hip[i].dia);
+
+      obj_point.y = Number(json_obj_hip[i].hip);
+      arr_points_hip.push(obj_point);
+
+
+    }
+
+
+  
+    
+    var chart = new CanvasJS.Chart("chartContainer_historic_acabat_body"+i,
+    {
+      title:{
+          text: "Seguiment mesures del pacient"
+      },
+      axisX:{
+          title: "Dia",
+      },
+      axisY: {
+          title: "Mesures",
+          valueFormatString: "###.##"
+      },
+
+      legend:{
+        cursor: "pointer",
+        fontSize: 16,
+        itemclick: toggleDataSeries
+      },
+
+      toolTip:{
+        shared: true
+      },
+
+      data: [
+      
+        {
+          name: "Pit",
+          type: "spline",
+          showInLegend: true,
+          dataPoints: arr_points,
+        },
+        {
+          name: "Arm",
+          type: "spline",
+          showInLegend: true,
+          dataPoints: arr_points_leg,
+        },
+        {
+          name: "Leg",
+          type: "spline",
+          showInLegend: true,
+          dataPoints: arr_points_arm,
+        },
+        {
+          name: "Hip",
+          type: "spline",
+          showInLegend: true,
+          dataPoints: arr_points_hip,
+        }
+
+      ],
+
+  
+      culture: "es",
+    });
+  
+    chart.render();
+
+    function toggleDataSeries(e){
+      if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+        e.dataSeries.visible = false;
+      }
+      else{
+        e.dataSeries.visible = true;
+      }
+      chart.render();
+    }
+
+
+  }
+
+
+
+
+}
+
+
+
+
+
 function f_dibuixar_grafica_anteriors(){
 
-  console.info('Length: '+data_points_historics.length);
 
   for(let i=0;i<data_points_historics.length;i++){
 
@@ -43,7 +191,6 @@ function f_dibuixar_grafica_anteriors(){
   
     for(let i=0;i<json_obj.length;i++){
         let obj_point = {};
-        console.info('MES: '+json_obj[i].mes);
         obj_point.x = new Date(json_obj[i].anyo,json_obj[i].mes-1,json_obj[i].dia);
         obj_point.y = Number(json_obj[i].imc);
     
@@ -54,6 +201,7 @@ function f_dibuixar_grafica_anteriors(){
     
     var chart = new CanvasJS.Chart("chartContainer_historic_acabat"+i,
     {
+      
       title:{
           text: "Seguiment IMC"
       },
