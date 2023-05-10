@@ -18,7 +18,7 @@ public interface ApiService {
     @POST("login")
     Call<LoginResponse> login(@Field("nickname_user") String nicknameUser, @Field("password") String password);
 
-    @FormUrlEncoded
+
     @Headers("Accept: application/json")
     @GET("historial/{parametro}")
     Call<HistorialResponse> getHistorialWithToken(@Header("Authorization") String token, @Path("parametro") String parametro);

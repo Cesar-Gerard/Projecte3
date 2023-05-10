@@ -20,4 +20,8 @@ public class HistorialResponse {
         this.data = data;
     }
 
+    public  Datum getHistorial(int number){
+        return data.get(number);
+    }
+
 }

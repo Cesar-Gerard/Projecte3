@@ -36,6 +36,7 @@ public class ApiManager {
     }
 
     public void getHistorialWithToken(String token, String parametro, Callback<HistorialResponse> callback) {
+
         Call<HistorialResponse> call = mApiService.getHistorialWithToken("Bearer " + token, parametro);
         call.enqueue(callback);
     }

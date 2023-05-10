@@ -5,6 +5,8 @@ package model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 
 public class User_Retro {
 
@@ -50,6 +52,8 @@ public class User_Retro {
     @SerializedName("email_user")
     @Expose
     private String emailUser;
+
+    private List<Datum> historial_pacient;
 
 
     public Integer getId() {
@@ -100,5 +104,11 @@ public class User_Retro {
         this.emailUser = emailUser;
     }
 
+    public List<Datum> getHistorial_pacient() {
+        return historial_pacient;
+    }
 
+    public void setHistorial_pacient(List<Datum> historial_pacient) {
+        this.historial_pacient = historial_pacient;
+    }
 }

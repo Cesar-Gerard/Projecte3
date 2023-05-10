@@ -6,10 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginActivity"
-
     android:gravity="center"
     android:background="@drawable/fons_login"
     >
+
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -76,10 +84,15 @@
                 android:textSize="18sp" />
 
 
+
+
         </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
+
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,4 +104,11 @@
         android:id="@+id/singuptext"
         android:textColor="@color/purple"
         android:layout_marginBottom="20dp"/>
+
+
+
+
+
+
 </LinearLayout>
+
