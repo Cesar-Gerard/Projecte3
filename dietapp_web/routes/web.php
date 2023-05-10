@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PacientController;
+use App\Http\Controllers\DietController;
+
 
 use App\Models\Pacient;
 use App\Models\Diets;
 use App\Models\TypeDiets;
 use App\Models\HistorialPacient;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -243,6 +246,49 @@ Route::get('/add_pacient', function(){
 })->name("view_add_pacient");
 
 
+
+Route::get("/dietes", function(){
+
+    if(Auth::check()){
+
+        $diets = Diets::getAllDietsTypeDiets();
+        $type_diets = TypeDiets::getAllTypes();
+
+        return view("diets",["diets"=>$diets,"type_diets"=>$type_diets]);
+
+    }else{
+        return redirect(route("index"));
+    }
+
+})->name("dietes");
+
+
+Route::get("/dieta/{id}", function($dieta){
+
+    if(Auth::check()){
+
+
+    }else{
+        return redirect(route("index"));
+    }
+
+
+})->name("dieta");
+
+
+Route::get('/add_dieta', function(){
+    if(Auth::check()){
+        return view("add_dieta");
+    }else{
+        return redirect(route("index"));
+    }
+
+    
+})->name("view_add_pacient");
+
+
+
+
 Route::post("user/login", [UserController::class, "login"])->name("user.login");
 Route::post("user/recupera_password", [UserController::class, "recupera_password"])->name("user.recupera_password");
 Route::post("user/canvia_contrasenya",[UserController::class, "canvia_contrasenya"])->name("user.canvia_contrasenya");
@@ -250,3 +296,5 @@ Route::post("pacient/filtrar_pacient",[PacientController::class, "filtrar_pacien
 Route::post("pacient/filtrar_all_pacients",[PacientController::class, "filtrar_all_pacients"])->name("pacient.filtrar_all_pacients");
 Route::post("pacient/add_pacient",[PacientController::class, "add_pacient"])->name("pacient.add");
 Route::post("pacient/edit_pacient",[PacientController::class, "edit_pacient"])->name("pacient.edit");
+Route::post("diet/filtrar_all_diets",[DietController::class, "filtrar_all_diets"])->name("diet.filtrar_all_diets");
+Route::post("diet/filtrar",[DietController::class, "filtrar_dieta"])->name("diet.filtrar");

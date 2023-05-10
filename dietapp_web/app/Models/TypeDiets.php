@@ -30,4 +30,9 @@ class TypeDiets extends Model
         return $type_diet;
 
     }
+
+
+    public static function getAllTypes(){
+        return TypeDiets::all();
+    }
 }

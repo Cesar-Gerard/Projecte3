@@ -8,17 +8,29 @@ let c_password = false;
 function f_main(){
 
     document.getElementById('login').addEventListener('click',f_login);
-    
+    document.getElementById('password').addEventListener('keypress',f_btnEnter);
 
     
     document.getElementById('see_password').addEventListener('click',f_veureContrasenya);
 
-
     
+
+    //login
 
     f_comprovaObligatori('username','u');
     f_comprovaObligatori('password','p');
 
+
+}
+
+
+function f_btnEnter(e){
+    
+    
+    if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("login").click();
+    }
 
 }
 

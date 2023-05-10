@@ -45,5 +45,15 @@ class Diets extends Model
 
     }
 
+
+    public static function getAllDietsTypeDiets(){
+
+        return DB::table('diets')
+                ->select('diets.*','type_diets.name_type')
+                ->join('type_diets','diets.tipus_dieta','=','type_diets.id_type')
+                ->get();
+        
+    }
+
     
 }

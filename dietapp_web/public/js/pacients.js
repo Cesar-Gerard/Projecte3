@@ -77,8 +77,6 @@ function f_cercaPacients(){
         
     });
 
-
-
 }
 
 
