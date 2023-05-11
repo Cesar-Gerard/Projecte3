@@ -2,6 +2,7 @@ package api;
 
 import model.HistorialResponse;
 import model.LoginResponse;
+import model.PacientResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -22,6 +23,11 @@ public interface ApiService {
     @Headers("Accept: application/json")
     @GET("historial/{parametro}")
     Call<HistorialResponse> getHistorialWithToken(@Header("Authorization") String token, @Path("parametro") String parametro);
+
+
+    @Headers("Accept: application/json")
+    @GET("pacient/{parametro}")
+    Call<PacientResponse> getPacientWithToken(@Header("Authorization") String token, @Path("parametro") String parametro);
 
 
 }

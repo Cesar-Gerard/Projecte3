@@ -55,6 +55,14 @@ public class User_Retro {
 
     private List<Datum> historial_pacient;
 
+    private int nutricionist;
+
+    private String phone_number;
+
+    private String addres;
+
+
+
 
     public Integer getId() {
         return id;
@@ -110,5 +118,29 @@ public class User_Retro {
 
     public void setHistorial_pacient(List<Datum> historial_pacient) {
         this.historial_pacient = historial_pacient;
+    }
+
+    public int getNutricionist() {
+        return nutricionist;
+    }
+
+    public void setNutricionist(int nutricionist) {
+        this.nutricionist = nutricionist;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public String getAddres() {
+        return addres;
+    }
+
+    public void setAddres(String addres) {
+        this.addres = addres;
     }
 }

@@ -2,6 +2,7 @@ package api;
 
 import model.HistorialResponse;
 import model.LoginResponse;
+import model.PacientResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -38,6 +39,13 @@ public class ApiManager {
     public void getHistorialWithToken(String token, String parametro, Callback<HistorialResponse> callback) {
 
         Call<HistorialResponse> call = mApiService.getHistorialWithToken("Bearer " + token, parametro);
+        call.enqueue(callback);
+    }
+
+
+    public void getPacientWithToken(String token, String parametro, Callback<PacientResponse> callback) {
+
+        Call<PacientResponse> call = mApiService.getPacientWithToken("Bearer " + token, parametro);
         call.enqueue(callback);
     }
 

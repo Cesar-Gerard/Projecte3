@@ -202,6 +202,9 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:padding="5dp"
+                            android:textAlignment="center"
                             android:background="@drawable/custom_edittext"
                              />
 
@@ -239,6 +242,9 @@
                             android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:padding="5dp"
+                            android:textAlignment="center"
                             android:background="@drawable/custom_edittext" />
 
 
@@ -276,6 +282,9 @@
                             android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:padding="5dp"
+                            android:textAlignment="center"
                             android:background="@drawable/custom_edittext" />
 
 
@@ -310,8 +319,11 @@
                         <EditText
                             android:id="@+id/edt_nutri"
                             android:layout_width="120dp"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:padding="5dp"
+                            android:textAlignment="center"
                             android:background="@drawable/custom_edittext" />
 
 

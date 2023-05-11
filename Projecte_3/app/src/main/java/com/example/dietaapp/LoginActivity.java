@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity{
         binding.btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 try {
 
                     binding.progressBar.setVisibility(View.VISIBLE);
@@ -51,8 +52,8 @@ public class LoginActivity extends AppCompatActivity{
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 User_Retro.setUser(response.body().getData().getUser());
                                 User_Retro.setToken(response.body().getData().getToken());
-
                                 startActivity(i);
+
 
                             }else{
                                 cridaError();
@@ -65,6 +66,8 @@ public class LoginActivity extends AppCompatActivity{
 
                         }
                     });
+
+                    binding.progressBar.setVisibility(View.GONE);
 
                 } catch (Exception e) {
                     e.printStackTrace();

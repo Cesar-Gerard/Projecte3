@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
@@ -8,156 +8,455 @@ android:orientation="vertical"
 tools:context=".CurrentPlanFragment"
 android:background="@drawable/background_page">
 
-
-    <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/baseline_menu_24"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/trans"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:layout_marginTop="20dp"
-    android:orientation="vertical">
-
-
-
-
-    <ImageView
-        android:id="@+id/imageViewavatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/avatar_icon"
-        app:layout_constraintTop_toTopOf="@+id/txvhola"
-        />
-
-
-    <TextView
-        android:id="@+id/txvuser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:textStyle="bold"
-        android:textSize="22sp"
-        android:textColor="@color/black"
-        android:text="Hola User"/>
-
-    <TextView
-        android:id="@+id/txvhola2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:textStyle="bold"
-        android:textSize="36sp"
-        android:textColor="@color/black"
-        android:text="Benvingut"/>
+        <ImageButton
+            android:id="@+id/imageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/trans"
+            android:src="@drawable/baseline_menu_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="btnmenu_onClick"/>
 
 
 
 
-    <!--Dies completats per el usuari de la dieta setmanal-->
-    <androidx.cardview.widget.CardView
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="20dp"
-        android:background="@drawable/custom_edittext">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+
+
+
+            <ImageView
+                android:id="@+id/imageViewavatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/avatar_icon"
+                app:layout_constraintTop_toTopOf="@+id/txvhola"
+                />
+
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txvuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:text="Dies completats: "
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextView>
 
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:text="Hola User"/>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/txvhola2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                android:paddingBottom="20dp"
+                android:textStyle="bold"
+                android:textSize="36sp"
+                android:textColor="@color/black"
+                android:text="Benvingut"/>
+
+
+
+
+            <!-- Gráfico lineal para mostrar la progresión del peso -->
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/grafico_peso"
+                android:layout_width="200dp"
+                android:layout_height="200dp"/>
+
+
+
+
+
+
+            <!--Dies completats per el usuari de la dieta setmanal-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="260dp"
+                android:layout_height="50dp"
+                android:layout_margin="30dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="20dp"
+                android:background="@drawable/custom_edittext">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:text="Dies completats: "
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        >
+
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/oval_background"
+                            android:src="@drawable/baseline_set_meal_24"
+                            android:layout_marginEnd="10dp"
+                            />
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/oval_background"
+                            android:src="@drawable/baseline_set_meal_24"
+                            android:layout_marginEnd="10dp"/>
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/oval_background"
+                            android:src="@drawable/baseline_set_meal_24"
+                            android:layout_marginEnd="10dp"/>
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/oval_background"
+                            android:src="@drawable/baseline_set_meal_24"
+                            android:layout_marginEnd="10dp"/>
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/oval_background"
+                            android:src="@drawable/baseline_set_meal_24"
+                            android:layout_marginEnd="10dp"/>
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/oval_background"
+                            android:src="@drawable/baseline_set_meal_24"
+                            android:layout_marginEnd="10dp"/>
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/oval_background"
+                            android:src="@drawable/baseline_set_meal_24"
+                            android:layout_marginEnd="10dp"/>
+
+
+                    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+            <!--Bloc de Dades 1 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="20dp"
                 >
 
 
-                <ImageView
-                    android:id="@+id/imageView8"
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/oval_background"
-                    android:src="@drawable/baseline_set_meal_24"
-                    android:layout_marginEnd="10dp"
-                    />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
 
-                <ImageView
-                    android:id="@+id/imageView3"
+                    <!--region $Pes-->
+                    <TextView
+                        android:id="@+id/txvPes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="10dp"
+                        android:text="Pes:"
+                        app:layout_constraintBottom_toBottomOf="@+id/edtPes"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+
+                    <EditText
+                        android:id="@+id/edtPes"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textSize="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        app:layout_constraintStart_toEndOf="@+id/txvPes"
+                        android:enabled="false"
+                        android:textAlignment="center"/>
+                    <!--endregion-->
+
+                    <!--region $Alçada-->
+                    <TextView
+                        android:id="@+id/txvAlt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="Alçada:"
+                        app:layout_constraintTop_toBottomOf="@+id/txvPes" />
+
+
+                    <EditText
+                        android:id="@+id/edtAlt"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textSize="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/txvAlt"
+                        app:layout_constraintEnd_toEndOf="@+id/edtPes"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPes"
+                        android:enabled="false"
+                        android:textAlignment="center"/>
+
+                    <!--endregion-->
+
+                    <!--region $IMC_Actual-->
+                    <TextView
+                        android:id="@+id/txvIMC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="IMC actual:"
+                        android:paddingBottom="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvAlt" />
+
+
+                    <EditText
+                        android:id="@+id/edtIMC"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textSize="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/txvIMC"
+                        app:layout_constraintEnd_toEndOf="@+id/edtAlt"
+                        app:layout_constraintTop_toBottomOf="@+id/edtAlt"
+                        android:enabled="false"
+                        android:textAlignment="center"/>
+                    <!--endregion-->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Bloc de Dades 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="20dp"
+                android:background="@drawable/custom_edittext">
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/oval_background"
-                    android:src="@drawable/baseline_set_meal_24"
-                    android:layout_marginEnd="10dp"/>
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
+
+                    <!--region $Pit-->
+                    <TextView
+                        android:id="@+id/txvPit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="10dp"
+                        android:text="Pit:"
+                        app:layout_constraintBottom_toBottomOf="@+id/edtPit"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <EditText
+                        android:id="@+id/edtPit"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textSize="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        app:layout_constraintStart_toEndOf="@+id/txvPit"
+                        android:enabled="false"
+                        android:textAlignment="center"/>
+                    <!--endregion-->
+
+                    <!--region $Cintura-->
+                    <TextView
+                        android:id="@+id/txvCintura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="Cintura:"
+                        app:layout_constraintTop_toBottomOf="@+id/txvPit" />
+
+
+                    <EditText
+                        android:id="@+id/edtCintura"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textSize="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/txvCintura"
+                        app:layout_constraintEnd_toEndOf="@+id/edtPit"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPit"
+                        android:enabled="false"
+                        android:textAlignment="center"/>
+
+                    <!--endregion-->
+
+                    <!--region $Braç-->
+
+
+                    <TextView
+                        android:id="@+id/txvBraç"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="Braç:"
+                        app:layout_constraintTop_toBottomOf="@+id/txvCintura"/>
+
+                    <EditText
+                        android:id="@+id/edtBraç"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textSize="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/txvBraç"
+                        app:layout_constraintEnd_toEndOf="@+id/edtCintura"
+                        app:layout_constraintTop_toBottomOf="@+id/edtCintura"
+                        android:enabled="false"
+                        android:textAlignment="center"/>
+                    <!--endregion-->
+
+                    <!--region $Cama-->
+                    <TextView
+                        android:id="@+id/txvCama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="Cama:"
+                        app:layout_constraintTop_toBottomOf="@+id/txvBraç"
+                        />
+
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/oval_background"
-                    android:src="@drawable/baseline_set_meal_24"
-                    android:layout_marginEnd="10dp"/>
+                    <EditText
+                        android:id="@+id/edtCama"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:textSize="15dp"
+                        android:background="@drawable/custom_edittext"
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/txvCama"
+                        app:layout_constraintEnd_toEndOf="@+id/edtBraç"
+                        app:layout_constraintTop_toBottomOf="@+id/edtBraç"
+                        android:enabled="false"
+                        android:textAlignment="center"/>
+                    <!--endregion-->
 
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/oval_background"
-                    android:src="@drawable/baseline_set_meal_24"
-                    android:layout_marginEnd="10dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/oval_background"
-                    android:src="@drawable/baseline_set_meal_24"
-                    android:layout_marginEnd="10dp"/>
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/oval_background"
-                    android:src="@drawable/baseline_set_meal_24"
-                    android:layout_marginEnd="10dp"/>
+            </androidx.cardview.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/oval_background"
-                    android:src="@drawable/baseline_set_meal_24"
-                    android:layout_marginEnd="10dp"/>
 
+        </LinearLayout>
 
-            </LinearLayout>
 
 
 
+    </RelativeLayout>
 
 
 
@@ -165,256 +464,5 @@ android:background="@drawable/background_page">
 
 
 
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-    </androidx.cardview.widget.CardView>
-
-
-
-
-    <!--Bloc de Dades 1 -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="20dp"
-       >
-
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp">
-
-            <!--region $Pes-->
-            <TextView
-                android:id="@+id/txvPes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="50dp"
-                android:paddingBottom="10dp"
-                android:text="Pes:"
-                app:layout_constraintBottom_toBottomOf="@+id/edtPes"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-
-            <EditText
-                android:id="@+id/edtPes"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintStart_toEndOf="@+id/txvPes"
-                android:enabled="false"
-                android:textAlignment="center"/>
-            <!--endregion-->
-
-            <!--region $Alçada-->
-            <TextView
-                android:id="@+id/txvAlt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="Alçada:"
-                app:layout_constraintTop_toBottomOf="@+id/txvPes" />
-
-
-            <EditText
-                android:id="@+id/edtAlt"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintBottom_toBottomOf="@+id/txvAlt"
-                app:layout_constraintEnd_toEndOf="@+id/edtPes"
-                app:layout_constraintTop_toBottomOf="@+id/edtPes"
-                android:enabled="false"
-                android:textAlignment="center"/>
-
-            <!--endregion-->
-
-            <!--region $IMC_Actual-->
-            <TextView
-                android:id="@+id/txvIMC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="IMC actual:"
-                android:paddingBottom="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvAlt" />
-
-
-            <EditText
-                android:id="@+id/edtIMC"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintBottom_toBottomOf="@+id/txvIMC"
-                app:layout_constraintEnd_toEndOf="@+id/edtAlt"
-                app:layout_constraintTop_toBottomOf="@+id/edtAlt"
-                android:enabled="false"
-                android:textAlignment="center"/>
-            <!--endregion-->
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-    <!--Bloc de Dades 2 -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="20dp"
-        android:background="@drawable/custom_edittext">
-
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp">
-
-            <!--region $Pit-->
-            <TextView
-                android:id="@+id/txvPit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="50dp"
-                android:paddingBottom="10dp"
-                android:text="Pit:"
-                app:layout_constraintBottom_toBottomOf="@+id/edtPit"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <EditText
-                android:id="@+id/edtPit"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintStart_toEndOf="@+id/txvPit"
-                android:enabled="false"
-                android:textAlignment="center"/>
-            <!--endregion-->
-
-            <!--region $Cintura-->
-            <TextView
-                android:id="@+id/txvCintura"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="Cintura:"
-                app:layout_constraintTop_toBottomOf="@+id/txvPit" />
-
-
-            <EditText
-                android:id="@+id/edtCintura"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintBottom_toBottomOf="@+id/txvCintura"
-                app:layout_constraintEnd_toEndOf="@+id/edtPit"
-                app:layout_constraintTop_toBottomOf="@+id/edtPit"
-                android:enabled="false"
-                android:textAlignment="center"/>
-
-            <!--endregion-->
-
-            <!--region $Braç-->
-
-
-            <TextView
-                android:id="@+id/txvBraç"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="Braç:"
-                app:layout_constraintTop_toBottomOf="@+id/txvCintura"/>
-
-            <EditText
-                android:id="@+id/edtBraç"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintBottom_toBottomOf="@+id/txvBraç"
-                app:layout_constraintEnd_toEndOf="@+id/edtCintura"
-                app:layout_constraintTop_toBottomOf="@+id/edtCintura"
-                android:enabled="false"
-                android:textAlignment="center"/>
-            <!--endregion-->
-
-            <!--region $Cama-->
-            <TextView
-                android:id="@+id/txvCama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="Cama:"
-                app:layout_constraintTop_toBottomOf="@+id/txvBraç"
-                />
-
-
-            <EditText
-                android:id="@+id/edtCama"
-                android:layout_width="90dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background"
-                app:layout_constraintBottom_toBottomOf="@+id/txvCama"
-                app:layout_constraintEnd_toEndOf="@+id/edtBraç"
-                app:layout_constraintTop_toBottomOf="@+id/edtBraç"
-                android:enabled="false"
-                android:textAlignment="center"/>
-            <!--endregion-->
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-
-</LinearLayout>
-
-
-
-
-
-
-
-</RelativeLayout>
+</ScrollView>
 

@@ -8,57 +8,56 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link user_profile#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
+import com.example.dietaapp.databinding.FragmentUserProfileBinding;
+
+import api.ApiManager;
+import model.HistorialResponse;
+import model.PacientResponse;
+import model.User_Retro;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class user_profile extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    User_Retro user;
+    FragmentUserProfileBinding binding;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public user_profile() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment user_profile.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static user_profile newInstance(String param1, String param2) {
-        user_profile fragment = new user_profile();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_profile, container, false);
+        binding = FragmentUserProfileBinding.inflate(getLayoutInflater());
+        View v = binding.getRoot();
+
+        //Rebem el usuari
+        user =User_Retro.getUser();
+
+
+        //carreguem les dades;
+        omplirDadesPerfil();
+
+        return v;
+    }
+
+
+
+
+    //Omple els camps dels EditText y els textos
+    private void omplirDadesPerfil() {
+        //Modifiquem els textos en base a la info del user
+        binding.textNom.setText(user.getNameUser()+" "+user.getLastnameUser());
+        binding.txvEmail.setText(user.getEmailUser());
+
+        //Omplim els editText
+        binding.edtNickname.setText(user.getNicknameUser());
+        binding.edtStreet.setText(user.getAddres());
+        binding.edtPhone.setText(user.getPhone_number());
+        binding.edtNutri.setText(String.valueOf(user.getNutricionist()));
+
+
+
+
     }
 }
