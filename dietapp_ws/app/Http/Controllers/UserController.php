@@ -29,8 +29,13 @@ class UserController extends Controller
         }
 
         $us = User::where('nickname_user','=',$request->nickname_user)->first();
+
+        $pacient = Pacient::where('id_pacient','=',$us->id)->first();
+        $nutricionist = User::where('id','=',$pacient->assigned_nutricionist)->first();
+        
         $data = array(
             'user' => $us,
+            'nutricionist' => $nutricionist->name_user . " " . $nutricionist->lastname_user,
             'token' => $token,
         );
 
@@ -125,12 +130,6 @@ class UserController extends Controller
             ], 400);
         }
 
-
-
-
-
-
-
     }
 
 
@@ -159,6 +158,44 @@ class UserController extends Controller
             ], 400);
         }
 
+    }
+
+    /**
+     * Retorna el nom del nutricionista */ 
+    public function getNutricionistName($nutricionist){
+
+        try{
+
+            //Comprovar que l'user que ens passa és nutricionista
+            $user = User::where('id','=',$nutricionist)->where('type_user','=','N')->first();
+            
+
+            if($user!=null){
+                $data = array(
+                    "name_user" => $user->name_user,
+                    "lastname_user" => $user->lastname_user,
+                );
+                
+
+                return response()->json(compact('data'));
+
+            }else{
+                return response()->json([
+                    'error' => 'Not found'
+                ], 404);
+            }
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            return response()->json([
+                'database_error' => "Database error ".$ex
+            ], 400);
+
+        }catch(\Throwable $ex){
+            return response()->json([
+                'error' => 'General error '.$ex
+            ], 400);
+        }
+        
     }
 
     

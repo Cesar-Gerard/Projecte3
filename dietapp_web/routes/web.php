@@ -277,6 +277,8 @@ Route::get("/dieta/{id}", function($dieta){
 
 
 Route::get('/add_dieta', function(){
+
+
     if(Auth::check()){
         return view("add_dieta");
     }else{

@@ -9,10 +9,13 @@ function f_main(){
     document.getElementById('btn_mostrar_filtre').addEventListener('click',f_mostraFiltres);
     document.getElementById('btn_amagar_filtre').addEventListener('click',f_amagaFiltres);
 
+    document.getElementById('cerca_nom_dieta').addEventListener('input', f_cercaDietes);
+    document.getElementById('cerca_tipus_dieta').addEventListener('change',f_cercaDietes);
+
 
     document.getElementById('btn_amagar_filtre').style.display = "none";
 
-    document.getElementById('cerca_search').addEventListener('click',f_cercaPacients);
+    document.getElementById('cerca_search').addEventListener('click',f_cercaDietes);
     document.getElementById('cerca_neteja_filtres').addEventListener('click',f_netejaFiltres);
 
 
@@ -20,10 +23,28 @@ function f_main(){
 
 
 
-function f_cercaPacients(){
+function f_cercaDietes(){
 
+    let dieta_nom = document.getElementById('cerca_nom_dieta').value;
+    let dieta_tipus = document.getElementById('cerca_tipus_dieta').value;
 
+    $.ajax({
+        url: config.routes.zone_filtre_dieta,
+        data:{
+            'dieta_nom' : dieta_nom,
+            'dieta_tipus' : dieta_tipus,
+            '_token': $('meta[name="csrf-token"]').attr('content'),
+        },
+        type: 'POST'
+    }).done(function (e)
+    {
 
+        //Eliminar cel·les de la taula
+        $("#dietes_taula tr").remove(); 
+        
+        f_dibuixaTaula(e);
+        
+    });
 
 }
 
@@ -46,6 +67,9 @@ function f_netejaFiltres(){
         $("#dietes_taula tr").remove(); 
         
         f_dibuixaTaula(e);
+
+        document.getElementById('cerca_nom_dieta').value = '';
+        document.getElementById('cerca_tipus_dieta').value = '-1';
         
     });
 

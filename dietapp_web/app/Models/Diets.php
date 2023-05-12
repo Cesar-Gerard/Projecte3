@@ -55,5 +55,38 @@ class Diets extends Model
         
     }
 
+
+
+    public static function getDietsFilter($diet_name, $tipus_dieta){
+
+
+
+        $diets = DB::table('diets')
+        ->select('diets.*','type_diets.name_type')
+        ->join('type_diets','diets.tipus_dieta','=','type_diets.id_type');
+
+
+
+        if(strlen($diet_name)!=0){
+            $diets = $diets->where('name','like', $diet_name . '%');
+        }
+
+        if($tipus_dieta != -1){
+            $diets = $diets->where('diets.tipus_dieta','=',$tipus_dieta);
+        }
+
+
+        $diets = $diets->get();
+
+
+        $arr_dietes = array();
+        foreach($diets as $diet){
+            array_push($arr_dietes,$diet);
+        }
+
+        return $arr_dietes;
+
+    }
+
     
 }

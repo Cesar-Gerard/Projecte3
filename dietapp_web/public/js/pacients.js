@@ -14,6 +14,10 @@ function f_main(){
 
     document.getElementById('btn_amagar_filtre').style.display = "none";
 
+    document.getElementById('cerca_nom_pacient').addEventListener('input',f_cercaPacients);
+    document.getElementById('cerca_cognom_pacient').addEventListener('input',f_cercaPacients);
+    document.getElementById('cerca_tipus_dietes').addEventListener('change',f_cercaPacients);
+
 
     document.getElementById('cerca_search').addEventListener('click',f_cercaPacients);
     document.getElementById('cerca_neteja_filtres').addEventListener('click',f_netejaFiltres);
@@ -37,6 +41,11 @@ function f_netejaFiltres(){
 
         //Eliminar cel·les de la taula
         $("#pacients_taula tr").remove(); 
+
+        document.getElementById('cerca_nom_pacient').value = '';
+        document.getElementById('cerca_cognom_pacient').value = '';
+        document.getElementById('cerca_tipus_dietes').value = '-1';
+
         
         f_dibuixaTaula(e);
         

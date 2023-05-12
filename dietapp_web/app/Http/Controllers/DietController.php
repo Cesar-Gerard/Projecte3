@@ -30,17 +30,16 @@ class DietController extends Controller
 
     public function filtrar_dieta(Request $request){
 
-        $nom = $request->nom;
-        $tipus_dieta = $request->cognom;
+        
+        $nom = $request->dieta_nom;
+        $tipus_dieta = $request->dieta_tipus;
 
-        //$pacients = Pacient::getPacientsByFilter($nom,$cognoms,$dieta,$nutricionist);
-
-        //return json_encode($pacients);
-
+        $dietes = Diets::getDietsFilter($nom,$tipus_dieta);
 
 
 
 
+        return json_encode($dietes);
 
     }
     

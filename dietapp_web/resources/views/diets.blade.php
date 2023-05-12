@@ -7,7 +7,7 @@
     var config = {
         routes: {
             zone_filtre_all_diets: "{{ route('diet.filtrar_all_diets') }}",
-            zone_filtre_diet: "{{ route('diet.filtrar') }}",
+            zone_filtre_dieta: "{{ route('diet.filtrar') }}",
 
         },
         vars: {
@@ -83,7 +83,7 @@
 
     <div class="row">
         <div class="col-2">
-            <a href="" class="button-3 mb-2" style="background-color:green;"><i class="fa-solid fa-plus"></i></a> 
+            <a href="{{route('view_add_pacient')}}" class="button-3 mb-2" style="background-color:green;"><i class="fa-solid fa-plus"></i></a> 
         </div>
     </div>
 
@@ -102,7 +102,6 @@
             </thead>
             <tbody id="dietes_taula">
             @foreach($diets as $diet)
-                
                 
                 <tr onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">
                     <td style="text-align: center">{{$diet->name}}</td>

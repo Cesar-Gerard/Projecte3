@@ -54,11 +54,11 @@ class Pacient extends Model
             ->where('pacient.assigned_nutricionist','=',$nutricionist);
 
         if(strlen($nom)!=0){
-            $pacients = $pacients->where('users.name_user','like','%'.$nom.'%');        
+            $pacients = $pacients->where('users.name_user','like',$nom.'%');        
         }
 
         if(strlen($cognom)!=0){
-            $pacients = $pacients->where('users.lastname_user','like','%'.$cognom.'%');
+            $pacients = $pacients->where('users.lastname_user','like',$cognom.'%');
         }
 
         if($dieta!=-1){
