@@ -11,6 +11,7 @@ use App\Models\Pacient;
 use App\Models\Diets;
 use App\Models\TypeDiets;
 use App\Models\HistorialPacient;
+use App\Models\Dishes;
 
 
 /*
@@ -283,9 +284,10 @@ Route::get('/add_dieta', function(){
 
         
         $tipus_dieta = TypeDiets::getAllTypes();
+        $dishes = Dishes::getAllDishes();
 
 
-        return view("add_dieta",["tipus_dietes"=>$tipus_dieta]);
+        return view("add_dieta",["tipus_dietes"=>$tipus_dieta,"dishes"=>$dishes]);
 
     }else{
         return redirect(route("index"));
@@ -306,3 +308,4 @@ Route::post("pacient/add_pacient",[PacientController::class, "add_pacient"])->na
 Route::post("pacient/edit_pacient",[PacientController::class, "edit_pacient"])->name("pacient.edit");
 Route::post("diet/filtrar_all_diets",[DietController::class, "filtrar_all_diets"])->name("diet.filtrar_all_diets");
 Route::post("diet/filtrar",[DietController::class, "filtrar_dieta"])->name("diet.filtrar");
+Route::post("diet/dishes_filtrar",[DietController::class, "dishes_filtrar"])->name("diet.dishes_filtrar");

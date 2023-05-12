@@ -6,8 +6,7 @@
     // global app configuration object
     var config = {
         routes: {
-            zone_filtre_all_diets: "{{ route('diet.filtrar_all_diets') }}",
-            zone_filtre_dieta: "{{ route('diet.filtrar') }}",
+            zone_dishes_filtrar: "{{ route('diet.dishes_filtrar') }}",
 
         },
         vars: {
@@ -64,91 +63,119 @@
     <br/><br/>
 
     <div id="diets_dishes">
-
-        <h2>Dies de la setmana</h2>
         <div class="row">
-            <div class="col-1">
-                
-            </div>
-            <div class="col-2 d-flex justify-content-center">
-                Dilluns
-            </div>
-            <div class="col-2 d-flex justify-content-center">
-                Dimarts
-            </div>
-            <div class="col-2 d-flex justify-content-center">
-                Dimecres
-            </div>
-            <div class="col-2 d-flex justify-content-center">
-                Dijous
-            </div>
-            <div class="col-2 d-flex justify-content-center">
-                Divendres
-            </div>
-        </div>
+            <div class="col-10">
 
-
-        <div class="row">
-            <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
-                Esmorzar
-            </div>
-            
-            @for ($i = 1; $i <= 5; $i++)
-                <div id="esmorzar{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-
+                <h2>Dies de la setmana</h2>
+                <div class="row">
+                    <div class="col-1">
+                        
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        Dilluns
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        Dimarts
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        Dimecres
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        Dijous
+                    </div>
+                    <div class="col-2 d-flex justify-content-center">
+                        Divendres
+                    </div>
                 </div>
-            @endfor
-        </div>
-
-        <div class="row">
-            <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
-                Dinar
-            </div>
-
-            @for ($i = 1; $i <= 5; $i++)
-                <div id="dinar{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-
-                </div>
-            @endfor
-        </div>
-
-        <div class="row">
-            <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
-                Berenar
-            </div>
-
-            @for ($i = 1; $i <= 5; $i++)
-                <div id="berenar{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-
-                </div>
-            @endfor
-        </div>
-
-        <div class="row">
-            <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
-                Sopar
-            </div>
-
-            @for ($i = 1; $i <= 5; $i++)
-                <div id="sopar{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-
-                </div>
-            @endfor
-        </div>
-
-        <div class="row">
-            <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
-                Mig dia
-            </div>
-
-            @for ($i = 1; $i <= 5; $i++)
-                <div id="migdia{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
+        
+        
+                <div class="row">
+                    <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
+                        Esmorzar
+                    </div>
                     
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div id="esmorzar{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
+        
+                        </div>
+                    @endfor
                 </div>
-            @endfor
+        
+                <div class="row">
+                    <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
+                        Dinar
+                    </div>
+        
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div id="dinar{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
+        
+                        </div>
+                    @endfor
+                </div>
+        
+                <div class="row">
+                    <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
+                        Berenar
+                    </div>
+        
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div id="berenar{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
+        
+                        </div>
+                    @endfor
+                </div>
+        
+                <div class="row">
+                    <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
+                        Sopar
+                    </div>
+        
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div id="sopar{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
+        
+                        </div>
+                    @endfor
+                </div>
+        
+                <div class="row">
+                    <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
+                        Mig dia
+                    </div>
+        
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div id="migdia{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
+                            
+                        </div>
+                    @endfor
+        
+        
+                </div>
 
+            </div>
+
+            <div class="col-2 form_border" style="overflow:scroll;" id="scroll">
+                <h2>Plats</h2>
+                <hr/>
+                <input type="text" id="dishes_text" placeholder="Busca els plats" class="form-control"/>
+                <br/>
+                <div id="launchPad">    
+
+           
+                    @foreach($dishes as $dish)
+        
+                        <div class="card" id="dish-{{$dish->id_dishes}}">
+                            {{$dish->name_dishes}}
+                        </div> 
+
+                    @endforeach
+                    
+                   
+                </div>
+            </div>
 
         </div>
+
+        
 
         
 
@@ -158,33 +185,6 @@
 
     <button id="prova">Prova</button>
 
-    <div class="row">
-        <div class="col-2">
-            <div id="launchPad">    
-                <div class="card" id="apple">
-                    apple
-                </div> 
-                <div class="card" id="orange">
-                    orange
-                </div> 
-                <div class="card" id="banana">
-                    banana
-                </div> 
-                <div class="card" id="car">
-                    car
-                </div> 
-                <div class="card" id="bus">
-                    bus
-                </div> 
-            </div>
-        </div>
-        
-    </div>
-
-    
-    
-    
-    
 
     <div style="marin-top:100px;">
     '

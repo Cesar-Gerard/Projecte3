@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pacient;
 use App\Models\Diets;
+use App\Models\Dishes;
 
 use Auth;
 
@@ -40,6 +41,17 @@ class DietController extends Controller
 
 
         return json_encode($dietes);
+
+    }
+
+
+    public function dishes_filtrar(Request $request){
+
+        $nom = $request->dish_nom;
+
+        $dishes = Dishes::getDishesByName($nom);
+
+        return json_encode($dishes);
 
     }
     
