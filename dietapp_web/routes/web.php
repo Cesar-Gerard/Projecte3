@@ -280,7 +280,13 @@ Route::get('/add_dieta', function(){
 
 
     if(Auth::check()){
-        return view("add_dieta");
+
+        
+        $tipus_dieta = TypeDiets::getAllTypes();
+
+
+        return view("add_dieta",["tipus_dietes"=>$tipus_dieta]);
+
     }else{
         return redirect(route("index"));
     }
