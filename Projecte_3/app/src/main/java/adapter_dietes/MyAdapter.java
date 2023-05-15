@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
         Dietes object = mObjects.get(position);
         holder.nom.setText(object.getName());
+        holder.apats.setText(String.valueOf(object.getNumberMeals()));
+
+        double resultat = Double.valueOf(object.getCalories())/1000;
+
+        holder.calories.setText(String.valueOf(resultat)+" kcal");
 
     }
 
@@ -48,17 +54,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        EditText nom;
-        EditText tipus;
-        EditText apats;
-        EditText calories;
+        TextView nom;
+
+        TextView apats;
+        TextView calories;
 
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nom = itemView.findViewById(R.id.edtName);
-            tipus = itemView.findViewById(R.id.edtType);
             apats= itemView.findViewById(R.id.edtQuantitat);
             calories = itemView.findViewById(R.id.edtCalories);
 

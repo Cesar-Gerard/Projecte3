@@ -171,9 +171,8 @@ public class CurrentPlanFragment extends Fragment {
 
                 user.setAddres(response.body().getData().getAddressPacient());
                 user.setPhone_number(response.body().getData().getPhonePacient());
-
+                User_Retro.setDiet(response.body().getData().getCurrentDiet());
                 User_Retro.setUser(user);
-
             }
 
             @Override

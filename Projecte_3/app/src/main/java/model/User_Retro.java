@@ -45,6 +45,18 @@ public class User_Retro {
 
     //--------------------------------------------------------
 
+    private static int _currentdiet;
+
+    public static int getDiet(){
+        return _currentdiet;
+    }
+
+    public static void setDiet(int entrada){_currentdiet = entrada;}
+
+
+    //--------------------------------------------------------
+
+
     @SerializedName("id")
     @Expose
     private Integer id;

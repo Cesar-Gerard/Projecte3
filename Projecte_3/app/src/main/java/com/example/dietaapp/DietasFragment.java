@@ -10,14 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 import com.example.dietaapp.databinding.FragmentDietasBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import adapter_dietes.MyAdapter;
 import api.ApiManager;
+import model.Data_Pacient;
 import model.Dietes;
 import model.DietesResponse;
 import model.User_Retro;
@@ -43,7 +42,6 @@ public class DietasFragment extends Fragment {
         binding.recyclerView.setLayoutManager(layoutManager);
 
 
-
         RequestDietes();
 
 
@@ -51,21 +49,19 @@ public class DietasFragment extends Fragment {
     }
 
 
+    //Request de Get de dietes
     private void RequestDietes() {
 
         ApiManager.getInstance().getDietes(User_Retro.getToken(), new Callback<DietesResponse>() {
             @Override
             public void onResponse(Call<DietesResponse> call, Response<DietesResponse> response) {
-                Dietes entrada = response.body().getData().get(0);
+
+                //Murem quina dieta es la actual del user y omplim la informació
+                CurrentDiet(response.body().getData());
 
                 //Omplim el RecycleView
                 MyAdapter adapter = new MyAdapter(response.body().getData());
                 binding.recyclerView.setAdapter(adapter);
-
-
-
-                binding.busquedaCalorias.setText(entrada.getName());
-
 
             }
 
@@ -76,5 +72,32 @@ public class DietasFragment extends Fragment {
         });
 
 
+    }
+
+
+    //Comprova la Dieta corresponent a l'actual en el llistat
+    private void CurrentDiet(List<Dietes> data) {
+
+
+
+        for(Dietes entrada : data ){
+
+            if(entrada.getIdDiet().equals(User_Retro.getDiet())){
+                ompleDades(entrada);
+            }
+
+        }
+
+
+    }
+
+    //Omple les dades de la dieta actual
+    private void ompleDades(Dietes entrada) {
+        binding.edtDietName.setText(entrada.getName());
+
+        double resultat = Double.valueOf(entrada.getCalories())/1000;
+
+        binding.edtCaloriasDieta.setText(String.valueOf(resultat)+" kcal");
+        binding.edtComidasDieta.setText(String.valueOf(entrada.getNumberMeals()+ " apats/dia"));
     }
 }

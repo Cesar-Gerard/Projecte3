@@ -1,66 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="2dp"
+    android:background="@color/white">
     
     
     
-    <TextView
-        android:id="@+id/txvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nom: "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        ></TextView>
 
-    <EditText
+
+    <TextView
         android:id="@+id/edtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
-        app:layout_constraintStart_toEndOf="@+id/txvName"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="5dp"
 
-    <TextView
-        android:id="@+id/txvType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tipus: "
-        app:layout_constraintStart_toEndOf="@+id/edtName"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"
-        ></TextView>
+        android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/edtType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        app:layout_constraintStart_toEndOf="@+id/txvType"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"/>
+
 
     <TextView
         android:id="@+id/txvQuantitat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nº apats: "
-        app:layout_constraintStart_toEndOf="@id/edtType"
+        app:layout_constraintStart_toEndOf="@id/edtName"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         ></TextView>
 
-    <EditText
+    <TextView
         android:id="@+id/edtQuantitat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/txvQuantitat"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="5dp"/>
 
 
     <TextView
@@ -70,17 +51,18 @@
         android:text="Calories: "
         app:layout_constraintStart_toEndOf="@id/edtQuantitat"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         ></TextView>
 
-    <EditText
+    <TextView
         android:id="@+id/edtCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/txvCalories"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="5dp"/>
 
 
 
