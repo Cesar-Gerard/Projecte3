@@ -1,5 +1,6 @@
 package api;
 
+import model.DietesResponse;
 import model.HistorialResponse;
 import model.LoginResponse;
 import model.PacientResponse;
@@ -28,6 +29,11 @@ public interface ApiService {
     @Headers("Accept: application/json")
     @GET("pacient/{parametro}")
     Call<PacientResponse> getPacientWithToken(@Header("Authorization") String token, @Path("parametro") String parametro);
+
+    @Headers("Accept: application/json")
+    @GET("diets")
+    Call<DietesResponse> getDietes(@Header("Authorization") String token);
+
 
 
 }

@@ -16,6 +16,11 @@
             android:icon="@drawable/user_settings"
             android:title="Usuari"/>
 
+        <item
+            android:id="@+id/nav_diets"
+            android:icon="@drawable/baseline_dining_24"
+            android:title="Dietes"/>
+
 
         <item
             android:id="@+id/nav_about"

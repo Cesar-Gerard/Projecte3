@@ -63,8 +63,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.action_global_user_profile);
         }
 
+        else if(item.getItemId()==R.id.nav_diets){
+            Navigation.findNavController(this,R.id.nav_host_fragment).navigate(R.id.action_global_dietasFragment);
+        }
+
         else if(item.getItemId()==R.id.nav_logout){
-            finish();
+           System.exit(0);
 
         }
 

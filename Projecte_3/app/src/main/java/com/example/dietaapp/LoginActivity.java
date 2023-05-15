@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity{
     }
 
 
+    //Programa el funcionament del boto y la ccrida del metode de login
     private void programarBotons() {
 
 
@@ -52,6 +53,7 @@ public class LoginActivity extends AppCompatActivity{
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 User_Retro.setUser(response.body().getData().getUser());
                                 User_Retro.setToken(response.body().getData().getToken());
+                                User_Retro.setNutricionist(response.body().getData().getNustricionist());
                                 startActivity(i);
 
 
@@ -77,6 +79,8 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
+
+    //Tira un missatge al usuari en cas de error o valor null a l'hora de fer login
     private void cridaError() {
         Toast.makeText(LoginActivity.this, "Nom o contrasenya incorrectes",Toast.LENGTH_LONG).show();
     }

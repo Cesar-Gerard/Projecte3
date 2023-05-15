@@ -14,12 +14,22 @@ import android.widget.EditText;
 import com.android.volley.RequestQueue;
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import api.ApiManager;
 import model.Datum;
@@ -33,7 +43,6 @@ import retrofit2.Response;
 public class CurrentPlanFragment extends Fragment {
 
     User_Retro user;
-
     FragmentCurrentPlanBinding binding;
 
 
@@ -67,58 +76,76 @@ public class CurrentPlanFragment extends Fragment {
 
     }
 
-    private void elementsGrafica(Datum actual) {
+    //Crea y gestiona la gràfica
+    private void elementsGrafica(List<Datum> historial, Date fechaInicial) throws ParseException {
+
+        List<Entry> entradas = new ArrayList<>();
+
+        // Ordena el historial por fecha
+        Collections.sort(historial, new Comparator<Datum>() {
+            @Override
+            public int compare(Datum o1, Datum o2) {
+                try {
+                    return o1.getDate().compareTo(o2.getDate());
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        // Construye la lista de entradas
+        for (int i = 0; i < historial.size(); i++) {
+            Datum entrada = historial.get(i);
+            float peso = Float.valueOf(entrada.getWeigth());
+            Date fechaEntrada = entrada.getDate();
+
+            // Verifica si la fecha de la entrada está dentro del mes de la fecha inicial
+            Calendar calendarFechaInicial = Calendar.getInstance();
+            calendarFechaInicial.setTime(fechaInicial);
+            Calendar calendarFechaEntrada = Calendar.getInstance();
+            calendarFechaEntrada.setTime(fechaEntrada);
+            if (calendarFechaEntrada.get(Calendar.MONTH) == calendarFechaInicial.get(Calendar.MONTH)) {
+                float fechaEnMs = fechaEntrada.getTime();
+                entradas.add(new Entry(fechaEnMs, peso));
+            }
+        }
+
+        // Configura la línea de la gráfica
+        LineDataSet dataSet = new LineDataSet(entradas, "Peso");
+        dataSet.setColor(Color.RED);
+        dataSet.setValueTextColor(Color.BLACK);
+
+        // Desactivar las etiquetas de los valores en el eje X
+        XAxis xAxis = binding.graficoPeso.getXAxis();
+        xAxis.setDrawLabels(false);
 
 
-        // Configurar el gráfico
-        binding.graficoPeso.setDragEnabled(true);
-        binding.graficoPeso.setScaleEnabled(true);
-
-
-
-        // Actualizar el gráfico cuando se hace clic en el botón
-
-                // Obtener los valores ingresados por el usuario
-                float pesoIni = Float.parseFloat(actual.getWeigth());
-                float pesoFin = Float.parseFloat(actual.getWeigth())-10;
-
-                // Crear los datos para el gráfico
-                ArrayList<Entry> datos = new ArrayList<>();
-                datos.add(new Entry(0, pesoIni));
-                datos.add(new Entry(1, pesoFin));
-
-                // Crear el conjunto de datos y agregar los valores
-                LineDataSet conjuntoDatos = new LineDataSet(datos, "Progreso del peso");
-
-                // Configurar el conjunto de datos
-                conjuntoDatos.setLineWidth(2);
-                conjuntoDatos.setCircleRadius(6);
-                conjuntoDatos.setCircleColor(Color.BLUE);
-                conjuntoDatos.setColor(Color.BLUE);
-
-                // Crear el conjunto de datos y agregarlo al gráfico
-                LineData datosLinea = new LineData(conjuntoDatos);
-                binding.graficoPeso.setData(datosLinea);
-
-                // Actualizar el gráfico
-                binding.graficoPeso.invalidate();
-
-
-
+        // Configura la gráfica
+        LineData lineData = new LineData(dataSet);
+        binding.graficoPeso.setData(lineData);
+        binding.graficoPeso.invalidate();
     }
 
 
+
+
+
+    //Executa el get que retorna el historial del usuari com a pacient
     private void demanarHistorial() {
 
         ApiManager.getInstance().getHistorialWithToken(User_Retro.getToken(), user.getId().toString(), new Callback<HistorialResponse>() {
             @Override
             public void onResponse(Call<HistorialResponse> call, Response<HistorialResponse> response) {
                 user.setHistorial_pacient(response.body().getData());
-                elementsGrafica(response.body().getHistorial(0));
+                try {
+                    elementsGrafica(user.getHistorial_pacient(), user.getHistorial_pacient().get(3).getDate());
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
 
 
                 //Rebem el historial més recent per no haber de treballar amb la llista sencer
-                omplircamps( response.body().getHistorial(0));
+                omplircamps( response.body().getHistorial(3));
 
             }
 
@@ -131,7 +158,9 @@ public class CurrentPlanFragment extends Fragment {
     }
 
 
-    //Rebem la info de pacient del user
+
+
+    //Executa el get que retorna la informació com a pacient del usuari
     private void InfoPacientRequest() {
 
         ApiManager.getInstance().getPacientWithToken(User_Retro.getToken(),user.getId().toString(), new Callback<PacientResponse>(){
@@ -139,7 +168,7 @@ public class CurrentPlanFragment extends Fragment {
             @Override
             public void onResponse(Call<PacientResponse> call, Response<PacientResponse> response) {
 
-                user.setNutricionist(response.body().getData().getAssignedNutricionist());
+
                 user.setAddres(response.body().getData().getAddressPacient());
                 user.setPhone_number(response.body().getData().getPhonePacient());
 

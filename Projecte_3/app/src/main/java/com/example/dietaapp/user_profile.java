@@ -54,7 +54,7 @@ public class user_profile extends Fragment {
         binding.edtNickname.setText(user.getNicknameUser());
         binding.edtStreet.setText(user.getAddres());
         binding.edtPhone.setText(user.getPhone_number());
-        binding.edtNutri.setText(String.valueOf(user.getNutricionist()));
+        binding.edtNutri.setText(User_Retro.getNutricionist());
 
 
 

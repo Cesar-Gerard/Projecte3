@@ -1,5 +1,6 @@
 package api;
 
+import model.DietesResponse;
 import model.HistorialResponse;
 import model.LoginResponse;
 import model.PacientResponse;
@@ -49,6 +50,10 @@ public class ApiManager {
         call.enqueue(callback);
     }
 
+    public void getDietes(String token, Callback<DietesResponse> callback){
+        Call<DietesResponse> call = mApiService.getDietes("Bearer "+ token);
+        call.enqueue(callback);
+    }
 
 
 }

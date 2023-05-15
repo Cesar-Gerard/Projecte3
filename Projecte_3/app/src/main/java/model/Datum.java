@@ -4,6 +4,10 @@ package model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class Datum {
 
@@ -46,8 +50,11 @@ public class Datum {
         this.idHistorial = idHistorial;
     }
 
-    public String getDate() {
-        return date;
+    public Date getDate() throws ParseException {
+
+        Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(date);
+
+        return date1;
     }
 
     public void setDate(String date) {

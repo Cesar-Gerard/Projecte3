@@ -34,6 +34,17 @@ public class User_Retro {
     //--------------------------------------------------------
 
 
+    private static String _nutricionist;
+
+    public static String getNutricionist(){
+        return _nutricionist;
+    }
+
+    public static void setNutricionist(String entrada){_nutricionist = entrada;}
+
+
+    //--------------------------------------------------------
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -55,7 +66,6 @@ public class User_Retro {
 
     private List<Datum> historial_pacient;
 
-    private int nutricionist;
 
     private String phone_number;
 
@@ -120,13 +130,6 @@ public class User_Retro {
         this.historial_pacient = historial_pacient;
     }
 
-    public int getNutricionist() {
-        return nutricionist;
-    }
-
-    public void setNutricionist(int nutricionist) {
-        this.nutricionist = nutricionist;
-    }
 
     public String getPhone_number() {
         return phone_number;

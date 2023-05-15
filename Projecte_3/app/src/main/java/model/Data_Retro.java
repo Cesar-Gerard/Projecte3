@@ -14,6 +14,10 @@ public class Data_Retro {
     @Expose
     private String token;
 
+    @SerializedName("nutricionist")
+    @Expose
+    private String nustricionist;
+
     public User_Retro getUser() {
         return user;
     }
@@ -30,4 +34,11 @@ public class Data_Retro {
         this.token = token;
     }
 
+    public String getNustricionist() {
+        return nustricionist;
+    }
+
+    public void setNustricionist(String nustricionist) {
+        this.nustricionist = nustricionist;
+    }
 }

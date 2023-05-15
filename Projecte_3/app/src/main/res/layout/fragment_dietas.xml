@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_page"
+    tools:context=".DietasFragment"
+    android:orientation="vertical">
+
+
+
+        <!-- Parte superior de la pantalla -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+
+               <!-- Aquí van los elementos de la parte superior -->
+               <TextView
+                   android:id="@+id/nombre_dieta"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Nombre de la dieta:"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   android:textColor="@color/black"
+                   />
+
+               <TextView
+                   android:id="@+id/calorias_dieta"
+                   android:layout_marginTop="10dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Cantidad de calorías:"
+                   android:textColor="@color/black"
+                   app:layout_constraintTop_toBottomOf="@+id/nombre_dieta" />
+
+               <TextView
+                   android:id="@+id/platos_dieta"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Cantidad de platos"
+                   android:textColor="@color/black"
+                   android:layout_marginTop="10dp"
+                   app:layout_constraintTop_toBottomOf="@+id/calorias_dieta"
+               />
+
+               <TextView
+                   android:id="@+id/comidas_dieta"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Cantidad de comidas"
+                   android:layout_marginTop="10dp"
+                   app:layout_constraintTop_toBottomOf="@+id/platos_dieta"/>
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Parte inferior de la pantalla -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Filtro de búsquda -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/busqueda_calorias"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Cantidad de calorías" />
+
+                <Spinner
+                    android:id="@+id/busqueda_nombre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <Spinner
+                    android:id="@+id/busqueda_tipo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <!-- Lista de dietas -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+</LinearLayout>
