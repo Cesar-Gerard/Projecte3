@@ -2,6 +2,8 @@
 package model;
 
 
+import android.net.Uri;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -83,6 +85,10 @@ public class User_Retro {
 
     private String addres;
 
+    private Uri profile_image;
+
+    private double IMC;
+
 
 
 
@@ -157,5 +163,21 @@ public class User_Retro {
 
     public void setAddres(String addres) {
         this.addres = addres;
+    }
+
+    public Uri getProfile_image() {
+        return profile_image;
+    }
+
+    public void setProfile_image(Uri profile_image) {
+        this.profile_image = profile_image;
+    }
+
+    public double getIMC() {
+        return IMC;
+    }
+
+    public void setIMC(double IMC) {
+        this.IMC = IMC;
     }
 }

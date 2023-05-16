@@ -59,7 +59,24 @@
                     app:layout_constraintEnd_toEndOf="@+id/view"
                     app:layout_constraintStart_toStartOf="@+id/view"
                     app:layout_constraintTop_toTopOf="@+id/view"
-                    app:layout_constraintVertical_bias="0.06999999" />
+                    app:layout_constraintVertical_bias="0.06999999"
+                    android:clickable="true"
+                    />
+
+                <Button
+                    android:id="@+id/btnChangeImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/trans"
+                    android:text="Canviar"
+                    android:textColor="@color/lavender"
+                    app:layout_constraintBottom_toTopOf="@+id/textNom"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                    android:textStyle="italic"/>
+
+
+
 
                 <TextView
                     android:id="@+id/textNom"
@@ -204,6 +221,7 @@
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:padding="5dp"
+                            android:enabled="false"
                             android:textAlignment="center"
                             android:background="@drawable/custom_edittext"
                              />
@@ -240,6 +258,7 @@
                         <EditText
                             android:id="@+id/edt_phone"
                             android:layout_width="80dp"
+                            android:enabled="false"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textColor="@color/black"
@@ -280,6 +299,7 @@
                         <EditText
                             android:id="@+id/edt_street"
                             android:layout_width="80dp"
+                            android:enabled="false"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textColor="@color/black"
@@ -322,6 +342,7 @@
                             android:textColor="@color/black"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:enabled="false"
                             android:padding="5dp"
                             android:textAlignment="center"
                             android:background="@drawable/custom_edittext" />

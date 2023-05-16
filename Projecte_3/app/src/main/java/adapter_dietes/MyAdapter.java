@@ -1,5 +1,6 @@
 package adapter_dietes;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dietaapp.R;
@@ -42,6 +44,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         double resultat = Double.valueOf(object.getCalories())/1000;
 
         holder.calories.setText(String.valueOf(resultat)+" kcal");
+
+
+        //Programen el comportament dels items
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController((Activity) v.getContext(),R.id.nav_host_fragment).navigate(R.id.detall_dietaFragment);
+            }
+        });
 
     }
 

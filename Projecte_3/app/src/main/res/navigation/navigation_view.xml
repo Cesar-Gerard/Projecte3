@@ -19,4 +19,9 @@
         android:name="com.example.dietaapp.DietasFragment"
         android:label="fragment_dietas"
         tools:layout="@layout/fragment_dietas" /><action android:id="@+id/action_global_dietasFragment" app:destination="@id/dietasFragment"/>
+    <fragment
+        android:id="@+id/detall_dietaFragment"
+        android:name="com.example.dietaapp.detall_dietaFragment"
+        android:label="fragment_detall_dieta"
+        tools:layout="@layout/fragment_detall_dieta" /><action android:id="@+id/action_global_detall_dietaFragment" app:destination="@id/detall_dietaFragment"/>
 </navigation>

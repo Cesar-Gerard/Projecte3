@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Locale;
 
 import api.ApiManager;
+import model.CustomRectangleView;
 import model.Datum;
 import model.HistorialResponse;
 import model.PacientResponse;
@@ -70,11 +71,18 @@ public class CurrentPlanFragment extends Fragment {
         demanarHistorial();
 
 
+        if(user.getProfile_image()!=null){
+            binding.imageViewavatar.setImageURI(user.getProfile_image());
+        }
+
+
 
 
         return v;
 
     }
+
+
 
     //Crea y gestiona la gràfica
     private void elementsGrafica(List<Datum> historial, Date fechaInicial) throws ParseException {
@@ -124,6 +132,9 @@ public class CurrentPlanFragment extends Fragment {
         LineData lineData = new LineData(dataSet);
         binding.graficoPeso.setData(lineData);
         binding.graficoPeso.invalidate();
+
+        binding.graficoPeso.setTouchEnabled(false);
+
     }
 
 
@@ -146,6 +157,8 @@ public class CurrentPlanFragment extends Fragment {
 
                 //Rebem el historial més recent per no haber de treballar amb la llista sencer
                 omplircamps( response.body().getHistorial(3));
+
+
 
             }
 
@@ -173,6 +186,7 @@ public class CurrentPlanFragment extends Fragment {
                 user.setPhone_number(response.body().getData().getPhonePacient());
                 User_Retro.setDiet(response.body().getData().getCurrentDiet());
                 User_Retro.setUser(user);
+
             }
 
             @Override
@@ -202,8 +216,11 @@ public class CurrentPlanFragment extends Fragment {
         double pes= Double.parseDouble(actual.getWeigth());
 
         double resultat = calcularIMC(pes, altura);
+        user.setIMC(resultat);
 
         binding.edtIMC.setText(String.valueOf(resultat));
+        binding.customRectangleView.setIMC((float) user.getIMC()); // Ajusta el valor del IMC según tus necesidades
+
 
 
     }

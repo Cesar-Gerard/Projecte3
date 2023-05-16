@@ -24,6 +24,17 @@
 
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:text="Dieta Actual: "
+            android:textSize="24dp"
+            android:textStyle="italic"
+            android:layout_gravity="center"/>
+
+
         <!-- Parte superior de la pantalla -->
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -124,12 +135,27 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="6dp"
+                android:background="#d9d9d9" />
+
+
             <!-- Filtro de búsquda -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp">
+
+
+
 
                 <EditText
                     android:id="@+id/busqueda_calorias"
@@ -139,6 +165,7 @@
                     android:hint="Calories: " />
 
                 <Spinner
+
                     android:id="@+id/busqueda_numero"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -153,20 +180,33 @@
             </LinearLayout>
 
 
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="6dp"
+                android:background="#d9d9d9"
+                />
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:cardCornerRadius="20dp"
-                android:background="@color/lavender">
+                android:layout_marginTop="10dp"
+
+                >
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
+                    android:background="@drawable/gray_background"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-
 
                     />
 
