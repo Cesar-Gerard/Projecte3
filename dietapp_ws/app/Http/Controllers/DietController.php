@@ -112,8 +112,6 @@ class DietController extends Controller
             ], 400);
         }
         
-
-        
         
         return response()->json(compact('data'));
 

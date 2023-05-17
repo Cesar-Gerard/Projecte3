@@ -138,14 +138,24 @@ class UserController extends Controller
      */
     public function update_password(Request $request){
         
-        $id_pacient = $request->id;
-        $password = $request->password;
+        $usuari_pacient = $request->username;
+        $password_antiga = $request->password_antiga;
+        $password_nova = $request->password_nova;
+
 
         try{
-
-            $user = User::where('id','=',$id_pacient)->first();
-            $user->password = bcrypt($request->password);
-            $user->save();
+            
+            $user = User::where('nickname_user','=',$request->username)->where('password','=',bcrypt($password_antiga))->first();
+            if($user != null){
+                //En cas que no coincideixi, canviar la password
+                $user->password = bcrypt($password_nova);
+                $user->save();
+            }else{
+                //Comprovar primer que la contrasenya anterior coincideixi amb l'actual
+                return response()->json([
+                    'error' => "Per poder canviar-te la contrasenya has d'introduir l'anterior".$ex
+                ], 404);
+            }
 
         }catch(\Illuminate\Database\QueryException $ex){
             return response()->json([

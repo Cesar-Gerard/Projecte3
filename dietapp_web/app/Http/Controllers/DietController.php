@@ -54,5 +54,22 @@ class DietController extends Controller
         return json_encode($dishes);
 
     }
+
+
+
+
+
+    public function diet_add(Request $request){
+
+        $dieta = $request->dieta;
+
+
+        if(Diets::add_diet($dieta)){
+
+        }else{
+
+        }
+        
+    }
     
 }

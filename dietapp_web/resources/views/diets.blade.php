@@ -83,7 +83,7 @@
 
     <div class="row">
         <div class="col-2">
-            <a href="{{route('view_add_pacient')}}" class="button-3 mb-2" style="background-color:green;"><i class="fa-solid fa-plus"></i></a> 
+            <a href="{{route('view_add_dieta')}}" class="button-3 mb-2" style="background-color:green;"><i class="fa-solid fa-plus"></i></a> 
         </div>
     </div>
 

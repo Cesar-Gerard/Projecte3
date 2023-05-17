@@ -264,10 +264,29 @@ Route::get("/dietes", function(){
 })->name("dietes");
 
 
-Route::get("/dieta/{id}", function($dieta){
+Route::get("/dieta/{id}", function($id_dieta){
 
     if(Auth::check()){
 
+        //Diets
+        //Diets_dishes
+        $diet = Diets::getDietById($id_dieta);
+        $tipus_dietes = TypeDiets::all();
+        $dishes = Dishes::getAllDishes();
+        if($diet!=null){
+            $diets_dishes_esmorzars = Diets::getDietDietsDishesByMeals($id_dieta,1);
+            $diets_dishes_migmati = Diets::getDietDietsDishesByMeals($id_dieta,5);
+            $diets_dishes_dinar = Diets::getDietDietsDishesByMeals($id_dieta,2);
+            $diets_dishes_berenar = Diets::getDietDietsDishesByMeals($id_dieta,3);
+            $diets_dishes_sopar = Diets::getDietDietsDishesByMeals($id_dieta,4);
+            
+            return view("diet_see",["diet"=>$diet,"diets_dishes_esmorzars"=>$diets_dishes_esmorzars,"diets_dishes_migmati"=>$diets_dishes_migmati,
+                        "diets_dishes_dinar"=>$diets_dishes_dinar,"diets_dishes_berenar"=>$diets_dishes_berenar,"diets_dishes_sopar"=>$diets_dishes_sopar,
+                        "tipus_dietes"=>$tipus_dietes,"dishes"=>$dishes]);
+    
+        }else{
+            return redirect(route("index"));
+        }
 
     }else{
         return redirect(route("index"));
@@ -294,7 +313,7 @@ Route::get('/add_dieta', function(){
     }
 
     
-})->name("view_add_pacient");
+})->name("view_add_dieta");
 
 
 
@@ -309,3 +328,4 @@ Route::post("pacient/edit_pacient",[PacientController::class, "edit_pacient"])->
 Route::post("diet/filtrar_all_diets",[DietController::class, "filtrar_all_diets"])->name("diet.filtrar_all_diets");
 Route::post("diet/filtrar",[DietController::class, "filtrar_dieta"])->name("diet.filtrar");
 Route::post("diet/dishes_filtrar",[DietController::class, "dishes_filtrar"])->name("diet.dishes_filtrar");
+Route::post("diet/add",[DietController::class, "diet_add"])->name("diet_add");

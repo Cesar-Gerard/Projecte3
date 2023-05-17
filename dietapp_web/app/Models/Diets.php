@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use DB;
 
+use App\Models\DietsDishes;
+
 class Diets extends Model
 {
     use HasFactory;
@@ -85,6 +87,119 @@ class Diets extends Model
         }
 
         return $arr_dietes;
+
+    }
+
+
+    public static function getDietDietsDishesByMeals($diet,$id_meal){
+
+        $diets = DB::table('diets')
+                    ->select('diets_dishes.*')
+                    ->join('diets_dishes','diets.id_diet','=','diets_dishes.dietas_id_dieta')
+                    ->where('diets_dishes.meal','=',$id_meal)
+                    ->orderBy('week_day')
+                    ->orderBy('meal')
+                    ->get();
+
+        return $diets;
+
+
+    }
+
+
+    public static function add_diet($dieta){
+
+
+/*
+
+    JSON 
+    /*
+        let dieta = {};
+        dieta.nom = nom;
+        dieta.descripcio = descripcio;
+        dieta.tipus = tipus_dieta;
+        dieta.esmorzars = esmorzars;
+        dieta.dinars = dinars;
+        dieta.berenars = berenars;
+        dieta.sopars = sopars;
+        dieta.migdies = migdies;
+    */
+
+/*
+
+DB: 
+    name
+    calories(ho ha de fer un trigger)
+    number_meals,
+    description,
+    tipus_dieta      
+*/ 
+
+/*
+    dietas_id_dieta
+    dishes_id_dishes
+    week_day
+    meal
+*/
+
+        
+
+        try{
+            \DB::beginTransaction();        
+
+            $diet = new Diets();
+            $diet->name = $dieta['nom'];
+            $diet->calories = 0;
+            $diet->number_meals = 5;
+            $diet->description = $dieta['descripcio'];
+            $diet->tipus_dieta = $dieta['tipus'];
+
+            $diet->save();
+           
+            
+            $id_dieta_nou = $diet->id_diet;
+
+            $arr_meals = array();
+            array_push($arr_meals,"esmorzars");
+            array_push($arr_meals,"dinars");
+            array_push($arr_meals,"berenars");
+            array_push($arr_meals,"sopars");
+            array_push($arr_meals,"migdies");
+
+            $j = 0;
+            $k = 1;
+            foreach($arr_meals as $meal){
+                
+                for($i=1; $i < count($dieta[$meal]); $i++){
+                    $diets_dishes = new DietsDishes();
+                    
+                    $diets_dishes->dietas_id_dieta = $id_dieta_nou;
+                    $diets_dishes->dishes_id_dishes = $dieta[$meal][$i][$j];
+
+                    $diets_dishes->week_day = $i;
+                    $diets_dishes->meal = $k;
+
+                    $diets_dishes->save();
+
+                }
+                $k++;
+            }
+
+            \DB::commit();
+            
+        }catch(\Illuminate\Database\QueryException $ex){
+            echo $ex;
+            \DB::rollback();
+            return false;
+        }catch(Throwable $ex){
+            echo $ex;
+            \DB::rollback();
+            return false;
+        }
+        
+
+
+
 
     }
 
