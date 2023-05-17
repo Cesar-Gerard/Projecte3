@@ -149,7 +149,7 @@ INSERT INTO `dishes` (`id_dishes`, `name_dishes`, `calories`) VALUES
 -- Volcado de datos para la tabla `dishes_ingredients`
 --
 
-INSERT INTO `dishes_ingredients` (`dishes_id_dishes`, `ingredients_id_ingredient`, `quantity`, `mesure`) VALUES
+INSERT INTO `dishes_ingredients` (`dish_id_dish`, `ingredient_id_ingredient`, `quantity`, `mesure`) VALUES
 (1, 1, 1.00, 3),
 (5, 22, 1.00, 3),
 (5, 29, 1.00, 3),
@@ -188,7 +188,7 @@ INSERT INTO `type_diets` (`id_type`, `name_type`) VALUES
 -- Volcado de datos para la tabla `diets`
 --
 
-INSERT INTO `diets` (`id_diet`, `name`, `calories`, `number_meals`, `description`, `tipus_dieta`) VALUES
+INSERT INTO `diets` (`id_diet`, `name`, `calories`, `number_meals`, `description`, `type_diet`) VALUES
 (1, 'Dieta Estàndard', 105532.00, 5, 'Dieta Estàdard per Baixar el Nombre de kcal en la nostra alimentació', 2);
 
 
@@ -198,7 +198,7 @@ INSERT INTO `diets` (`id_diet`, `name`, `calories`, `number_meals`, `description
 -- Volcado de datos para la tabla `diets_dishes`
 --
 
-INSERT INTO `diets_dishes` (`dietas_id_dieta`, `dishes_id_dishes`, `week_day`, `meal`) VALUES
+INSERT INTO `diets_dishes` (`diet_id_diet`, `dish_id_dish`, `week_day`, `meal`) VALUES
 (1, 1, 1, 1),
 (1, 2, 2, 1),
 (1, 4, 3, 1),
@@ -248,7 +248,7 @@ INSERT INTO `users` (`id`, `name_user`, `lastname_user`, `nickname_user`, `passw
 -- Volcado de datos para la tabla `nutricionist`
 --
 
-INSERT INTO `nutricionist` (`id_nutricionist`) VALUES
+INSERT INTO `nutricionists` (`id_nutricionist`) VALUES
 (2),
 (3);
 
@@ -256,7 +256,7 @@ INSERT INTO `nutricionist` (`id_nutricionist`) VALUES
 -- Volcado de datos para la tabla `pacient`
 --
 
-INSERT INTO `pacient` (`id_pacient`, `assigned_nutricionist`, `email_pacient`, `phone_pacient`, `address_pacient`, `current_diet`) VALUES
+INSERT INTO `patients` (`id_pacient`, `assigned_nutricionist`, `email_pacient`, `phone_pacient`, `address_pacient`, `current_diet`) VALUES
 (1, 2, 'gcesar@milaifontanals.com', '+656394050', 'Can Debot', 1),
 (4, 3, 'ipuga@milaifontanals.org', '+656394051', NULL, 1),
 (5, NULL, NULL, NULL, NULL, 1),
@@ -267,5 +267,5 @@ INSERT INTO `pacient` (`id_pacient`, `assigned_nutricionist`, `email_pacient`, `
 -- Volcado de datos para la tabla `historial_pacient`
 --
 
-INSERT INTO `historial_pacient` (`id_historial`, `date`, `id_pacient`, `diet`, `weigth`, `heigth`, `chest`, `leg`, `arm`, `hip`) VALUES
-(1, '2023-04-20', 1, 1, 78.30, 1.76, 70.00, 90.00, 90.00, 93.00);
+INSERT INTO `historial_pacient` (`start_date`, `id_patient`, `diet`, `weigth`, `heigth`, `chest`, `leg`, `arm`, `hip`,`control_date`,`status`) VALUES
+('2023-04-20', 1, 1, 78.30, 1.76, 70.00, 90.00, 90.00, 93.00,'2023-04-20','I');

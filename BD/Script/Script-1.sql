@@ -33,8 +33,8 @@ DROP TABLE IF EXISTS `projecte3`.`type_diets` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`type_diets` (
   `id_type` BIGINT(10) NOT NULL AUTO_INCREMENT,
-  `name_type` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`id_type`, `name_type`))
+  `name_type` VARCHAR(200) UNIQUE NOT NULL,
+  PRIMARY KEY (`id_type`))
 ENGINE = InnoDB;
 
 
@@ -45,29 +45,29 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projecte3`.`diets` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`diets` (
-  `id_diet` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_diet` BIGINT(10) UNSIGNED AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `calories` DECIMAL(10,2) NOT NULL,
   `number_meals` INT NOT NULL,
   `description` VARCHAR(200) NOT NULL,
-  `tipus_dieta` BIGINT(10) NULL,
+  `type_diet` BIGINT(10) NULL,
   PRIMARY KEY (`id_diet`),
   CONSTRAINT `FK_TYPE_DIETS`
-    FOREIGN KEY (`tipus_dieta`)
+    FOREIGN KEY (`type_diet`)
     REFERENCES `projecte3`.`type_diets` (`id_type`)
     ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-CREATE INDEX `FK_TYPE_DIETS_idx` ON `projecte3`.`diets` (`tipus_dieta` ASC) ;
+CREATE INDEX `FK_TYPE_DIETS_idx` ON `projecte3`.`diets` (`type_diet` ASC) ;
 
 
 -- -----------------------------------------------------
--- Table `projecte3`.`nutricionist`
+-- Table `projecte3`.`nutricionists`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projecte3`.`nutricionist` ;
+DROP TABLE IF EXISTS `projecte3`.`nutricionists` ;
 
-CREATE TABLE IF NOT EXISTS `projecte3`.`nutricionist` (
+CREATE TABLE IF NOT EXISTS `projecte3`.`nutricionists` (
   `id_nutricionist` BIGINT(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id_nutricionist`),
   CONSTRAINT `FK_USERS_ID`
@@ -79,11 +79,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `projecte3`.`pacient`
+-- Table `projecte3`.`patients`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projecte3`.`pacient` ;
+DROP TABLE IF EXISTS `projecte3`.`patients` ;
 
-CREATE TABLE IF NOT EXISTS `projecte3`.`pacient` (
+CREATE TABLE IF NOT EXISTS `projecte3`.`patients` (
   `id_pacient` BIGINT(10) UNSIGNED NOT NULL,
   `assigned_nutricionist` BIGINT(10) UNSIGNED NULL,
   `email_pacient` VARCHAR(45) null check  (`email_pacient` LIKE '%@%.%'),
@@ -103,14 +103,14 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`pacient` (
     ON UPDATE CASCADE,
   CONSTRAINT `FK_PACIENT_NUTRICIONISTA`
     FOREIGN KEY (`assigned_nutricionist`)
-    REFERENCES `projecte3`.`nutricionist` (`id_nutricionist`)
+    REFERENCES `projecte3`.`nutricionists` (`id_nutricionist`)
     ON DELETE set NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-CREATE INDEX `FK_PACIENT_DIETAS_idx` ON `projecte3`.`pacient` (`current_diet` ASC) ;
+CREATE INDEX `FK_PACIENT_DIETAS_idx` ON `projecte3`.`patients` (`current_diet` ASC) ;
 
-CREATE INDEX `FK_PACIENT_NUTRICIONISTA_idx` ON `projecte3`.`pacient` (`assigned_nutricionist` ASC) ;
+CREATE INDEX `FK_PACIENT_NUTRICIONISTA_idx` ON `projecte3`.`patients` (`assigned_nutricionist` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -119,26 +119,27 @@ CREATE INDEX `FK_PACIENT_NUTRICIONISTA_idx` ON `projecte3`.`pacient` (`assigned_
 DROP TABLE IF EXISTS `projecte3`.`historial_pacient` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`historial_pacient` (
-  `id_historial` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `date` DATE NOT NULL,
-  `id_pacient` BIGINT(10) UNSIGNED NOT NULL,
-  `diet` BIGINT(10) UNSIGNED NULL,
+  `start_date` DATE NOT NULL,
+  `id_patient` BIGINT(10) UNSIGNED NOT NULL,
+  `diet` BIGINT(10) UNSIGNED,
   `weigth` DECIMAL(6,2) NOT NULL,
   `heigth` DECIMAL(6,2) NOT NULL,
   `chest` DECIMAL(6,2) NULL,
   `leg` DECIMAL(6,2) NULL,
   `arm` DECIMAL(6,2) NULL,
   `hip` DECIMAL(6,2) NULL,
-  PRIMARY KEY (`id_historial`, `date`),
+  `control_date` DATE NOT NULL,
+  `status` VARCHAR(2) not null CHECK (`status`="I" Or `status`="F"),
+  PRIMARY KEY (`start_date`,`id_patient`,`diet`),
   CONSTRAINT `FK_ID_PACIENT`
-    FOREIGN KEY (`id_pacient`)
-    REFERENCES `projecte3`.`pacient` (`id_pacient`)
+    FOREIGN KEY (`id_patient`)
+    REFERENCES `projecte3`.`patients` (`id_pacient`)
     ON DELETE no ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `FK_HISTORIAL_DIETA`
     FOREIGN KEY (`diet`)
     REFERENCES `projecte3`.`diets` (`id_diet`)
-    ON DELETE set NULL
+    ON DELETE no action
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -199,8 +200,8 @@ DROP TABLE IF EXISTS `projecte3`.`meal_dishes` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`meal_dishes` (
   `id_meal` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name_meal` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_meal`, `name_meal`))
+  `name_meal` VARCHAR(45) unique NOT NULL,
+  PRIMARY KEY (`id_meal`))
 ENGINE = InnoDB;
 
 
@@ -211,8 +212,8 @@ DROP TABLE IF EXISTS `projecte3`.`week_days` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`week_days` (
   `id_day` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name_day` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_day`, `name_day`))
+  `name_day` VARCHAR(45) unique NOT NULL,
+  PRIMARY KEY (`id_day`))
 ENGINE = InnoDB;
 
 
@@ -222,18 +223,18 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projecte3`.`diets_dishes` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`diets_dishes` (
-  `dietas_id_dieta` BIGINT(10) UNSIGNED not NULL,
-  `dishes_id_dishes` BIGINT(10) UNSIGNED NOT NULL,
+  `diet_id_diet` BIGINT(10) UNSIGNED not NULL,
+  `dish_id_dish` BIGINT(10) UNSIGNED NOT NULL,
   `week_day` BIGINT(10) UNSIGNED NULL,
   `meal` BIGINT(10) UNSIGNED NULL,
-  PRIMARY KEY (`dietas_id_dieta`, `dishes_id_dishes`),
+  PRIMARY KEY (`diet_id_diet`, `dish_id_dish`),
   CONSTRAINT `fk_Dietas_has_Dishes_Dietas1`
-    FOREIGN KEY (`dietas_id_dieta`)
+    FOREIGN KEY (`diet_id_diet`)
     REFERENCES `projecte3`.`diets` (`id_diet`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Dietas_has_Dishes_Dishes1`
-    FOREIGN KEY (`dishes_id_dishes`)
+    FOREIGN KEY (`dish_id_dish`)
     REFERENCES `projecte3`.`dishes` (`id_dishes`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
@@ -249,9 +250,9 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`diets_dishes` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Dietas_has_Dishes_Dishes1_idx` ON `projecte3`.`diets_dishes` (`dishes_id_dishes` ASC) ;
+CREATE INDEX `fk_Dietas_has_Dishes_Dishes1_idx` ON `projecte3`.`diets_dishes` (`dish_id_dish` ASC) ;
 
-CREATE INDEX `fk_Dietas_has_Dishes_Dietas1_idx` ON `projecte3`.`diets_dishes` (`dietas_id_dieta` ASC) ;
+CREATE INDEX `fk_Dietas_has_Dishes_Dietas1_idx` ON `projecte3`.`diets_dishes` (`diet_id_diet` ASC) ;
 
 CREATE INDEX `FK_DIETSDISHES_MEAL_idx` ON `projecte3`.`diets_dishes` (`meal` ASC) ;
 
@@ -264,18 +265,18 @@ CREATE INDEX `FK_DIETDISHES_WEEKDAYS_idx` ON `projecte3`.`diets_dishes` (`week_d
 DROP TABLE IF EXISTS `projecte3`.`dishes_ingredients` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`dishes_ingredients` (
-  `dishes_id_dishes` BIGINT(10) UNSIGNED NOT NULL,
-  `ingredients_id_ingredient` BIGINT(10) UNSIGNED NOT NULL,
+  `dish_id_dish` BIGINT(10) UNSIGNED NOT NULL,
+  `ingredient_id_ingredient` BIGINT(10) UNSIGNED NOT NULL,
   `quantity` DECIMAL(10,2) UNSIGNED NULL,
   `mesure` BIGINT(10) UNSIGNED NULL,
-  PRIMARY KEY (`dishes_id_dishes`, `ingredients_id_ingredient`),
+  PRIMARY KEY (`dish_id_dish`, `ingredient_id_ingredient`),
   CONSTRAINT `fk_Ingridients_has_Dishes_Ingridients1`
-    FOREIGN KEY (`ingredients_id_ingredient`)
+    FOREIGN KEY (`ingredient_id_ingredient`)
     REFERENCES `projecte3`.`ingredients` (`id_ingredient`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Ingridients_has_Dishes_Dishes1`
-    FOREIGN KEY (`dishes_id_dishes`)
+    FOREIGN KEY (`dish_id_dish`)
     REFERENCES `projecte3`.`dishes` (`id_dishes`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
@@ -286,9 +287,9 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`dishes_ingredients` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Ingridients_has_Dishes_Dishes1_idx` ON `projecte3`.`dishes_ingredients` (`dishes_id_dishes` ASC) ;
+CREATE INDEX `fk_Ingridients_has_Dishes_Dishes1_idx` ON `projecte3`.`dishes_ingredients` (`dish_id_dish` ASC) ;
 
-CREATE INDEX `fk_Ingridients_has_Dishes_Ingridients1_idx` ON `projecte3`.`dishes_ingredients` (`ingredients_id_ingredient` ASC) ;
+CREATE INDEX `fk_Ingridients_has_Dishes_Ingridients1_idx` ON `projecte3`.`dishes_ingredients` (`ingredient_id_ingredient` ASC) ;
 
 CREATE INDEX `fk_Dishes_Ingredients_Unit Mesure1_idx` ON `projecte3`.`dishes_ingredients` (`mesure` ASC) ;
 
