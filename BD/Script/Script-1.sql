@@ -108,6 +108,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`patients` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+
 CREATE INDEX `FK_PACIENT_DIETAS_idx` ON `projecte3`.`patients` (`current_diet` ASC) ;
 
 CREATE INDEX `FK_PACIENT_NUTRICIONISTA_idx` ON `projecte3`.`patients` (`assigned_nutricionist` ASC) ;
