@@ -256,7 +256,7 @@ INSERT INTO `nutricionists` (`id_nutricionist`) VALUES
 -- Volcado de datos para la tabla `pacient`
 --
 
-INSERT INTO `patients` (`id_pacient`, `assigned_nutricionist`, `email_pacient`, `phone_pacient`, `address_pacient`, `current_diet`) VALUES
+INSERT INTO `patients` (`id_pacient`, `assigned_nutricionist`, `email_patient`, `phone_patient`, `address_patient`, `current_diet`) VALUES
 (1, 2, 'gcesar@milaifontanals.com', '+656394050', 'Can Debot', 1),
 (4, 3, 'ipuga@milaifontanals.org', '+656394051', NULL, 1),
 (5, NULL, NULL, NULL, NULL, 1),
@@ -267,5 +267,5 @@ INSERT INTO `patients` (`id_pacient`, `assigned_nutricionist`, `email_pacient`, 
 -- Volcado de datos para la tabla `historial_pacient`
 --
 
-INSERT INTO `historial_pacient` (`start_date`, `id_patient`, `diet`, `weigth`, `heigth`, `chest`, `leg`, `arm`, `hip`,`control_date`,`status`) VALUES
+INSERT INTO `historial_patient` (`start_date`, `id_patient`, `diet`, `weigth`, `heigth`, `chest`, `leg`, `arm`, `hip`,`control_date`,`status`) VALUES
 ('2023-04-20', 1, 1, 78.30, 1.76, 70.00, 90.00, 90.00, 93.00,'2023-04-20','I');

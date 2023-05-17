@@ -86,9 +86,9 @@ DROP TABLE IF EXISTS `projecte3`.`patients` ;
 CREATE TABLE IF NOT EXISTS `projecte3`.`patients` (
   `id_pacient` BIGINT(10) UNSIGNED NOT NULL,
   `assigned_nutricionist` BIGINT(10) UNSIGNED NULL,
-  `email_pacient` VARCHAR(45) null check  (`email_pacient` LIKE '%@%.%'),
-  `phone_pacient` VARCHAR(20) null CHECK (`phone_pacient` LIKE '%+%'),
-  `address_pacient` VARCHAR(1000) NULL,
+  `email_patient` VARCHAR(45) null check  (`email_patient` LIKE '%@%.%'),
+  `phone_patient` VARCHAR(20) null CHECK (`phone_patient` LIKE '%+%'),
+  `address_patient` VARCHAR(1000) NULL,
   `current_diet` BIGINT(10) UNSIGNED NULL,
   PRIMARY KEY (`id_pacient`),
   CONSTRAINT `FK_PACIENT_DIETAS`
@@ -116,9 +116,9 @@ CREATE INDEX `FK_PACIENT_NUTRICIONISTA_idx` ON `projecte3`.`patients` (`assigned
 -- -----------------------------------------------------
 -- Table `projecte3`.`historial_pacient`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `projecte3`.`historial_pacient` ;
+DROP TABLE IF EXISTS `projecte3`.`historial_patient` ;
 
-CREATE TABLE IF NOT EXISTS `projecte3`.`historial_pacient` (
+CREATE TABLE IF NOT EXISTS `projecte3`.`historial_patient` (
   `start_date` DATE NOT NULL,
   `id_patient` BIGINT(10) UNSIGNED NOT NULL,
   `diet` BIGINT(10) UNSIGNED,
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`historial_pacient` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-CREATE INDEX `FK_HISTORIAL_DIETA_idx` ON `projecte3`.`historial_pacient` (`diet` ASC) ;
+CREATE INDEX `FK_HISTORIAL_DIETA_idx` ON `projecte3`.`historial_patient` (`diet` ASC) ;
 
 
 -- -----------------------------------------------------
