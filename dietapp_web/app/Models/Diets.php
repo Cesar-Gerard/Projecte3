@@ -96,6 +96,7 @@ class Diets extends Model
         $diets = DB::table('diets')
                     ->select('diets_dishes.*')
                     ->join('diets_dishes','diets.id_diet','=','diets_dishes.dietas_id_dieta')
+                    ->join('dishes','dishes.id_dishes','=','diets_dishes.')
                     ->where('diets_dishes.meal','=',$id_meal)
                     ->orderBy('week_day')
                     ->orderBy('meal')
