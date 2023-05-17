@@ -120,12 +120,16 @@
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="esmorzar-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
                             
+                            @php
+                                
+                                $array = (array) $diets_dishes_esmorzars;
+                                var_dump($array);die();    
+                                
+                            @endphp
                             @foreach($diets_dishes_esmorzars as $dd)
-                            @php 
-                                var_dump($dd);die();
-                            @endphp 
-                                <div class="card ui-draggable ui-draggable-handle" id="dish-3">
-                                    {{$dd->dishes_id_dishes}}
+                                
+                                <div class="card ui-draggable ui-draggable-handle" id="dish-{{$dd->dishes_id_dishes}}">
+                                    {{$dd->name_dishes}}
                                 </div>
                             
 

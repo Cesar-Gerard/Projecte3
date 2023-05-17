@@ -94,10 +94,11 @@ class Diets extends Model
     public static function getDietDietsDishesByMeals($diet,$id_meal){
 
         $diets = DB::table('diets')
-                    ->select('diets_dishes.*')
+                    ->select('diets_dishes.*','dishes.name_dishes')
                     ->join('diets_dishes','diets.id_diet','=','diets_dishes.dietas_id_dieta')
-                    ->join('dishes','dishes.id_dishes','=','diets_dishes.')
+                    ->join('dishes','dishes.id_dishes','=','diets_dishes.dishes_id_dishes')
                     ->where('diets_dishes.meal','=',$id_meal)
+                    ->where('diets.id_diet','=',$diet)
                     ->orderBy('week_day')
                     ->orderBy('meal')
                     ->get();
