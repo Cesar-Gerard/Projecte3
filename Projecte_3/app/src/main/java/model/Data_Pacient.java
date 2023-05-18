@@ -17,10 +17,10 @@ public class Data_Pacient {
     @SerializedName("assigned_nutricionist")
     @Expose
     private Integer assignedNutricionist;
-    @SerializedName("phone_pacient")
+    @SerializedName("phone_patient")
     @Expose
     private String phonePacient;
-    @SerializedName("address_pacient")
+    @SerializedName("address_patient")
     @Expose
     private String addressPacient;
     @SerializedName("current_diet")

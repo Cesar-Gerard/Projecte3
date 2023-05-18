@@ -60,20 +60,20 @@
                     app:layout_constraintStart_toStartOf="@+id/view"
                     app:layout_constraintTop_toTopOf="@+id/view"
                     app:layout_constraintVertical_bias="0.06999999"
-                    android:clickable="true"
+
                     />
 
                 <Button
                     android:id="@+id/btnChangeImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/trans"
-                    android:text="Canviar"
-                    android:textColor="@color/lavender"
+                    android:text="Canviar Imatge"
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
                     app:layout_constraintBottom_toTopOf="@+id/textNom"
                     app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                    android:textStyle="italic"/>
+                    app:layout_constraintStart_toStartOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
 
 
@@ -86,10 +86,9 @@
                     android:textColor="#ffff"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="@+id/imageView3"
                     app:layout_constraintStart_toStartOf="@+id/imageView3"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnChangeImage" />
 
                 <TextView
                     android:id="@+id/txvEmail"
@@ -179,6 +178,7 @@
                             android:textSize="18sp" />
 
                         <Button
+                            android:textStyle="italic"
                             android:id="@+id/button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -221,6 +221,7 @@
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:padding="5dp"
+                            android:textSize="15dp"
                             android:enabled="false"
                             android:textAlignment="center"
                             android:background="@drawable/custom_edittext"
@@ -259,6 +260,7 @@
                             android:id="@+id/edt_phone"
                             android:layout_width="80dp"
                             android:enabled="false"
+                            android:textSize="15dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textColor="@color/black"
@@ -304,6 +306,7 @@
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:padding="5dp"
+                            android:textSize="15dp"
                             android:textAlignment="center"
                             android:background="@drawable/custom_edittext" />
 
@@ -344,6 +347,7 @@
                             android:layout_weight="1"
                             android:enabled="false"
                             android:padding="5dp"
+                            android:textSize="15dp"
                             android:textAlignment="center"
                             android:background="@drawable/custom_edittext" />
 

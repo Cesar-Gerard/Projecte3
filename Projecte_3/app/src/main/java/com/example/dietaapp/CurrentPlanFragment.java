@@ -94,7 +94,7 @@ public class CurrentPlanFragment extends Fragment {
             @Override
             public int compare(Datum o1, Datum o2) {
                 try {
-                    return o1.getDate().compareTo(o2.getDate());
+                    return o1.getControlDate().compareTo(o2.getControlDate());
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
@@ -105,7 +105,7 @@ public class CurrentPlanFragment extends Fragment {
         for (int i = 0; i < historial.size(); i++) {
             Datum entrada = historial.get(i);
             float peso = Float.valueOf(entrada.getWeigth());
-            Date fechaEntrada = entrada.getDate();
+            Date fechaEntrada = entrada.getControlDate();
 
             // Verifica si la fecha de la entrada está dentro del mes de la fecha inicial
             Calendar calendarFechaInicial = Calendar.getInstance();
@@ -149,7 +149,7 @@ public class CurrentPlanFragment extends Fragment {
             public void onResponse(Call<HistorialResponse> call, Response<HistorialResponse> response) {
                 user.setHistorial_pacient(response.body().getData());
                 try {
-                    elementsGrafica(user.getHistorial_pacient(), user.getHistorial_pacient().get(3).getDate());
+                    elementsGrafica(user.getHistorial_pacient(), user.getHistorial_pacient().get(3).getControlDate());
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }

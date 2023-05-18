@@ -78,6 +78,11 @@ public class User_Retro {
     @Expose
     private String emailUser;
 
+
+    @SerializedName("image_user")
+    @Expose
+    private String imageUser;
+
     private List<Datum> historial_pacient;
 
 
@@ -179,5 +184,13 @@ public class User_Retro {
 
     public void setIMC(double IMC) {
         this.IMC = IMC;
+    }
+
+    public String getImageUser() {
+        return imageUser;
+    }
+
+    public void setImageUser(String imageUser) {
+        this.imageUser = imageUser;
     }
 }

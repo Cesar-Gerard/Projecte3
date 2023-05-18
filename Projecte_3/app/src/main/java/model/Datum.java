@@ -11,12 +11,10 @@ import java.util.Date;
 
 public class Datum {
 
-    @SerializedName("id_historial")
+    @SerializedName("start_date")
     @Expose
-    private Integer idHistorial;
-    @SerializedName("date")
-    @Expose
-    private String date;
+    private String startDate;
+
     @SerializedName("id_pacient")
     @Expose
     private Integer idPacient;
@@ -42,24 +40,42 @@ public class Datum {
     @Expose
     private String hip;
 
-    public Integer getIdHistorial() {
-        return idHistorial;
+    @SerializedName("control_date")
+    @Expose
+    private String controlDate;
+
+    @SerializedName("status")
+    @Expose
+    private String status;
+
+
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setIdHistorial(Integer idHistorial) {
-        this.idHistorial = idHistorial;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getDate() throws ParseException {
 
-        Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(date);
+    public Date getControlDate() throws ParseException {
+        Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(controlDate);
 
         return date1;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setControlDate(String controlDate) {
+        this.controlDate = controlDate;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 
     public Integer getIdPacient() {
         return idPacient;

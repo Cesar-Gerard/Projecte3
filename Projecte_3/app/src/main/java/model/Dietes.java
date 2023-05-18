@@ -23,7 +23,7 @@ public class Dietes {
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("tipus_dieta")
+    @SerializedName("type_diet")
     @Expose
     private Integer tipusDieta;
 

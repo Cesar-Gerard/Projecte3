@@ -47,9 +47,8 @@ public class LoginActivity extends AppCompatActivity{
 
                         @Override
                         public void onResponse(Call<LoginResponse> call, retrofit2.Response<LoginResponse> response) {
-                            
+                            binding.progressBar.setVisibility(View.GONE);
                             if(response.code()>=200 && response.code()<=300) {
-
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 User_Retro.setUser(response.body().getData().getUser());
                                 User_Retro.setToken(response.body().getData().getToken());
@@ -57,7 +56,7 @@ public class LoginActivity extends AppCompatActivity{
                                 startActivity(i);
 
 
-                            }else{
+                            }else if(response.code()==400){
                                 cridaError();
                             }
 
@@ -65,7 +64,7 @@ public class LoginActivity extends AppCompatActivity{
 
                         @Override
                         public void onFailure(Call<LoginResponse> call, Throwable t) {
-
+                            binding.progressBar.setVisibility(View.GONE);
                         }
                     });
 

@@ -93,7 +93,6 @@ android:background="@drawable/background_page">
 
 
 
-
             <!--Dies completats per el usuari de la dieta setmanal-->
             <androidx.cardview.widget.CardView
                 android:layout_width="260dp"
@@ -192,15 +191,6 @@ android:background="@drawable/background_page">
 
 
 
-
-
-
-
-
-
-
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -208,6 +198,25 @@ android:background="@drawable/background_page">
 
             </androidx.cardview.widget.CardView>
 
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="6dp"
+                android:background="#d9d9d9" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dades Actuals: "
+                android:textSize="32sp"
+                android:textStyle="italic"></TextView>
 
 
 
@@ -321,6 +330,51 @@ android:background="@drawable/background_page">
 
 
             </androidx.cardview.widget.CardView>
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:paddingTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                android:elevation="20dp"
+                android:background="@color/green_weak"
+
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IMC actual:"
+                        android:textColor="@color/black"
+                        android:layout_margin="5dp">
+
+                    </TextView>
+
+                    <model.CustomRectangleView
+                        android:id="@+id/custom_rectangle_view"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="16dp"
+                        />
+
+
+
+                </LinearLayout>
+
+
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
 
             <!--Bloc de Dades 2 -->
             <androidx.cardview.widget.CardView
@@ -462,15 +516,16 @@ android:background="@drawable/background_page">
             </androidx.cardview.widget.CardView>
 
 
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="6dp"
+                android:background="#d9d9d9" />
 
-
-
-
-            <model.CustomRectangleView
-                android:id="@+id/custom_rectangle_view"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_margin="16dp"/>
 
 
 
