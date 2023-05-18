@@ -26,3 +26,4 @@ class HistorialPacient extends Model
         'hip'
     ]; 
 }
+

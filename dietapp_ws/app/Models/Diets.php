@@ -14,7 +14,12 @@ class Diets extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id_type',
-        'name_type'
+        'id_diet',
+        'name',
+        'calories',
+        'number_meals',
+        'description',
+        'tipus_dieta',
     ]; 
 }
+
