@@ -9,7 +9,7 @@ class Pacient extends Model
 {
     use HasFactory;
 
-    public $table = "pacients";
+    public $table = "patients";
 
     public $timestamps = false;
 

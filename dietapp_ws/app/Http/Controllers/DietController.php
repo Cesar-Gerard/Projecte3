@@ -47,10 +47,11 @@ class DietController extends Controller
         try{
 
             $data = Dishes::select('dishes.*')
-                >join('diets_dishes', 'diets_dishes.dishes_id_dishes', '=', 'dishes.id_dishes')
-                ->where('diets_dishes.dietas_id_dieta','=',$diet)
+                >join('diets_dishes', 'diets_dishes.dish_id_dish', '=', 'dishes.id_dishes')
+                ->where('diets_dishes.diet_id_diet','=',$diet)
                 ->get();
-
+                
+                
         }catch(\Illuminate\Database\QueryException $ex){
             return response()->json([
                 'database_error' => "Databae error: ".$ex
@@ -72,7 +73,7 @@ class DietController extends Controller
     public function getHistorialPacient($user){
 
         try{
-            $data = HistorialPacient::where('id_pacient','=',$user)->get();
+            $data = HistorialPacient::where('id_patient','=',$user)->get();
         }catch(\Illuminate\Database\QueryException $ex){
             return response()->json([
                 'database_error' => "Database ".$ex
@@ -98,9 +99,11 @@ class DietController extends Controller
         try{
 
             $data = Ingredients::select('ingredients.*')
-                ->join('dishes_ingredients','dishes_ingredients.ingredients_id_ingredient','=','ingredients.id_ingredient')
-                ->where('dishes_ingredients.dishes_id_dishes','=',$dish)
+                ->join('dishes_ingredients','dishes_ingredients.ingredient_id_ingredient','=','ingredients.id_ingredient')
+                ->where('dishes_ingredients.dish_id_dish','=',$dish)
                 ->get();
+
+                
 
         }catch(\Illuminate\Database\QueryException $ex){
             return response()->json([
