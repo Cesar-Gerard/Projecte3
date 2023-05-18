@@ -19,7 +19,6 @@ class Diets extends Model
         'calories',
         'number_meals',
         'description',
-        'tipus_dieta',
+        'type_diet',
     ]; 
 }
-

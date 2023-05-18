@@ -9,7 +9,7 @@ class Pacient extends Model
 {
     use HasFactory;
 
-    public $table = "pacient";
+    public $table = "pacients";
 
     public $timestamps = false;
 
@@ -18,9 +18,9 @@ class Pacient extends Model
     protected $fillable = [
         'id_pacient',
         'assigned_nutricionist',
-        'email_pacient',
-        'phone_pacient',
-        'address_pacient',
+        'email_patient',
+        'phone_patient',
+        'address_patient',
         'current_diet',
     ]; 
 }

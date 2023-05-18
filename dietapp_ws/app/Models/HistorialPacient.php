@@ -9,21 +9,21 @@ class HistorialPacient extends Model
 {
     use HasFactory;
 
-    public $table = "historial_pacient";
+    public $table = "historial_patient";
 
     public $timestamps = false;
 
     protected $fillable = [
-        'id_historial',
-        'date',
-        'id_pacient',
+        'start_date',
+        'id_patient',
         'diet',
         'weigth',
         'heigth',
         'chest',
         'leg',
         'arm',
-        'hip'
+        'hip',
+        'control_date',
+        'status',
     ]; 
 }
-

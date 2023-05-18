@@ -14,8 +14,8 @@ class DishesIngredients extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'dishes_id_dishes',
-        'ingredients_id_ingredient',
+        'dish_id_dish',
+        'ingredient_id_ingredient',
         'quantity',
         'mesure',
     ]; 

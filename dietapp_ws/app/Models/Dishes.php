@@ -15,7 +15,8 @@ class Dishes extends Model
 
     protected $fillable = [
         'id_dishes',
-        'name_dishes',
+        'name_dish',
         'calories',
+        'image_dish',
     ]; 
 }
