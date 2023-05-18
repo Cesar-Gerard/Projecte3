@@ -154,8 +154,8 @@ CREATE INDEX `FK_HISTORIAL_DIETA_idx` ON `projecte3`.`historial_patient` (`diet`
 DROP TABLE IF EXISTS `projecte3`.`dishes` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`dishes` (
-  `id_dishes` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name_dishes` VARCHAR(100) NOT NULL,
+  `id_dishes` BIGINT(10) UNSIGNED AUTO_INCREMENT,
+  `name_dish` VARCHAR(100) NOT NULL,
   `calories` DECIMAL(10,2) NOT NULL,
   `image_dish` VARCHAR(200) NULL,
   PRIMARY KEY (`id_dishes`))
@@ -295,6 +295,87 @@ CREATE INDEX `fk_Ingridients_has_Dishes_Dishes1_idx` ON `projecte3`.`dishes_ingr
 CREATE INDEX `fk_Ingridients_has_Dishes_Ingridients1_idx` ON `projecte3`.`dishes_ingredients` (`ingredient_id_ingredient` ASC) ;
 
 CREATE INDEX `fk_Dishes_Ingredients_Unit Mesure1_idx` ON `projecte3`.`dishes_ingredients` (`mesure` ASC) ;
+
+
+
+-- Crear el trigger después de insertar en la tabla dishes_ingredients
+DELIMITER //
+
+CREATE TRIGGER calcular_calorias AFTER INSERT ON dishes_ingredients
+FOR EACH ROW
+BEGIN
+   
+
+    -- Actualizar el campo 'calorias' del plato correspondiente en la tabla dishes
+    UPDATE dishes
+    SET calories = calories + (select i.calories from ingredients i where i.id_ingredient=new.ingredient_id_ingredient)
+    WHERE id_dishes = NEW.dish_id_dish;
+END;
+//
+
+DELIMITER ;
+
+
+-- Crear el trigger después de eliminar en la tabla dishes_ingredients
+DELIMITER //
+
+CREATE TRIGGER calcular_calorias_restar AFTER delete ON dishes_ingredients
+FOR EACH ROW
+BEGIN
+   
+
+    -- Actualizar el campo 'calorias' del plato correspondiente en la tabla dishes
+    UPDATE dishes
+    SET calories = calories - (select i.calories from ingredients i where i.id_ingredient=old.ingredient_id_ingredient)
+    WHERE id_dishes = old.dish_id_dish;
+END;
+//
+
+DELIMITER ;
+
+
+
+
+
+
+
+-- Crear el trigger después de insertar en la tabla diets_dishes
+DELIMITER //
+
+CREATE TRIGGER calcular_calorias_delete AFTER INSERT ON diets_dishes
+FOR EACH ROW
+BEGIN
+   
+
+    -- Actualizar el campo 'calorias' del plato correspondiente en la tabla dishes
+    UPDATE diets
+    SET calories = calories + (select i.calories from dishes i where i.id_dishes=new.dish_id_dish)
+    WHERE id_diet = NEW.diet_id_diet;
+END;
+//
+
+DELIMITER ;
+
+
+-- Crear el trigger después de insertar en la tabla diets_dishes
+DELIMITER //
+
+CREATE TRIGGER calcular_calorias_delete_restar AFTER delete ON diets_dishes
+FOR EACH ROW
+BEGIN
+   
+
+    -- Actualizar el campo 'calorias' del plato correspondiente en la tabla dishes
+    UPDATE diets
+    SET calories = calories - (select i.calories from dishes i where i.id_dishes=old.dish_id_dish)
+    WHERE id_diet = old.diet_id_diet;
+END;
+//
+
+DELIMITER ;
+
+
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

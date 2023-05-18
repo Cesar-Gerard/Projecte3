@@ -109,12 +109,12 @@ INSERT INTO `ingredients` (`id_ingredient`, `name`, `calories`, `calories_unit`)
 -- Volcado de datos para la tabla `dishes`
 --
 
-INSERT INTO `dishes` (`id_dishes`, `name_dishes`, `calories`,`image_dish`) VALUES
-(1, 'Café amb Llet Desnatada', 47.00,null),
-(2, 'Té Verd', 2.00,null),
-(3, 'Kiwi', 51.00,null),
-(4, 'Nous', 654.00,null),
-(5, 'Yogur Natural amb Pera ', 150.00,null),
+INSERT INTO `dishes` (`id_dishes`, `name_dish`, `calories`,`image_dish`) VALUES
+(1, 'Café amb Llet Desnatada', 0,null),
+(2, 'Té Verd', 0,null),
+(3, 'Kiwi', 0,null),
+(4, 'Nous', 0,null),
+(5, 'Yogur Natural amb Pera ', 0,null),
 (6, 'Daurada al Forn amb Amanida', 1040.00,null),
 (7, 'Llesca al Pa Integral amb Formatge Cottage i Alvocat', 414.00,null),
 (8, 'Espàrrecs de Marge', 902.00,null),
