@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`users` (
   `nickname_user` VARCHAR(45) NOT NULL,
   `password` VARCHAR(300) NOT NULL,
   `type_user` CHAR(1) NOT null CHECK (`type_user`="P" Or `type_user`="N"),
+  `image_user` VARCHAR(200) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -129,9 +130,9 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`historial_patient` (
   `leg` DECIMAL(6,2) NULL,
   `arm` DECIMAL(6,2) NULL,
   `hip` DECIMAL(6,2) NULL,
-  `control_date` DATE NOT NULL,
+  `control_date` DATE,
   `status` VARCHAR(2) not null CHECK (`status`="I" Or `status`="F"),
-  PRIMARY KEY (`start_date`,`id_patient`,`diet`),
+  PRIMARY KEY (`control_date`,`id_patient`,`diet`),
   CONSTRAINT `FK_ID_PACIENT`
     FOREIGN KEY (`id_patient`)
     REFERENCES `projecte3`.`patients` (`id_pacient`)
@@ -156,6 +157,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`dishes` (
   `id_dishes` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name_dishes` VARCHAR(100) NOT NULL,
   `calories` DECIMAL(10,2) NOT NULL,
+  `image_dish` VARCHAR(200) NULL,
   PRIMARY KEY (`id_dishes`))
 ENGINE = InnoDB;
 

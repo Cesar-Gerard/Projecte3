@@ -109,39 +109,39 @@ INSERT INTO `ingredients` (`id_ingredient`, `name`, `calories`, `calories_unit`)
 -- Volcado de datos para la tabla `dishes`
 --
 
-INSERT INTO `dishes` (`id_dishes`, `name_dishes`, `calories`) VALUES
-(1, 'Café amb Llet Desnatada', 47.00),
-(2, 'Té Verd', 2.00),
-(3, 'Kiwi', 51.00),
-(4, 'Nous', 654.00),
-(5, 'Yogur Natural amb Pera ', 150.00),
-(6, 'Daurada al Forn amb Amanida', 1040.00),
-(7, 'Llesca al Pa Integral amb Formatge Cottage i Alvocat', 414.00),
-(8, 'Espàrrecs de Marge', 902.00),
-(9, 'Calamar', 1130.00),
-(10, 'Llesca de Pa Integral amb Tomàquet i Alvocat', 334.00),
-(11, 'Poma Canyella i Nous', 132.00),
-(12, 'Amanida de Enciam, LLombarda i Pastanaga', 1000.00),
-(13, 'Cuixa de Gall Dindi amb Pera', 313.00),
-(14, 'LLesca de Pa Integral amb Hummus i 1/2 ou cuit', 413.00),
-(15, 'Wok de Verdures amb Llagostins ', 17100.00),
-(16, 'Yogur Natural amb Fruits Vermells i Civada', 185.00),
-(17, 'Macedonia de Kiwi, Poma i Pera', 170.00),
-(18, 'Verdures a la Plancha', 975.00),
-(19, 'Truita Francesa de Xampinyons i Espècies', 1097.00),
-(20, 'Llesca de Pa Integral amb Tonyina Natural i Tomàquet', 240.00),
-(21, 'Cigrons amb Salmó, Enciam i Pera', 1168.00),
-(22, 'Llesca de Pa Integral amb Formatge de Burgos i mitja Poma ', 18144.00),
-(23, 'Pera i Nous', 711.00),
-(24, 'Carbassó amb Mató', 998.00),
-(25, 'Llom de Lluç amb Vinagreta de Pebrots', 1140.00),
-(26, 'Amanida Nicoise', 52363.00),
-(27, 'Llesca de Pa Integral amb 2 rodanxes de Alvocat i Tomàquet', 334.00),
-(28, 'Piña i Yogur Natural sense Sucre', 143.00),
-(29, 'Amaninda de Quinoa amb Cigrons', 1423.00),
-(30, 'Formatge Fresc i Nous', 684.00),
-(31, 'Gaspatxo Andalús', 1003.00),
-(32, 'Llom de Vedella a la Plancha', 1062.00);
+INSERT INTO `dishes` (`id_dishes`, `name_dishes`, `calories`,`image_dish`) VALUES
+(1, 'Café amb Llet Desnatada', 47.00,null),
+(2, 'Té Verd', 2.00,null),
+(3, 'Kiwi', 51.00,null),
+(4, 'Nous', 654.00,null),
+(5, 'Yogur Natural amb Pera ', 150.00,null),
+(6, 'Daurada al Forn amb Amanida', 1040.00,null),
+(7, 'Llesca al Pa Integral amb Formatge Cottage i Alvocat', 414.00,null),
+(8, 'Espàrrecs de Marge', 902.00,null),
+(9, 'Calamar', 1130.00,null),
+(10, 'Llesca de Pa Integral amb Tomàquet i Alvocat', 334.00,null),
+(11, 'Poma Canyella i Nous', 132.00,null),
+(12, 'Amanida de Enciam, LLombarda i Pastanaga', 1000.00,null),
+(13, 'Cuixa de Gall Dindi amb Pera', 313.00,null),
+(14, 'LLesca de Pa Integral amb Hummus i 1/2 ou cuit', 413.00,null),
+(15, 'Wok de Verdures amb Llagostins ', 17100.00,null),
+(16, 'Yogur Natural amb Fruits Vermells i Civada', 185.00,null),
+(17, 'Macedonia de Kiwi, Poma i Pera', 170.00,null),
+(18, 'Verdures a la Plancha', 975.00,null),
+(19, 'Truita Francesa de Xampinyons i Espècies', 1097.00,null),
+(20, 'Llesca de Pa Integral amb Tonyina Natural i Tomàquet', 240.00,null),
+(21, 'Cigrons amb Salmó, Enciam i Pera', 1168.00,null),
+(22, 'Llesca de Pa Integral amb Formatge de Burgos i mitja Poma ', 18144.00,null),
+(23, 'Pera i Nous', 711.00,null),
+(24, 'Carbassó amb Mató', 998.00,null),
+(25, 'Llom de Lluç amb Vinagreta de Pebrots', 1140.00,null),
+(26, 'Amanida Nicoise', 52363.00,null),
+(27, 'Llesca de Pa Integral amb 2 rodanxes de Alvocat i Tomàquet', 334.00,null),
+(28, 'Piña i Yogur Natural sense Sucre', 143.00,null),
+(29, 'Amaninda de Quinoa amb Cigrons', 1423.00,null),
+(30, 'Formatge Fresc i Nous', 684.00,null),
+(31, 'Gaspatxo Andalús', 1003.00,null),
+(32, 'Llom de Vedella a la Plancha', 1062.00,null);
 
 
 
@@ -234,13 +234,13 @@ INSERT INTO `diets_dishes` (`diet_id_diet`, `dish_id_dish`, `week_day`, `meal`) 
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name_user`, `lastname_user`, `nickname_user`, `password`, `type_user`) VALUES
-(1, 'Gerard', 'César ', 'gcesar', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P'),
-(2, 'Eric', 'Borràs', 'eborras', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'N'),
-(3, 'Laura', 'César', 'lcesar', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'N'),
-(4, 'Ivàn', 'Puga', 'ipuga', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P'),
-(5, 'Yaiza', 'Castillo', 'ycastillo', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P'),
-(6, 'Nerea', 'Torregrosa', 'ntorregrosa', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P');
+INSERT INTO `users` (`id`, `name_user`, `lastname_user`, `nickname_user`, `password`, `type_user`,`image_user`) VALUES
+(1, 'Gerard', 'César ', 'gcesar', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P',null),
+(2, 'Eric', 'Borràs', 'eborras', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'N',null),
+(3, 'Laura', 'César', 'lcesar', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'N',null),
+(4, 'Ivàn', 'Puga', 'ipuga', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P',null),
+(5, 'Yaiza', 'Castillo', 'ycastillo', '$2y$10$1C9jR6IhzxES9dvxs5Nu8e4hvop10IQZKvUqSLcGgF7z10Q5f3wQi', 'P',null),
+(6, 'Nerea', 'Torregrosa', 'ntorregrosa', '$2y$10$20C3oeJzB7TaXV.2lucLX.Tv1iWmejl39/KGJeQdjwH33q3y6ODha', 'P',null);
 
 -- --------------------------------------------------------
 
@@ -266,6 +266,8 @@ INSERT INTO `patients` (`id_pacient`, `assigned_nutricionist`, `email_patient`, 
 --
 -- Volcado de datos para la tabla `historial_pacient`
 --
-
-INSERT INTO `historial_patient` (`start_date`, `id_patient`, `diet`, `weigth`, `heigth`, `chest`, `leg`, `arm`, `hip`,`control_date`,`status`) VALUES
-('2023-04-20', 1, 1, 78.30, 1.76, 70.00, 90.00, 90.00, 93.00,'2023-04-20','I');
+INSERT INTO `historial_patient` (`start_date`, `id_patient`, `diet`, `weigth`, `heigth`, `chest`, `leg`, `arm`, `hip`, `control_date`, `status`) VALUES
+('2023-04-20', 1, 1, 80.00, 1.76, 75.00, 93.00, 92.00, 93.00, '2023-04-13', 'I'),
+('2023-04-20', 1, 1, 77.30, 1.76, 70.00, 88.00, 90.00, 80.00, '2023-04-20', 'I'),
+('2023-04-20', 1, 1, 78.30, 1.76, 70.00, 90.00, 90.00, 93.00, '2023-04-27', 'I'),
+('2023-04-20', 1, 1, 77.65, 1.76, 65.00, 87.00, 86.00, 90.00, '2023-05-04', 'F');
