@@ -69,8 +69,13 @@ public class user_profile extends Fragment {
         //Programem el comportament del canvi de contrasenya
         butoContrasenya();
 
+        //Programem el comportament del boto de desar els canvis
+        butoGuardarCanvis();
+
         return v;
     }
+
+
 
     private void butoContrasenya() {
         binding.button.setOnClickListener(new View.OnClickListener() {
@@ -255,5 +260,11 @@ public class user_profile extends Fragment {
         }
         return filePath;
     }
+
+    private void butoGuardarCanvis() {
+        binding.
+    }
+
+
 
 }

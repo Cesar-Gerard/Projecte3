@@ -221,6 +221,7 @@
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:padding="5dp"
+                            android:backgroundTint="@color/grey"
                             android:textSize="15dp"
                             android:enabled="false"
                             android:textAlignment="center"
@@ -248,28 +249,31 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/textView12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Telèfon:"
+                            android:text="Nutricionista:"
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
                         <EditText
-                            android:id="@+id/edt_phone"
-                            android:layout_width="80dp"
-                            android:enabled="false"
-                            android:textSize="15dp"
+                            android:id="@+id/edt_nutri"
+                            android:layout_width="120dp"
+                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textColor="@color/black"
+                            android:enabled="false"
+                            android:backgroundTint="@color/grey"
                             android:padding="5dp"
+                            android:textSize="15dp"
                             android:textAlignment="center"
                             android:background="@drawable/custom_edittext" />
 
 
                     </LinearLayout>
+
+
 
 
                     <View
@@ -323,7 +327,6 @@
                         android:layout_marginBottom="6dp"
                         android:background="#d9d9d9" />
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -331,28 +334,29 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView12"
+                            android:id="@+id/textView10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Nutricionista:"
+                            android:text="Telèfon:"
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
                         <EditText
-                            android:id="@+id/edt_nutri"
-                            android:layout_width="120dp"
-                            android:textColor="@color/black"
+                            android:id="@+id/edt_phone"
+                            android:layout_width="80dp"
+                            android:enabled="false"
+                            android:textSize="15dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:enabled="false"
+                            android:textColor="@color/black"
                             android:padding="5dp"
-                            android:textSize="15dp"
                             android:textAlignment="center"
                             android:background="@drawable/custom_edittext" />
 
 
                     </LinearLayout>
+
 
                     <View
                         android:id="@+id/view6"
@@ -364,11 +368,16 @@
                         android:layout_marginBottom="6dp"
                         android:background="#d9d9d9" />
 
+
+
+                    <Button
+                        android:id="@+id/btnSaveChanges"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guardar Canvis"
+                        android:layout_gravity="center"/>
+
                 </LinearLayout>
-
-
-
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
