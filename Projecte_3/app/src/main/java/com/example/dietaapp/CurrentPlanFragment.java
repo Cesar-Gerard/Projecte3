@@ -1,6 +1,7 @@
 package com.example.dietaapp;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.volley.RequestQueue;
+import com.bumptech.glide.Glide;
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -21,6 +23,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
+import java.io.File;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -71,8 +74,24 @@ public class CurrentPlanFragment extends Fragment {
         demanarHistorial();
 
 
-        if(user.getProfile_image()!=null){
-            binding.imageViewavatar.setImageURI(user.getProfile_image());
+        if(user.getImageUser()!=null){
+            File imageFile = new File(user.getImageUser());
+
+            // Verifica si el archivo de la imagen existe y es válido
+            if (imageFile.exists() && imageFile.isFile()) {
+                // Crea un Uri a partir del archivo
+                Uri imageUri = Uri.fromFile(imageFile);
+
+                // Carga la imagen en el ImageView utilizando Glide
+                Glide.with(getContext())
+                        .load(imageUri)
+                        .fitCenter()
+                        .into(binding.imageViewavatar);
+            }
+        }
+        else{
+            user.setImageUser("res/drawable/avatar_icon.png");
+            User_Retro.setUser(user);
         }
 
 
@@ -184,6 +203,7 @@ public class CurrentPlanFragment extends Fragment {
 
                 user.setAddres(response.body().getData().getAddressPacient());
                 user.setPhone_number(response.body().getData().getPhonePacient());
+                user.setEmailUser(response.body().getData().getEmail_patient());
                 User_Retro.setDiet(response.body().getData().getCurrentDiet());
                 User_Retro.setUser(user);
 

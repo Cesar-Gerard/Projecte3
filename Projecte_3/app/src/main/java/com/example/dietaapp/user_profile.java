@@ -2,8 +2,10 @@ package com.example.dietaapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,7 +26,15 @@ import android.widget.Toast;
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 import com.example.dietaapp.databinding.FragmentUserProfileBinding;
 
+import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import api.ApiManager;
+import api.ApiService;
+import model.ChangePasswordRequest;
+import model.ChangePasswordResponse;
+import model.ChangeUserRequest;
 import model.HistorialResponse;
 import model.PacientResponse;
 import model.User_Retro;
@@ -57,10 +68,6 @@ public class user_profile extends Fragment {
 
         //Programem el comportament del canvi de contrasenya
         butoContrasenya();
-
-        if(user.getProfile_image()!=null){
-            binding.imageView3.setImageURI(user.getProfile_image());
-        }
 
         return v;
     }
@@ -100,9 +107,26 @@ public class user_profile extends Fragment {
             Uri selectedImage = data.getData();
             binding.imageView3.setImageURI(selectedImage);
 
+
+            ChangeUserRequest change= new ChangeUserRequest(String.valueOf(user.getId()), user.getNameUser(), user.getLastnameUser(),user.getPhone_number(),user.getAddres(),convertirUriStringPath(selectedImage));
+
+
+            ApiManager.getInstance().updateUser(User_Retro.getToken(), change, new Callback<ChangePasswordResponse>() {
+                @Override
+                public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
+                    Toast.makeText(getView().getContext(), "Foto actualitzada",Toast.LENGTH_LONG).show();
+
+                }
+
+                @Override
+                public void onFailure(Call<ChangePasswordResponse> call, Throwable t) {
+                    Toast.makeText(getView().getContext(), "No s'ha pogut actualitzar la foto de perfil",Toast.LENGTH_LONG).show();
+                }
+            });
+
             User_Retro user = User_Retro.getUser();
 
-            user.setProfile_image(selectedImage);
+            user.setImageUser(convertirUriStringPath(selectedImage));
             User_Retro.setUser(user);
         }
     }
@@ -143,13 +167,32 @@ public class user_profile extends Fragment {
                 String newPassword = newPasswordEditText.getText().toString();
                 String confirmNewPassword = confirmNewPasswordEditText.getText().toString();
 
-                // Verificar las contraseñas ingresadas y realizar la lógica correspondiente
-                if (isPasswordValid(oldPassword) && isPasswordValid(newPassword) && newPassword.equals(confirmNewPassword)) {
-                    // Lógica para cambiar la contraseña
-                    // ...
-                } else {
-                    Toast.makeText(getActivity(), "Las contraseñas no coinciden o no son válidas", Toast.LENGTH_SHORT).show();
+                if(isPasswordValid(newPassword) && confirmNewPassword.equals(newPassword)){
+                    ChangePasswordRequest change = new ChangePasswordRequest(user.getNicknameUser(),oldPassword,newPassword);
+
+
+
+
+                    ApiManager.getInstance().updatePassword(User_Retro.getToken(), change, new Callback<ChangePasswordResponse>() {
+                        @Override
+                        public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
+                            Toast.makeText(dialogView.getContext(), "Contrasenya actualitzada",Toast.LENGTH_LONG).show();
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<ChangePasswordResponse> call, Throwable t) {
+                            Toast.makeText(dialogView.getContext(), "No s'ha pogut fer la modificació",Toast.LENGTH_LONG).show();
+
+                        }
+                    });
+                }else{
+                    Toast.makeText(dialogView.getContext(), "La contrasenya nova no compleix amb els requeriments",Toast.LENGTH_LONG).show();
                 }
+
+
+
+
             }
         });
 
@@ -164,10 +207,53 @@ public class user_profile extends Fragment {
         dialog.show();
     }
 
-    private boolean isPasswordValid(String password) {
-        // Realizar la validación de la contraseña según tus criterios
-        // Por ejemplo, verificar la longitud mínima, caracteres especiales, etc.
-        return password.length() >= 6;
+    private boolean isPasswordValid(String contrasena) {
+
+            if (contrasena.length() < 6) {
+                return false;
+            }
+
+            Pattern minusculaPattern = Pattern.compile("[a-z]");
+            Matcher minusculaMatcher = minusculaPattern.matcher(contrasena);
+            if (!minusculaMatcher.find()) {
+                return false;
+            }
+
+            Pattern mayusculaPattern = Pattern.compile("[A-Z]");
+            Matcher mayusculaMatcher = mayusculaPattern.matcher(contrasena);
+            if (!mayusculaMatcher.find()) {
+                return false;
+            }
+
+            Pattern numeroPattern = Pattern.compile("[0-9]");
+            Matcher numeroMatcher = numeroPattern.matcher(contrasena);
+            if (!numeroMatcher.find()) {
+                return false;
+            }
+
+            Pattern especialPattern = Pattern.compile("[!@#$%^&*(),.?\":{}|<>]");
+            Matcher especialMatcher = especialPattern.matcher(contrasena);
+            if (!especialMatcher.find()) {
+                return false;
+            }
+
+            return true;
+
+
+    }
+
+    public String convertirUriStringPath(Uri uri) {
+        String filePath = null;
+        if (uri != null) {
+            ContentResolver contentResolver = this.getContext().getContentResolver();
+            Cursor cursor = contentResolver.query(uri, null, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                int columnIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
+                filePath = cursor.getString(columnIndex);
+                cursor.close();
+            }
+        }
+        return filePath;
     }
 
 }

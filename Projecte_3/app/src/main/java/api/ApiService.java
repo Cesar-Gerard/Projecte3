@@ -1,16 +1,21 @@
 package api;
 
+import model.ChangePasswordRequest;
+import model.ChangePasswordResponse;
+import model.ChangeUserRequest;
 import model.DietesResponse;
 import model.HistorialResponse;
 import model.LoginResponse;
 import model.PacientResponse;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiService {
@@ -34,6 +39,14 @@ public interface ApiService {
     @GET("diets")
     Call<DietesResponse> getDietes(@Header("Authorization") String token);
 
+    @Headers("Accept: application/json")
+    @PUT("update_password")
+    Call<ChangePasswordResponse> updatePassword(@Header("Authorization") String token,@Body ChangePasswordRequest request);
+
+
+    @Headers("Accept: application/json")
+    @PUT("update_user")
+    Call<ChangePasswordResponse> updateUser(@Header ("Authorization")String token, @Body ChangeUserRequest request);
 
 
 }

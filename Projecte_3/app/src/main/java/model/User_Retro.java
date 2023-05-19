@@ -7,6 +7,7 @@ import android.net.Uri;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.File;
 import java.util.List;
 
 
@@ -74,8 +75,7 @@ public class User_Retro {
     @SerializedName("type_user")
     @Expose
     private String typeUser;
-    @SerializedName("email_user")
-    @Expose
+
     private String emailUser;
 
 
@@ -89,8 +89,6 @@ public class User_Retro {
     private String phone_number;
 
     private String addres;
-
-    private Uri profile_image;
 
     private double IMC;
 
@@ -170,14 +168,6 @@ public class User_Retro {
         this.addres = addres;
     }
 
-    public Uri getProfile_image() {
-        return profile_image;
-    }
-
-    public void setProfile_image(Uri profile_image) {
-        this.profile_image = profile_image;
-    }
-
     public double getIMC() {
         return IMC;
     }
@@ -187,10 +177,13 @@ public class User_Retro {
     }
 
     public String getImageUser() {
+
         return imageUser;
     }
 
     public void setImageUser(String imageUser) {
         this.imageUser = imageUser;
     }
+
+
 }

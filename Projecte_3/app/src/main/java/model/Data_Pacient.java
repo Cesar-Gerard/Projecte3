@@ -27,6 +27,10 @@ public class Data_Pacient {
     @Expose
     private Integer currentDiet;
 
+    @SerializedName("email_patient")
+    @Expose
+    private String email_patient;
+
     public Integer getIdPacient() {
         return idPacient;
     }
@@ -67,4 +71,11 @@ public class Data_Pacient {
         this.currentDiet = currentDiet;
     }
 
+    public String getEmail_patient() {
+        return email_patient;
+    }
+
+    public void setEmail_patient(String email_patient) {
+        this.email_patient = email_patient;
+    }
 }
