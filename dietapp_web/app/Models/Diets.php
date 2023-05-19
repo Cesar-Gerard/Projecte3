@@ -171,21 +171,28 @@ DB:
             $j = 0;
             $k = 1;
             foreach($arr_meals as $meal){
-                
-                for($i=1; $i < count($dieta[$meal]); $i++){
+               
+
+                for($i=1; $i < count($dieta[$meal])+1; $i++){
                     $diets_dishes = new DietsDishes();
                     
                     $diets_dishes->diet_id_diet = $id_dieta_nou;
-                    $diets_dishes->dish_id_dish = $dieta[$meal][$i][$j];
+                    
+                    for($l = 0; $l < count($dieta[$meal][$i]); $l++){
+                        $diets_dishes->dish_id_dish = $dieta[$meal][$i][$l];
 
-                    $diets_dishes->week_day = $i;
-                    $diets_dishes->meal = $k;
-
-                    $diets_dishes->save();
+                        $diets_dishes->week_day = $i+1;
+                        $diets_dishes->meal = $k;
+    
+                        $diets_dishes->save();
+                    }
+                    
 
                 }
+                
                 $k++;
             }
+            die();
 
             \DB::commit();
             
