@@ -272,6 +272,7 @@ function f_comprovaDescripcio(){
 
 function f_dragable(){
 
+    
 
     $("#launchPad").height($(window).height() - 20);
     var dropSpace = $(window).width() - $("#launchPad").width();
@@ -380,7 +381,7 @@ function f_dibuixaDragables(e){
         div.setAttribute('class','card ui-draggable ui-draggable-handle');
         //TODO: Afegir el text dins del DIV
 
-        div.innerHTML = json[i].name_dishes;
+        div.innerHTML = json[i].name_dish;
 
         
         table.appendChild(div);

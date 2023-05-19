@@ -179,7 +179,7 @@
                     @foreach($dishes as $dish)
         
                         <div class="card" id="dish-{{$dish->id_dishes}}">
-                            {{$dish->name_dishes}}
+                            {{$dish->name_dish}}
                         </div> 
 
                     @endforeach

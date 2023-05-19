@@ -105,10 +105,10 @@ function f_dibuixaTaula(e){
         td_pacient.innerHTML = json[i].name_user+" "+json[i].lastname_user;
 
         let td_phone = document.createElement("td");
-        td_phone.innerHTML = json[i].phone_pacient;
+        td_phone.innerHTML = json[i].phone_patient;
 
         let td_address = document.createElement("td");
-        td_address.innerHTML = json[i].address_pacient;
+        td_address.innerHTML = json[i].address_patient;
 
         let td_dieta_actual = document.createElement("td");
         if(json[i].name.length==0){

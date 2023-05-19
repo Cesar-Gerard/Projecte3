@@ -48,12 +48,12 @@
             <div class="row form-group">
                 <div class="col-6">
                     <label for="pacient_email"><i class="fa-solid fa-envelope"></i></label>
-                    <span>{{$pacient->email_user}}</span>
+                    <span>{{$pacient->email_patient}}</span>
                 </div>
 
                 <div class="col-6">
                     <label for="pacient_phone"><i class="fa-solid fa-phone"></i></label>
-                    <span>{{$pacient->phone_pacient}}</span>
+                    <span>{{$pacient->phone_patient}}</span>
                 </div>
 
             </div>

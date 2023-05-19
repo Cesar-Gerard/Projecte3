@@ -25,7 +25,7 @@ class Diets extends Model
         'calories',
         'number_meals',
         'description',
-        'tipus_dieta',
+        'type_diet',
     ]; 
 
 
@@ -40,7 +40,7 @@ class Diets extends Model
 
         return DB::table('diets')
                 ->select('diets.*','type_diets.name_type')
-                ->join('type_diets','diets.tipus_dieta','=','type_diets.id_type')
+                ->join('type_diets','diets.type_diet','=','type_diets.id_type')
                 ->where('diets.id_diet','=',$diet)
                 ->first();
 
@@ -52,7 +52,7 @@ class Diets extends Model
 
         return DB::table('diets')
                 ->select('diets.*','type_diets.name_type')
-                ->join('type_diets','diets.tipus_dieta','=','type_diets.id_type')
+                ->join('type_diets','diets.type_diet','=','type_diets.id_type')
                 ->get();
         
     }
@@ -65,7 +65,7 @@ class Diets extends Model
 
         $diets = DB::table('diets')
         ->select('diets.*','type_diets.name_type')
-        ->join('type_diets','diets.tipus_dieta','=','type_diets.id_type');
+        ->join('type_diets','diets.type_diet','=','type_diets.id_type');
 
 
 
@@ -74,7 +74,7 @@ class Diets extends Model
         }
 
         if($tipus_dieta != -1){
-            $diets = $diets->where('diets.tipus_dieta','=',$tipus_dieta);
+            $diets = $diets->where('diets.type_diet','=',$tipus_dieta);
         }
 
 
@@ -94,9 +94,9 @@ class Diets extends Model
     public static function getDietDietsDishesByMeals($diet,$id_meal){
 
         $diets = DB::table('diets')
-                    ->select('diets_dishes.*','dishes.name_dishes')
-                    ->join('diets_dishes','diets.id_diet','=','diets_dishes.dietas_id_dieta')
-                    ->join('dishes','dishes.id_dishes','=','diets_dishes.dishes_id_dishes')
+                    ->select('diets_dishes.*','dishes.name_dish')
+                    ->join('diets_dishes','diets.id_diet','=','diets_dishes.diet_id_diet')
+                    ->join('dishes','dishes.id_dishes','=','diets_dishes.dish_id_dish')
                     ->where('diets_dishes.meal','=',$id_meal)
                     ->where('diets.id_diet','=',$diet)
                     ->orderBy('week_day')
@@ -154,7 +154,7 @@ DB:
             $diet->calories = 0;
             $diet->number_meals = 5;
             $diet->description = $dieta['descripcio'];
-            $diet->tipus_dieta = $dieta['tipus'];
+            $diet->type_diet = $dieta['tipus'];
 
             $diet->save();
            
@@ -175,8 +175,8 @@ DB:
                 for($i=1; $i < count($dieta[$meal]); $i++){
                     $diets_dishes = new DietsDishes();
                     
-                    $diets_dishes->dietas_id_dieta = $id_dieta_nou;
-                    $diets_dishes->dishes_id_dishes = $dieta[$meal][$i][$j];
+                    $diets_dishes->diet_id_diet = $id_dieta_nou;
+                    $diets_dishes->dish_id_dish = $dieta[$meal][$i][$j];
 
                     $diets_dishes->week_day = $i;
                     $diets_dishes->meal = $k;

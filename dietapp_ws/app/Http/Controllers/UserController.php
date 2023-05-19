@@ -94,6 +94,7 @@ class UserController extends Controller
         $lastname_user = $request->lastname_user;
         $phone_pacient = $request->phone_pacient;
         $address_pacient = $request->address_pacient;
+        $image_user = $request->image_user;
 
         try{
             $user = User::where('id','=',$id_pacient)->first();
@@ -108,10 +109,11 @@ class UserController extends Controller
 
             $user->name_user = $name_user;
             $user->lastname_user = $lastname_user;
+            $user->image_user = $request->image_user;
             $user->save();
 
-            $pacient->phone_pacient = $phone_pacient;
-            $pacient->address_pacient = $address_pacient;
+            $pacient->phone_patient = $phone_pacient;
+            $pacient->address_patient = $address_pacient;
             $pacient->save();
 
             return response()->json([
@@ -145,26 +147,31 @@ class UserController extends Controller
 
         try{
             
-            $user = User::where('nickname_user','=',$request->username)->where('password','=',bcrypt($password_antiga))->first();
-            if($user != null){
-                //En cas que no coincideixi, canviar la password
-                $user->password = bcrypt($password_nova);
-                $user->save();
-            }else{
+            //$user = User::where('nickname_user','=',$request->username)->where('password','=',bcrypt($password_antiga))->first();
+            $user = User::where('nickname_user','=',$request->username)->first();
+            //if($user != null){
+                
+            $user->password = bcrypt($password_nova);
+            $user->save();
+
+            return response()->json([
+                'success' => "ok"
+            ], 200);
+            //}else{
                 //Comprovar primer que la contrasenya anterior coincideixi amb l'actual
-                return response()->json([
-                    'error' => "Per poder canviar-te la contrasenya has d'introduir l'anterior".$ex
-                ], 404);
-            }
+            //    return response()->json([
+            //        'error' => "Per poder canviar-te la contrasenya has d'introduir l'anterior"
+            //    ], 404);
+            //}
 
         }catch(\Illuminate\Database\QueryException $ex){
             return response()->json([
                 'database_error' => "Database error ".$ex
             ], 400);
 
-        }catch(\Throwable $ex){
+        }catch(\Throwable $e){
             return response()->json([
-                'error' => 'General error '.$ex
+                'error' => 'General error '.$e
             ], 400);
         }
 

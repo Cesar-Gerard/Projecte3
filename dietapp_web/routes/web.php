@@ -86,9 +86,9 @@ Route::get('/pacient/{pacient}',function($pacient){
 
                     array_push($grafic_progres_actual,
                         array(
-                            "dia" => date("d",strtotime($ha->date)),
-                            "mes" => date("m",strtotime($ha->date)),
-                            "anyo" => date("Y",strtotime($ha->date)),
+                            "dia" => date("d",strtotime($ha->control_date)),
+                            "mes" => date("m",strtotime($ha->control_date)),
+                            "anyo" => date("Y",strtotime($ha->control_date)),
                             "imc" => number_format((float)($ha->weigth / ($ha->heigth * $ha->heigth)),2), 
                         )
                     );
@@ -96,12 +96,13 @@ Route::get('/pacient/{pacient}',function($pacient){
                 }
 
                 
+                $historial_diets = array();
 
                 foreach($dietes_acabades_q as $id_dieta){
                     $dieta = Diets::getDietByIdType($id_dieta->diet);
 
                     $historial_diets = HistorialPacient::getProgresHistorialPacient($pacient->id,$id_dieta->diet);
-
+                    
                     $b_historial_diets = array();
                     $b_historial_mesures_chest = array();
                     $b_historial_mesures_leg = array();
@@ -277,6 +278,7 @@ Route::get("/dieta/{id}", function($id_dieta){
             $diets_dishes_esmorzars = Diets::getDietDietsDishesByMeals($id_dieta,1);
             $diets_dishes_migmati = Diets::getDietDietsDishesByMeals($id_dieta,5);
             $diets_dishes_dinar = Diets::getDietDietsDishesByMeals($id_dieta,2);
+            
             $diets_dishes_berenar = Diets::getDietDietsDishesByMeals($id_dieta,3);
             $diets_dishes_sopar = Diets::getDietDietsDishesByMeals($id_dieta,4);
             

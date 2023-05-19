@@ -61,12 +61,12 @@
             <div class="row form-group">
                 <div class="col-6">
                     <label for="pacient_email">Email usuari</label><label class="text-danger">*</label>
-                    <input type="email" class="form-control" id="pacient_email" name="pacient_email" value="{{$pacient->email_user}}" placeholder="Email usuari">
+                    <input type="email" class="form-control" id="pacient_email" name="pacient_email" value="{{$pacient->email_patient}}" placeholder="Email usuari">
                 </div>
 
                 <div class="col-6">
                     <label for="pacient_phone">Telèfon</label>
-                    <input type="phone" class="form-control" id="pacient_phone" name="pacient_phone" value="{{$pacient->phone_pacient}}" placeholder="Telèfon">
+                    <input type="phone" class="form-control" id="pacient_phone" name="pacient_phone" value="{{$pacient->phone_patient}}" placeholder="Telèfon">
                 </div>
 
             </div>
@@ -76,7 +76,7 @@
 
                 <div class="col-6">
                     <label for="pacient_address">Adreça</label>
-                    <input type="email" class="form-control" id="pacient_address" name="pacient_address" value="{{$pacient->address_pacient}}" placeholder="Adreça usuari">
+                    <input type="email" class="form-control" id="pacient_address" name="pacient_address" value="{{$pacient->address_patient}}" placeholder="Adreça usuari">
                 </div>
 
             </div>

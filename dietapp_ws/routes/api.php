@@ -22,12 +22,12 @@ Route::post('login',[UserController::class,'login']);
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('/user/{id}', [UserController::class,'getUser']);
     Route::get('/diets', [DietController::class, 'getDiets']);
-    Route::get('/dishes/{dieta}',[DietController::class, 'getDishes']);//!!
+    Route::get('/dishes/{dieta}',[DietController::class, 'getDishes']);
     Route::get('/historial/{usuari}',[DietController::class, 'getHistorialPacient']);
     Route::get('/ingredientsdish/{dish}',[DietController::class, 'getIngredients']);
     Route::get('/pacient/{id}',[UserController::class, 'getPacient']);
-    Route::post('/dietfilter', [DietController::class, 'filtrar_dietes']);//!
+    Route::post('/dietfilter', [DietController::class, 'filtrar_dietes']);
     Route::post('/add_historial_pacient',[DietController::class, 'add_historial_pacient']);//!
-    Route::put('/update_user',[UserController::class, 'update_user']);//!
-    Route::put('/update_password',[UserController::class, 'update_password']);//!
+    Route::put('/update_user',[UserController::class, 'update_user']);
+    Route::put('/update_password',[UserController::class, 'update_password']);
 });

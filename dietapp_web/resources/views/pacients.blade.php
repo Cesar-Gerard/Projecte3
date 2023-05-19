@@ -106,8 +106,8 @@
                     
                     <tr onclick="window.location.href = '{{route('pacient',$pacient->id)}}';">
                         <td>{{$pacient->name_user}} {{$pacient->lastname_user}}</td>
-                        <td>{{$pacient->phone_pacient}}</td>
-                        <td>{{$pacient->address_pacient}}</td>
+                        <td>{{$pacient->phone_patient}}</td>
+                        <td>{{$pacient->address_patient}}</td>
                         <td>@if($pacient->name != null) {{$pacient->name}} @else Sense dieta assignada @endif</td>
                         <td>
                             

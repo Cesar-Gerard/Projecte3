@@ -14,8 +14,8 @@ class DietsDishes extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'dietas_id_dieta',
-        'dishes_id_dishes',
+        'diet_id_diet',
+        'dish_id_dish',
         'week_day',
         'meal',
     ]; 

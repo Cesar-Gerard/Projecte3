@@ -11,23 +11,24 @@ class HistorialPacient extends Model
 {
     use HasFactory;
 
-    public $table = "historial_pacient";
+    public $table = "historial_patient";
 
     public $timestamps = false;
 
     protected $primaryKey = 'id_historial';
 
     protected $fillable = [
-        'id_historial',
-        'date',
-        'id_pacient',
+        'start_date',
+        'id_patient',
         'diet',
-        'weigth',
-        'heigth',
+        'weight',
+        'height',
         'chest',
         'leg',
         'arm',
-        'hip'
+        'hip',
+        'control_date',
+        'status',
     ]; 
 
 
@@ -38,15 +39,14 @@ class HistorialPacient extends Model
             from historial_pacient hp join diets d on hp.diet = d.id_diet
                                     join pacient p on p.id_pacient = hp.id_pacient
             where p.id_pacient = 1 and d.id_diet=1;
-
         */
 
 
-        $progres = DB::table('historial_pacient')
-            ->select('historial_pacient.date','historial_pacient.heigth','historial_pacient.weigth')
-            ->join('diets','diets.id_diet','=','historial_pacient.diet')
-            ->join('pacient','pacient.id_pacient','=','historial_pacient.id_pacient')
-            ->where('pacient.id_pacient','=',$pacient)
+        $progres = DB::table('historial_patient')
+            ->select('historial_patient.control_date','historial_patient.heigth','historial_patient.weigth')
+            ->join('diets','diets.id_diet','=','historial_patient.diet')
+            ->join('patients','patients.id_pacient','=','historial_patient.id_patient')
+            ->where('patients.id_pacient','=',$pacient)
             ->where('diets.id_diet','=',$dieta)
             ->get();
         
@@ -57,11 +57,11 @@ class HistorialPacient extends Model
     public static function getDietesAcabades($pacient,$dieta_actual){
 
        
-        return $dietes_acabades =  DB::table('historial_pacient')
+        return $dietes_acabades =  DB::table('historial_patient')
                             ->select('diet')
                             ->distinct()
                             ->where('diet','!=',$dieta_actual)
-                            ->where('id_pacient','=',$pacient)
+                            ->where('id_patient','=',$pacient)
                             ->get();
 
     }

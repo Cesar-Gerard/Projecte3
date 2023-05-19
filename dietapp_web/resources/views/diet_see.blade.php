@@ -1,5 +1,5 @@
 @include('nav_bar')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
 <script src="{{asset('js/diets_see.js')}}"></script>
 
 <script>
@@ -49,7 +49,7 @@
             <select id="dieta_tipus" class="form-control">
                 <option value="-1"></option>
                 @foreach($tipus_dietes as $type_dieta)
-                    @if($type_dieta->id_type == $diet->tipus_dieta)
+                    @if($type_dieta->id_type == $diet->type_diet)
                         <option value="{{$type_dieta->id_type}}" selected>{{$type_dieta->name_type}}</option>
                     @else
                         <option value="{{$type_dieta->id_type}}">{{$type_dieta->name_type}}</option>
@@ -117,35 +117,25 @@
                         Esmorzar
                     </div>
                     
+                    
+
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="esmorzar-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
                             
                             @php
-                                
                                 $array = (array) $diets_dishes_esmorzars;
-                                var_dump($array);die();    
-                                
                             @endphp
-                            @foreach($diets_dishes_esmorzars as $dd)
-                                
-                                <div class="card ui-draggable ui-draggable-handle" id="dish-{{$dd->dishes_id_dishes}}">
-                                    {{$dd->name_dishes}}
-                                </div>
-                            
 
-                            @endforeach
-                            <!-- 
-                                <div class="card ui-draggable ui-draggable-handle" id="dish-3">
-                                    Kiwi
-                                </div>
-                            -->
-                            <!-- Mostrar els àpats -->
-                           
+                               
+                            <div class="card ui-draggable ui-draggable-handle" id="dish-{{$diets_dishes_esmorzars[$i-1]->dish_id_dish}}">
+                                {{$diets_dishes_esmorzars[$i-1]->name_dish}}
+                            </div>
+
                         </div>
                     @endfor
                 </div>
         
-                <!--
+                
                 <div class="row">
                     <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
                         Dinar
@@ -153,7 +143,21 @@
         
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="dinar-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-        
+                            
+                            @php 
+                                var_dump($diets_dishes_esmorzars[$i-1]);
+                                die();
+
+                            @endphp
+                            
+                            
+                                <div class="card ui-draggable ui-draggable-handle" id="dish-{{$diets_dishes_dinar[$i-1]->dish_id_dish}}">
+                                    {{$diets_dishes_dinar[$i-1]->name_dish}}
+                                </div>
+                            
+
+                            
+
                         </div>
                     @endfor
                 </div>
@@ -165,10 +169,14 @@
         
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="berenar-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-        
+                            
+                            
+
                         </div>
                     @endfor
                 </div>
+
+                <!--
         
                 <div class="row">
                     <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
@@ -211,7 +219,7 @@
                     @foreach($dishes as $dish)
         
                         <div class="card" id="dish-{{$dish->id_dishes}}">
-                            {{$dish->name_dishes}}
+                            {{$dish->name_dish}}
                         </div> 
 
                     @endforeach

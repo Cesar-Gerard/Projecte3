@@ -47,7 +47,7 @@ class DietController extends Controller
         try{
 
             $data = Dishes::select('dishes.*')
-                >join('diets_dishes', 'diets_dishes.dish_id_dish', '=', 'dishes.id_dishes')
+                ->join('diets_dishes', 'diets_dishes.dish_id_dish', '=', 'dishes.id_dishes')
                 ->where('diets_dishes.diet_id_diet','=',$diet)
                 ->get();
                 
@@ -130,7 +130,7 @@ class DietController extends Controller
         $type = $request->type;
 
         try{
-            $data = Diets::where('number_meals','=',$meals_number)->where('tipus_dieta','=',$type)->get();
+            $data = Diets::where('number_meals','=',$meals_number)->where('type_diet','=',$type)->get();
         }catch(\Illuminate\Database\QueryException $ex){
             return response()->json([
                 'database_error' => "Database error: ".$ex
@@ -150,6 +150,9 @@ class DietController extends Controller
      */
     public function add_historial_pacient(Request $request){
         //(`id_historial`, `date`, `id_pacient`, `diet`, `weigth`, `heigth`, `chest`, `leg`, `arm`, `hip`) VALUES
+        //Control date
+        //start_Date
+        //status
         $id_pacient = $request->id_pacient;
         $diet = $request->diet;
         $weight = $request->weight;
@@ -158,6 +161,12 @@ class DietController extends Controller
         $leg = $request->leg;
         $arm = $request->arm;
         $hip = $request->hip;
+        
+
+        //Mirar la última data del historial del pacient amb id
+        //Si l'entrada no coincideix amb el id dieta, es que s'ha canviat
+        //Introduïr mecanisme de treure's de la dieta des de la part del pacient o nutricionista? (o els 2)
+
 
         if($height == null || $weight == null){
             return response()->json([
@@ -168,7 +177,7 @@ class DietController extends Controller
         try{
             //Crear una nova entrada d'historial
             HistorialPacient::create([
-                'date' => Date('Y-m-d'),
+                'control_date' => Date('Y-m-d'),
                 'id_pacient' => $id_pacient,
                 'diet' => $diet,
                 'weigth' => $weight,

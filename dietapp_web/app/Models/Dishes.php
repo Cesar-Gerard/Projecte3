@@ -17,8 +17,9 @@ class Dishes extends Model
 
     protected $fillable = [
         'id_dishes',
-        'name_dishes',
+        'name_dish',
         'calories',
+        'image_dish',
     ]; 
 
 
@@ -35,7 +36,7 @@ class Dishes extends Model
 
     public static function getDishesByName($name){
 
-        return Dishes::where('name_dishes','like', $name . '%' )->get();
+        return Dishes::where('name_dish','like', $name . '%' )->get();
 
 
     }

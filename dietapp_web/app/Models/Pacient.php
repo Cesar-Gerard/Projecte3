@@ -12,7 +12,7 @@ class Pacient extends Model
 {
     use HasFactory;
 
-    public $table = "pacient";
+    public $table = "patients";
 
     public $timestamps = false;
 
@@ -21,21 +21,21 @@ class Pacient extends Model
     protected $fillable = [
         'id_pacient',
         'assigned_nutricionist',
-        'phone_pacient',
-        'address_pacient',
+        'phone_patient',
+        'address_patient',
         'current_diet',
     ]; 
 
     public static function getPacientsFromNutricionist($id){
 
 
-        $pacients = DB::table('pacient')
-                    ->select('users.*','pacient.*','diets.*')
-                    ->leftJoin('users','users.id','=','pacient.id_pacient')
-                    ->leftJoin('diets','pacient.current_diet','=','diets.id_diet')
-                    ->where('pacient.assigned_nutricionist','=',$id)
+        $pacients = DB::table('patients')
+                    ->select('users.*','patients.*','diets.*')
+                    ->leftJoin('users','users.id','=','patients.id_pacient')
+                    ->leftJoin('diets','patients.current_diet','=','diets.id_diet')
+                    ->where('patients.assigned_nutricionist','=',$id)
                     ->get();
-
+        
 
         return $pacients;
         
@@ -47,11 +47,11 @@ class Pacient extends Model
 
         
 
-        $pacients = DB::table('pacient')
-            ->select('users.*','pacient.*','diets.*')
-            ->join('users','users.id','=','pacient.id_pacient')
-            ->join('diets','pacient.current_diet','=','diets.id_diet')
-            ->where('pacient.assigned_nutricionist','=',$nutricionist);
+        $pacients = DB::table('patients')
+            ->select('users.*','patients.*','diets.*')
+            ->join('users','users.id','=','patients.id_pacient')
+            ->join('diets','patients.current_diet','=','diets.id_diet')
+            ->where('patients.assigned_nutricionist','=',$nutricionist);
 
         if(strlen($nom)!=0){
             $pacients = $pacients->where('users.name_user','like',$nom.'%');        
@@ -80,9 +80,9 @@ class Pacient extends Model
 
     public static function getPacient($pacient,$nutricionist){
         
-        return DB::table('pacient')
-                ->select('users.*','pacient.*')
-                ->leftJoin('users','users.id','=','pacient.id_pacient')
+        return DB::table('patients')
+                ->select('users.*','patients.*')
+                ->leftJoin('users','users.id','=','patients.id_pacient')
                 ->where('users.id','=',$pacient)
                 ->first();
 
