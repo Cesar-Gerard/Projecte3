@@ -11,6 +11,8 @@ class DietsDishes extends Model
 
     public $table = "diets_dishes";
 
+    
+
     public $timestamps = false;
 
     protected $fillable = [

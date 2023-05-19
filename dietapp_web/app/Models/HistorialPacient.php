@@ -16,8 +16,10 @@ class HistorialPacient extends Model
     public $timestamps = false;
 
     protected $primaryKey = 'id_historial';
+    
 
     protected $fillable = [
+        'id_historial',
         'start_date',
         'id_patient',
         'diet',
