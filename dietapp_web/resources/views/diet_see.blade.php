@@ -6,10 +6,10 @@
     // global app configuration object
     var config = {
         routes: {
-            
+            zone_diet_edit: "{{ route('diet_edit') }}"
         },
         vars: {
-            
+            id_dieta: "{{ $diet->id_diet }}"
         }
     };
 </script>
@@ -121,18 +121,23 @@
 
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="esmorzar-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-                            
-                            @php
-                                $array = (array) $diets_dishes_esmorzars;
-                            @endphp
 
-                               
-                            <div class="card ui-draggable ui-draggable-handle" id="dish-{{$diets_dishes_esmorzars[$i-1]->dish_id_dish}}">
-                                {{$diets_dishes_esmorzars[$i-1]->name_dish}}
-                            </div>
+                            @foreach($diets_dishes_esmorzars as $dde)
+                                
+                                @if($dde->week_day == $i)
+                                    
+                                    <div class="card ui-draggable ui-draggable-handle" id="dish-{{$dde->dish_id_dish}}">
+                                        {{$dde->name_dish}}
+                                    </div>
+                                
+                                @endif
+                            
+                            @endforeach
+                            
 
                         </div>
                     @endfor
+
                 </div>
         
                 
@@ -143,20 +148,16 @@
         
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="dinar-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-                            
-                            @php 
-                                var_dump($diets_dishes_esmorzars[$i-1]);
-                                die();
 
-                            @endphp
-                            
-                            
-                                <div class="card ui-draggable ui-draggable-handle" id="dish-{{$diets_dishes_dinar[$i-1]->dish_id_dish}}">
-                                    {{$diets_dishes_dinar[$i-1]->name_dish}}
-                                </div>
-                            
+                            @foreach($diets_dishes_dinar as $ddd)
 
-                            
+                                @if($ddd->week_day == $i)
+                                    <div class="card ui-draggable ui-draggable-handle" id="dish-{{$ddd->dish_id_dish}}">
+                                        {{$ddd->name_dish}}
+                                    </div>
+                                @endif
+
+                            @endforeach
 
                         </div>
                     @endfor
@@ -170,13 +171,21 @@
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="berenar-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
                             
+                            @foreach($diets_dishes_berenar as $ddb)
+
+                                @if($ddb->week_day == $i)
+                                    <div class="card ui-draggable ui-draggable-handle" id="dish-{{$ddb->dish_id_dish}}">
+                                        {{$ddb->name_dish}}
+                                    </div>
+                                @endif
                             
+                            @endforeach
 
                         </div>
                     @endfor
                 </div>
 
-                <!--
+                
         
                 <div class="row">
                     <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
@@ -185,7 +194,17 @@
         
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="sopar-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-        
+
+                            @foreach($diets_dishes_sopar as $dds)
+
+                                @if($dds->week_day == $i)
+                                    <div class="card ui-draggable ui-draggable-handle" id="dish-{{$dds->dish_id_dish}}">
+                                        {{$dds->name_dish}}
+                                    </div>
+                                @endif
+
+                            @endforeach
+
                         </div>
                     @endfor
                 </div>
@@ -197,14 +216,22 @@
         
                     @for ($i = 1; $i <= 5; $i++)
                         <div id="migdia-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-                            
+                            @foreach($diets_dishes_migmati as $ddm)
+
+                                @if($ddm->week_day == $i)
+                                    <div class="card ui-draggable ui-draggable-handle" id="dish-{{$ddm->dish_id_dish}}">
+                                        {{$ddm->name_dish}}
+                                    </div>
+                                @endif
+                            @endforeach
+
                         </div>
                     @endfor
         
         
                 </div>
 
-            -->
+            
 
             </div>
 
@@ -241,7 +268,7 @@
 
     <div class="row">
         <div class="col-12 d-flex justify-content-center" >
-            <button id="crea-dieta" class="button-3 btn-search ">Crear dieta</button>
+            <button id="edita-dieta" class="button-3 btn-search ">Edita dieta</button>
         </div>
     </div>
     <button id="prova" class="button-3 btn-search " style="display:none;">Prova</button>

@@ -71,5 +71,24 @@ class DietController extends Controller
         }
         
     }
+
+
+
+    public function diet_edit(Request $request){
+
+        $dieta = $request->dieta;
+        $id_dieta = $request->id_dieta;
+
+        if(Diets::edit_diet($dieta,$id_dieta)){
+            
+        }else{
+
+        }
+        
+
+
+
+
+    }
     
 }

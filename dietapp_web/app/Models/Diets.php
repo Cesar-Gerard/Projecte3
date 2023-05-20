@@ -99,10 +99,10 @@ class Diets extends Model
                     ->join('dishes','dishes.id_dishes','=','diets_dishes.dish_id_dish')
                     ->where('diets_dishes.meal','=',$id_meal)
                     ->where('diets.id_diet','=',$diet)
-                    ->orderBy('week_day')
-                    ->orderBy('meal')
+                    ->orderBy('diets_dishes.week_day')
+                    ->orderBy('diets_dishes.meal')
                     ->get();
-
+        
         return $diets;
 
 
@@ -170,21 +170,30 @@ DB:
 
             $j = 0;
             $k = 1;
+
+            //Array de meals
+                //Array que conté cada dia de la semana d'aquell meal
+                    //
+
             foreach($arr_meals as $meal){
                
-
-                for($i=1; $i < count($dieta[$meal])+1; $i++){
-                    $diets_dishes = new DietsDishes();
+                for($dies_meal=1; $dies_meal < count($dieta[$meal]); $dies_meal++){
                     
-                    $diets_dishes->diet_id_diet = $id_dieta_nou;
                     
-                    for($l = 0; $l < count($dieta[$meal][$i]); $l++){
-                        $diets_dishes->dish_id_dish = $dieta[$meal][$i][$l];
+                    for($meal_dia = 0; $meal_dia < count($dieta[$meal][$dies_meal]); $meal_dia++){
 
-                        $diets_dishes->week_day = $i+1;
+                        $diets_dishes = new DietsDishes();
+                    
+                        $diets_dishes->diet_id_diet = $id_dieta_nou;
+                        
+                        $diets_dishes->dish_id_dish = $dieta[$meal][$dies_meal][$meal_dia];
+
+                        
+                        $diets_dishes->week_day = $dies_meal;
                         $diets_dishes->meal = $k;
     
                         $diets_dishes->save();
+                        
                     }
                     
 
@@ -192,22 +201,113 @@ DB:
                 
                 $k++;
             }
-            die();
+            
 
             \DB::commit();
             
         }catch(\Illuminate\Database\QueryException $ex){
-            echo $ex;
+            echo "QUery: ".$ex;
             \DB::rollback();
             return false;
         }catch(Throwable $ex){
-            echo $ex;
+            echo "Throwable: ".$ex;
             \DB::rollback();
             return false;
         }
         
 
 
+
+
+    }
+
+
+
+    public static function edit_diet($dieta,$id_dieta){
+
+        try{
+
+            \DB::beginTransaction();
+
+            //1. Eliminar tots els registres de la dieta de la taula diets_dishes
+            $diet_dish_e = DietsDishes::where('diet_id_diet','=',$id_dieta)->get();
+            
+            foreach($diet_dish_e as $dde){
+                $dde->delete();
+            }
+
+            $diet_dish_e = DietsDishes::where('diet_id_diet','=',$id_dieta)->get();
+            
+
+
+            //2. Tornar a inserir tota la dieta
+            $diet = Diets::where('id_diet','=',$id_dieta)->first();
+            $diet->name = $dieta['nom'];
+            $diet->number_meals = 5;
+            $diet->description = $dieta['descripcio'];
+            $diet->type_diet = $dieta['tipus'];
+
+            $diet->save();
+           
+            
+            $id_dieta_nou = $diet->id_diet;
+
+            $arr_meals = array();
+            array_push($arr_meals,"esmorzars");
+            array_push($arr_meals,"dinars");
+            array_push($arr_meals,"berenars");
+            array_push($arr_meals,"sopars");
+            array_push($arr_meals,"migdies");
+
+            $j = 0;
+            $k = 1;
+
+            //Array de meals
+                //Array que conté cada dia de la semana d'aquell meal
+                    //
+
+            foreach($arr_meals as $meal){
+               
+                for($dies_meal=1; $dies_meal < count($dieta[$meal]); $dies_meal++){
+                    
+                    
+                    for($meal_dia = 0; $meal_dia < count($dieta[$meal][$dies_meal]); $meal_dia++){
+
+                        $diets_dishes = new DietsDishes();
+                    
+                        $diets_dishes->diet_id_diet = $id_dieta;
+                        
+                        $diets_dishes->dish_id_dish = $dieta[$meal][$dies_meal][$meal_dia];
+
+                        
+                        $diets_dishes->week_day = $dies_meal;
+                        $diets_dishes->meal = $k;
+    
+                        $diets_dishes->save();
+                        
+                    }
+                    
+
+                }
+                
+                $k++;
+            }
+            
+
+            \DB::commit();
+
+
+
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            echo "Query: ".$ex;
+            \DB::rollback();
+            return false;
+        }catch(Throwable $ex){
+            echo "Throwable: ".$ex;
+            \DB::rollback();
+            return false;
+        }
 
 
     }

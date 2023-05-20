@@ -5,9 +5,130 @@ function f_main(){
 
     f_dragable();
 
+    document.getElementById('edita-dieta').addEventListener('click',f_editaDieta);
 
 
 }
+
+
+function f_editaDieta(){
+
+
+    let nom = document.getElementById('dieta_nom').value;
+    let descripcio = document.getElementById('dieta_descripcion').value;
+    let tipus_dieta = document.getElementById('dieta_tipus').value;
+
+
+    //Crear array que agrupi tots els apats de la dieta
+
+    let esmorzars = [];
+    let dinars = [];
+    let berenars = [];
+    let sopars = [];
+    let migdies = [];
+
+
+
+    let number_id;
+    let pos_number_id;
+    
+    for(let i=1; i<=5; i++){
+        //Buscar els elements Child de cada cel·la
+        let childs_esmorzars = document.getElementById('esmorzar-'+i).children;
+        let childs_dinars = document.getElementById('dinar-'+i).children;
+        let childs_berenars = document.getElementById('berenar-'+i).children;
+        let childs_sopars = document.getElementById('sopar-'+i).children;
+        let childs_migdies = document.getElementById('migdia-'+i).children;
+
+
+        
+        esmorzars[i] = [];
+        for(let j=0; j<childs_esmorzars.length; j++){
+
+            pos_number_id = childs_esmorzars[j].id.indexOf("-");
+            number_id = childs_esmorzars[j].id.substring(pos_number_id+1,childs_esmorzars[j].id.length);
+            esmorzars[i].push(number_id);
+        }
+
+        dinars[i] = [];
+        for(let j=0; j<childs_dinars.length; j++){
+
+            pos_number_id = childs_dinars[j].id.indexOf("-");
+            number_id = childs_dinars[j].id.substring(pos_number_id+1,childs_dinars[j].id.length);
+            dinars[i].push(number_id);
+        }
+
+        berenars[i] = [];
+        for(let j=0; j<childs_berenars.length; j++){
+
+            pos_number_id = childs_berenars[j].id.indexOf("-");
+            number_id = childs_berenars[j].id.substring(pos_number_id+1,childs_berenars[j].id.length);
+            berenars[i].push(number_id);
+        }
+
+        sopars[i] = [];
+        for(let j=0; j<childs_sopars.length; j++){
+
+            pos_number_id = childs_sopars[j].id.indexOf("-");
+            number_id = childs_sopars[j].id.substring(pos_number_id+1,childs_sopars[j].id.length);
+            sopars[i].push(number_id);
+        }
+
+        migdies[i] = [];
+        for(let j=0; j<childs_migdies.length; j++){
+
+            pos_number_id = childs_migdies[j].id.indexOf("-");
+            number_id = childs_migdies[j].id.substring(pos_number_id+1,childs_migdies[j].id.length);
+            migdies[i].push(number_id);
+        }
+
+
+
+
+    }
+    //console.info(esmorzars);
+    //console.info(dinars);
+    //console.info(berenars);
+    //console.info(sopars);
+    //console.info(migdies);
+
+    //Ajuntem la info en un sol objecte
+    let dieta = {};
+    dieta.nom = nom;
+    dieta.descripcio = descripcio;
+    dieta.tipus = tipus_dieta;
+    dieta.esmorzars = esmorzars;
+    dieta.dinars = dinars;
+    dieta.berenars = berenars;
+    dieta.sopars = sopars;
+    dieta.migdies = migdies;
+
+    console.info(dieta);
+
+
+
+    //Peiticó ajax
+
+    $.ajax({
+        url: config.routes.zone_diet_edit,
+        data:{
+            'dieta' : dieta,
+            'id_dieta' : config.vars.id_dieta,
+            '_token': $('meta[name="csrf-token"]').attr('content'),
+        },
+        type: 'POST'
+    }).done(function (e)
+    {
+        
+    });
+
+
+
+
+
+
+}
+
 
 function f_dragable(){
 

@@ -11,7 +11,7 @@ class DietsDishes extends Model
 
     public $table = "diets_dishes";
 
-    
+    protected $primaryKey = 'diet_dish_id';
 
     public $timestamps = false;
 

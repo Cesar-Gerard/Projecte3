@@ -276,6 +276,7 @@ Route::get("/dieta/{id}", function($id_dieta){
         $dishes = Dishes::getAllDishes();
         if($diet!=null){
             $diets_dishes_esmorzars = Diets::getDietDietsDishesByMeals($id_dieta,1);
+        
             $diets_dishes_migmati = Diets::getDietDietsDishesByMeals($id_dieta,5);
             $diets_dishes_dinar = Diets::getDietDietsDishesByMeals($id_dieta,2);
             
@@ -331,3 +332,4 @@ Route::post("diet/filtrar_all_diets",[DietController::class, "filtrar_all_diets"
 Route::post("diet/filtrar",[DietController::class, "filtrar_dieta"])->name("diet.filtrar");
 Route::post("diet/dishes_filtrar",[DietController::class, "dishes_filtrar"])->name("diet.dishes_filtrar");
 Route::post("diet/add",[DietController::class, "diet_add"])->name("diet_add");
+Route::post("diet/edit",[DietController::class, "diet_edit"])->name("diet_edit");
