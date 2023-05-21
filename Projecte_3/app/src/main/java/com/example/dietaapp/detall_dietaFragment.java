@@ -3,6 +3,8 @@ package com.example.dietaapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.example.dietaapp.databinding.FragmentDetallDietaBinding;
 
 import java.util.List;
 
+import adapter_dietes.DishAdapter;
 import api.ApiManager;
 import model.Dietes;
 import model.Dishes_Dieta;
@@ -57,6 +60,10 @@ public class detall_dietaFragment extends Fragment {
         double resultat= Double.valueOf(dieta.getCalories())/1000;
         binding.txvCaloriesDieta.setText(String.valueOf(resultat)+" kcal");
 
+
+        //Descripcio de la dieta
+        binding.edtDescription.setText(dieta.getDescription());
+
         //Apats de la dieta
         Dishes_DietaRequest();
 
@@ -81,11 +88,13 @@ public class detall_dietaFragment extends Fragment {
 
     private void controldeApats(List<Dishes_Dieta> data) {
 
-        for(Dishes_Dieta entrada : data){
 
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        binding.recyclerView.setLayoutManager(layoutManager);
 
-        }
+        DishAdapter adapter = new DishAdapter(data);
+        binding.recyclerView.setAdapter(adapter);
 
 
     }
