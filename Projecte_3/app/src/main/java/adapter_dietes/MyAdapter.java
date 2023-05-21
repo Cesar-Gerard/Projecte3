@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dietaapp.R;
 import com.example.dietaapp.databinding.FragmentDietasBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Dietes;
@@ -21,11 +22,34 @@ import model.Dietes;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
 
-    private List<Dietes> mObjects;
+    private static List<Dietes> mObjects;
+    private List<Dietes> mFilteredObjects;
 
-    public MyAdapter(List<Dietes> objects){
+
+    public MyAdapter(List<Dietes> objects) {
         mObjects = objects;
+        mFilteredObjects = new ArrayList<>(objects);
     }
+
+
+
+    //comportament del RecycleView al ser filtrat
+    public void filtrarPorNumeroComidas(String entrada,String nom) {
+
+        mFilteredObjects.clear();
+
+        int numeroComidas= Integer.valueOf(entrada);
+
+        for (Dietes dieta : mObjects) {
+            if (dieta.getNumberMeals() >= numeroComidas && dieta.getName().contains(nom)) {
+                mFilteredObjects.add(dieta);
+            }
+        }
+
+        notifyDataSetChanged();
+    }
+
+
 
 
     @NonNull
@@ -37,7 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
-        Dietes object = mObjects.get(position);
+        Dietes object = mFilteredObjects.get(position);
         holder.nom.setText(object.getName());
         holder.apats.setText(String.valueOf(object.getNumberMeals()));
 
@@ -56,11 +80,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     }
 
+
     @Override
     public int getItemCount() {
-        return mObjects.size();
+        return mFilteredObjects.size();
     }
 
+    public void NetejarLlista() {
+        mFilteredObjects.clear();
+        mFilteredObjects.addAll(mObjects); // Restaurar la lista original
+
+        notifyDataSetChanged();
+
+    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         else if(item.getItemId()==R.id.nav_logout){
-           System.exit(0);
+            finishAffinity();
 
         }
 

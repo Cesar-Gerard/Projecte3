@@ -5,6 +5,7 @@ import model.ChangePasswordResponse;
 import model.ChangeUserRequest;
 import model.ChangeUserResponse;
 import model.DietesResponse;
+import model.Dishes_DietaResponse;
 import model.HistorialResponse;
 import model.LoginResponse;
 import model.PacientResponse;
@@ -68,6 +69,13 @@ public class ApiManager {
     public void updateUser(String token, ChangeUserRequest change, Callback<ChangeUserResponse>callback){
         Call<ChangeUserResponse> call = mApiService.updateUser("Bearer " + token,change);
         call.enqueue(callback);
+    }
+
+
+    public void getDishes(String token, String parameter, Callback<Dishes_DietaResponse> callback){
+        Call<Dishes_DietaResponse> call = mApiService.getDishes("Bearer "+token, parameter);
+        call.enqueue(callback);
+
     }
 
 }

@@ -5,6 +5,7 @@ import model.ChangePasswordResponse;
 import model.ChangeUserRequest;
 import model.ChangeUserResponse;
 import model.DietesResponse;
+import model.Dishes_DietaResponse;
 import model.HistorialResponse;
 import model.LoginResponse;
 import model.PacientResponse;
@@ -48,6 +49,10 @@ public interface ApiService {
     @Headers("Accept: application/json")
     @PUT("update_user")
     Call<ChangeUserResponse> updateUser(@Header ("Authorization")String token, @Body ChangeUserRequest request);
+
+    @Headers("Accept: application/json")
+    @GET("dishes/{parameter}")
+    Call<Dishes_DietaResponse> getDishes (@Header ("Authorization")String token, @Path("parameter") String parameter);
 
 
 }

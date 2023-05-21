@@ -6,8 +6,20 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
+
 public class Dietes {
 
+    public static Dietes _dieta;
+
+    public static Dietes get_dieta() {
+        return _dieta;
+    }
+
+    public static void set_dieta(Dietes _dieta) {
+        Dietes._dieta = _dieta;
+    }
+
+    //-------------------------------------
     @SerializedName("id_diet")
     @Expose
     private Integer idDiet;

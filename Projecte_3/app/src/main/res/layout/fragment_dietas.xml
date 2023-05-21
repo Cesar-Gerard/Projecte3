@@ -24,6 +24,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/myCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -60,7 +61,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/diet"
-                    app:layout_constraintBottom_toTopOf="@+id/comidas_dieta"></ImageView>
+                    app:layout_constraintBottom_toTopOf="@+id/comidas_dieta"
+                    app:layout_constraintStart_toStartOf="parent"></ImageView>
 
 
 
@@ -173,27 +175,49 @@
                 android:padding="16dp">
 
 
-
-
                 <EditText
-                    android:id="@+id/busqueda_calorias"
+                    android:id="@+id/busquedanom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Calories: " />
+                    android:hint="Nom dieta: " />
+
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre d'apats: "
+                    android:textColor="@color/black"/>
 
                 <Spinner
-
-                    android:id="@+id/busqueda_numero"
+                    android:prompt="@string/spinner_apats"
+                    android:id="@+id/spinnerApats"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
-                <Spinner
-                    android:id="@+id/busqueda_tipo"
-                    android:layout_width="0dp"
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <Button
+                    android:id="@+id/btnCerca"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:text="Cerca"/>
+
+                <Button
+                    android:id="@+id/btnNetejar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Netejar Filtre"/>
+
 
             </LinearLayout>
 
