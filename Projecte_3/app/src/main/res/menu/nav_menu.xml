@@ -9,7 +9,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/nav_home"
-            android:title="Home"/>
+            android:title="Pàgina Principal"/>
 
         <item
             android:id="@+id/nav_user"

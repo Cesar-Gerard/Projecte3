@@ -3,6 +3,7 @@ package api;
 import model.ChangePasswordRequest;
 import model.ChangePasswordResponse;
 import model.ChangeUserRequest;
+import model.ChangeUserResponse;
 import model.DietesResponse;
 import model.HistorialResponse;
 import model.LoginResponse;
@@ -64,8 +65,8 @@ public class ApiManager {
         call.enqueue(callback);
     }
 
-    public void updateUser(String token, ChangeUserRequest change, Callback<ChangePasswordResponse>callback){
-        Call<ChangePasswordResponse> call = mApiService.updateUser("Bearer " + token,change);
+    public void updateUser(String token, ChangeUserRequest change, Callback<ChangeUserResponse>callback){
+        Call<ChangeUserResponse> call = mApiService.updateUser("Bearer " + token,change);
         call.enqueue(callback);
     }
 

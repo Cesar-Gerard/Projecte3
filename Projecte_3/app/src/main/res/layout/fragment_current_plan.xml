@@ -95,7 +95,7 @@ android:background="@drawable/background_page">
 
             <!--Dies completats per el usuari de la dieta setmanal-->
             <androidx.cardview.widget.CardView
-                android:layout_width="260dp"
+                android:layout_width="230dp"
                 android:layout_height="50dp"
                 android:layout_margin="30dp"
                 app:cardCornerRadius="30dp"
@@ -104,7 +104,8 @@ android:background="@drawable/background_page">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
 
                     <TextView
                         android:id="@+id/textView4"
@@ -129,7 +130,7 @@ android:background="@drawable/background_page">
 
 
                         <ImageView
-                            android:id="@+id/imageView8"
+                            android:id="@+id/imageDilluns"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/oval_background"
@@ -138,7 +139,7 @@ android:background="@drawable/background_page">
                             />
 
                         <ImageView
-                            android:id="@+id/imageView3"
+                            android:id="@+id/imageDimarts"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/oval_background"
@@ -146,7 +147,7 @@ android:background="@drawable/background_page">
                             android:layout_marginEnd="10dp"/>
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/imageDimecres"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/oval_background"
@@ -154,7 +155,7 @@ android:background="@drawable/background_page">
                             android:layout_marginEnd="10dp"/>
 
                         <ImageView
-                            android:id="@+id/imageView5"
+                            android:id="@+id/imageDijous"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/oval_background"
@@ -162,23 +163,7 @@ android:background="@drawable/background_page">
                             android:layout_marginEnd="10dp"/>
 
                         <ImageView
-                            android:id="@+id/imageView6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/oval_background"
-                            android:src="@drawable/baseline_set_meal_24"
-                            android:layout_marginEnd="10dp"/>
-
-                        <ImageView
-                            android:id="@+id/imageView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/oval_background"
-                            android:src="@drawable/baseline_set_meal_24"
-                            android:layout_marginEnd="10dp"/>
-
-                        <ImageView
-                            android:id="@+id/imageView2"
+                            android:id="@+id/imageDivendres"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/oval_background"

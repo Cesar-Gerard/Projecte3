@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.bumptech.glide.Glide;
@@ -25,6 +26,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 
 import java.io.File;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -168,7 +170,10 @@ public class CurrentPlanFragment extends Fragment {
             public void onResponse(Call<HistorialResponse> call, Response<HistorialResponse> response) {
                 user.setHistorial_pacient(response.body().getData());
                 try {
-                    elementsGrafica(user.getHistorial_pacient(), user.getHistorial_pacient().get(3).getControlDate());
+                    //Actualitzem els elements grafics
+                    elementsGrafica(user.getHistorial_pacient(), user.getHistorial_pacient().get(response.body().getData().size()-1).getControlDate());
+                    CanviColorImageViewDates(user.getHistorial_pacient().get(response.body().getData().size()-1).getControlDate());
+
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
@@ -259,5 +264,40 @@ public class CurrentPlanFragment extends Fragment {
         return imc;
     }
 
+
+
+    private void CanviColorImageViewDates(Date startDate){
+        final int MAX_DIES=5;
+
+        //Recollim els ImageView dins de una llista perquè sigui més fàcil de recorre
+        List<ImageView> llista_image= new ArrayList<>();
+
+        llista_image.add(binding.imageDilluns);
+        llista_image.add(binding.imageDimarts);
+        llista_image.add(binding.imageDimecres);
+        llista_image.add(binding.imageDijous);
+        llista_image.add(binding.imageDivendres);
+
+
+
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+
+
+        long diffInMillis = currentDate.getTime()-startDate.getTime();
+        int daysPassed = (int) (diffInMillis / (24 * 60 * 60 * 1000L)); // Obtener la diferencia en días
+
+        for (int i = 0; i < llista_image.size(); i++) {
+            ImageView imageView = llista_image.get(i);
+            if (i <= daysPassed) {
+                // Cambiar el color de fondo si ha pasado el número de días correspondiente
+                imageView.setBackgroundColor(Color.GREEN);
+            } else {
+                // Restablecer el color de fondo
+                imageView.setBackgroundColor(Color.WHITE);
+            }
+        }
+
+    }
 }
 

@@ -35,6 +35,7 @@ import api.ApiService;
 import model.ChangePasswordRequest;
 import model.ChangePasswordResponse;
 import model.ChangeUserRequest;
+import model.ChangeUserResponse;
 import model.HistorialResponse;
 import model.PacientResponse;
 import model.User_Retro;
@@ -66,15 +67,21 @@ public class user_profile extends Fragment {
         //Programem el contingut del imagepicker
         imagepicker();
 
+
+        //Programem el funcionament dels botons
+        preparabotons();
+
+
+        return v;
+    }
+
+    private void preparabotons() {
         //Programem el comportament del canvi de contrasenya
         butoContrasenya();
 
         //Programem el comportament del boto de desar els canvis
         butoGuardarCanvis();
-
-        return v;
     }
-
 
 
     private void butoContrasenya() {
@@ -110,21 +117,21 @@ public class user_profile extends Fragment {
 
         if (requestCode == REQUEST_IMAGE_PICKER && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
-            binding.imageView3.setImageURI(selectedImage);
+            binding.imageProfile.setImageURI(selectedImage);
 
 
             ChangeUserRequest change= new ChangeUserRequest(String.valueOf(user.getId()), user.getNameUser(), user.getLastnameUser(),user.getPhone_number(),user.getAddres(),convertirUriStringPath(selectedImage));
 
 
-            ApiManager.getInstance().updateUser(User_Retro.getToken(), change, new Callback<ChangePasswordResponse>() {
+            ApiManager.getInstance().updateUser(User_Retro.getToken(), change, new Callback<ChangeUserResponse>() {
                 @Override
-                public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
+                public void onResponse(Call<ChangeUserResponse> call, Response<ChangeUserResponse> response) {
                     Toast.makeText(getView().getContext(), "Foto actualitzada",Toast.LENGTH_LONG).show();
 
                 }
 
                 @Override
-                public void onFailure(Call<ChangePasswordResponse> call, Throwable t) {
+                public void onFailure(Call<ChangeUserResponse> call, Throwable t) {
                     Toast.makeText(getView().getContext(), "No s'ha pogut actualitzar la foto de perfil",Toast.LENGTH_LONG).show();
                 }
             });
@@ -262,7 +269,34 @@ public class user_profile extends Fragment {
     }
 
     private void butoGuardarCanvis() {
-        binding.
+
+        binding.btnSaveChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ChangeUserRequest canvi = new ChangeUserRequest(String.valueOf(user.getId()), user.getNameUser(), user.getLastnameUser(), "+34 "+ binding.edtPhone.getText().toString(), binding.edtStreet.getText().toString(), user.getImageUser());
+
+
+                ApiManager.getInstance().updateUser(User_Retro.getToken(), canvi, new Callback<ChangeUserResponse>() {
+
+                    @Override
+                    public void onResponse(Call<ChangeUserResponse> call, Response<ChangeUserResponse> response) {
+                        Toast.makeText(getContext(), "Canvis desats amb èxit",Toast.LENGTH_LONG).show();
+
+
+                        user.setAddres(binding.edtStreet.getText().toString());
+                        user.setPhone_number("+34 "+ binding.edtPhone.getText().toString());
+                    }
+
+                    @Override
+                    public void onFailure(Call<ChangeUserResponse> call, Throwable t) {
+
+                        Toast.makeText(getContext(), "No s'han pogut fer els canvis",Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
+
     }
 
 

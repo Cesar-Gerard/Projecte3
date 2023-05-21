@@ -51,7 +51,7 @@
 
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/imageProfile"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/avatar_icon"
@@ -71,9 +71,9 @@
                     android:textColor="@color/white"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toTopOf="@+id/textNom"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                    app:layout_constraintStart_toStartOf="@+id/imageView3"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                    app:layout_constraintEnd_toEndOf="@+id/imageProfile"
+                    app:layout_constraintStart_toStartOf="@+id/imageProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
 
 
 
@@ -86,8 +86,8 @@
                     android:textColor="#ffff"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                    app:layout_constraintStart_toStartOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="@+id/imageProfile"
+                    app:layout_constraintStart_toStartOf="@+id/imageProfile"
                     app:layout_constraintTop_toBottomOf="@+id/btnChangeImage" />
 
                 <TextView
@@ -137,7 +137,7 @@
                                 android:background="@drawable/oval_background">
 
                                 <ImageView
-                                    android:id="@+id/imageView4"
+                                    android:id="@+id/imageDimecres"
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
                                     android:src="@drawable/nav_settings"
@@ -221,7 +221,7 @@
                             android:layout_weight="1"
                             android:textColor="@color/black"
                             android:padding="5dp"
-                            android:backgroundTint="@color/grey"
+                            android:backgroundTint="@color/grey_not_enabled"
                             android:textSize="15dp"
                             android:enabled="false"
                             android:textAlignment="center"
@@ -264,7 +264,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:enabled="false"
-                            android:backgroundTint="@color/grey"
+                            android:backgroundTint="@color/grey_not_enabled"
                             android:padding="5dp"
                             android:textSize="15dp"
                             android:textAlignment="center"
@@ -305,7 +305,6 @@
                         <EditText
                             android:id="@+id/edt_street"
                             android:layout_width="80dp"
-                            android:enabled="false"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textColor="@color/black"
@@ -345,7 +344,6 @@
                         <EditText
                             android:id="@+id/edt_phone"
                             android:layout_width="80dp"
-                            android:enabled="false"
                             android:textSize="15dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

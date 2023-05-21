@@ -3,6 +3,7 @@ package api;
 import model.ChangePasswordRequest;
 import model.ChangePasswordResponse;
 import model.ChangeUserRequest;
+import model.ChangeUserResponse;
 import model.DietesResponse;
 import model.HistorialResponse;
 import model.LoginResponse;
@@ -46,7 +47,7 @@ public interface ApiService {
 
     @Headers("Accept: application/json")
     @PUT("update_user")
-    Call<ChangePasswordResponse> updateUser(@Header ("Authorization")String token, @Body ChangeUserRequest request);
+    Call<ChangeUserResponse> updateUser(@Header ("Authorization")String token, @Body ChangeUserRequest request);
 
 
 }
