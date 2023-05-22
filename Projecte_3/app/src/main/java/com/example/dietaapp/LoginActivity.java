@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.example.dietaapp.databinding.LoginPageBinding;
@@ -58,6 +59,7 @@ public class LoginActivity extends AppCompatActivity{
 
                             }else if(response.code()==400){
                                 cridaError();
+
                             }
 
                         }
@@ -65,6 +67,7 @@ public class LoginActivity extends AppCompatActivity{
                         @Override
                         public void onFailure(Call<LoginResponse> call, Throwable t) {
                             binding.progressBar.setVisibility(View.GONE);
+                            cridaError();
                         }
                     });
 
@@ -82,5 +85,6 @@ public class LoginActivity extends AppCompatActivity{
     //Tira un missatge al usuari en cas de error o valor null a l'hora de fer login
     private void cridaError() {
         Toast.makeText(LoginActivity.this, "Nom o contrasenya incorrectes",Toast.LENGTH_LONG).show();
+        Log.e("XXX","Soc un toast");
     }
 }
