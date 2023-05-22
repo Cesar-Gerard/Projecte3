@@ -28,10 +28,18 @@ import retrofit2.Response;
 
 public class DishAdapter extends RecyclerView.Adapter<DishAdapter.ViewHolder>{
     private List<Dishes_Dieta> dishes;
+    IngredientAdapter ingredientadapter;
+    private DishSelectedListener listener;
 
-    public DishAdapter(List<Dishes_Dieta> dishes) {
-        this.dishes = dishes;
+    public interface DishSelectedListener {
+        public void onDishSelected(Dishes_Dieta seleccionat);
     }
+
+    public DishAdapter(List<Dishes_Dieta> dishes, DishSelectedListener listener) {
+        this.dishes = dishes;
+        this.listener = listener;
+    }
+
 
     @NonNull
     @Override
@@ -48,8 +56,20 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.ViewHolder>{
         holder.textViewDishName.setText(dish.getNameDish());
         holder.txvCaloriesDieta.setText(dish.getCalories() + " cal");
 
-        Uri uri = Uri.parse("android.resource://com.example.myapp/drawable/"+dish.getImageDish());
-        holder.imageViewDish.setImageURI(uri);
+
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    if(listener!=null)
+                    {
+                        listener.onDishSelected(dish);
+                    }
+            }
+        });
+
+
 
     }
 
@@ -63,11 +83,12 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.ViewHolder>{
         public TextView textViewDishName;
         public TextView txvCaloriesDieta;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageViewDish = itemView.findViewById(R.id.imageViewDish);
             textViewDishName = itemView.findViewById(R.id.textViewDishName);
             txvCaloriesDieta = itemView.findViewById(R.id.txvCaloriesDieta);
+
             }
     }
 }

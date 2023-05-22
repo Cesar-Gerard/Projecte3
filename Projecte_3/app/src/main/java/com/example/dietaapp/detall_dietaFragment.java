@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.dietaapp.databinding.FragmentDetallDietaBinding;
@@ -21,13 +22,15 @@ import api.ApiManager;
 import model.Dietes;
 import model.Dishes_Dieta;
 import model.Dishes_DietaResponse;
+import model.Ingredient;
+import model.IngredientsDishResponse;
 import model.User_Retro;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class detall_dietaFragment extends Fragment {
+public class detall_dietaFragment extends Fragment implements DishAdapter.DishSelectedListener {
 
      FragmentDetallDietaBinding binding;
      Dietes dieta;
@@ -49,11 +52,9 @@ public class detall_dietaFragment extends Fragment {
         omplirDades();
 
 
-
-
-
         return v;
     }
+
 
     private void omplirDades() {
         //Nom de la Dieta
@@ -78,6 +79,7 @@ public class detall_dietaFragment extends Fragment {
         ApiManager.getInstance().getDishes(User_Retro.getToken(), dieta.getIdDiet().toString(), new Callback<Dishes_DietaResponse>() {
             @Override
             public void onResponse(Call<Dishes_DietaResponse> call, Response<Dishes_DietaResponse> response) {
+                recycleviews(response.body().getData());
                 controldeApats(response.body().getData());
             }
 
@@ -91,12 +93,64 @@ public class detall_dietaFragment extends Fragment {
     }
 
     private void controldeApats(List<Dishes_Dieta> data) {
+        for(Dishes_Dieta entrada : data){
+            switch (entrada.getMeal()){
+                case 1:
+                    binding.radioEsmorzar.setChecked(true);
+                    break;
+
+                case 2:
+                    binding.radioMigDia.setChecked(true);
+                    break;
+
+                case 3:
+                    binding.radioDinar.setChecked(true);
+                    break;
+
+                case 4:
+                    binding.radioBerenar.setChecked(true);
+                    break;
+
+                case 5:
+                    binding.radioSopar.setChecked(true);
+                    break;
+
+            }
+        }
+    }
+
+    private void recycleviews(List<Dishes_Dieta> data) {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.recyclerView.setLayoutManager(layoutManager);
 
-        DishAdapter adapter = new DishAdapter(data);
+        DishAdapter adapter = new DishAdapter(data, this);
         binding.recyclerView.setAdapter(adapter);
 
+
+        LinearLayoutManager layoutManager2= new LinearLayoutManager(getContext());
+        binding.recyclerView2.setLayoutManager(layoutManager2);
+
+        ingredientAdapter = new IngredientAdapter();
+        binding.recyclerView2.setAdapter(ingredientAdapter);
+
+    }
+
+    @Override
+    public void onDishSelected(Dishes_Dieta seleccionat) {
+
+        ApiManager.getInstance().getIngredientsDish(User_Retro.getToken(), String.valueOf(seleccionat.getIdDishes()), new Callback<IngredientsDishResponse>() {
+            @Override
+            public void onResponse(Call<IngredientsDishResponse> call, Response<IngredientsDishResponse> response) {
+                List<Ingredient> llista = response.body().getData();
+                ingredientAdapter.setIngredients(llista);
+
+            }
+
+            @Override
+            public void onFailure(Call<IngredientsDishResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

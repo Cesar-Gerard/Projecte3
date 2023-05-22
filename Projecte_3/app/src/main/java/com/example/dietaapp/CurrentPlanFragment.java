@@ -1,43 +1,32 @@
 package com.example.dietaapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.android.volley.RequestQueue;
-import com.bumptech.glide.Glide;
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.io.File;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
 import api.ApiManager;
-import model.CustomRectangleView;
 import model.Datum;
 import model.HistorialResponse;
 import model.PacientResponse;
@@ -71,31 +60,11 @@ public class CurrentPlanFragment extends Fragment {
 
         binding.txvuser.setText("Hola " + user.getNameUser().toString());
 
+        Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
+        binding.imageViewavatar.setImageBitmap(bitmap);
 
         InfoPacientRequest();
         demanarHistorial();
-
-
-        if(user.getImageUser()!=null){
-            File imageFile = new File(user.getImageUser());
-
-            // Verifica si el archivo de la imagen existe y es válido
-            if (imageFile.exists() && imageFile.isFile()) {
-                // Crea un Uri a partir del archivo
-                Uri imageUri = Uri.fromFile(imageFile);
-
-                // Carga la imagen en el ImageView utilizando Glide
-                Glide.with(getContext())
-                        .load(imageUri)
-                        .fitCenter()
-                        .into(binding.imageViewavatar);
-            }
-        }
-        else{
-            user.setImageUser("res/drawable/avatar_icon.png");
-            User_Retro.setUser(user);
-        }
-
 
 
 

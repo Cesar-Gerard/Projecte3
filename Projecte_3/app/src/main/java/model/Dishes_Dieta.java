@@ -18,6 +18,9 @@ public class Dishes_Dieta {
         @SerializedName("image_dish")
         @Expose
         private String imageDish;
+        @SerializedName("meal")
+        @Expose
+        private Integer meal;
 
         public Integer getIdDishes() {
             return idDishes;
@@ -50,4 +53,12 @@ public class Dishes_Dieta {
         public void setImageDish(String imageDish) {
             this.imageDish = imageDish;
         }
+
+    public Integer getMeal() {
+        return meal;
+    }
+
+    public void setMeal(Integer meal) {
+        this.meal = meal;
+    }
 }

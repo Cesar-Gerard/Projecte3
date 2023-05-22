@@ -80,12 +80,15 @@
 
                 <EditText
                     android:id="@+id/edtDietName"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_edittext"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:textSize="15dp"
+                    android:enabled="false"
+                    android:backgroundTint="@color/grey_not_enabled"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/edtCaloriasDieta"
@@ -104,12 +107,15 @@
                <EditText
                    android:id="@+id/edtCaloriasDieta"
                    android:layout_width="wrap_content"
+                   android:textColor="@color/black"
                    android:layout_height="wrap_content"
                    android:background="@drawable/custom_edittext"
                    app:layout_constraintStart_toEndOf="@+id/calorias_dieta"
                    app:layout_constraintTop_toTopOf="@+id/calorias_dieta"
                    android:layout_marginStart="10dp"
                    android:textSize="15dp"
+                   android:enabled="false"
+                   android:backgroundTint="@color/grey_not_enabled"
                    android:textAlignment="center"
                    android:paddingStart="10dp"
                    android:paddingEnd="10dp"/>
@@ -135,6 +141,9 @@
                    android:paddingStart="10dp"
                    android:paddingEnd="10dp"
                    android:textSize="15dp"
+                   android:enabled="false"
+                   android:textColor="@color/black"
+                   android:backgroundTint="@color/grey_not_enabled"
                    app:layout_constraintStart_toStartOf="@+id/edtCaloriasDieta"
                    app:layout_constraintTop_toTopOf="@+id/comidas_dieta" />
 

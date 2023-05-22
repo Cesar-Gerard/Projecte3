@@ -7,6 +7,7 @@
     tools:context=".detall_dietaFragment"
     android:background="@drawable/background_page">
 
+
     <ImageButton
         android:id="@+id/imageView"
         android:layout_width="30dp"
@@ -33,7 +34,7 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal"
         app:cardElevation="20dp">
-        
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,22 +122,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Esmorzar"
-                        app:layout_constraintStart_toEndOf="@+id/textView5" />
+                        android:textSize="12dp"
+                        app:layout_constraintStart_toStartOf="@+id/textView5"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
                     <RadioButton
                         android:id="@+id/radioMigDia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mig dia"
                         android:layout_marginStart="20dp"
+                        android:text="Mig dia"
+                        android:textSize="12dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/radioEsmorzar"
                         app:layout_constraintStart_toEndOf="@+id/radioEsmorzar"
-                        app:layout_constraintTop_toTopOf="@+id/textView5" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
                     <RadioButton
                         android:id="@+id/radioDinar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dinar"
+                        android:textSize="12dp"
                         app:layout_constraintStart_toStartOf="@+id/radioEsmorzar"
                         app:layout_constraintTop_toBottomOf="@+id/radioEsmorzar" />
 
@@ -145,6 +151,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Berenar"
+                        android:textSize="12dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/radioDinar"
+                        app:layout_constraintEnd_toEndOf="@+id/radioMigDia"
                         app:layout_constraintStart_toStartOf="@+id/radioMigDia"
                         app:layout_constraintTop_toBottomOf="@+id/radioMigDia" />
 
@@ -153,6 +162,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sopar"
+                        android:textSize="12dp"
                         app:layout_constraintEnd_toStartOf="@+id/radioBerenar"
                         app:layout_constraintStart_toEndOf="@+id/radioDinar"
                         app:layout_constraintTop_toBottomOf="@+id/radioDinar" />
@@ -193,7 +203,7 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        
+
     </androidx.cardview.widget.CardView>
 
 
@@ -201,7 +211,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="5dp">
 
         <TextView
@@ -214,11 +225,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="300dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/gray_background"
-            android:padding="5dp"
+            android:layout_margin="5dp"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -226,13 +237,11 @@
 
 
 
-
-
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
             android:layout_gravity="bottom"
+
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_marginStart="2dp"
@@ -244,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:text="Ingredients del plat: "
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView2"

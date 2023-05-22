@@ -6,6 +6,8 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
@@ -27,6 +29,10 @@ import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 import com.example.dietaapp.databinding.FragmentUserProfileBinding;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -71,6 +77,9 @@ public class user_profile extends Fragment {
         //Programem el funcionament dels botons
         preparabotons();
 
+
+        Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
+        binding.imageProfile.setImageBitmap(bitmap);
 
         return v;
     }
@@ -117,10 +126,40 @@ public class user_profile extends Fragment {
 
         if (requestCode == REQUEST_IMAGE_PICKER && resultCode == Activity.RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
-            binding.imageProfile.setImageURI(selectedImage);
 
 
-            ChangeUserRequest change= new ChangeUserRequest(String.valueOf(user.getId()), user.getNameUser(), user.getLastnameUser(),user.getPhone_number(),user.getAddres(),convertirUriStringPath(selectedImage));
+
+            File folder = getContext().getFilesDir();
+            File arxiu = new File(folder, "nom.png");
+            Bitmap mImageBitmap = null;
+
+
+            try {
+                InputStream inputStream = this.getContext().getContentResolver().openInputStream(selectedImage);
+                mImageBitmap = BitmapFactory.decodeStream(inputStream);
+                FileOutputStream outputStream = new FileOutputStream(arxiu);
+                mImageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+                outputStream.close();
+
+                String pathString = arxiu.getAbsolutePath();
+                user.setImageUser(pathString);
+                User_Retro.setUser(user);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+
+
+            Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
+            binding.imageProfile.setImageBitmap(bitmap);
+
+
+
+
+            ChangeUserRequest change= new ChangeUserRequest(String.valueOf(user.getId()), user.getNameUser(), user.getLastnameUser(),user.getPhone_number(),user.getAddres(),user.getImageUser());
 
 
             ApiManager.getInstance().updateUser(User_Retro.getToken(), change, new Callback<ChangeUserResponse>() {
@@ -136,10 +175,7 @@ public class user_profile extends Fragment {
                 }
             });
 
-            User_Retro user = User_Retro.getUser();
 
-            user.setImageUser(convertirUriStringPath(selectedImage));
-            User_Retro.setUser(user);
         }
     }
 
@@ -254,19 +290,6 @@ public class user_profile extends Fragment {
 
     }
 
-    public String convertirUriStringPath(Uri uri) {
-        String filePath = null;
-        if (uri != null) {
-            ContentResolver contentResolver = this.getContext().getContentResolver();
-            Cursor cursor = contentResolver.query(uri, null, null, null, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                int columnIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
-                filePath = cursor.getString(columnIndex);
-                cursor.close();
-            }
-        }
-        return filePath;
-    }
 
     private void butoGuardarCanvis() {
 

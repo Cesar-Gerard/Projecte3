@@ -7,11 +7,14 @@
     android:orientation="horizontal"
     android:padding="16dp"
     android:background="@color/green_weak"
-    android:layout_marginBottom="4dp">
+    android:layout_marginBottom="4dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
 
 
         <TextView
@@ -33,62 +36,50 @@
             app:layout_constraintStart_toEndOf="@+id/ingredientName" />
 
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="1dp"
-            android:layout_height="20dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/ingredientQuantitat"
-            app:layout_constraintStart_toEndOf="@+id/ingredientName2" />
 
 
         <TextView
             android:id="@+id/ingredientQuantitat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="Quantitat: "
-
             android:textSize="13dp"
-            android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@id/ingredientName2"/>
+            app:layout_constraintStart_toStartOf="@+id/ingredientName"
+            app:layout_constraintTop_toBottomOf="@+id/ingredientName" />
 
 
         <TextView
-            android:layout_marginStart="5dp"
             android:id="@+id/ingredientQuantitat2"
             android:layout_width="wrap_content"
-            android:textSize="13dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:text="Cafe desnatat"
-            app:layout_constraintStart_toEndOf="@id/ingredientQuantitat"/>
-
-        <View
-            android:id="@+id/view3"
-            android:layout_width="1dp"
-            android:layout_height="20dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/ingredientCalories"
-            app:layout_constraintStart_toEndOf="@+id/ingredientQuantitat2" />
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ingredientQuantitat"
+            app:layout_constraintStart_toEndOf="@id/ingredientQuantitat" />
 
 
         <TextView
             android:id="@+id/ingredientCalories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13dp"
             android:text="Calories: "
-            android:layout_marginStart="10dp"
-            app:layout_constraintStart_toEndOf="@id/ingredientQuantitat2"/>
+            android:layout_marginTop="5dp"
+            android:textSize="13dp"
+            app:layout_constraintStart_toStartOf="@+id/ingredientQuantitat"
+            app:layout_constraintTop_toBottomOf="@+id/ingredientQuantitat" />
 
 
         <TextView
-            android:layout_marginStart="5dp"
             android:id="@+id/ingredientCalories2"
             android:layout_width="wrap_content"
-            android:textSize="13dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:text="0"
-            app:layout_constraintStart_toEndOf="@id/ingredientCalories"/>
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ingredientCalories"
+            app:layout_constraintStart_toEndOf="@id/ingredientCalories" />
 
 
 

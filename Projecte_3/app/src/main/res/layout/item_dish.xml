@@ -14,15 +14,6 @@
         android:layout_height="wrap_content">
 
 
-        <ImageView
-            android:id="@+id/imageViewDish"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/dish"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewDishName" />
 
         <TextView
             android:id="@+id/textViewDishName"
