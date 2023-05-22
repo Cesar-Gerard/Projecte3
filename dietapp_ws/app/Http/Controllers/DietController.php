@@ -46,7 +46,7 @@ class DietController extends Controller
 
         try{
 
-            $data = Dishes::select('dishes.*')
+            $data = Dishes::select('dishes.*','diets_dishes.meal')
                 ->join('diets_dishes', 'diets_dishes.dish_id_dish', '=', 'dishes.id_dishes')
                 ->where('diets_dishes.diet_id_diet','=',$diet)
                 ->get();
@@ -98,7 +98,7 @@ class DietController extends Controller
         
         try{
 
-            $data = Ingredients::select('ingredients.*')
+            $data = Ingredients::select('ingredients.*','dishes_ingredients.quantity','dishes_ingredients.mesure')
                 ->join('dishes_ingredients','dishes_ingredients.ingredient_id_ingredient','=','ingredients.id_ingredient')
                 ->where('dishes_ingredients.dish_id_dish','=',$dish)
                 ->get();
