@@ -65,9 +65,9 @@ class DietController extends Controller
 
 
         if(Diets::add_diet($dieta)){
-
+            return 1;
         }else{
-
+            return -1;
         }
         
     }
@@ -80,13 +80,33 @@ class DietController extends Controller
         $id_dieta = $request->id_dieta;
 
         if(Diets::edit_diet($dieta,$id_dieta)){
+            $diet = Diets::getDietById($id_dieta)->first();
+            return array("status"=>1,"calories"=>$diet->calories);
+        }else{
+            return array("status"=>-1);
+        }
+
+    }
+
+
+    public function diet_delete(Request $request){
+
+        $id_diet = $request->id_diet;
+
+        //Mirar si la dieta la està seguint algú
+        if(Diets::checkDietIsUsed($id_diet)==0){
             
+            return array("status"=>-1,"message"=>"La dieta no es pot eliminar ja que hi ha pacients que la segueixen actualment");
         }else{
 
+            //Eliminar dieta 
+            if(Diets::deleteDiet($id_diet)){
+                return array("status"=>1,"message"=>"La dieta s'ha eliminat correctament");
+            }else{
+                return array("status"=>-1,"message"=>"La dieta no s'ha pogut eliminar");
+            }
+
         }
-        
-
-
 
 
     }

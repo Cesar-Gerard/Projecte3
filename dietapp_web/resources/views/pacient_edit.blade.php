@@ -23,7 +23,8 @@
 
     <div class="breadcrumbs">
         <a href="{{route('home')}}" class="brdcr_link">Inici</a> >
-        <a href="{{route('pacients')}}" class="brdcr_link">Pacients</a>
+        <a href="{{route('pacients')}}" class="brdcr_link">Pacients</a> >
+        <a href="" class="brdcr_link brdcr_selected">Pacient</a>
     </div>
 
     <!-- 

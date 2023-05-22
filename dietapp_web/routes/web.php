@@ -33,7 +33,16 @@ Route::get('/', function () {
 
 Route::get('/home', function(){
     if(Auth::check()){
-        return view('home');
+
+
+        //Mostrar amb una gràfica els pacients que tens a càrrec
+        //% de dietes assignades a cadascun
+        //també els que no tenen
+        $dietes_seguides = Pacient::getDataPatientsDiets(Auth::user()->id);
+        $dietes_seguides_noms = Pacient::getDataPatientsDietsName(Auth::user()->id);
+        
+
+        return view('home',['dietes_seguides'=>$dietes_seguides,"dietes_seguides_noms"=>$dietes_seguides_noms]);
     }
     return redirect(route("index"));
     
@@ -321,6 +330,7 @@ Route::get('/add_dieta', function(){
 
 
 
+
 Route::post("user/login", [UserController::class, "login"])->name("user.login");
 Route::post("user/recupera_password", [UserController::class, "recupera_password"])->name("user.recupera_password");
 Route::post("user/canvia_contrasenya",[UserController::class, "canvia_contrasenya"])->name("user.canvia_contrasenya");
@@ -333,3 +343,4 @@ Route::post("diet/filtrar",[DietController::class, "filtrar_dieta"])->name("diet
 Route::post("diet/dishes_filtrar",[DietController::class, "dishes_filtrar"])->name("diet.dishes_filtrar");
 Route::post("diet/add",[DietController::class, "diet_add"])->name("diet_add");
 Route::post("diet/edit",[DietController::class, "diet_edit"])->name("diet_edit");
+Route::post("diet/delete",[DietController::class, "diet_delete"])->name("diet_delete");

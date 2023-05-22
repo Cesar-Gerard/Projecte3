@@ -8,7 +8,8 @@
         var config = {
             routes: {
                 zone_filtre_pacient: "{{ route('pacient.filtrar_pacient') }}",
-                zone_filtre_all_pacients: "{{ route('pacient.filtrar_all_pacients') }}"
+                zone_filtre_all_pacients: "{{ route('pacient.filtrar_all_pacients') }}",
+                zone_edit_pacient: "{{ route('pacient',-1234) }}",
             },
             vars: {
                 nutricionist: "{{Auth::user()->id}}",
@@ -112,7 +113,7 @@
                         <td>
                             
                             <a href="{{route('pacient_edit',$pacient->id)}}" class="button-3 btn-edit"><i class="fa-solid fa-user-pen"></i></a>
-                            <a href="" class="button-3 btn-delete"><i class="fa-solid fa-user-slash"></i></a>
+                            <!--<a href="" class="button-3 btn-delete"><i class="fa-solid fa-user-slash"></i></a>-->
                         </td>
                     </tr>
 

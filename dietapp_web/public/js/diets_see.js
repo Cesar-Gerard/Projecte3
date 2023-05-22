@@ -6,9 +6,12 @@ function f_main(){
     f_dragable();
 
     document.getElementById('edita-dieta').addEventListener('click',f_editaDieta);
-
+    document.getElementById('dishes_text').addEventListener('input',f_buscaDishes);
 
 }
+
+
+
 
 
 function f_editaDieta(){
@@ -119,7 +122,21 @@ function f_editaDieta(){
         type: 'POST'
     }).done(function (e)
     {
-        
+        ;
+        if(e.status!=1){
+            Swal.fire(
+                'Editar dieta',
+                "Els canvis de la dieta no s'han pogut guardar correctament",
+                'error'
+            );
+        }else{
+            Swal.fire(
+                'Editar dieta',
+                "Els canvis de la dieta s'han enregistrat correctament",
+                'success'
+            );
+            document.getElementById('dieta_calories').value = e.calories/1000;
+        }
     });
 
 
@@ -128,6 +145,63 @@ function f_editaDieta(){
 
 
 }
+
+
+function f_dibuixaDragables(e){
+
+    
+
+    
+    let json = JSON.parse(e);
+
+
+    let table = document.getElementById('launchPad');
+    
+    for(let i=0;i<json.length;i++){
+        console.info(json[i]);
+
+        let div = document.createElement("div");
+        div.setAttribute('id',json[i].id_dishes);
+        div.setAttribute('class','card ui-draggable ui-draggable-handle');
+        //TODO: Afegir el text dins del DIV
+
+        div.innerHTML = json[i].name_dish;
+
+        
+        table.appendChild(div);
+        
+    }
+
+}
+
+function f_buscaDishes(){
+
+    let dish_nom = document.getElementById('dishes_text').value;
+
+    $.ajax({
+        url: config.routes.zone_dishes_filtrar,
+        data:{
+            'dish_nom' : dish_nom,
+            '_token': $('meta[name="csrf-token"]').attr('content'),
+        },
+        type: 'POST'
+    }).done(function (e)
+    {
+
+        //Eliminar cel·les de la taula
+        
+        $("#launchPad div").remove(); 
+        
+        f_dibuixaDragables(e);
+        f_dragable();
+        
+    });
+
+
+
+}
+
+
 
 
 function f_dragable(){

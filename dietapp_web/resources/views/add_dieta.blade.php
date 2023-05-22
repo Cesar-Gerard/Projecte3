@@ -179,6 +179,7 @@
                     @foreach($dishes as $dish)
         
                         <div class="card" id="dish-{{$dish->id_dishes}}">
+                            <img src="{{asset('img/Icons/'.$dish->image_dish.'')}}" class="dish_etiqueta"/>
                             {{$dish->name_dish}}
                         </div> 
 

@@ -21,7 +21,6 @@ function f_main(){
     document.getElementById('crea-dieta').addEventListener('click',f_comprovaCrearDietes);
    
 
-
 }
 
 
@@ -135,7 +134,20 @@ function f_creaDieta(){
         type: 'POST'
     }).done(function (e)
     {
-        
+
+        if(e==-1){
+            Swal.fire(
+                'Crear nova dieta',
+                "La dieta no s'ha creat correctament",
+                'error'
+            );
+        }else{
+            Swal.fire(
+                'Crear nova dieta',
+                "La dieta s'ha creat correctament",
+                'success'
+            );
+        }
     });
 
 
@@ -387,9 +399,6 @@ function f_dibuixaDragables(e){
         table.appendChild(div);
         
     }
-
-    
-
 
 }
 

@@ -62,7 +62,7 @@ class Pacient extends Model
         }
 
         if($dieta!=-1){
-            $pacients = $pacients->where('pacient.current_diet','=',$dieta);
+            $pacients = $pacients->where('patients.current_diet','=',$dieta);
         }
         
 
@@ -92,6 +92,50 @@ class Pacient extends Model
     public static function getPacientById($id){
         return Pacient::where('id_pacient','=',$id)->first();
     }
+
+
+    public static function getDataPatientsDiets($id_nutricionist){
+
+
+        /*
+            select count(*), d.name 
+            from patients p left join diets d on p.current_diet = d.id_diet
+            where assigned_nutricionist = 2
+            group by current_diet;
+        */
+
+
+        return DB::table('patients')
+                ->select(DB::raw('count(*) as total'),'diets.name')
+                ->leftjoin('diets','patients.current_diet','=','diets.id_diet')
+                ->where('patients.assigned_nutricionist','=',$id_nutricionist)
+                ->groupBy('patients.current_diet','diets.name')
+                ->get();
+        
+    }
+
+    public static function getDataPatientsDietsName($id_nutricionist){
+
+
+            /*
+            select count(*), d.name, u.name_user, u.lastname_user 
+                        from patients p left join diets d on p.current_diet = d.id_diet
+                                        left join users u on p.id_pacient = u.id
+                        where assigned_nutricionist = 2
+                        group by current_diet,u.name_user,u.lastname_user;
+            */
+        return DB::table('patients')
+            ->select(DB::raw('count(*) as total'),'diets.name','users.name_user','users.lastname_user')
+            ->leftjoin('diets','patients.current_diet','=','diets.id_diet')
+            ->leftjoin('users','patients.id_pacient','=','users.id')
+            ->where('patients.assigned_nutricionist','=',$id_nutricionist)
+            ->groupBy('patients.current_diet','diets.name','users.name_user','users.lastname_user')
+            ->get();
+
+    }
+
+
+    
 
 
 }

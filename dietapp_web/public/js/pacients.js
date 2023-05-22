@@ -89,6 +89,14 @@ function f_cercaPacients(){
 }
 
 
+function f_goEdit(id_pacient) {
+    url = config.routes.zone_edit_pacient.replace('-1234',id_pacient);
+
+    window.location.href = url;
+
+
+  }
+
 function f_dibuixaTaula(e){
 
     let json = JSON.parse(e);
@@ -100,6 +108,7 @@ function f_dibuixaTaula(e){
         console.info(json[i]);
 
         let tr = document.createElement("tr");
+        tr.addEventListener('click', f_goEdit.bind(null, json[i].id));
 
         let td_pacient = document.createElement("td");
         td_pacient.innerHTML = json[i].name_user+" "+json[i].lastname_user;
@@ -124,20 +133,21 @@ function f_dibuixaTaula(e){
 
         let i_edit = document.createElement("i");
         i_edit.setAttribute("class","fa-solid fa-user-pen");
-
+/*
         let a_delete = document.createElement("a");
         a_delete.setAttribute("class","button-3 btn-delete");
 
+
         let i_delete = document.createElement("i");
         i_delete.setAttribute("class","fa-solid fa-user-slash");
-
+*/
 
         a_edit.appendChild(i_edit);
         td_buttons.appendChild(a_edit);
-
+/*
         a_delete.appendChild(i_delete);
         td_buttons.appendChild(a_delete);
-
+*/
         tr.appendChild(td_pacient);
         tr.appendChild(td_phone);
         tr.appendChild(td_address);

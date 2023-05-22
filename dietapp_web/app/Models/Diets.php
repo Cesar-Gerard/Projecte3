@@ -94,7 +94,7 @@ class Diets extends Model
     public static function getDietDietsDishesByMeals($diet,$id_meal){
 
         $diets = DB::table('diets')
-                    ->select('diets_dishes.*','dishes.name_dish')
+                    ->select('diets_dishes.*','dishes.name_dish','dishes.image_dish')
                     ->join('diets_dishes','diets.id_diet','=','diets_dishes.diet_id_diet')
                     ->join('dishes','dishes.id_dishes','=','diets_dishes.dish_id_dish')
                     ->where('diets_dishes.meal','=',$id_meal)
@@ -151,8 +151,8 @@ DB:
 
             $diet = new Diets();
             $diet->name = $dieta['nom'];
-            $diet->calories = 0;
             $diet->number_meals = 5;
+            $diet->calories = 0;
             $diet->description = $dieta['descripcio'];
             $diet->type_diet = $dieta['tipus'];
 
@@ -204,7 +204,8 @@ DB:
             
 
             \DB::commit();
-            
+            return true;
+
         }catch(\Illuminate\Database\QueryException $ex){
             echo "QUery: ".$ex;
             \DB::rollback();
@@ -295,7 +296,7 @@ DB:
             
 
             \DB::commit();
-
+            return true;
 
 
 
@@ -311,6 +312,68 @@ DB:
 
 
     }
+
+
+    public static function checkDietIsUsed($id_diet){
+
+        /*
+        
+            select d.*
+            from diets d left join patients p on d.id_diet = p.current_diet
+            where p.current_diet is null and d.current_diet = 5;
+        
+        */
+
+
+        $diets = DB::table('diets')
+                    ->select('diets.id_diet')
+                    ->leftjoin('patients','diets.id_diet','=','patients.current_diet')
+                    ->whereNull('patients.current_diet')
+                    ->where('diets.id_diet','=',$id_diet)
+                    ->get();
+        
+        
+        return count($diets);
+
+
+
+    }
+
+    public static function deleteDiet($id_diet){
+
+        try{
+
+            \DB::beginTransaction();
+            //Eliminar els registres de diets_dishes
+            //Eliminar el registre de la taula diets
+
+            $diets_dishes = DietsDishes::where('diet_id_diet','=',$id_diet)->get();
+
+            foreach($diets_dishes as $dd){
+                $dd->delete();
+            }
+
+            $diet = Diets::where('id_diet','=',$id_diet)->first();
+            $diet->delete();
+
+
+            \DB::commit();
+            return true;
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            echo "Query: ".$ex;
+            \DB::rollback();
+            return false;
+        }catch(Throwable $ex){
+            echo "Throwable: ".$ex;
+            \DB::rollback();
+            return false;
+        }
+
+
+
+    }
+
 
     
 }

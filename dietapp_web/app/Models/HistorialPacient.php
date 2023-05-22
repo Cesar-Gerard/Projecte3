@@ -82,4 +82,11 @@ class HistorialPacient extends Model
 
 
     }
+
+
+    public static function getCanvisDietesUsuaris($id_nutricionista){
+
+
+        
+    }
 }

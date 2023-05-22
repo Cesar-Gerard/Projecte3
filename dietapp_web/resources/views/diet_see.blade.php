@@ -6,7 +6,8 @@
     // global app configuration object
     var config = {
         routes: {
-            zone_diet_edit: "{{ route('diet_edit') }}"
+            zone_diet_edit: "{{ route('diet_edit') }}",
+            zone_dishes_filtrar: "{{ route('diet.dishes_filtrar') }}",
         },
         vars: {
             id_dieta: "{{ $diet->id_diet }}"
@@ -78,7 +79,7 @@
 
         <div class="col-6">
             <label>Total calories</label>
-            <input type="text" id="dieta_calories" class="form-control" value="{{$diet->calories}}" disabled/>
+            <input type="text" id="dieta_calories" class="form-control" value="{{$diet->calories/1000}} kcal" disabled/>
         </div>
 
     </div>
@@ -127,7 +128,8 @@
                                 @if($dde->week_day == $i)
                                     
                                     <div class="card ui-draggable ui-draggable-handle" id="dish-{{$dde->dish_id_dish}}">
-                                        {{$dde->name_dish}}
+                                        <img src="{{asset('img/Icons/'.$dde->image_dish.'')}}" class="dish_etiqueta"/>
+                                            {{$dde->name_dish}}
                                     </div>
                                 
                                 @endif
@@ -153,6 +155,7 @@
 
                                 @if($ddd->week_day == $i)
                                     <div class="card ui-draggable ui-draggable-handle" id="dish-{{$ddd->dish_id_dish}}">
+                                        <img src="{{asset('img/Icons/'.$ddd->image_dish.'')}}" class="dish_etiqueta"/>
                                         {{$ddd->name_dish}}
                                     </div>
                                 @endif
@@ -175,6 +178,7 @@
 
                                 @if($ddb->week_day == $i)
                                     <div class="card ui-draggable ui-draggable-handle" id="dish-{{$ddb->dish_id_dish}}">
+                                        <img src="{{asset('img/Icons/'.$ddb->image_dish.'')}}" class="dish_etiqueta"/>
                                         {{$ddb->name_dish}}
                                     </div>
                                 @endif
@@ -199,6 +203,7 @@
 
                                 @if($dds->week_day == $i)
                                     <div class="card ui-draggable ui-draggable-handle" id="dish-{{$dds->dish_id_dish}}">
+                                        <img src="{{asset('img/Icons/'.$dds->image_dish.'')}}" class="dish_etiqueta"/>
                                         {{$dds->name_dish}}
                                     </div>
                                 @endif
@@ -220,6 +225,7 @@
 
                                 @if($ddm->week_day == $i)
                                     <div class="card ui-draggable ui-draggable-handle" id="dish-{{$ddm->dish_id_dish}}">
+                                        <img src="{{asset('img/Icons/'.$ddm->image_dish.'')}}" class="dish_etiqueta"/>
                                         {{$ddm->name_dish}}
                                     </div>
                                 @endif
@@ -246,6 +252,7 @@
                     @foreach($dishes as $dish)
         
                         <div class="card" id="dish-{{$dish->id_dishes}}">
+                            <img src="{{asset('img/Icons/'.$dish->image_dish.'')}}" class="dish_etiqueta"/>
                             {{$dish->name_dish}}
                         </div> 
 

@@ -8,6 +8,8 @@
         routes: {
             zone_filtre_all_diets: "{{ route('diet.filtrar_all_diets') }}",
             zone_filtre_dieta: "{{ route('diet.filtrar') }}",
+            zone_edit_dieta: "{{ route('dieta',-1234) }}",
+            zone_delete_dieta: "{{ route('diet_delete') }}",
 
         },
         vars: {
@@ -43,7 +45,7 @@
 
                     <div class="col-6">
                         <label>Nom de la dieta</label>
-                        <input type="text" placeholder="Nom del pacient" id="cerca_nom_dieta" class="form-control" />
+                        <input type="text" placeholder="Nom de la dieta" id="cerca_nom_dieta" class="form-control" />
                     </div>
 
                     <div class="col-6">
@@ -103,16 +105,15 @@
             <tbody id="dietes_taula">
             @foreach($diets as $diet)
                 
-                <tr onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">
-                    <td style="text-align: center">{{$diet->name}}</td>
-                    <td>{{$diet->description}}</td>
-                    <td style="text-align: center">{{$diet->name_type}}</td>
-                    <td style="text-align: center">{{$diet->calories/1000}} kcal</td>
-                    <td style="text-align: center">{{$diet->number_meals}}</td>
+                <tr>
+                    <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->name}}</td>
+                    <td onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->description}}</td>
+                    <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->name_type}}</td>
+                    <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->calories/1000}} kcal</td>
+                    <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->number_meals}}</td>
                     <td>
-                        
-                        <a href="" class="button-3 btn-edit"><i class="fa-solid fa-user-pen"></i></a>
-                        <a href="" class="button-3 btn-delete"><i class="fa-solid fa-user-slash"></i></a>
+                        <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" class="button-3 btn-delete"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
 
