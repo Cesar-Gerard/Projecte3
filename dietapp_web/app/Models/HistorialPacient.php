@@ -86,6 +86,28 @@ class HistorialPacient extends Model
 
     public static function getCanvisDietesUsuaris($id_nutricionista){
 
+        //Pacients
+        //Usuaris
+        //Dieta
+
+        /*
+            select h.start_date, u.name_user, u.lastname_user, d.name 
+            from historial_patient h join patients p on h.id_patient = p.id_pacient
+                                    join users u on p.id_pacient = u.id
+                                    join diets d on d.id_diet = h.diet
+            where p.assigned_nutricionist = 2 and h.status = 'F'
+            order by h.start_date desc;
+        */
+
+        return $canvis_dietes = DB::table('historial_patient')
+                            ->select('historial_patient.start_date','users.name_user','users.lastname_user','diets.name')
+                            ->join('patients','historial_patient.id_patient','=','patients.id_pacient')
+                            ->join('users','patients.id_pacient','=','users.id')
+                            ->join('diets','diets.id_diet','=','historial_patient.diet')
+                            ->where('patients.assigned_nutricionist','=',$id_nutricionista)
+                            ->where('historial_patient.status','=','F')
+                            ->orderBy('historial_patient.start_date','DESC')
+                            ->get(); 
 
         
     }

@@ -112,8 +112,9 @@
                     <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->calories/1000}} kcal</td>
                     <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->number_meals}}</td>
                     <td>
-                        <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" class="button-3 btn-delete"><i class="fa-solid fa-trash"></i></a>
+                        <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit">Edita <i class="fa-solid fa-pen-to-square"></i></a>
+                        <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" class="button-3 btn-delete">Elimina <i class="fa-solid fa-trash"></i></a>
+                        <a href="{{route('clone_diet',$diet->id_diet)}}">Clonar <i class="fa-solid fa-clone"></i></a>
                     </td>
                 </tr>
 

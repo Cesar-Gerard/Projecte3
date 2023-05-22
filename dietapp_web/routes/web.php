@@ -40,9 +40,10 @@ Route::get('/home', function(){
         //també els que no tenen
         $dietes_seguides = Pacient::getDataPatientsDiets(Auth::user()->id);
         $dietes_seguides_noms = Pacient::getDataPatientsDietsName(Auth::user()->id);
+        $dietes_inicialitzades = HistorialPacient::getCanvisDietesUsuaris(Auth::user()->id);
         
 
-        return view('home',['dietes_seguides'=>$dietes_seguides,"dietes_seguides_noms"=>$dietes_seguides_noms]);
+        return view('home',['dietes_seguides'=>$dietes_seguides,"dietes_seguides_noms"=>$dietes_seguides_noms,"dietes_inicialitzades"=>$dietes_inicialitzades]);
     }
     return redirect(route("index"));
     
@@ -326,6 +327,24 @@ Route::get('/add_dieta', function(){
 
     
 })->name("view_add_dieta");
+
+
+Route::get('/clone/{diet}', function($id_diet) {
+
+
+    if(Auth::check()){
+
+        $diet = Diets::getDietById($id_diet);
+
+        return view("clone_dieta",["diet"=>$diet]);
+
+    }else{
+        return redirect(route("index"));
+    }
+
+
+
+})->name("clone_diet");
 
 
 

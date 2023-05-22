@@ -108,13 +108,14 @@
         </tr>
       </thead>
       <tbody>
-
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-        </tr>
-       
+        @foreach($dietes_inicialitzades as $di)
+          <tr>
+            <th scope="row">{{$di->name_user}} {{$di->lastname_user}}</th>
+            <td>{{$di->name}}</td>
+            <td>{{date("d/m/Y", strtotime($di->start_date))}}</td>
+          </tr>
+        @endforeach
+        
       </tbody>
     </table>
   </div>
