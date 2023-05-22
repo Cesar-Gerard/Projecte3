@@ -16,6 +16,7 @@ import com.example.dietaapp.databinding.FragmentDetallDietaBinding;
 import java.util.List;
 
 import adapter_dietes.DishAdapter;
+import adapter_dietes.IngredientAdapter;
 import api.ApiManager;
 import model.Dietes;
 import model.Dishes_Dieta;
@@ -30,6 +31,7 @@ public class detall_dietaFragment extends Fragment {
 
      FragmentDetallDietaBinding binding;
      Dietes dieta;
+    private IngredientAdapter ingredientAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +47,8 @@ public class detall_dietaFragment extends Fragment {
 
         //Omplim les dades
         omplirDades();
+
+
 
 
 
@@ -88,14 +92,11 @@ public class detall_dietaFragment extends Fragment {
 
     private void controldeApats(List<Dishes_Dieta> data) {
 
-
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.recyclerView.setLayoutManager(layoutManager);
 
         DishAdapter adapter = new DishAdapter(data);
         binding.recyclerView.setAdapter(adapter);
-
 
     }
 }

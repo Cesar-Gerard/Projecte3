@@ -7,6 +7,7 @@ import model.ChangeUserResponse;
 import model.DietesResponse;
 import model.Dishes_DietaResponse;
 import model.HistorialResponse;
+import model.IngredientsDishResponse;
 import model.LoginResponse;
 import model.PacientResponse;
 import retrofit2.Call;
@@ -76,6 +77,12 @@ public class ApiManager {
         Call<Dishes_DietaResponse> call = mApiService.getDishes("Bearer "+token, parameter);
         call.enqueue(callback);
 
+    }
+
+
+    public void getIngredientsDish(String token, String parameter, Callback<IngredientsDishResponse> callback){
+        Call<IngredientsDishResponse> call = mApiService.getIngredientsDish("Bearer "+token, parameter);
+        call.enqueue(callback);
     }
 
 }

@@ -7,6 +7,7 @@ import model.ChangeUserResponse;
 import model.DietesResponse;
 import model.Dishes_DietaResponse;
 import model.HistorialResponse;
+import model.IngredientsDishResponse;
 import model.LoginResponse;
 import model.PacientResponse;
 import retrofit2.Call;
@@ -54,5 +55,9 @@ public interface ApiService {
     @GET("dishes/{parameter}")
     Call<Dishes_DietaResponse> getDishes (@Header ("Authorization")String token, @Path("parameter") String parameter);
 
+
+    @Headers("Accept: application/json")
+    @GET("ingredientsdish/{parameter}")
+    Call<IngredientsDishResponse> getIngredientsDish(@Header ("Authorization") String token, @Path("parameter")String parameter);
 
 }

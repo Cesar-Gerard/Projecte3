@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_ingredient.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="@color/green_weak"
+    android:layout_marginBottom="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/ingredientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom: "
+            android:textSize="13dp"/>
+
+
+        <TextView
+            android:layout_marginStart="5dp"
+            android:id="@+id/ingredientName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cafe desnatat"
+
+            android:textSize="13dp"
+            app:layout_constraintStart_toEndOf="@+id/ingredientName" />
+
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/ingredientQuantitat"
+            app:layout_constraintStart_toEndOf="@+id/ingredientName2" />
+
+
+        <TextView
+            android:id="@+id/ingredientQuantitat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantitat: "
+
+            android:textSize="13dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/ingredientName2"/>
+
+
+        <TextView
+            android:layout_marginStart="5dp"
+            android:id="@+id/ingredientQuantitat2"
+            android:layout_width="wrap_content"
+            android:textSize="13dp"
+            android:layout_height="wrap_content"
+            android:text="Cafe desnatat"
+            app:layout_constraintStart_toEndOf="@id/ingredientQuantitat"/>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/ingredientCalories"
+            app:layout_constraintStart_toEndOf="@+id/ingredientQuantitat2" />
+
+
+        <TextView
+            android:id="@+id/ingredientCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text="Calories: "
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/ingredientQuantitat2"/>
+
+
+        <TextView
+            android:layout_marginStart="5dp"
+            android:id="@+id/ingredientCalories2"
+            android:layout_width="wrap_content"
+            android:textSize="13dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintStart_toEndOf="@id/ingredientCalories"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
