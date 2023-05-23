@@ -7,18 +7,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
-import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,6 +25,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import api.ApiManager;
 import model.Datum;
 import model.HistorialResponse;
@@ -72,6 +73,21 @@ public class CurrentPlanFragment extends Fragment {
 
     }
 
+    private void DeterminarTempsBoto(Date controlDate) {
+        Date fechaActual = Calendar.getInstance().getTime();
+
+        long diferenciaDias = TimeUnit.MILLISECONDS.toDays(fechaActual.getTime() - controlDate.getTime());
+
+// Verificar si han pasado 7 o más días
+        if (diferenciaDias >= 7) {
+            // Activar el botón
+            binding.btnTemporal.setEnabled(true);
+        } else {
+            // Desactivar el botón
+            binding.btnTemporal.setEnabled(false);
+        }
+
+    }
 
 
     //Crea y gestiona la gràfica
@@ -142,7 +158,7 @@ public class CurrentPlanFragment extends Fragment {
                     //Actualitzem els elements grafics
                     elementsGrafica(user.getHistorial_pacient(), user.getHistorial_pacient().get(response.body().getData().size()-1).getControlDate());
                     CanviColorImageViewDates(user.getHistorial_pacient().get(response.body().getData().size()-1).getControlDate());
-
+                    DeterminarTempsBoto(user.getHistorial_pacient().get(response.body().getData().size()-1).getControlDate());
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }

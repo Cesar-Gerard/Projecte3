@@ -184,6 +184,12 @@ android:background="@drawable/background_page">
             </androidx.cardview.widget.CardView>
 
 
+            <Button
+                android:id="@+id/btnTemporal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enviar Dades Setmanals"/>
+
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"

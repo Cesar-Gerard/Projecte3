@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,16 +30,18 @@ public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.View
 
     private List<Datum> llista_historial;
 
+    private HistorialSelectedListener listener;
 
     public interface HistorialSelectedListener{
 
-        public void OHistorialSelected(Datum seleccionat);
+        public void onHistorialSelected(Datum seleccionat);
 
     }
 
 
-    public HistorialAdapter(List<Datum> llista_historial) {
+    public HistorialAdapter(List<Datum> llista_historial,HistorialSelectedListener listener) {
         this.llista_historial = llista_historial;
+        this.listener=listener;
     }
 
     @NonNull
@@ -84,7 +87,14 @@ public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.View
         });
 
 
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listener!=null){
+                    listener.onHistorialSelected(historial);
+                }
+            }
+        });
 
 
     }
@@ -97,9 +107,9 @@ public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        public EditText edtNom;
-        public EditText edtData;
-        public EditText edtPes;
+        public TextView edtNom;
+        public TextView edtData;
+        public TextView edtPes;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

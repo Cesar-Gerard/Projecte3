@@ -12,7 +12,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dietaapp.R;
-import com.example.dietaapp.databinding.FragmentDietasBinding;
 
 import java.util.ArrayList;
 import java.util.List;

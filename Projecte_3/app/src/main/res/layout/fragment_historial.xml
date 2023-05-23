@@ -149,14 +149,15 @@
                         android:layout_margin="16dp">
 
                         <TextView
-                            android:id="@+id/txtBraç"
+                            android:id="@+id/txtBraz"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Braç: "
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <EditText
-                            android:id="@+id/edtBraç"
+                            android:textSize="14dp"
+                            android:id="@+id/edtBraz"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
@@ -165,18 +166,19 @@
                             android:enabled="false"
                             android:hint="0 cm"
                             android:textColor="@color/black"
-                            app:layout_constraintStart_toEndOf="@id/txtBraç"
-                            app:layout_constraintTop_toTopOf="@id/txtBraç" />
+                            app:layout_constraintStart_toEndOf="@id/txtBraz"
+                            app:layout_constraintTop_toTopOf="@id/txtBraz" />
 
                         <TextView
                             android:id="@+id/txtPit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Pit: "
-                            app:layout_constraintTop_toBottomOf="@id/txtBraç"
+                            app:layout_constraintTop_toBottomOf="@id/txtBraz"
                             android:layout_marginTop="10dp"/>
 
                         <EditText
+                            android:textSize="14dp"
                             android:id="@+id/edtPit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -185,8 +187,8 @@
                             android:enabled="false"
                             android:hint="0 cm"
                             android:textColor="@color/black"
-                            app:layout_constraintEnd_toEndOf="@+id/edtBraç"
-                            app:layout_constraintStart_toStartOf="@+id/edtBraç"
+                            app:layout_constraintEnd_toEndOf="@+id/edtBraz"
+                            app:layout_constraintStart_toStartOf="@+id/edtBraz"
                             app:layout_constraintTop_toTopOf="@id/txtPit" />
 
 
@@ -195,12 +197,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cama: "
-                            app:layout_constraintTop_toTopOf="@id/txtBraç"
-                            app:layout_constraintStart_toStartOf="@id/edtBraç"
-                            android:layout_marginStart="50dp"/>
+                            app:layout_constraintTop_toTopOf="@id/txtBraz"
+                            app:layout_constraintStart_toEndOf="@id/edtBraz"
+                            android:layout_marginStart="30dp"/>
 
                         <EditText
                             android:id="@+id/edtCama"
+                            android:textSize="14dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/custom_edittext"
@@ -223,6 +226,7 @@
 
                         <EditText
                             android:id="@+id/edtCintura"
+                            android:textSize="14dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/custom_edittext"

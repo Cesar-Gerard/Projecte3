@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.Navigation;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +38,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         binding.drawerLayout.addDrawerListener(toogle);
         toogle.syncState();
+
+        //Sistema de notificacions
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Crea un objeto NotificationChannel con tu configuración
+            NotificationChannel channel = new NotificationChannel("DietaApp_Notification", "Channel Name", NotificationManager.IMPORTANCE_DEFAULT);
+            // Configura otras opciones del canal de notificación, como descripción, sonido, etc.
+            // ...
+
+            // Obtiene una instancia del NotificationManager
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            // Crea el canal de notificación utilizando el objeto NotificationChannel
+            notificationManager.createNotificationChannel(channel);
+        }
 
     }
 
