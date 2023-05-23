@@ -66,7 +66,7 @@
               <li><a href="{{route('home')}}"><i class="fa-solid fa-house"></i> Inici</a></li>
               <li><a href="{{route('pacients')}}"><i class="fa-solid fa-user-group"></i> Pacients</a></li>
               <li><a href="{{route('dietes')}}"><i class="fa-solid fa-utensils"></i> Dietes</a></li>
-              <li><a href=""><i class="fa-solid fa-dumbbell"></i> Exercicis</a></li>
+              <!--<li><a href=""><i class="fa-solid fa-dumbbell"></i> Exercicis</a></li>-->
               <li><a href=""><i class="fa-solid fa-user"></i> El meu perfil</a></li>
             </ul>
           </div>

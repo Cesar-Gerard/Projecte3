@@ -197,13 +197,11 @@ Route::get('/pacient/{pacient}',function($pacient){
             //Retornar totes les dietes
             
             $dietes_no_assignades = Diets::getDietesNoAssignades($pacient->current_diet);
-            
 
-            
             return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet,"type_diet"=>$type_diet,"historial_actual"=>$historial_actual,
                         "historial_diets"=>$historial_diets,"grafic_progres_actual"=>$grafic_progres_actual,"dietes_acabades"=>$dietes_acabades,
                         "dietes_no_assignades"=>$dietes_no_assignades]);
-
+            
         }else{
             return redirect(route("pacients"));
         }

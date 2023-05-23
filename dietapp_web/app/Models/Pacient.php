@@ -137,6 +137,8 @@ class Pacient extends Model
 
     public static function canviaDieta($dieta, $id_pacient){
 
+        //SI CANVIA DE DIETA, UPDATE A LA TAULA HISTORIAL_PATIENT i posar al camp status = 'F'
+
         /*
             $dieta = $request->dieta;
             $pacient = $request->pacient;
