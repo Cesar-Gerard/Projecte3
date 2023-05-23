@@ -146,7 +146,19 @@ class Pacient extends Model
 
         try{
 
+            $pacient = Pacient::where('id_pacient','=',$id_pacient)->first();
             
+            if($pacient!=null){
+                $pacient->current_diet = $dieta;
+                $pacient->save();
+
+                \DB::commit();
+                return true;
+            }
+            \DB::rollback();
+            return false;
+            
+
 
         }catch(\Illuminate\Database\QueryException $ex){
             echo "Query: ".$ex;
@@ -158,11 +170,8 @@ class Pacient extends Model
             return false;
         }
 
-
-
-
-
     }
+
 
 
 }

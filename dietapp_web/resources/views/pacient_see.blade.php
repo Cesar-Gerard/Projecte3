@@ -10,13 +10,13 @@
             routes: {
                 zone_afegir_pacient: "{{ route('pacient.add') }}",
                 zone_pacients: "{{ route('pacients') }}",
-                zone_diet_assigna:: "{{ route('pacient.canvia_dieta') }}"
-                //zone_canvia_dieta: " route('canvia_dieta') ",
+                zone_diet_assigna: "{{ route('pacient.canvia_dieta') }}",
+                zone_canvia_dieta: " route('canvia_dieta') ",
             },
             vars: {
                 nutricionist: "{{Auth::user()->id}}",
                 data_points: "{{json_encode($grafic_progres_actual)}}",
-                pacient: "{{ $pacient->id_pacient }}",
+                pacient: "{{$pacient->id_pacient}}",
             }
         };
 
@@ -138,8 +138,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12">                        
                         Tipus de dieta: {{$type_diet->name_type}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Data inici: {{date("d/m/Y", strtotime($));}}
                     </div>
                 </div>
 

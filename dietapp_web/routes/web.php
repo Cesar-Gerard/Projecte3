@@ -74,10 +74,11 @@ Route::get('/pacient/{pacient}',function($pacient){
             $diet = null;
             if($pacient->current_diet != null){
                 $diet = Diets::getDietById($pacient->current_diet);
-                $type_diet = TypeDiets::getTypeById($diet->id_diet);
+                $type_diet = TypeDiets::getTypeById($diet->type_diet);
 
                 //Dades directes (Sense formatar)
                 $historial_actual = HistorialPacient::getProgresActualPacient($pacient->id_pacient,$diet->id_diet);
+                
                
                 $dietes_acabades_q = HistorialPacient::getDietesAcabades($pacient->id,$pacient->current_diet);
                 
@@ -122,45 +123,45 @@ Route::get('/pacient/{pacient}',function($pacient){
                     foreach($historial_diets as $hd){
                         array_push($b_historial_diets,
                             array(
-                                "dia" => date("d",strtotime($hd->date)),
-                                "mes" => date("m",strtotime($hd->date)),
-                                "anyo" => date("Y",strtotime($hd->date)),
+                                "dia" => date("d",strtotime($hd->control_date)),
+                                "mes" => date("m",strtotime($hd->control_date)),
+                                "anyo" => date("Y",strtotime($hd->control_date)),
                                 "imc" => number_format((float)($hd->weigth / ($hd->heigth * $hd->heigth)),2), 
                             )
                         );
 
                         array_push($b_historial_mesures_chest,
                             array(
-                                "dia" => date("d",strtotime($hd->date)),
-                                "mes" => date("m",strtotime($hd->date)),
-                                "anyo" => date("Y",strtotime($hd->date)),
+                                "dia" => date("d",strtotime($hd->control_date)),
+                                "mes" => date("m",strtotime($hd->control_date)),
+                                "anyo" => date("Y",strtotime($hd->control_date)),
                                 "chest" => $hd->chest, 
                             )   
                         );
 
                         array_push($b_historial_mesures_leg,
                             array(
-                                "dia" => date("d",strtotime($hd->date)),
-                                "mes" => date("m",strtotime($hd->date)),
-                                "anyo" => date("Y",strtotime($hd->date)),
+                                "dia" => date("d",strtotime($hd->control_date)),
+                                "mes" => date("m",strtotime($hd->control_date)),
+                                "anyo" => date("Y",strtotime($hd->control_date)),
                                 "leg" => $hd->leg, 
                             )   
                         );
 
                         array_push($b_historial_mesures_arm,
                             array(
-                                "dia" => date("d",strtotime($hd->date)),
-                                "mes" => date("m",strtotime($hd->date)),
-                                "anyo" => date("Y",strtotime($hd->date)),
+                                "dia" => date("d",strtotime($hd->control_date)),
+                                "mes" => date("m",strtotime($hd->control_date)),
+                                "anyo" => date("Y",strtotime($hd->control_date)),
                                 "arm" => $hd->arm,
                             )
                         );
 
                         array_push($b_historical_mesures_hip,
                             array(
-                                "dia" => date("d",strtotime($hd->date)),
-                                "mes" => date("m",strtotime($hd->date)),
-                                "anyo" => date("Y",strtotime($hd->date)),
+                                "dia" => date("d",strtotime($hd->control_date)),
+                                "mes" => date("m",strtotime($hd->control_date)),
+                                "anyo" => date("Y",strtotime($hd->control_date)),
                                 "hip" => $hd->hip,
                             )
                         );
@@ -196,6 +197,7 @@ Route::get('/pacient/{pacient}',function($pacient){
             //Retornar totes les dietes
             
             $dietes_no_assignades = Diets::getDietesNoAssignades($pacient->current_diet);
+            
 
             
             return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet,"type_diet"=>$type_diet,"historial_actual"=>$historial_actual,

@@ -117,10 +117,15 @@ class PacientController extends Controller
         $dieta = $request->dieta;
         $pacient = $request->pacient;
 
-        
+        if(Pacient::canviaDieta($dieta,$pacient)){
+            return 1;
+        }
 
-
+        return -1;
 
     }
+
+
+    
     
 }
