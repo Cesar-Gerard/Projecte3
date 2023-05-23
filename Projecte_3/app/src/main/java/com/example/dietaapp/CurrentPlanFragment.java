@@ -18,6 +18,9 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -62,7 +65,26 @@ public class CurrentPlanFragment extends Fragment {
         binding.txvuser.setText("Hola " + user.getNameUser().toString());
 
         Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
-        binding.imageViewavatar.setImageBitmap(bitmap);
+
+        // Convertir Bitmap a archivo File
+        File file = new File(getContext().getCacheDir(), "nom.png"); // Ruta y nombre del archivo
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        if (file.exists()) {
+            binding.imageViewavatar.setImageBitmap(bitmap);
+        } else {
+            binding.imageViewavatar.setImageResource(R.drawable.avatar_icon);
+        }
+
+
 
         InfoPacientRequest();
         demanarHistorial();

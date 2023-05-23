@@ -79,7 +79,25 @@ public class user_profile extends Fragment {
 
 
         Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
-        binding.imageProfile.setImageBitmap(bitmap);
+
+        // Convertir Bitmap a archivo File
+        File file = new File(getContext().getCacheDir(), "nom.png"); // Ruta y nombre del archivo
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        if (file.exists()) {
+            binding.imageProfile.setImageBitmap(bitmap);
+        } else {
+            binding.imageProfile.setImageResource(R.drawable.avatar_icon);
+        }
+
 
         return v;
     }
