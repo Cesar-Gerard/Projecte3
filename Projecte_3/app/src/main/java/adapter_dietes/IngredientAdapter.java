@@ -43,7 +43,25 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.Vi
             Ingredient ingredient = ingredientList.get(position);
 
             holder.txtName.setText(ingredient.getName());
-            holder.txtQuantitat.setText("N/S");
+
+
+            switch(ingredient.getMesure()){
+
+                case 1:
+                    holder.txtQuantitat.setText(ingredient.getQuantity()+" g");
+                    break;
+
+                case 2:
+                    holder.txtQuantitat.setText(ingredient.getQuantity()+" ml");
+                    break;
+
+
+                case 3:
+                    holder.txtQuantitat.setText(ingredient.getQuantity()+" u");
+
+
+            }
+
             holder.txtCalorias.setText(ingredient.getCalories()+ " cal");
     }
 

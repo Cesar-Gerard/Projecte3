@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(item.getItemId()==R.id.nav_logout){
             finishAffinity();
 
+        }else if(item.getItemId()== R.id.navhistorial){
+            Navigation.findNavController(this,R.id.nav_host_fragment).navigate(R.id.action_global_historialFragment);
         }
 
         binding.drawerLayout.closeDrawer(GravityCompat.START);

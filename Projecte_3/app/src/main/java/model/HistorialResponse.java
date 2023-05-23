@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class HistorialResponse {
 
+
     @SerializedName("data")
     @Expose
     private List<Datum> data;

@@ -16,6 +16,12 @@ public class Ingredient {
     @SerializedName("calories_unit")
     @Expose
     private Integer caloriesUnit;
+    @SerializedName("quantity")
+    @Expose
+    private String quantity;
+    @SerializedName("mesure")
+    @Expose
+    private Integer mesure;
 
     public Integer getIdIngredient() {
         return idIngredient;
@@ -47,5 +53,21 @@ public class Ingredient {
 
     public void setCaloriesUnit(Integer caloriesUnit) {
         this.caloriesUnit = caloriesUnit;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getMesure() {
+        return mesure;
+    }
+
+    public void setMesure(Integer mesure) {
+        this.mesure = mesure;
     }
 }

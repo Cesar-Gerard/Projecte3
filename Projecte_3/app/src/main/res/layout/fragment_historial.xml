@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HistorialFragment"
+    android:background="@drawable/background_page">
+
+
+
+    <ImageButton
+        android:id="@+id/imageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/trans"
+        android:src="@drawable/baseline_menu_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="btnmenu_onClick"/>
+
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+                <TextView
+                    android:id="@+id/txtHistorialTitol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Historial Seleccionat:"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="10dp" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:background="#d9d9d9"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/txtHistorialTitol"
+                    app:layout_constraintStart_toStartOf="@+id/txtHistorialTitol"
+                    app:layout_constraintTop_toBottomOf="@id/txtHistorialTitol" />
+
+
+
+                <TextView
+                    android:id="@+id/txvDataIniciHistorial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Registre: "
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintTop_toBottomOf="@id/txtHistorialTitol"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+
+                <EditText
+                    android:id="@+id/edtDataIniciHistorial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey_not_enabled"
+                    android:enabled="false"
+                    android:hint="00-00-00"
+                    app:layout_constraintBottom_toBottomOf="@+id/txvDataIniciHistorial"
+                    app:layout_constraintStart_toEndOf="@id/txvDataIniciHistorial"
+                    app:layout_constraintTop_toTopOf="@+id/txvDataIniciHistorial"></EditText>
+
+
+                <TextView
+                    android:id="@+id/txtPesRegistrat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pes Registrat: "
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/txvDataIniciHistorial" />
+
+                <EditText
+                    android:id="@+id/edtPesRegistrat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edittext"
+                    android:backgroundTint="@color/grey_not_enabled"
+                    android:enabled="false"
+                    android:hint="0 kg"
+                    app:layout_constraintEnd_toEndOf="@+id/txtPesRegistrat"
+                    app:layout_constraintStart_toStartOf="@+id/txtPesRegistrat"
+                    app:layout_constraintTop_toBottomOf="@id/txtPesRegistrat" />
+
+
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/edtPesRegistrat"
+                    android:background="#d9d9d9" />
+
+
+                <TextView
+                    android:id="@+id/txtMesures"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Mesures"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardMesures"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtMesures">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp">
+
+                        <TextView
+                            android:id="@+id/txtBraç"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Braç: "
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <EditText
+                            android:id="@+id/edtBraç"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:background="@drawable/custom_edittext"
+                            android:backgroundTint="@color/grey_not_enabled"
+                            android:enabled="false"
+                            android:hint="0 cm"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@id/txtBraç"
+                            app:layout_constraintTop_toTopOf="@id/txtBraç" />
+
+                        <TextView
+                            android:id="@+id/txtPit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pit: "
+                            app:layout_constraintTop_toBottomOf="@id/txtBraç"
+                            android:layout_marginTop="10dp"/>
+
+                        <EditText
+                            android:id="@+id/edtPit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:backgroundTint="@color/grey_not_enabled"
+                            android:enabled="false"
+                            android:hint="0 cm"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="@+id/edtBraç"
+                            app:layout_constraintStart_toStartOf="@+id/edtBraç"
+                            app:layout_constraintTop_toTopOf="@id/txtPit" />
+
+
+                        <TextView
+                            android:id="@+id/txtCama"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cama: "
+                            app:layout_constraintTop_toTopOf="@id/txtBraç"
+                            app:layout_constraintStart_toStartOf="@id/edtBraç"
+                            android:layout_marginStart="50dp"/>
+
+                        <EditText
+                            android:id="@+id/edtCama"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:backgroundTint="@color/grey_not_enabled"
+                            android:enabled="false"
+                            android:hint="0 cm"
+                            android:layout_marginStart="10dp"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@+id/txtCama"
+                            app:layout_constraintTop_toTopOf="@id/txtCama" />
+
+                        <TextView
+                            android:id="@+id/txtCintura"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Cintura: "
+                            app:layout_constraintStart_toStartOf="@+id/txtCama"
+                            app:layout_constraintTop_toBottomOf="@id/txtCama" />
+
+                        <EditText
+                            android:id="@+id/edtCintura"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_edittext"
+                            android:backgroundTint="@color/grey_not_enabled"
+                            android:enabled="false"
+                            android:hint="0 cm"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="@+id/edtCama"
+                            app:layout_constraintStart_toStartOf="@+id/edtCama"
+                            app:layout_constraintTop_toTopOf="@id/txtCintura" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/txtImc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Imc: "
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardMesures" />
+
+
+                <model.CustomRectangleView
+
+                    android:id="@+id/custom_rectangle_view"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtImc" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:layout_gravity="center">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/grey"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registre de Historial"
+                    android:layout_marginBottom="10dp"></TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclehistorial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+            </LinearLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+</FrameLayout>

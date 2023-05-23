@@ -23,6 +23,12 @@
 
 
         <item
+            android:id="@+id/navhistorial"
+            android:icon="@drawable/baseline_history_24"
+            android:title="El meu Historial"/>
+
+
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/nav_about"
             android:title="About Us"/>
