@@ -214,7 +214,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projecte3`.`week_days` ;
 
 CREATE TABLE IF NOT EXISTS `projecte3`.`week_days` (
-  `id_day` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_day` BIGINT(10) UNSIGNED AUTO_INCREMENT,
   `name_day` VARCHAR(45) unique NOT NULL,
   PRIMARY KEY (`id_day`))
 ENGINE = InnoDB;
@@ -228,9 +228,9 @@ DROP TABLE IF EXISTS `projecte3`.`diets_dishes` ;
 CREATE TABLE IF NOT EXISTS `projecte3`.`diets_dishes` (
   `diet_id_diet` BIGINT(10) UNSIGNED not NULL,
   `dish_id_dish` BIGINT(10) UNSIGNED NOT NULL,
-  `week_day` BIGINT(10) UNSIGNED NULL,
+  `week_day` BIGINT(10) UNSIGNED,
   `meal` BIGINT(10) UNSIGNED NULL,
-  PRIMARY KEY (`diet_id_diet`, `dish_id_dish`),
+  PRIMARY KEY (`diet_id_diet`, `dish_id_dish`,`week_day`),
   CONSTRAINT `fk_Dietas_has_Dishes_Dietas1`
     FOREIGN KEY (`diet_id_diet`)
     REFERENCES `projecte3`.`diets` (`id_diet`)
@@ -249,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `projecte3`.`diets_dishes` (
   CONSTRAINT `FK_DIETDISHES_WEEKDAYS`
     FOREIGN KEY (`week_day`)
     REFERENCES `projecte3`.`week_days` (`id_day`)
-    ON DELETE set null
+    ON DELETE no action
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
