@@ -112,38 +112,38 @@ INSERT INTO `ingredients` (`id_ingredient`, `name`, `calories`, `calories_unit`)
 --
 
 INSERT INTO `dishes` (`id_dishes`, `name_dish`, `calories`,`image_dish`) VALUES
-(1, 'Café amb Llet Desnatada', 0,null),
-(2, 'Té Verd', 2.00,null),
-(3, 'Kiwi', 51.00,null),
-(4, 'Nous', 654.00,null),
-(5, 'Yogur Natural amb Pera ', 0,null),
-(6, 'Daurada al Forn amb Amanida', 0,null),
-(7, 'Llesca al Pa Integral amb Formatge Cottage i Alvocat', 0,null),
-(8, 'Espàrrecs de Marge', 0,null),
-(9, 'Calamar', 0,null),
-(10, 'Llesca de Pa Integral amb Tomàquet i Alvocat', 0,null),
-(11, 'Poma Canyella i Nous', 0,null),
-(12, 'Amanida de Enciam, LLombarda i Pastanaga', 0,null),
-(13, 'Cuixa de Gall Dindi amb Pera', 0,null),
-(14, 'LLesca de Pa Integral amb Hummus i 1/2 ou cuit', 0,null),
-(15, 'Wok de Verdures amb Llagostins ', 0,null),
-(16, 'Yogur Natural amb Fruits Vermells i Civada', 0,null),
-(17, 'Macedonia de Kiwi, Poma i Pera', 0,null),
-(18, 'Verdures a la Plancha', 0,null),
-(19, 'Truita Francesa de Xampinyons i Espècies', 0,null),
-(20, 'Llesca de Pa Integral amb Tonyina Natural i Tomàquet', 0,null),
-(21, 'Cigrons amb Salmó, Enciam i Pera', 0,null),
-(22, 'Llesca de Pa Integral amb Formatge de Burgos i mitja Poma ', 0,null),
-(23, 'Pera i Nous', 0,null),
-(24, 'Carbassó amb Mató', 0,null),
-(25, 'Llom de Lluç amb Vinagreta de Pebrots', 0,null),
-(26, 'Amanida Nicoise', 0,null),
-(27, 'Llesca de Pa Integral amb 2 rodanxes de Alvocat i Tomàquet', 0,null),
-(28, 'Piña i Yogur Natural sense Sucre', 0,null),
-(29, 'Amaninda de Quinoa amb Cigrons', 0,null),
-(30, 'Formatge Fresc i Nous', 0,null),
-(31, 'Gaspatxo Andalús', 0,null),
-(32, 'Llom de Vedella a la Plancha', 0,null);
+(1, 'Café amb Llet Desnatada', 0,'tea.png'),
+(2, 'Té Verd', 2.00,'tea.png'),
+(3, 'Kiwi', 51.00,'fruit.png'),
+(4, 'Nous', 654.00,'nuts.png'),
+(5, 'Iogur Natural amb Pera ', 0,'yogurts.png'),
+(6, 'Daurada al Forn amb Amanida', 0,'salad.png'),
+(7, 'Llesca al Pa Integral amb Formatge Cottage i Alvocat', 0,'bread.png'),
+(8, 'Espàrrecs de Marge', 0,'vegetable.png'),
+(9, 'Calamar', 0,'fish.png'),
+(10, 'Llesca de Pa Integral amb Tomàquet i Alvocat', 0,'bread.png'),
+(11, 'Poma Canyella i Nous', 0,'fruit.ong'),
+(12, 'Amanida de Enciam, LLombarda i Pastanaga', 0,'salad.png'),
+(13, 'Cuixa de Gall Dindi amb Pera', 0,'meat.png'),
+(14, 'Llesca de Pa Integral amb Hummus i 1/2 ou cuit', 0,'bread.png'),
+(15, 'Wok de Verdures amb Llagostins ', 0,'salad.png'),
+(16, 'Yogur Natural amb Fruits Vermells i Civada', 0,'yogurts.png'),
+(17, 'Macedonia de Kiwi, Poma i Pera', 0,'fruit.png'),
+(18, 'Verdures a la Plancha', 0,'vegetable.png'),
+(19, 'Truita Francesa de Xampinyons i Espècies', 0,'tortilla.png'),
+(20, 'Llesca de Pa Integral amb Tonyina Natural i Tomàquet', 0,'bread.png'),
+(21, 'Cigrons amb Salmó, Enciam i Pera', 0,'vegetable.png'),
+(22, 'Llesca de Pa Integral amb Formatge de Burgos i mitja Poma ', 0,'bread.png'),
+(23, 'Pera i Nous', 0,'fruit.png'),
+(24, 'Carbassó amb Mató', 0,'vegetable.png'),
+(25, 'Llom de Lluç amb Vinagreta de Pebrots', 0,'meat.png'),
+(26, 'Amanida Nicoise', 0,'salad.png'),
+(27, 'Llesca de Pa Integral amb 2 rodanxes de Alvocat i Tomàquet', 0,'bread.png'),
+(28, 'Piña i Yogur Natural sense Sucre', 0,'fruit.png'),
+(29, 'Amaninda de Quinoa amb Cigrons', 0,'salad.png'),
+(30, 'Formatge Fresc i Nous', 0,'cheese.png'),
+(31, 'Gaspatxo Andalús', 0,'dish.png'),
+(32, 'Llom de Vedella a la Plancha', 0,'meat.png');
 
 
 
@@ -300,8 +300,8 @@ INSERT INTO `type_diets` (`id_type`, `name_type`) VALUES
 --
 
 INSERT INTO `diets` (`id_diet`, `name`, `calories`, `number_meals`, `description`, `type_diet`) VALUES
-(1, 'Dieta Estàndard', 0, 5, 'Dieta Estàdard per Baixar el Nombre de kcal en la nostra alimentació', 2);
-
+(1, 'Dieta Estàndard', '21515.00', 5, 'Dieta Estàdard per Baixar el Nombre de kcal en la nostra alimentació', 2),
+(2, 'Dieta Mediterrània', '16542.00', 5, 'Dieta Mediterrània', 2);
 
 
 
