@@ -25,8 +25,65 @@ function f_main(){
   f_dibuixar_grafica_anteriors();
   f_dibuixar_grafica_anteriors_body();
 
+  $(document).ready(function(){
+    $('input[type=radio]').click(function(){
+        f_gestioRadios(this.value);
+    });
+  });
+
+
+  document.getElementById('canvia_dieta').addEventListener('click',f_canviaDieta);
+
 }
 
+
+function f_canviaDieta(){
+
+  //config.vars.pacient
+  let dieta_sel = document.querySelector('input[name="radio"]:checked').value;
+
+  $.ajax({
+      url: config.routes.zone_diet_assigna,
+      data:{
+          'dieta' : dieta_sel,
+          'pacient' : config.vars.pacient,
+          '_token': $('meta[name="csrf-token"]').attr('content'),
+      },
+      type: 'POST'
+  }).done(function (e)
+  {
+
+      if(e==-1){
+          Swal.fire(
+              'Canvia de dieta',
+              "El canvi de dieta no s'ha pogut efectuar",
+              'error'
+          );
+      }else{
+          Swal.fire(
+              'Canvia de dieta',
+              "El canvi de dieta s'ha efectuat correctament",
+              'success'
+          );
+          //Tancar modal
+      }
+  });
+
+  alert(dieta_sel);
+
+}
+
+
+function f_gestioRadios(){
+
+
+  document.getElementById('canvia_dieta').disabled = false;
+
+    //Peiticó ajax
+
+
+
+}
 
 
 function f_dibuixar_grafica_anteriors_body(){

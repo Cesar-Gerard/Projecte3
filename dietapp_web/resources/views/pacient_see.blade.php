@@ -10,10 +10,13 @@
             routes: {
                 zone_afegir_pacient: "{{ route('pacient.add') }}",
                 zone_pacients: "{{ route('pacients') }}",
+                zone_diet_assigna:: "{{ route('pacient.canvia_dieta') }}"
+                //zone_canvia_dieta: " route('canvia_dieta') ",
             },
             vars: {
                 nutricionist: "{{Auth::user()->id}}",
                 data_points: "{{json_encode($grafic_progres_actual)}}",
+                pacient: "{{ $pacient->id_pacient }}",
             }
         };
 
@@ -61,9 +64,66 @@
 
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <div class="container">
+
+            <!-- Button to trigger modal -->
+            
+             
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Canvi de dieta</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="background-color:white !important;border:3px solid white !important;">x</button>
+                            
+                        </div>
+                        <div class="modal-body">
+
+                            
+
+                            @foreach($dietes_no_assignades as $dietes_no_assignades)
+                                <div>
+                                    <input type="radio" id="d-{{$dietes_no_assignades->id_diet}}" name="radio" value="{{$dietes_no_assignades->id_diet}}" /> {{$dietes_no_assignades->name}} 
+                                </div>
+                                
+                            @endforeach
+
+                           
+                        
+
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>-->
+                            <button type="button" class="btn btn-primary" id="canvia_dieta" disabled>Canvia dieta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+              
+        </div>
+
+
         @if($current_diet!=null)
             <br/><br/>
-            <h2>Dieta actual</h2>
+            <div class="row">
+                <div class="col-2">
+                    <h2>Dieta actual</h2>
+                </div>
+               
+                <div class="col-3">
+                    <a href="#myModal" class="btn btn-primary" data-toggle="modal">Canvia de dieta</a>
+                </div>
+                
+                
+                
+            </div>
+            
             <hr/>
 
             <button class="collapsible"><h2>{{$current_diet->name}}</h2></button>
@@ -157,6 +217,9 @@
         </div> 
 
     </div>
+
+
+    
 
 
     <!-- 

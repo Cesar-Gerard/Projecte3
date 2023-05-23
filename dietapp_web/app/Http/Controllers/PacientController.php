@@ -109,5 +109,18 @@ class PacientController extends Controller
 
 
     }
+
+
+
+    public function canviar_dieta(Request $request){
+
+        $dieta = $request->dieta;
+        $pacient = $request->pacient;
+
+        
+
+
+
+    }
     
 }

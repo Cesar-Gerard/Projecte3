@@ -110,5 +110,20 @@ class DietController extends Controller
 
 
     }
+
+
+    public function diet_clone(Request $request){
+
+
+        $dieta = $request->dieta;
+
+        if(Diets::add_diet($dieta)){
+            return 1;
+        }else{
+            return -1;
+        }
+
+
+    }
     
 }

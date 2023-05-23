@@ -193,9 +193,14 @@ Route::get('/pacient/{pacient}',function($pacient){
                 
             }
 
+            //Retornar totes les dietes
+            
+            $dietes_no_assignades = Diets::getDietesNoAssignades($pacient->current_diet);
+
             
             return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet,"type_diet"=>$type_diet,"historial_actual"=>$historial_actual,
-                        "historial_diets"=>$historial_diets,"grafic_progres_actual"=>$grafic_progres_actual,"dietes_acabades"=>$dietes_acabades]);
+                        "historial_diets"=>$historial_diets,"grafic_progres_actual"=>$grafic_progres_actual,"dietes_acabades"=>$dietes_acabades,
+                        "dietes_no_assignades"=>$dietes_no_assignades]);
 
         }else{
             return redirect(route("pacients"));
@@ -275,9 +280,11 @@ Route::get("/dietes", function(){
 })->name("dietes");
 
 
-Route::get("/dieta/{id}", function($id_dieta){
+Route::get("/dieta/{id}/{clone?}", function($id_dieta, $clone = null){
 
     if(Auth::check()){
+
+        
 
         //Diets
         //Diets_dishes
@@ -295,7 +302,7 @@ Route::get("/dieta/{id}", function($id_dieta){
             
             return view("diet_see",["diet"=>$diet,"diets_dishes_esmorzars"=>$diets_dishes_esmorzars,"diets_dishes_migmati"=>$diets_dishes_migmati,
                         "diets_dishes_dinar"=>$diets_dishes_dinar,"diets_dishes_berenar"=>$diets_dishes_berenar,"diets_dishes_sopar"=>$diets_dishes_sopar,
-                        "tipus_dietes"=>$tipus_dietes,"dishes"=>$dishes]);
+                        "tipus_dietes"=>$tipus_dietes,"dishes"=>$dishes,"clone"=>$clone]);
     
         }else{
             return redirect(route("index"));
@@ -336,7 +343,8 @@ Route::get('/clone/{diet}', function($id_diet) {
 
         $diet = Diets::getDietById($id_diet);
 
-        return view("clone_dieta",["diet"=>$diet]);
+    
+
 
     }else{
         return redirect(route("index"));
@@ -363,3 +371,5 @@ Route::post("diet/dishes_filtrar",[DietController::class, "dishes_filtrar"])->na
 Route::post("diet/add",[DietController::class, "diet_add"])->name("diet_add");
 Route::post("diet/edit",[DietController::class, "diet_edit"])->name("diet_edit");
 Route::post("diet/delete",[DietController::class, "diet_delete"])->name("diet_delete");
+Route::post("diet/clone",[DietController::class, "diet_clone"])->name("diet_clone");
+Route::post("pacient/canvia_dieta",[PacientController::class,"canviar_dieta"])->name("pacient.canvia_dieta");

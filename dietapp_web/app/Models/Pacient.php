@@ -135,7 +135,34 @@ class Pacient extends Model
     }
 
 
-    
+    public static function canviaDieta($dieta, $id_pacient){
+
+        /*
+            $dieta = $request->dieta;
+            $pacient = $request->pacient;
+        */
+
+        \DB::beginTransaction();
+
+        try{
+
+            
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            echo "Query: ".$ex;
+            \DB::rollback();
+            return false;
+        }catch(Throwable $ex){
+            echo "Throwable: ".$ex;
+            \DB::rollback();
+            return false;
+        }
+
+
+
+
+
+    }
 
 
 }

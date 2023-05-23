@@ -33,11 +33,12 @@ class Dishes extends Model
     }
 
 
-
     public static function getDishesByName($name){
 
         return Dishes::where('name_dish','like', $name . '%' )->get();
-
-
     }
+
+
+
+
 }

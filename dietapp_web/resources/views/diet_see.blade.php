@@ -7,6 +7,7 @@
     var config = {
         routes: {
             zone_diet_edit: "{{ route('diet_edit') }}",
+            zone_diet_clone: "{{ route('diet_clone') }}",
             zone_dishes_filtrar: "{{ route('diet.dishes_filtrar') }}",
         },
         vars: {
@@ -27,7 +28,12 @@
 
     <br/>
 
-    <h1>{{$diet->name}}</h1>
+    @if($clone==1)
+        <h1>Clonar: {{$diet->name}}</h1>
+    @else
+        <h1>{{$diet->name}}</h1>
+    @endif
+   
 
 
 
@@ -275,7 +281,12 @@
 
     <div class="row">
         <div class="col-12 d-flex justify-content-center" >
-            <button id="edita-dieta" class="button-3 btn-search ">Edita dieta</button>
+            @if($clone==1)
+                <button id="clone-dieta" class="button-3 btn-search">Clonar dieta</button> 
+                  
+            @else
+                <button id="edita-dieta" class="button-3 btn-search">Edita dieta</button>
+            @endif          
         </div>
     </div>
     <button id="prova" class="button-3 btn-search " style="display:none;">Prova</button>

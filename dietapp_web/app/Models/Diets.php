@@ -375,5 +375,12 @@ DB:
     }
 
 
+    public static function getDietesNoAssignades($dieta_actual){
+
+        return Diets::where('id_diet','!=',$dieta_actual)->get();
+
+    }
+
+
     
 }

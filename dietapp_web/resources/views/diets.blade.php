@@ -105,7 +105,7 @@
             <tbody id="dietes_taula">
             @foreach($diets as $diet)
                 
-                <tr>
+                <tr>                                                                    
                     <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->name}}</td>
                     <td onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->description}}</td>
                     <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->name_type}}</td>
@@ -114,7 +114,7 @@
                     <td>
                         <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit">Edita <i class="fa-solid fa-pen-to-square"></i></a>
                         <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" class="button-3 btn-delete">Elimina <i class="fa-solid fa-trash"></i></a>
-                        <a href="{{route('clone_diet',$diet->id_diet)}}">Clonar <i class="fa-solid fa-clone"></i></a>
+                        <a href="{{route('dieta', ['id' => $diet->id_diet, 'clone' => '1'])}}" class="button-3 btn-clone">Clonar <i class="fa-solid fa-clone"></i></a>                                                                   
                     </td>
                 </tr>
 
