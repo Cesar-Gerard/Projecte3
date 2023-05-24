@@ -115,6 +115,7 @@
                         <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit">Edita <i class="fa-solid fa-pen-to-square"></i></a>
                         <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" class="button-3 btn-delete">Elimina <i class="fa-solid fa-trash"></i></a>
                         <a href="{{route('dieta', ['id' => $diet->id_diet, 'clone' => '1'])}}" class="button-3 btn-clone">Clonar <i class="fa-solid fa-clone"></i></a>                                                                   
+                        <a href="{{route('imprimir_dieta',$diet->id_diet)}}" class="button-3 btn-delete">PDF dieta <i class="fa-solid fa-file-pdf"></i></a>
                     </td>
                 </tr>
 

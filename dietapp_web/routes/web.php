@@ -354,6 +354,52 @@ Route::get('/clone/{diet}', function($id_diet) {
 
 })->name("clone_diet");
 
+Route::get('/imprimir_dieta/{dieta}', function($id_dieta){
+
+
+
+    if(Auth::check()){
+
+        
+
+        //Diets
+        //Diets_dishes
+        $diet = Diets::getDietById($id_dieta);
+        $tipus_dietes = TypeDiets::all();
+        $dishes = Dishes::getAllDishes();
+        if($diet!=null){
+            $diets_dishes_esmorzars = Diets::getDietDietsDishesByMeals($id_dieta,1);
+        
+            $diets_dishes_migmati = Diets::getDietDietsDishesByMeals($id_dieta,5);
+            $diets_dishes_dinar = Diets::getDietDietsDishesByMeals($id_dieta,2);
+            
+            $diets_dishes_berenar = Diets::getDietDietsDishesByMeals($id_dieta,3);
+            $diets_dishes_sopar = Diets::getDietDietsDishesByMeals($id_dieta,4);
+
+
+            
+              
+            $pdf = PDF::loadView('dieta_pdf', ["diet"=>$diet,"diets_dishes_esmorzars"=>$diets_dishes_esmorzars,"diets_dishes_migmati"=>$diets_dishes_migmati,
+            "diets_dishes_dinar"=>$diets_dishes_dinar,"diets_dishes_berenar"=>$diets_dishes_berenar,"diets_dishes_sopar"=>$diets_dishes_sopar,
+            "tipus_dietes"=>$tipus_dietes,"dishes"=>$dishes]);
+            $pdf->setPaper('A4', 'landscape');
+            return $pdf->download($diet->name.'.pdf');
+            
+    
+        }else{
+            return redirect(route("index"));
+        }
+
+    }else{
+        return redirect(route("index"));
+    }
+
+
+
+
+
+})->name("imprimir_dieta");
+
 
 
 

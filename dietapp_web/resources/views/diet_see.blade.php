@@ -147,6 +147,29 @@
                     @endfor
 
                 </div>
+
+                <div class="row">
+                    <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
+                        Mig dia
+                    </div>
+        
+                    @for ($i = 1; $i <= 5; $i++)
+                        <div id="migdia-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
+                            @foreach($diets_dishes_migmati as $ddm)
+
+                                @if($ddm->week_day == $i)
+                                    <div class="card ui-draggable ui-draggable-handle" id="dish-{{$ddm->dish_id_dish}}">
+                                        <img src="{{asset('img/Icons/'.$ddm->image_dish.'')}}" class="dish_etiqueta"/>
+                                        {{$ddm->name_dish}}
+                                    </div>
+                                @endif
+                            @endforeach
+
+                        </div>
+                    @endfor
+        
+        
+                </div>
         
                 
                 <div class="row">
@@ -220,28 +243,7 @@
                     @endfor
                 </div>
         
-                <div class="row">
-                    <div class="col-1 requadre_cela requadre_apat d-flex align-items-center" >
-                        Mig dia
-                    </div>
-        
-                    @for ($i = 1; $i <= 5; $i++)
-                        <div id="migdia-{{$i}}" class="col-2 requadre_cela cela_ocupada stackDrop1">
-                            @foreach($diets_dishes_migmati as $ddm)
-
-                                @if($ddm->week_day == $i)
-                                    <div class="card ui-draggable ui-draggable-handle" id="dish-{{$ddm->dish_id_dish}}">
-                                        <img src="{{asset('img/Icons/'.$ddm->image_dish.'')}}" class="dish_etiqueta"/>
-                                        {{$ddm->name_dish}}
-                                    </div>
-                                @endif
-                            @endforeach
-
-                        </div>
-                    @endfor
-        
-        
-                </div>
+                
 
             
 

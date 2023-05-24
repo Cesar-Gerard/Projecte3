@@ -149,6 +149,10 @@ class Pacient extends Model
         try{
 
             $pacient = Pacient::where('id_pacient','=',$id_pacient)->first();
+
+            $historial_pacient = HistorialPacient::where('id_patient','=',$id_pacient)->orderBy('control_date','DESC')->first();
+            $historial_pacient->status = 'F';
+            $historial_pacient->save();
             
             if($pacient!=null){
                 $pacient->current_diet = $dieta;
