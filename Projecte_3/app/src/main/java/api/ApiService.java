@@ -6,8 +6,10 @@ import model.ChangeUserRequest;
 import model.ChangeUserResponse;
 import model.DietesResponse;
 import model.Dishes_DietaResponse;
+import model.HistorialRequest;
 import model.HistorialResponse;
 import model.IngredientsDishResponse;
+import model.InsertHistorialResponse;
 import model.LoginResponse;
 import model.PacientResponse;
 import retrofit2.Call;
@@ -46,10 +48,15 @@ public interface ApiService {
     @PUT("update_password")
     Call<ChangePasswordResponse> updatePassword(@Header("Authorization") String token,@Body ChangePasswordRequest request);
 
-
     @Headers("Accept: application/json")
     @PUT("update_user")
     Call<ChangeUserResponse> updateUser(@Header ("Authorization")String token, @Body ChangeUserRequest request);
+
+
+    @FormUrlEncoded
+    @Headers("Accept: application/json")
+    @POST("add_historial_pacient")
+    Call<InsertHistorialResponse>insert_Historial(@Header ("Authorization")String token,@Field("id_pacient")String id,@Field("diet") String diet, @Field("weight") String pes, @Field("height") String alt,@Field ("chest") String chest, @Field("leg") String cama, @Field("arm") String braz,@Field("hip") String cadera );
 
     @Headers("Accept: application/json")
     @GET("dishes/{parameter}")

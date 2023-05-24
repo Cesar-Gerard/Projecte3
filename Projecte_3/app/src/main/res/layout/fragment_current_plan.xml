@@ -81,8 +81,8 @@ android:background="@drawable/background_page">
             <!-- Gráfico lineal para mostrar la progresión del peso -->
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/grafico_peso"
-                android:layout_width="300dp"
-                android:layout_height="200dp"/>
+                android:layout_width="350dp"
+                android:layout_height="250dp"/>
 
 
         </androidx.cardview.widget.CardView>

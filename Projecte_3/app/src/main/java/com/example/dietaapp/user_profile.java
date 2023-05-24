@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -81,19 +82,13 @@ public class user_profile extends Fragment {
         Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
 
         // Convertir Bitmap a archivo File
-        File file = new File(getContext().getCacheDir(), "nom.png"); // Ruta y nombre del archivo
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        if (file.exists()) {
-            binding.imageProfile.setImageBitmap(bitmap);
+        if (!TextUtils.isEmpty(user.getImageUser())) {
+            File file = new File(user.getImageUser());
+            if (file.exists()) {
+                binding.imageProfile.setImageBitmap(bitmap);
+            } else {
+                binding.imageProfile.setImageResource(R.drawable.avatar_icon);
+            }
         } else {
             binding.imageProfile.setImageResource(R.drawable.avatar_icon);
         }

@@ -6,8 +6,10 @@ import model.ChangeUserRequest;
 import model.ChangeUserResponse;
 import model.DietesResponse;
 import model.Dishes_DietaResponse;
+import model.HistorialRequest;
 import model.HistorialResponse;
 import model.IngredientsDishResponse;
+import model.InsertHistorialResponse;
 import model.LoginResponse;
 import model.PacientResponse;
 import retrofit2.Call;
@@ -82,6 +84,11 @@ public class ApiManager {
 
     public void getIngredientsDish(String token, String parameter, Callback<IngredientsDishResponse> callback){
         Call<IngredientsDishResponse> call = mApiService.getIngredientsDish("Bearer "+token, parameter);
+        call.enqueue(callback);
+    }
+
+    public void insertHistorial(String token , String id, String diet, String pes, String alt, String pit, String cama, String braz, String cadera, Callback<InsertHistorialResponse> callback){
+        Call<InsertHistorialResponse> call = mApiService.insert_Historial("Bearer "+token, id, diet, pes,alt, pit, cama, braz, cadera);
         call.enqueue(callback);
     }
 

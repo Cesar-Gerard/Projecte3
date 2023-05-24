@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtPes"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pes: 0.00" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kg"
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/edtPes"
+            app:layout_constraintStart_toEndOf="@id/edtPes"
+            app:layout_constraintTop_toTopOf="@+id/edtPes" />
+
+        <EditText
+            android:id="@+id/edtBraz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mesura Braç: 0.00"
+            app:layout_constraintTop_toBottomOf="@id/edtAlzada"/>
+
+
+
+        <EditText
+            android:id="@+id/edtAlzada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Alçada: 0.00"
+            app:layout_constraintTop_toBottomOf="@id/edtPes"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/edtAlzada"
+            app:layout_constraintStart_toEndOf="@+id/edtAlzada"
+            app:layout_constraintTop_toBottomOf="@+id/edtPes" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="cm"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/edtBraz"
+            app:layout_constraintStart_toEndOf="@id/edtBraz"
+            app:layout_constraintTop_toTopOf="@+id/edtBraz" />
+
+
+        <EditText
+            android:id="@+id/edtCama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mesura Cama: 0.00"
+            app:layout_constraintTop_toBottomOf="@+id/edtBraz" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cm"
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/edtCama"
+            app:layout_constraintStart_toEndOf="@+id/edtCama"
+            app:layout_constraintTop_toBottomOf="@+id/edtBraz" />
+
+        <EditText
+            android:id="@+id/edtPit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mesura Pit: 0.00"
+            app:layout_constraintTop_toBottomOf="@id/edtCama"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cm"
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/edtPit"
+            app:layout_constraintStart_toEndOf="@+id/edtPit"
+            app:layout_constraintTop_toTopOf="@+id/edtPit" />
+
+
+        <EditText
+            android:id="@+id/edtCadera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mesura Cintura: 0.00"
+            app:layout_constraintTop_toBottomOf="@id/edtPit"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cm"
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edtCadera"
+            app:layout_constraintTop_toTopOf="@+id/edtCadera" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>

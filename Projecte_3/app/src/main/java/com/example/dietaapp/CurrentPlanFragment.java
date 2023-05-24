@@ -1,5 +1,7 @@
 package com.example.dietaapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -7,10 +9,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.dietaapp.databinding.FragmentCurrentPlanBinding;
 import com.github.mikephil.charting.components.XAxis;
@@ -28,11 +33,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import api.ApiManager;
+import model.ChangePasswordRequest;
+import model.ChangePasswordResponse;
 import model.Datum;
+import model.Dietes;
+import model.HistorialRequest;
 import model.HistorialResponse;
+import model.InsertHistorialResponse;
 import model.PacientResponse;
 import model.User_Retro;
 import retrofit2.Call;
@@ -67,19 +78,13 @@ public class CurrentPlanFragment extends Fragment {
         Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
 
         // Convertir Bitmap a archivo File
-        File file = new File(getContext().getCacheDir(), "nom.png"); // Ruta y nombre del archivo
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        if (file.exists()) {
-            binding.imageViewavatar.setImageBitmap(bitmap);
+        if (!TextUtils.isEmpty(user.getImageUser())) {
+            File file = new File(user.getImageUser());
+            if (file.exists()) {
+                binding.imageViewavatar.setImageBitmap(bitmap);
+            } else {
+                binding.imageViewavatar.setImageResource(R.drawable.avatar_icon);
+            }
         } else {
             binding.imageViewavatar.setImageResource(R.drawable.avatar_icon);
         }
@@ -89,18 +94,105 @@ public class CurrentPlanFragment extends Fragment {
         InfoPacientRequest();
         demanarHistorial();
 
+        InserirHistorial();
 
 
         return v;
 
     }
 
+    private void InserirHistorial() {
+        binding.btnTemporal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialegInsert();
+            }
+        });
+    }
+
+    private void DialegInsert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_insert_historial, null);
+        builder.setView(dialogView);
+
+        EditText pes = dialogView.findViewById(R.id.edtPes);
+        EditText alzada = dialogView.findViewById(R.id.edtAlzada);
+        EditText braz = dialogView.findViewById(R.id.edtBraz);
+        EditText cama = dialogView.findViewById(R.id.edtCama);
+        EditText pit = dialogView.findViewById(R.id.edtPit);
+        EditText cintura = dialogView.findViewById(R.id.edtCadera);
+
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String pes_S = pes.getText().toString();
+                String alt_S = alzada.getText().toString();
+                String cama_S = cama.getText().toString();
+                String braz_S = braz.getText().toString();
+                String pit_S = pit.getText().toString();
+                String cintura_S = cintura.getText().toString();
+
+                if(validateDoubleFormat(alt_S)&&validateDoubleFormat(pes_S) && validateDoubleFormat(cama_S) &&validateDoubleFormat(braz_S) &&validateDoubleFormat(pit_S) &&validateDoubleFormat(cintura_S)){
+
+
+                    ApiManager.getInstance().insertHistorial(User_Retro.getToken(), User_Retro.getUser().getId().toString(),String.valueOf(User_Retro.getDiet()) ,pes_S,alt_S,pit_S,cama_S,braz_S,cintura_S, new Callback<InsertHistorialResponse>() {
+                        @Override
+                        public void onResponse(Call<InsertHistorialResponse> call, Response<InsertHistorialResponse> response) {
+                            Toast.makeText(getContext(), "Dades guardades amb èxit", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<InsertHistorialResponse> call, Throwable t) {
+
+                        }
+                    });
+
+
+
+                }else{
+                    Toast.makeText(dialogView.getContext(), "Valors no introduits correctament",Toast.LENGTH_LONG).show();
+                }
+
+
+
+            }
+
+
+        });
+
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public boolean validateDoubleFormat(String input) {
+        try {
+            // Reemplazar coma por punto para el separador decimal
+            input = input.replace(",", ".");
+
+            double number = Double.parseDouble(input);
+            String formatted = String.format(Locale.US, "%.2f", number);
+            return input.equals(formatted);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+
     private void DeterminarTempsBoto(Date controlDate) {
         Date fechaActual = Calendar.getInstance().getTime();
 
         long diferenciaDias = TimeUnit.MILLISECONDS.toDays(fechaActual.getTime() - controlDate.getTime());
 
-// Verificar si han pasado 7 o más días
+        // Verificar si han pasado 7 o más días
         if (diferenciaDias >= 7) {
             // Activar el botón
             binding.btnTemporal.setEnabled(true);
@@ -187,7 +279,7 @@ public class CurrentPlanFragment extends Fragment {
 
 
                 //Rebem el historial més recent per no haber de treballar amb la llista sencer
-                omplircamps( response.body().getHistorial(3));
+                omplircamps( response.body().getHistorial(response.body().getData().size()-1));
 
 
 

@@ -1,0 +1,31 @@
+-Presentació
+	-Presentació del grup
+	-Divisio de funcionalitats
+	
+	
+-Objectius Incialment Platajats
+	-Requeriments inicials plantejats
+	
+	
+-Android
+	-Que s'ha fet
+	
+	
+-Web
+	-Resaltar es intuitiva cap al usuari
+	
+	
+-Web Service
+	-Estructura
+	-Crides al web_service
+	
+	
+
+	
+	
+-Resultats Finals
+	-Parts Implementades
+	-Parts descartades y perquè
+	
+	
+-Conclusió
