@@ -158,8 +158,8 @@ function f_creaDieta(){
 
 function f_comprovaCrearDietes(){
 
-    f_creaDieta();
-    /*
+    
+    
     if(f_comprovaCalendari()){
         
         calendari_dietes_ok = true;
@@ -177,9 +177,29 @@ function f_comprovaCrearDietes(){
 
     if(nom_ok && descripcio_ok && calendari_dietes_ok){
         f_creaDieta();
+    }else{
+        if(!nom_ok || !descripcio_ok){
+            f_comprovaNom();
+            f_comprovaDescripcio();
+    
+            Swal.fire(
+                'Crear dieta',
+                'El nom i la descripció són obligatoris',
+                'error'
+            );
+        }else{
+            Swal.fire(
+                'Crear dieta',
+                'Cada franja ha de tenir almenys un plat',
+                'error'
+            );
+    
+            calendari_dietes_ok = false;
+        }
+
     }
 
-    */
+    
     
 
 }
@@ -306,7 +326,6 @@ function f_dragable(){
         drop: function(event, ui) {
             $("#launchPad").append($(ui.draggable));
             $("#elimina_dishes_bd").empty();
-            console.info('Elimina');
         }
     });
     
@@ -318,7 +337,6 @@ function f_dragable(){
         drop: function(event, ui) {        
             $(this).append($(ui.draggable));
             $("#elimina_dishes_bd").empty();
-            console.info('Elimina');
             //let id = console.info(event.target.id);
             //let fills = document.getElementById(id);
             //console.info(fills);
@@ -342,7 +360,6 @@ function f_dragable(){
         drop: function(event, ui) {        
             $(this).append($(ui.draggable));
             $("#elimina_dishes_bd").empty();
-            console.info('Elimina');
         }
     });
 
@@ -396,9 +413,19 @@ function f_dibuixaDragables(e){
         let div = document.createElement("div");
         div.setAttribute('id',json[i].id_dishes);
         div.setAttribute('class','card ui-draggable ui-draggable-handle');
-        //TODO: Afegir el text dins del DIV
+        
+        src = config.routes.zone_assets.replace('-1234',json[i].image_dish);
 
-        div.innerHTML = json[i].name_dish;
+        let img = document.createElement("img");
+        img.setAttribute('class','dish_etiqueta');
+        img.setAttribute('style','margin-right:5px');
+        img.src = src;       
+
+        let text_dish = document.createElement("span");
+        text_dish.textContent = json[i].name_dish;
+
+        div.appendChild(img);
+        div.appendChild(text_dish);
 
         
         table.appendChild(div);

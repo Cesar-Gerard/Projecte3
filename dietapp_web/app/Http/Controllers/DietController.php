@@ -96,7 +96,7 @@ class DietController extends Controller
         //Mirar si la dieta la està seguint algú
         if(Diets::checkDietIsUsed($id_diet)==0){
             
-            return array("status"=>-1,"message"=>"La dieta no es pot eliminar ja que hi ha pacients que la segueixen actualment");
+            return array("status"=>-1,"message"=>"La dieta no es pot eliminar ja que hi ha pacients que la estan seguint");
         }else{
 
             //Eliminar dieta 

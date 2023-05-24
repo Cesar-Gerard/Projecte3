@@ -68,6 +68,15 @@ class HistorialPacient extends Model
 
     }
 
+    public static function getDietesAcabadesSenseAssignar($pacient){
+
+        return $dietes_acabades =  DB::table('historial_patient')
+                            ->select('diet')
+                            ->distinct()
+                            ->where('id_patient','=',$pacient)
+                            ->get();
+    }
+
 
     public static function getProgresHistorialPacient($pacient,$dieta_actual){
         

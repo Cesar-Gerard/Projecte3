@@ -126,7 +126,7 @@ function f_clonaDieta(){
         type: 'POST'
     }).done(function (e)
     {
-        ;
+        
         if(e!=1){
             Swal.fire(
                 'Clonar dieta',
@@ -296,9 +296,21 @@ function f_dibuixaDragables(e){
         let div = document.createElement("div");
         div.setAttribute('id',json[i].id_dishes);
         div.setAttribute('class','card ui-draggable ui-draggable-handle');
-        //TODO: Afegir el text dins del DIV
+        
+        src = config.routes.zone_assets.replace('-1234',json[i].image_dish);
 
-        div.innerHTML = json[i].name_dish;
+        let img = document.createElement("img");
+        img.setAttribute('class','dish_etiqueta');
+        img.setAttribute('style','margin-right:5px');
+        img.src = src;       
+
+        let text_dish = document.createElement("span");
+        text_dish.textContent = json[i].name_dish;
+
+        div.appendChild(img);
+        div.appendChild(text_dish);
+
+        //div.innerHTML = json[i].name_dish;
 
         
         table.appendChild(div);
@@ -359,6 +371,7 @@ function f_dragable(){
         hoverClass: "ui-state-hover",
         drop: function(event, ui) {
             $("#launchPad").append($(ui.draggable));
+            $("#elimina_dishes_bd").empty();
         }
     });
     
@@ -369,7 +382,7 @@ function f_dragable(){
         hoverClass: "ui-state-hover",
         drop: function(event, ui) {        
             $(this).append($(ui.draggable));
-            
+            $("#elimina_dishes_bd").empty();
             //let id = console.info(event.target.id);
             //let fills = document.getElementById(id);
             //console.info(fills);
@@ -392,6 +405,7 @@ function f_dragable(){
         hoverClass: "ui-state-hover",
         drop: function(event, ui) {        
             $(this).append($(ui.draggable));
+            $("#elimina_dishes_bd").empty();
         }
     });
 

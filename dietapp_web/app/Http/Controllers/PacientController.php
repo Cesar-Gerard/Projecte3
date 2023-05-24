@@ -126,6 +126,19 @@ class PacientController extends Controller
     }
 
 
+    public function assigna_dieta(Request $request){
+        
+        $dieta = $request->dieta;
+        $pacient = $request->pacient;
+
+        if(Pacient::assignaDieta($dieta,$pacient)){
+            return 1;
+        }
+
+        return -1;
+    }
+
+
     
     
 }

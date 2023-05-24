@@ -131,7 +131,6 @@ class User extends Authenticatable
             $user->nickname_user = $data->pacient_username;
             $user->password = bcrypt($data->pacient_password);
             $user->type_user = "P";
-            $user->email_user = $data->pacient_email;
 
             $user->save();
 
@@ -139,8 +138,9 @@ class User extends Authenticatable
             $pacient = new Pacient();
             $pacient->id_pacient = $user->id;
             $pacient->assigned_nutricionist = $nutricionist;
-            $pacient->phone_pacient = $data->pacient_phone;
-            $pacient->address_pacient = $data->pacient_address;
+            $pacient->phone_patient = $data->pacient_phone;
+            $pacient->address_patient = $data->pacient_address;
+            $pacient->email_patient = $data->pacient_email;
             
             $pacient->save();
 

@@ -68,20 +68,33 @@ Route::get('/pacient/{pacient}',function($pacient){
 
         //En cas que posi la adreça i no sigui el seu pacient, no deixar entrar
         $pacient = Pacient::getPacient($pacient,Auth::user()->id);
+        $type_diet = "-1";
+        $historial_actual = array();
+        $historial_diets = array();
+        $grafic_progres_actual = array();
+        $dietes_acabades = array();
+        $s_historial_patient = null;
+        $totes_dietes = Diets::all();
+
         if($pacient !=null){
 
             //Saber informació de la dieta actual (si té)
             $diet = null;
             if($pacient->current_diet != null){
                 $diet = Diets::getDietById($pacient->current_diet);
+                
                 $type_diet = TypeDiets::getTypeById($diet->type_diet);
+
 
                 //Dades directes (Sense formatar)
                 $historial_actual = HistorialPacient::getProgresActualPacient($pacient->id_pacient,$diet->id_diet);
                 
                
                 $dietes_acabades_q = HistorialPacient::getDietesAcabades($pacient->id,$pacient->current_diet);
-                
+            }else{
+                //En cas que no tingui cap dieta actual, mirar si té d'anteriors
+                $dietes_acabades_q = HistorialPacient::getDietesAcabadesSenseAssignar($pacient->id_pacient);
+            }
             
 
                 $grafic_progres_actual = array();//Array que mostra la info de la dieta actual
@@ -91,11 +104,14 @@ Route::get('/pacient/{pacient}',function($pacient){
 
                 
                 $d_historial_patient = HistorialPacient::where('id_patient','=',$pacient->id_pacient)->orderBy('control_date','desc')->first();
-                if($d_historial_patient->status=='F'){
-                    $s_historial_patient = "1";
-                }else{
-                    $s_historial_patient = $d_historial_patient->start_date;
+                if($d_historial_patient!=null){
+                    if($d_historial_patient->status=='F'){
+                        $s_historial_patient = "1";
+                    }else{
+                        $s_historial_patient = $d_historial_patient->start_date;
+                    }
                 }
+                
 
                 
                 foreach($historial_actual as $ha){
@@ -197,7 +213,7 @@ Route::get('/pacient/{pacient}',function($pacient){
                 }   
                 
                 
-            }
+            
 
             //Retornar totes les dietes
             
@@ -205,7 +221,7 @@ Route::get('/pacient/{pacient}',function($pacient){
 
             return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet,"type_diet"=>$type_diet,"historial_actual"=>$historial_actual,
                         "historial_diets"=>$historial_diets,"grafic_progres_actual"=>$grafic_progres_actual,"dietes_acabades"=>$dietes_acabades,
-                        "dietes_no_assignades"=>$dietes_no_assignades,"s_historial_patient"=>$s_historial_patient]);
+                        "dietes_no_assignades"=>$dietes_no_assignades,"s_historial_patient"=>$s_historial_patient,"totes_dietes"=>$totes_dietes]);
             
         }else{
             return redirect(route("pacients"));
@@ -245,7 +261,7 @@ Route::get('/pacient_edit/{id}',function($pacient){
 Route::get("/logout", function()
 {
     
-    //Auth::logout();
+    Auth::logout();
     return redirect()->route("index");
 })->name("logout");
 
@@ -389,6 +405,7 @@ Route::get('/imprimir_dieta/{dieta}', function($id_dieta){
             "diets_dishes_dinar"=>$diets_dishes_dinar,"diets_dishes_berenar"=>$diets_dishes_berenar,"diets_dishes_sopar"=>$diets_dishes_sopar,
             "tipus_dietes"=>$tipus_dietes,"dishes"=>$dishes]);
             $pdf->setPaper('A4', 'landscape');
+            $pdf->setOptions(['defaultFont' => 'sans-serif']);
             return $pdf->download($diet->name.'.pdf');
             
     
@@ -425,3 +442,4 @@ Route::post("diet/edit",[DietController::class, "diet_edit"])->name("diet_edit")
 Route::post("diet/delete",[DietController::class, "diet_delete"])->name("diet_delete");
 Route::post("diet/clone",[DietController::class, "diet_clone"])->name("diet_clone");
 Route::post("pacient/canvia_dieta",[PacientController::class,"canviar_dieta"])->name("pacient.canvia_dieta");
+Route::post("pacient/assigna_dieta",[PacientController::class,"assigna_dieta"])->name("pacient.assigna_dieta");

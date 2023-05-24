@@ -8,6 +8,7 @@
         routes: {
             zone_dishes_filtrar: "{{ route('diet.dishes_filtrar') }}",
             zone_diet_add: "{{ route('diet_add') }}",
+            zone_assets: "{{ asset('img/Icons/-1234') }}",
 
         },
         vars: {
@@ -88,14 +89,18 @@
             
         </div>
 -->
-    <h5>Arrosega el plat per treure-lo de la dieta</h5>
-    <div style="border:1px solid black;height:150px;width:200px;" class="d-flex justify-content-center align-items-center">
-         <i class="fa-solid fa-trash fa-xl"></i>
-        <div class="stackDrop1 requadre_cela" id="elimina_dishes_bd">
+        <div class="elimina_dish">
+            <h5 style="background-color:white;z-index: 300;">Arrosega el plat per treure-lo de la dieta</h5>
+            <div>
+                
+                <div style="border:1px solid rgb(240, 71, 71);height:150px;width:200px;" class="d-flex justify-content-center align-items-center">
+                    <i class="fa-solid fa-trash fa-xl" style="margin-left:90px;"></i>
+                    <div class="stackDrop1 requadre_cela" id="elimina_dishes_bd">
 
-        </div>
-    </div>
-
+                    </div>
+                </div><br/>
+            </div>
+        </div>  
 
 
         <div class="row">

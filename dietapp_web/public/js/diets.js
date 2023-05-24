@@ -213,7 +213,7 @@ function f_dibuixaTaula(e){
         let a_edit = document.createElement("a");
         a_edit.innerHTML = "&nbsp;Editar";
         a_edit.setAttribute("class","button-3 btn-edit");
-        a_edit.setAttribute("style","margin-top:10px;");
+        a_edit.setAttribute("style","margin-top:10px;margin-right:10px;");
         a_edit.addEventListener('click', f_goEdit.bind(null, json[i].id_diet));
 
         let i_edit = document.createElement("i");
@@ -223,7 +223,7 @@ function f_dibuixaTaula(e){
         let a_delete = document.createElement("a");
         a_delete.innerHTML = "&nbsp;Eliminar";
         a_delete.setAttribute("class","button-3 btn-delete");
-        a_delete.setAttribute("style","margin-top:10px;");
+        a_delete.setAttribute("style","margin-top:10px;margin-right:10px;");
         a_delete.setAttribute("id","delete_diet{{"+json[i].id_diet+"}}");
         a_delete.addEventListener('click', f_deleteDiet.bind(null, json[i].id_diet));
 
@@ -235,7 +235,7 @@ function f_dibuixaTaula(e){
         let a_clone = document.createElement("a");
         a_clone.innerHTML = "&nbsp;Clonar";
         a_clone.setAttribute("class","button-3 btn-clone");
-        a_clone.setAttribute("style","margin-top:10px");
+        a_clone.setAttribute("style","margin-top:10px;margin-right:10px;");
         a_clone.addEventListener('click', f_goClone.bind(null, json[i].id_diet));
 
         let i_clone = document.createElement("i");
@@ -246,7 +246,7 @@ function f_dibuixaTaula(e){
         let a_pdf = document.createElement("a");
         a_pdf.innerHTML = "&nbsp;Descarrega dieta";
         a_pdf.setAttribute("class","button-3 btn-pdf");
-        a_pdf.setAttribute("style","margin-top:10px");
+        a_pdf.setAttribute("style","margin-top:10px;margin-right:10px;");
         a_pdf.addEventListener('click', f_goPdf.bind(null, json[i].id_diet));
 
         let i_pdf = document.createElement("i");

@@ -151,16 +151,24 @@ class Pacient extends Model
             $pacient = Pacient::where('id_pacient','=',$id_pacient)->first();
 
             $historial_pacient = HistorialPacient::where('id_patient','=',$id_pacient)->orderBy('control_date','DESC')->first();
-            $historial_pacient->status = 'F';
-            $historial_pacient->save();
-            
-            if($pacient!=null){
-                $pacient->current_diet = $dieta;
-                $pacient->save();
-
-                \DB::commit();
-                return true;
+            if($historial_pacient!=null){
+                $historial_pacient->status = 'F';
+                $historial_pacient->save();
+                
+                if($pacient!=null){
+                    if($dieta==-1){
+                        $pacient->current_diet = null;
+                    }else{
+                        $pacient->current_diet = $dieta;
+                    }
+                    
+                    $pacient->save();
+    
+                    \DB::commit();
+                    return true;
+                }
             }
+            
             \DB::rollback();
             return false;
             
@@ -175,6 +183,37 @@ class Pacient extends Model
             \DB::rollback();
             return false;
         }
+
+    }
+
+
+    public static function assignaDieta($dieta, $id_pacient){
+
+        try{
+
+            $pacient = Pacient::where('id_pacient','=',$id_pacient)->first();
+
+            if($pacient!=null){
+                $pacient->current_diet = $dieta;
+                $pacient->save();
+
+                return true;
+            }
+
+            return false;
+
+
+
+        }catch(\Illuminate\Database\QueryException $ex){
+            echo "Query: ".$ex;
+            \DB::rollback();
+            return false;
+        }catch(Throwable $ex){
+            echo "Throwable: ".$ex;
+            \DB::rollback();
+            return false;
+        }
+
 
     }
 

@@ -10,8 +10,8 @@
             routes: {
                 zone_afegir_pacient: "{{ route('pacient.add') }}",
                 zone_pacients: "{{ route('pacients') }}",
-                zone_diet_assigna: "{{ route('pacient.canvia_dieta') }}",
-                zone_canvia_dieta: " route('canvia_dieta') ",
+                zone_diet_canvia: "{{ route('pacient.canvia_dieta') }}",
+                zone_assigna_dieta: "{{ route('pacient.assigna_dieta') }}"
             },
             vars: {
                 nutricionist: "{{Auth::user()->id}}",
@@ -107,6 +107,14 @@
                                         
                                         
                                     @endforeach
+                                    <label class="custom-radio">
+                                        <input type="radio" name="radio" value="-1">
+                                        <span class="radio-btn"><i class="las la-check"></i>
+                                        <div class="hobbies-icon">
+                                            <h2><b>No assignar cap dieta</b></h2>
+                                        </div>
+                                        </span>
+                                    </label>
                                 </div>
 
                             </div>
@@ -183,11 +191,102 @@
         
     @endphp
 
+        <br/>
+
+        <div class="row">
+            
+            @if(count($dietes_acabades)>0)
+                <div class="col-7">
+                    <h2>El pacient actualment no té cap dieta assignada</h2>
+                </div>
+                
+            @endif
+
+            @if(count($dietes_acabades)>0 && $pacient->current_diet==null)
+                <div class="col-3">
+                    <a href="#m_assigna_dieta" class="btn btn-primary" data-toggle="modal">Assigna dieta</a>
+                </div>
+            
+            @endif
+
+            
+            
+
+        </div>
+            
+        @if((count($dietes_acabades)==0 && $pacient->current_diet==null))
+            <div class="row">
+                <div class="col-5">
+                    <h2>Aquest pacient no ha fet cap dieta</h2>
+                </div>
+                <div class="col-5">
+                    <div class="col-3">
+                        <a href="#m_assigna_dieta" class="btn btn-primary" data-toggle="modal">Assigna dieta</a>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+       
+        
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="m_assigna_dieta" tabindex="-1" role="dialog" aria-labelledby="m_assigna_dieta_Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Assignació de dieta</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="background-color:white !important;border:3px solid white !important;">x</button>
+                            
+                        </div>
+                        <div class="modal-body">
+                            
+                            <h4 class="d-flex justify-content-center">Tria la dieta:</h4>
+                            
+                            <div class="main-container">
+                                <div class="radio-buttons">
+                                    
+                                    @foreach($totes_dietes as $td)
+                                    <!--
+                                        <div>
+                                            <input type="radio" id="d-{{$dietes_no_assignades->id_diet}}" name="radio" value="{{$dietes_no_assignades->id_diet}}" /> {{$dietes_no_assignades->name}} 
+                                        </div>
+                                    -->
+                                        
+                                            
+                                        <label class="custom-radio">
+                                            <input type="radio" name="radio" value="{{$td->id_diet}}">
+                                            <span class="radio-btn"><i class="las la-check"></i>
+                                            <div class="hobbies-icon">
+                                                <h2>{{$td->name}}</h2>
+                                            </div>
+                                            </span>
+                                        </label>
+                                        
+                                        
+                                    @endforeach
+
+                                    
+                                </div>
+
+                            </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>-->
+                            <button type="button" class="btn btn-primary" id="assigna_dieta" disabled>Assigna dieta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            </div>
+
+
+
 
         
 
-        <br/>
-        <h2>Dietes acabades</h2>
 
         <div id="dietes_acabades">
             
@@ -232,7 +331,7 @@
 
 
                 @php $i++; @endphp
-
+                <br/>
             @endforeach
             <script>
                 console.info(data_points_historics);

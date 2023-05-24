@@ -1,0 +1,8 @@
+{
+    "raleway": {
+        "italic": "C:\\xampp\\htdocs\\Projecte3\\dietapp_web\\vendor\\dompdf\\dompdf\/lib\/fonts\/raleway_italic_d8c738e3e98b2bc52b4ffd1f382456b3",
+        "300": "C:\\xampp\\htdocs\\Projecte3\\dietapp_web\\vendor\\dompdf\\dompdf\/lib\/fonts\/raleway_300_03f1220312a8a49d56752227abd09b6c",
+        "normal": "C:\\xampp\\htdocs\\Projecte3\\dietapp_web\\vendor\\dompdf\\dompdf\/lib\/fonts\/raleway_normal_3fc5eee72db562370e3a32337da4d6f1",
+        "bold": "raleway_bold_e878667000f96d9e51dcca4bb7e59ed4"
+    }
+}

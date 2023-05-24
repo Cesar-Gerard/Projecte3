@@ -34,6 +34,56 @@ function f_main(){
 
   document.getElementById('canvia_dieta').addEventListener('click',f_canviaDieta);
 
+  try{
+    document.getElementById('assigna_dieta').addEventListener('click',f_assignaDieta); 
+  }catch(e){}
+
+}
+
+
+function f_assignaDieta(){
+  
+  //config.vars.pacient
+  let dieta_sel = document.querySelector('input[name="radio"]:checked').value;
+
+  $.ajax({
+      url: config.routes.zone_assigna_dieta,
+      data:{
+          'dieta' : dieta_sel,
+          'pacient' : config.vars.pacient,
+          '_token': $('meta[name="csrf-token"]').attr('content'),
+      },
+      type: 'POST'
+  }).done(function (e)
+  {
+
+      if(e==-1){
+          Swal.fire(
+              'Canvia de dieta',
+              "El canvi de dieta no s'ha pogut efectuar",
+              'error'
+          );
+      }else{
+          Swal.fire(
+              'Canvia de dieta',
+              "El canvi de dieta s'ha efectuat correctament",
+              'success'
+          );
+          Swal.fire({ 
+            title: "Canvia de dieta",
+            text: "El canvi de dieta s'ha efectuat correctament",
+            icon: "success"}).then(okay => {
+            if (okay) {
+                window.location.reload(true);
+            }
+        });
+
+          
+      }
+  });
+
+
+
 }
 
 
@@ -43,7 +93,7 @@ function f_canviaDieta(){
   let dieta_sel = document.querySelector('input[name="radio"]:checked').value;
 
   $.ajax({
-      url: config.routes.zone_diet_assigna,
+      url: config.routes.zone_diet_canvia,
       data:{
           'dieta' : dieta_sel,
           'pacient' : config.vars.pacient,
@@ -86,7 +136,7 @@ function f_gestioRadios(){
 
 
   document.getElementById('canvia_dieta').disabled = false;
-
+  document.getElementById('assigna_dieta').disabled = false;
 
 
 
@@ -319,30 +369,32 @@ function f_dibuixar_grafica_actual(){
     
   }
 
+  try{
+    var chart = new CanvasJS.Chart("chartContainer_historic_actual",
+    {
+      title:{
+          text: "Seguiment IMC"
+      },
+      axisX:{
+          title: "Dia",
+      },
+      axisY: {
+          title: "IMC",
+          valueFormatString: "###.##"
+      },
+      data: [
+        {        
+            type: "column",
+            dataPoints: arr_points,
+            indexLabel: "{y}",
+        }
+      ],
+      culture: "es",
+    });
   
-  var chart = new CanvasJS.Chart("chartContainer_historic_actual",
-  {
-    title:{
-        text: "Seguiment IMC"
-    },
-    axisX:{
-        title: "Dia",
-    },
-    axisY: {
-        title: "IMC",
-        valueFormatString: "###.##"
-    },
-    data: [
-      {        
-          type: "column",
-          dataPoints: arr_points,
-          indexLabel: "{y}",
-      }
-    ],
-    culture: "es",
-  });
-
-  chart.render();
+    chart.render();
+  }catch(e){}
+  
 
 
 }

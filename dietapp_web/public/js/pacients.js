@@ -19,7 +19,7 @@ function f_main(){
     document.getElementById('cerca_tipus_dietes').addEventListener('change',f_cercaPacients);
 
 
-    document.getElementById('cerca_search').addEventListener('click',f_cercaPacients);
+    //document.getElementById('cerca_search').addEventListener('click',f_cercaPacients);
     document.getElementById('cerca_neteja_filtres').addEventListener('click',f_netejaFiltres);
 
 }

@@ -18,7 +18,6 @@
 </head>
 <body style="background-color:white;color:black;">
     
-    <br/><br/>
     <h1 style="text-align: center;margin-top:5px;">{{$diet->name}}</h1>
     
 
@@ -39,6 +38,7 @@
                     @foreach($diets_dishes_esmorzars as $dde)
                         @if($dde->week_day == $i)
                             <div class="card_pdf">
+                                
                                 <img src="{{asset('img/Icons/'.$dde->image_dish.'')}}" class="dish_etiqueta"/>
                                     {{$dde->name_dish}}
                             </div>
