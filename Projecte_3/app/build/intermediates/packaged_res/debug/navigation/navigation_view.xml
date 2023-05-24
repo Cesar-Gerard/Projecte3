@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_view"
+    app:startDestination="@id/currentPlanFragment">
+    <fragment
+        android:id="@+id/currentPlanFragment"
+        android:name="com.example.dietaapp.CurrentPlanFragment"
+        android:label="fragment_current_plan"
+        tools:layout="@layout/fragment_current_plan" />
+    <fragment
+        android:id="@+id/user_profile"
+        android:name="com.example.dietaapp.user_profile"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" /><action android:id="@+id/action_global_user_profile" app:destination="@id/user_profile"/><action android:id="@+id/action_global_currentPlanFragment" app:destination="@id/currentPlanFragment"/>
+    <fragment
+        android:id="@+id/dietasFragment"
+        android:name="com.example.dietaapp.DietasFragment"
+        android:label="fragment_dietas"
+        tools:layout="@layout/fragment_dietas" /><action android:id="@+id/action_global_dietasFragment" app:destination="@id/dietasFragment"/>
+    <fragment
+        android:id="@+id/detall_dietaFragment"
+        android:name="com.example.dietaapp.detall_dietaFragment"
+        android:label="fragment_detall_dieta"
+        tools:layout="@layout/fragment_detall_dieta" /><action android:id="@+id/action_global_detall_dietaFragment" app:destination="@id/detall_dietaFragment"/>
+    <fragment
+        android:id="@+id/historialFragment"
+        android:name="com.example.dietaapp.HistorialFragment"
+        android:label="fragment_historial"
+        tools:layout="@layout/fragment_historial" /><action android:id="@+id/action_global_historialFragment" app:destination="@id/historialFragment"/>
+</navigation>

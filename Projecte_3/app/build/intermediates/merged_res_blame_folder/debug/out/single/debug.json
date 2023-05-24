@@ -1,0 +1,354 @@
+[
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_nav_about.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\nav_about.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_yogurts.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\yogurts.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_fragment_historial.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_historial.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xhdpi_dietapp_icon.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xhdpi\\dietapp_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_arrow_back.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\arrow_back.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\navigation_navigation_view.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\navigation\\navigation_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxxhdpi_dietapp_icon.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxxhdpi\\dietapp_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_fragment_current_plan.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_current_plan.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_custom_edittext.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\custom_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_diet.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\diet.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-mdpi_icon_app.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-mdpi\\icon_app.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_arrow_forward.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\arrow_forward.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_fragment_dietas.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_dietas.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_baseline_menu_24.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\baseline_menu_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-mdpi_dietapp_icon.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-mdpi\\dietapp_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\menu_nav_menu.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\menu\\nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_tea.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\tea.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_item_dish.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\item_dish.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-mdpi_icon_app_round.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-mdpi\\icon_app_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_bread.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\bread.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-anydpi-v26_icon_app_round.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-anydpi-v26\\icon_app_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_user_settings.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\user_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-anydpi-v26_dietapp_icon.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-anydpi-v26\\dietapp_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xhdpi_icon_app_round.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xhdpi\\icon_app_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_white_background.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\white_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_avatar_icon.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\avatar_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-hdpi_dietapp_icon.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-hdpi\\dietapp_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_baseline_set_meal_24.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\baseline_set_meal_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_item_historial.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\item_historial.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_baseline_lock_24.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\baseline_lock_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xhdpi_icon_app.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xhdpi\\icon_app.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_nav_exit.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\nav_exit.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_dialog_change_password.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\dialog_change_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_nuts.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\nuts.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_icon_app_background.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\icon_app_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_item_ingredient.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\item_ingredient.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxxhdpi_icon_app_round.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxxhdpi\\icon_app_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-anydpi-v26_icon_app.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-anydpi-v26\\icon_app.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_menu_back.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\menu_back.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_baseline_history_24.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\baseline_history_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_cheese.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\cheese.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxxhdpi_icon_app.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxxhdpi\\icon_app.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxhdpi_dietapp_icon.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxhdpi\\dietapp_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_fons_login.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\fons_login.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_fish_and_chips.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\fish_and_chips.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.dietaapp-merged_res-61:/layout_fragment_current_plan.xml.flat",
+        "source": "com.example.dietaapp-main-63:/layout/fragment_current_plan.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_background_page.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\background_page.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_baseline_edit_24.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\baseline_edit_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_baseline_person_24.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\baseline_person_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_top_background_profile.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\top_background_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_contingut_llista_dieta.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\contingut_llista_dieta.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_dialog_insert_historial.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\dialog_insert_historial.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxhdpi_icon_app_round.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxhdpi\\icon_app_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_fragment_detall_dieta.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_detall_dieta.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_nav_settings.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\nav_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_nav_home.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\nav_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_meat.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\meat.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_nav_header.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\nav_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-hdpi_icon_app.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-hdpi\\icon_app.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_salad.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\salad.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxhdpi_icon_app.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxhdpi\\icon_app.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_icon_app.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\icon_app.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_fragment_user_profile.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_user_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_gray_background.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\gray_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-hdpi_icon_app_round.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-hdpi\\icon_app_round.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_oval_background.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\oval_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_menu_header.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\menu_header.png"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_baseline_dining_24.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\baseline_dining_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_icon_app_foreground.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\icon_app_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\layout_login_page.xml.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\login_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-merged_res-61:\\drawable_dish.png.flat",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\drawable\\dish.png"
+    }
+]

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/nav_home"
+            android:title="Pàgina Principal"/>
+
+        <item
+            android:id="@+id/nav_user"
+            android:icon="@drawable/user_settings"
+            android:title="Usuari"/>
+
+        <item
+            android:id="@+id/nav_diets"
+            android:icon="@drawable/baseline_dining_24"
+            android:title="Dietes"/>
+
+
+        <item
+            android:id="@+id/navhistorial"
+            android:icon="@drawable/baseline_history_24"
+            android:title="El meu Historial"/>
+
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/nav_about"
+            android:title="About Us"/>
+    </group>
+
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/nav_exit"
+                android:title="Exit"/>
+
+
+
+</menu>

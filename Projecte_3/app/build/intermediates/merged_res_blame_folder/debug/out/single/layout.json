@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\fragment_historial.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_historial.xml"
+    },
+    {
+        "merged": "com.example.dietaapp-mergeDebugResources-60:/layout/fragment_current_plan.xml",
+        "source": "com.example.dietaapp-main-63:/layout/fragment_current_plan.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\fragment_detall_dieta.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_detall_dieta.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\item_ingredient.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\item_ingredient.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\dialog_change_password.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\dialog_change_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\item_historial.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\item_historial.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\fragment_dietas.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_dietas.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\login_page.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\login_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\dialog_insert_historial.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\dialog_insert_historial.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\item_dish.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\item_dish.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\fragment_user_profile.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_user_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\contingut_llista_dieta.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\contingut_llista_dieta.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\nav_header.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\nav_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-mergeDebugResources-60:\\layout\\fragment_current_plan.xml",
+        "source": "C:\\Users\\gerar\\.gradle\\daemon\\8.0\\com.example.dietaapp-main-63:\\layout\\fragment_current_plan.xml"
+    }
+]
