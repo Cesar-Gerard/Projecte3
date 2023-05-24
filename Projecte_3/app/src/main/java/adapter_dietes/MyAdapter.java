@@ -37,10 +37,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
         mFilteredObjects.clear();
 
+        String nomF = nom.toLowerCase();
+
         int numeroComidas= Integer.valueOf(entrada);
 
         for (Dietes dieta : mObjects) {
-            if (dieta.getNumberMeals() >= numeroComidas && dieta.getName().contains(nom)) {
+            if (dieta.getNumberMeals() == numeroComidas && dieta.getName().toLowerCase().contains(nomF)) {
                 mFilteredObjects.add(dieta);
             }
         }

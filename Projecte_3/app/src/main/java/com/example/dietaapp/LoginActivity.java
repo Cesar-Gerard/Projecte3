@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
 import com.example.dietaapp.databinding.LoginPageBinding;
+
 import api.ApiManager;
 import model.LoginResponse;
 import model.User_Retro;
@@ -40,15 +42,14 @@ public class LoginActivity extends AppCompatActivity{
         binding.btnLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                binding.progressBar.setVisibility(View.VISIBLE);
                 try {
 
-                    binding.progressBar.setVisibility(View.VISIBLE);
                     ApiManager.getInstance().login(binding.edtName.getText().toString(), binding.edtPassword.getText().toString(), new Callback<LoginResponse>() {
 
                         @Override
                         public void onResponse(Call<LoginResponse> call, retrofit2.Response<LoginResponse> response) {
-                            binding.progressBar.setVisibility(View.GONE);
+
                             if(response.code()>=200 && response.code()<=300) {
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 User_Retro.setUser(response.body().getData().getUser());
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity{
                         @Override
                         public void onFailure(Call<LoginResponse> call, Throwable t) {
                             binding.progressBar.setVisibility(View.GONE);
-                            cridaError();
+                            cridaErrorConnexio();
                         }
                     });
 
@@ -85,6 +86,11 @@ public class LoginActivity extends AppCompatActivity{
     //Tira un missatge al usuari en cas de error o valor null a l'hora de fer login
     private void cridaError() {
         Toast.makeText(LoginActivity.this, "Nom o contrasenya incorrectes",Toast.LENGTH_LONG).show();
-        Log.e("XXX","Soc un toast");
+
+    }
+
+    private void cridaErrorConnexio() {
+        Toast.makeText(LoginActivity.this, "Error de connexió, torna a provar",Toast.LENGTH_LONG).show();
+
     }
 }

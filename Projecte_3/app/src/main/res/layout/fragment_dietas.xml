@@ -61,8 +61,9 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/diet"
-                    app:layout_constraintBottom_toTopOf="@+id/comidas_dieta"
-                    app:layout_constraintStart_toStartOf="parent"></ImageView>
+                    app:layout_constraintBottom_toBottomOf="@+id/calorias_dieta"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nombre_dieta"></ImageView>
 
 
 
@@ -73,24 +74,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nom de la dieta:"
+                    android:textSize="17dp"
                     android:textColor="@color/black"
+                    android:layout_marginStart="10dp"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
                 <EditText
                     android:id="@+id/edtDietName"
-                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_edittext"
+                    android:backgroundTint="@color/grey_not_enabled"
+                    android:enabled="false"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
-                    android:textSize="15dp"
-                    android:enabled="false"
-                    android:backgroundTint="@color/grey_not_enabled"
                     android:textAlignment="center"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/edtCaloriasDieta"
                     app:layout_constraintStart_toStartOf="@+id/edtCaloriasDieta"
                     app:layout_constraintTop_toTopOf="@+id/nombre_dieta" />
 
@@ -100,6 +103,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Calories Aportades:"
+                    android:textSize="17dp"
+                    android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toBottomOf="@+id/nombre_dieta" />
@@ -113,7 +118,7 @@
                    app:layout_constraintStart_toEndOf="@+id/calorias_dieta"
                    app:layout_constraintTop_toTopOf="@+id/calorias_dieta"
                    android:layout_marginStart="10dp"
-                   android:textSize="15dp"
+                   android:textSize="16dp"
                    android:enabled="false"
                    android:backgroundTint="@color/grey_not_enabled"
                    android:textAlignment="center"
@@ -127,6 +132,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Quantitat d'apats"
+                    android:textSize="17dp"
+                    android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -140,7 +147,7 @@
                    android:background="@drawable/custom_edittext"
                    android:paddingStart="10dp"
                    android:paddingEnd="10dp"
-                   android:textSize="15dp"
+                   android:textSize="16dp"
                    android:enabled="false"
                    android:textColor="@color/black"
                    android:backgroundTint="@color/grey_not_enabled"
@@ -189,7 +196,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Nom dieta: " />
+                    android:hint="Nom dieta: "
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:layout_marginStart="10dp"
@@ -203,7 +211,8 @@
                     android:id="@+id/spinnerApats"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    />
 
 
 
@@ -219,7 +228,8 @@
                     android:id="@+id/btnCerca"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cerca"/>
+                    android:text="Cerca"
+                    android:layout_marginEnd="20dp"/>
 
                 <Button
                     android:id="@+id/btnNetejar"

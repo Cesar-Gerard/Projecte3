@@ -1,43 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
+    android:layout_marginBottom="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
-
-    <TextView
-        android:id="@+id/edtData"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:hint="00-00-0000"
-        android:background="@color/grey_not_enabled"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/edtData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:hint="00-00-0000"
+            app:layout_constraintStart_toStartOf="parent"/>
 
 
 
-    <TextView
-        android:layout_marginStart="20dp"
-        android:id="@+id/edtDieta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:background="@color/grey_not_enabled"
-        android:hint="Nom"
-        app:layout_constraintStart_toEndOf="@id/edtData"/>
+        <TextView
+            android:layout_marginStart="20dp"
+            android:id="@+id/edtDieta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:hint="Nom"
+            app:layout_constraintStart_toEndOf="@id/edtData"/>
 
 
-    <TextView
-        android:layout_marginStart="20dp"
-        android:id="@+id/edtPes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:background="@color/grey_not_enabled"
-        android:hint="0 kg"
-        app:layout_constraintStart_toEndOf="@id/edtDieta"/>
+        <TextView
+            android:layout_marginStart="20dp"
+            android:id="@+id/edtPes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:hint="0 kg"
+            android:gravity="right"
+            app:layout_constraintStart_toEndOf="@+id/edtDieta"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/edtPes"
+            android:background="#d9d9d9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>

@@ -145,7 +145,9 @@ public class DietasFragment extends Fragment  {
         binding.btnNetejar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 adapter.NetejarLlista();
+                binding.busquedanom.setText("");
             }
         });
 
@@ -181,7 +183,6 @@ public class DietasFragment extends Fragment  {
 
         binding.edtCaloriasDieta.setText(String.valueOf(resultat)+" kcal");
         binding.edtComidasDieta.setText(String.valueOf(entrada.getNumberMeals()+ " apats*dia"));
-        binding.busquedanom.setText(entrada.getName().toString());
 
     }
 }
