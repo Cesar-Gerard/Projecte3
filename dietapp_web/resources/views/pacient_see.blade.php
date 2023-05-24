@@ -83,20 +83,33 @@
                             
                         </div>
                         <div class="modal-body">
-
                             
-
-                            @foreach($dietes_no_assignades as $dietes_no_assignades)
-                                <div>
-                                    <input type="radio" id="d-{{$dietes_no_assignades->id_diet}}" name="radio" value="{{$dietes_no_assignades->id_diet}}" /> {{$dietes_no_assignades->name}} 
+                            <h4 class="d-flex justify-content-center">Escull la nova dieta:</h4>
+                            
+                            <div class="main-container">
+                                <div class="radio-buttons">
+                                    @foreach($dietes_no_assignades as $dietes_no_assignades)
+                                    <!--
+                                        <div>
+                                            <input type="radio" id="d-{{$dietes_no_assignades->id_diet}}" name="radio" value="{{$dietes_no_assignades->id_diet}}" /> {{$dietes_no_assignades->name}} 
+                                        </div>
+                                    -->
+                                        
+                                            
+                                        <label class="custom-radio">
+                                            <input type="radio" name="radio" value="{{$dietes_no_assignades->id_diet}}">
+                                            <span class="radio-btn"><i class="las la-check"></i>
+                                            <div class="hobbies-icon">
+                                                <h2>{{$dietes_no_assignades->name}}</h2>
+                                            </div>
+                                            </span>
+                                        </label>
+                                        
+                                        
+                                    @endforeach
                                 </div>
-                                
-                            @endforeach
 
-                           
-                        
-
-                        </div>
+                            </div>
                         <div class="modal-footer">
                             <!--<button type="button" class="btn btn-default" data-dismiss="modal">Tanca</button>-->
                             <button type="button" class="btn btn-primary" id="canvia_dieta" disabled>Canvia dieta</button>

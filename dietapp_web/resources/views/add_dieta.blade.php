@@ -75,7 +75,31 @@
     <br/><br/>
 
     <div id="diets_dishes">
+<!--
         <div class="row">
+            <div class="col-1">
+                <div class=" d-flex justify-content-center align-items-center">
+                    <i class="fa-solid fa-trash fa-xl" style="color:red"></i> <span style="margin-left:20px;">Elimina plat</span> <span style="color:white;"></span>
+                    <div class="stackDrop1 requadre_cela" id="elimina_dishes_bd">
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+-->
+    <h5>Arrosega el plat per treure-lo de la dieta</h5>
+    <div style="border:1px solid black;height:150px;width:200px;" class="d-flex justify-content-center align-items-center">
+         <i class="fa-solid fa-trash fa-xl"></i>
+        <div class="stackDrop1 requadre_cela" id="elimina_dishes_bd">
+
+        </div>
+    </div>
+
+
+
+        <div class="row">
+            
             <div class="col-10">
 
                 <h2>Dies de la setmana</h2>

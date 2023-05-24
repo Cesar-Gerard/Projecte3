@@ -244,7 +244,8 @@ Route::get('/pacient_edit/{id}',function($pacient){
 
 Route::get("/logout", function()
 {
-    Auth::logout();
+    
+    //Auth::logout();
     return redirect()->route("index");
 })->name("logout");
 

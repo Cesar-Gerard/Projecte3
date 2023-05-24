@@ -10,6 +10,8 @@
             zone_filtre_dieta: "{{ route('diet.filtrar') }}",
             zone_edit_dieta: "{{ route('dieta',-1234) }}",
             zone_delete_dieta: "{{ route('diet_delete') }}",
+            zone_clone_dieta: "{{ route('dieta', ['id' => -1234, 'clone' => '1']) }}",
+            zone_pdf_dieta: "{{route('imprimir_dieta',-1234) }}",
 
         },
         vars: {
@@ -113,10 +115,10 @@
                     <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->calories/1000}} kcal</td>
                     <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->number_meals}}</td>
                     <td>
-                        <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit">Editar <i class="fa-solid fa-pen-to-square"></i></a>
-                        <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" class="button-3 btn-delete">Eliminar <i class="fa-solid fa-trash"></i></a>
-                        <a href="{{route('dieta', ['id' => $diet->id_diet, 'clone' => '1'])}}" class="button-3 btn-clone">Clonar <i class="fa-solid fa-clone"></i></a>                                                                   
-                        <a href="{{route('imprimir_dieta',$diet->id_diet)}}" class="button-3 btn-pdf">Descarrega dieta <i class="fa-solid fa-file-pdf"></i></a>
+                        <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit" style="margin-bottom:5px;">Editar <i class="fa-solid fa-pen-to-square"></i></a>
+                        <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" style="margin-bottom:5px;" class="button-3 btn-delete">Eliminar <i class="fa-solid fa-trash"></i></a>
+                        <a href="{{route('dieta', ['id' => $diet->id_diet, 'clone' => '1'])}}" class="button-3 btn-clone" style="margin-bottom:5px;">Clonar <i class="fa-solid fa-clone"></i></a>                                                                   
+                        <a href="{{route('imprimir_dieta',$diet->id_diet)}}" class="button-3 btn-pdf" style="margin-bottom:5px;">Descarrega dieta <i class="fa-solid fa-file-pdf"></i></a>
                     </td>
                 </tr>
 

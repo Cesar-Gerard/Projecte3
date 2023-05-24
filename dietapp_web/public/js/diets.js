@@ -15,7 +15,7 @@ function f_main(){
 
     document.getElementById('btn_amagar_filtre').style.display = "none";
 
-    document.getElementById('cerca_search').addEventListener('click',f_cercaDietes);
+    //document.getElementById('cerca_search').addEventListener('click',f_cercaDietes);
     document.getElementById('cerca_neteja_filtres').addEventListener('click',f_netejaFiltres);
 
 
@@ -151,6 +151,22 @@ function f_goEdit(id_dieta){
 
 }
 
+function f_goClone(id_dieta){
+    url = config.routes.zone_clone_dieta.replace('-1234',id_dieta);
+
+    window.location.href = url;
+}
+
+function f_goPdf(id_dieta){
+    
+    url = config.routes.zone_pdf_dieta.replace('-1234',id_dieta);
+
+    window.location.href = url;
+
+
+}
+
+
 
 function f_dibuixaTaula(e){
 
@@ -193,16 +209,21 @@ function f_dibuixaTaula(e){
         let td_buttons = document.createElement("td");
         td_buttons.setAttribute('style','text-align: center');
 
-
+        //EDIT
         let a_edit = document.createElement("a");
+        a_edit.innerHTML = "&nbsp;Editar";
         a_edit.setAttribute("class","button-3 btn-edit");
+        a_edit.setAttribute("style","margin-top:10px;");
         a_edit.addEventListener('click', f_goEdit.bind(null, json[i].id_diet));
 
         let i_edit = document.createElement("i");
         i_edit.setAttribute("class","fa-solid fa-pen-to-square");
 
+        //DELETE
         let a_delete = document.createElement("a");
+        a_delete.innerHTML = "&nbsp;Eliminar";
         a_delete.setAttribute("class","button-3 btn-delete");
+        a_delete.setAttribute("style","margin-top:10px;");
         a_delete.setAttribute("id","delete_diet{{"+json[i].id_diet+"}}");
         a_delete.addEventListener('click', f_deleteDiet.bind(null, json[i].id_diet));
 
@@ -210,11 +231,39 @@ function f_dibuixaTaula(e){
         let i_delete = document.createElement("i");
         i_delete.setAttribute("class","fa-solid fa-trash");
 
+        //CLONAR
+        let a_clone = document.createElement("a");
+        a_clone.innerHTML = "&nbsp;Clonar";
+        a_clone.setAttribute("class","button-3 btn-clone");
+        a_clone.setAttribute("style","margin-top:10px");
+        a_clone.addEventListener('click', f_goClone.bind(null, json[i].id_diet));
+
+        let i_clone = document.createElement("i");
+        i_clone.setAttribute("class","fa-solid fa-clone");
+
+
+        //GENERAR PDF
+        let a_pdf = document.createElement("a");
+        a_pdf.innerHTML = "&nbsp;Descarrega dieta";
+        a_pdf.setAttribute("class","button-3 btn-pdf");
+        a_pdf.setAttribute("style","margin-top:10px");
+        a_pdf.addEventListener('click', f_goPdf.bind(null, json[i].id_diet));
+
+        let i_pdf = document.createElement("i");
+        i_pdf.setAttribute("class","fa-solid fa-file-pdf");
+
+
         a_edit.appendChild(i_edit);
         td_buttons.appendChild(a_edit);
 
         a_delete.appendChild(i_delete);
         td_buttons.appendChild(a_delete);
+
+        a_clone.appendChild(i_clone);
+        td_buttons.appendChild(a_clone);
+
+        a_pdf.appendChild(i_pdf);
+        td_buttons.appendChild(a_pdf);
 
         
         tr.appendChild(td_nom);

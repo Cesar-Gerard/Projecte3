@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Mail\RecuperaPassword;
+use App\Models\Nutricionist;
 
 use Auth;
 use Mail;
@@ -42,15 +43,22 @@ class UserController extends Controller
     public function recupera_password(Request $request){
 
         try{
-            $user = User::getUserByEmail($request->email);
+            
+            //$user = User::getUserByEmail($request->email);
+            $nutricionist = Nutricionist::where('email_nutricionist','=',$request->email)->first();
+            if($nutricionist != null){
 
-            if($user!=null){
-                Mail::to($request->email)->send(new RecuperaPassword($user->name_user,$user->lastname_user,$user->id));
-            }else{
-                return -2;
-            }
+                $user = User::where('id','=',$nutricionist->id_nutricionist)->first();
 
-            return 1;
+                if($user!=null){
+                    Mail::to($request->email)->send(new RecuperaPassword($user->name_user,$user->lastname_user,$user->id));
+                }else{
+                    return -2;
+                }
+    
+                return 1;
+
+            }           
 
         
         }catch(\Throwable $ex){

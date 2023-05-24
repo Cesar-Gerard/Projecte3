@@ -305,6 +305,8 @@ function f_dragable(){
         hoverClass: "ui-state-hover",
         drop: function(event, ui) {
             $("#launchPad").append($(ui.draggable));
+            $("#elimina_dishes_bd").empty();
+            console.info('Elimina');
         }
     });
     
@@ -315,7 +317,8 @@ function f_dragable(){
         hoverClass: "ui-state-hover",
         drop: function(event, ui) {        
             $(this).append($(ui.draggable));
-            
+            $("#elimina_dishes_bd").empty();
+            console.info('Elimina');
             //let id = console.info(event.target.id);
             //let fills = document.getElementById(id);
             //console.info(fills);
@@ -338,6 +341,8 @@ function f_dragable(){
         hoverClass: "ui-state-hover",
         drop: function(event, ui) {        
             $(this).append($(ui.draggable));
+            $("#elimina_dishes_bd").empty();
+            console.info('Elimina');
         }
     });
 

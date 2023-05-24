@@ -5,9 +5,9 @@
   <script src="{{asset('js/home.js')}}"></script>
   <script src="{{asset('js/third_party/canvas.js')}}"></script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
   <script>
     // global app configuration object
@@ -54,11 +54,11 @@
   </div>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Dietes assignades</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h3 class="modal-title d-flex justify-content-center" id="exampleModalLabel">Dietes assignades</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="background-color:white !important;border:3px solid white !important;">x</button>
             
           </button>
         </div>
@@ -67,18 +67,18 @@
             <div class="col-2"></div>
               <div class="col-8">
                 <table class="table">
-                  <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">Pacient</th>
-                      <th scope="col">Dieta actual</th>
+                  <thead style="border: 1px solid black;background-color: #1F3A1C;color:white;" >
+                    <tr style="border: 1px solid black;">
+                      <th scope="col" style="border: 1px solid black;">Pacient</th>
+                      <th scope="col" style="border: 1px solid black;">Dieta actual</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style="border: 1px solid black;">
                     @foreach($dietes_seguides_noms as $dsn)
 
-                      <tr>
+                      <tr style="border: 1px solid black;">
                         <th scope="row">{{$dsn->name_user}} {{$dsn->lastname_user}}</th>
-                        <td>@if(strlen($dsn->name)==0) Sense dieta assignada @else {{$dsn->name}} @endif</td>
+                        <td style="border: 1px solid black;">@if(strlen($dsn->name)==0) Sense dieta assignada @else {{$dsn->name}} @endif</td>
                       </tr>
 
                     @endforeach

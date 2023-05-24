@@ -65,11 +65,19 @@ function f_canviaDieta(){
               "El canvi de dieta s'ha efectuat correctament",
               'success'
           );
-          //Tancar modal
+          Swal.fire({ 
+            title: "Canvia de dieta",
+            text: "El canvi de dieta s'ha efectuat correctament",
+            icon: "success"}).then(okay => {
+            if (okay) {
+                window.location.reload(true);
+            }
+        });
+
+          
       }
   });
 
-  alert(dieta_sel);
 
 }
 
@@ -79,7 +87,6 @@ function f_gestioRadios(){
 
   document.getElementById('canvia_dieta').disabled = false;
 
-    //Peiticó ajax
 
 
 

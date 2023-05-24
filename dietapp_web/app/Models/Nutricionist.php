@@ -9,11 +9,12 @@ class Nutricionist extends Model
 {
     use HasFactory;
 
-    public $table = "nutricionist";
+    public $table = "nutricionists";
 
     public $timestamps = false;
 
     protected $fillable = [
         'id_nutricionist',
+        'email_nutricionist',
     ]; 
 }
