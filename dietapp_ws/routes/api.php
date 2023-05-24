@@ -16,7 +16,6 @@ use App\Http\Controllers\DietController;
 */
 
 Route::post('login',[UserController::class,'login']);
-//Route::get('/nutricionist_name/{id}',[UserController::class,'getNutricionistName']);
 
 
 Route::group(['middleware' => ['jwt.verify']], function () {
@@ -27,7 +26,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('/ingredientsdish/{dish}',[DietController::class, 'getIngredients']);
     Route::get('/pacient/{id}',[UserController::class, 'getPacient']);
     Route::post('/dietfilter', [DietController::class, 'filtrar_dietes']);
-    Route::post('/add_historial_pacient',[DietController::class, 'add_historial_pacient']);//!
+    Route::post('/add_historial_pacient',[DietController::class, 'add_historial_pacient']);
     Route::put('/update_user',[UserController::class, 'update_user']);
     Route::put('/update_password',[UserController::class, 'update_password']);
 });

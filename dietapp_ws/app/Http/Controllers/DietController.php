@@ -163,9 +163,7 @@ class DietController extends Controller
         $hip = $request->hip;
         
 
-        //Mirar la última data del historial del pacient amb id
-        //Si l'entrada no coincideix amb el id dieta, es que s'ha canviat
-        //Introduïr mecanisme de treure's de la dieta des de la part del pacient o nutricionista? (o els 2)
+        
 
 
         if($height == null || $weight == null){
@@ -173,21 +171,83 @@ class DietController extends Controller
                 'error' => "L'amplada i l'alçada són obligatòries"
             ], 400);
         }
+        
 
         try{
-            //Crear una nova entrada d'historial
-            HistorialPacient::create([
-                'control_date' => Date('Y-m-d'),
-                'id_pacient' => $id_pacient,
-                'diet' => $diet,
-                'weigth' => $weight,
-                'heigth' => $height,
-                'chest' => $chest,
-                'leg' => $leg,
-                'arm' => $arm,
-                'hip' => $hip,
+            
+            
 
-            ]);
+            //Mirar la última data del historial del pacient amb id
+            //Si l'entrada no coincideix amb el id dieta, es que s'ha canviat
+            //Introduïr mecanisme de treure's de la dieta des de la part del pacient o nutricionista? (o els 2)
+
+            $ultima_data_historial = HistorialPacient::where('id_patient','=',$id_pacient)
+                                                        ->orderBy('control_date','desc')
+                                                        ->first();
+
+            //El pacient ja té almenys 1 entrada a l'historial
+            if($ultima_data_historial!=null){
+
+                //Si ja ha acabat la dieta, signfica que aquesta és una de nova
+                if($ultima_data_historial->status=='F'){
+                    //El pacient
+
+                    HistorialPacient::create([
+                        'control_date' => Date('Y-m-d'),
+                        'start_date' => Date('Y-m-d'),
+                        'id_patient' => $id_pacient,
+                        'diet' => $diet,
+                        'weigth' => $weight,
+                        'heigth' => $height,
+                        'chest' => $chest,
+                        'leg' => $leg,
+                        'arm' => $arm,
+                        'hip' => $hip,
+                        'status' => 'I'
+    
+                    ]);
+                    
+                }else{
+
+                    //Afegir una nova entrada de una dieta que encara segueix realitzant
+                    HistorialPacient::create([
+                        'control_date' => Date('Y-m-d'),
+                        'start_date' => $ultima_data_historial->start_date,
+                        'id_patient' => $id_pacient,
+                        'diet' => $diet,
+                        'weigth' => $weight,
+                        'heigth' => $height,
+                        'chest' => $chest,
+                        'leg' => $leg,
+                        'arm' => $arm,
+                        'hip' => $hip,
+                        'status' => 'I'
+
+                    ]);
+
+
+                }
+                
+            }else{
+                //El pacient fa la primera entrada a l'historial
+                HistorialPacient::create([
+                    'control_date' => Date('Y-m-d'),
+                    'start_date' => Date('Y-m-d'),
+                    'id_patient' => $id_pacient,
+                    'diet' => $diet,
+                    'weigth' => $weight,
+                    'heigth' => $height,
+                    'chest' => $chest,
+                    'leg' => $leg,
+                    'arm' => $arm,
+                    'hip' => $hip,
+                    'status' => 'I'
+
+                ]);
+
+            }
+
+           
         }catch(\Illuminate\Database\QueryException $ex){
             return response()->json([
                 'database_error' => "Database error ".$ex

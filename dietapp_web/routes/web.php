@@ -64,7 +64,7 @@ Route::get('/pacients',function(){
 
 Route::get('/pacient/{pacient}',function($pacient){
 
-    if(Auth::check()){
+    if(Auth::check() && Auth::user()->type_user=='N'){
 
         //En cas que posi la adreça i no sigui el seu pacient, no deixar entrar
         $pacient = Pacient::getPacient($pacient,Auth::user()->id);
@@ -89,8 +89,13 @@ Route::get('/pacient/{pacient}',function($pacient){
                 $dietes_acabades = array();//Array que guarda els objectes de la dieta
 
 
-
                 
+                $d_historial_patient = HistorialPacient::where('id_patient','=',$pacient->id_pacient)->orderBy('control_date','desc')->first();
+                if($d_historial_patient->status=='F'){
+                    $s_historial_patient = "1";
+                }else{
+                    $s_historial_patient = $d_historial_patient->start_date;
+                }
 
                 
                 foreach($historial_actual as $ha){
@@ -200,7 +205,7 @@ Route::get('/pacient/{pacient}',function($pacient){
 
             return view('pacient_see',['pacient'=>$pacient,"current_diet"=>$diet,"type_diet"=>$type_diet,"historial_actual"=>$historial_actual,
                         "historial_diets"=>$historial_diets,"grafic_progres_actual"=>$grafic_progres_actual,"dietes_acabades"=>$dietes_acabades,
-                        "dietes_no_assignades"=>$dietes_no_assignades]);
+                        "dietes_no_assignades"=>$dietes_no_assignades,"s_historial_patient"=>$s_historial_patient]);
             
         }else{
             return redirect(route("pacients"));

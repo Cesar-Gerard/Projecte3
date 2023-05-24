@@ -144,7 +144,13 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        Data inici: {{date("d/m/Y", strtotime($));}}
+                        
+                        @if(strlen($s_historial_patient)==1)
+                            Sense cap entrada
+                        @else
+                            Data inici: {{date("d/m/Y", strtotime($s_historial_patient))}}
+                        @endif
+                       
                     </div>
                 </div>
 

@@ -129,10 +129,13 @@ function f_dibuixaTaula(e){
         let td_buttons = document.createElement("td");
 
         let a_edit = document.createElement("a");
+        a_edit.innerHTML = "Edita ";
         a_edit.setAttribute("class","button-3 btn-edit");
+        
 
         let i_edit = document.createElement("i");
         i_edit.setAttribute("class","fa-solid fa-user-pen");
+        
 /*
         let a_delete = document.createElement("a");
         a_delete.setAttribute("class","button-3 btn-delete");

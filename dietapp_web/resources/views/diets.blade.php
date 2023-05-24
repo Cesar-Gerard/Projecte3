@@ -30,8 +30,8 @@
     <h1 class="d-flex justify-content-center titol">Dietes</h1>
 
 
-    <button class="button-3 btn-search" id="btn_mostrar_filtre"><i class="fa-regular fa-eye-slash"></i></button> 
-    <button class="button-3 btn-search" id="btn_amagar_filtre"><i class="fa-regular fa-eye"></i></button>
+    <button class="button-3 btn-search" id="btn_mostrar_filtre">Amagar filtres <i class="fa-regular fa-eye-slash"></i></button> 
+    <button class="button-3 btn-search" id="btn_amagar_filtre">Mostrar filtres <i class="fa-regular fa-eye"></i></button>
 
 
 
@@ -64,11 +64,12 @@
                 <div class="row" style="margin-top:20px;">
                     <div class="col-12 d-flex ">
                         <div class="col-6">
-                            <button id="cerca_search" class="button-3 btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <!--<button id="cerca_search" class="button-3 btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>-->
+                            <button id="cerca_neteja_filtres" class="button-3 btn-search">Neteja filtres <i class="fa-solid fa-trash"></i></button>
                         </div>
 
                         <div class="col-6 d-flex justify-content-end">
-                            <button id="cerca_neteja_filtres" class="button-3 btn-search"><i class="fa-solid fa-trash"></i></button>
+                            
                         </div>
                         
                     </div>
@@ -85,7 +86,7 @@
 
     <div class="row">
         <div class="col-2">
-            <a href="{{route('view_add_dieta')}}" class="button-3 mb-2" style="background-color:green;"><i class="fa-solid fa-plus"></i></a> 
+            <a href="{{route('view_add_dieta')}}" class="button-3 mb-2" style="background-color:green;">Nova dieta <i class="fa-solid fa-plus"></i></a> 
         </div>
     </div>
 
@@ -112,10 +113,10 @@
                     <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->calories/1000}} kcal</td>
                     <td style="text-align: center" onclick="window.location.href = '{{route('dieta',$diet->id_diet)}}';">{{$diet->number_meals}}</td>
                     <td>
-                        <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit">Edita <i class="fa-solid fa-pen-to-square"></i></a>
-                        <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" class="button-3 btn-delete">Elimina <i class="fa-solid fa-trash"></i></a>
+                        <a href="{{route('dieta',$diet->id_diet)}}" class="button-3 btn-edit">Editar <i class="fa-solid fa-pen-to-square"></i></a>
+                        <a id="delete_diet{{$diet->id_diet}}" onclick="f_deleteDiet('{{$diet->id_diet}}')" class="button-3 btn-delete">Eliminar <i class="fa-solid fa-trash"></i></a>
                         <a href="{{route('dieta', ['id' => $diet->id_diet, 'clone' => '1'])}}" class="button-3 btn-clone">Clonar <i class="fa-solid fa-clone"></i></a>                                                                   
-                        <a href="{{route('imprimir_dieta',$diet->id_diet)}}" class="button-3 btn-delete">PDF dieta <i class="fa-solid fa-file-pdf"></i></a>
+                        <a href="{{route('imprimir_dieta',$diet->id_diet)}}" class="button-3 btn-pdf">Descarrega dieta <i class="fa-solid fa-file-pdf"></i></a>
                     </td>
                 </tr>
 

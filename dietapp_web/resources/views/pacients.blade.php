@@ -26,8 +26,8 @@
 
         <h1 class="d-flex justify-content-center titol">Pacients</h1>
 
-        <button class="button-3 btn-search" id="btn_mostrar_filtre"><i class="fa-regular fa-eye-slash"></i></button> 
-        <button class="button-3 btn-search" id="btn_amagar_filtre"><i class="fa-regular fa-eye"></i></button>
+        <button class="button-3 btn-search" id="btn_mostrar_filtre">Amaga filtres <i class="fa-regular fa-eye-slash"></i></button> 
+        <button class="button-3 btn-search" id="btn_amagar_filtre">Mostra filtres <i class="fa-regular fa-eye"></i></button>
 
 
         <div class="row " style="margin-bottom:30px;" id="filtres_div">
@@ -63,11 +63,12 @@
                     <div class="row" style="margin-top:20px;">
                         <div class="col-12 d-flex ">
                             <div class="col-6">
-                                <button id="cerca_search" class="button-3 btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <button id="cerca_neteja_filtres" class="button-3 btn-search">Neteja filtres <i class="fa-solid fa-trash"></i></button>
+                                <!--<button id="cerca_search" class="button-3 btn-search"><i class="fa-solid fa-magnifying-glass"></i> Cerca</button>-->
                             </div>
 
                             <div class="col-6 d-flex justify-content-end">
-                                <button id="cerca_neteja_filtres" class="button-3 btn-search"><i class="fa-solid fa-trash"></i></button>
+                                
                             </div>
                             
                         </div>
@@ -86,7 +87,7 @@
 
         <div class="row">
             <div class="col-2">
-                <a href="{{route('view_add_pacient')}}" class="button-3 mb-2" style="background-color:green;"><i class="fa-solid fa-user-plus"></i></a> 
+                <a href="{{route('view_add_pacient')}}" class="button-3 mb-2" style="background-color:green;">Nou pacient <i class="fa-solid fa-user-plus"></i></a> 
             </div>
         </div>
 
@@ -111,8 +112,7 @@
                         <td>{{$pacient->address_patient}}</td>
                         <td>@if($pacient->name != null) {{$pacient->name}} @else Sense dieta assignada @endif</td>
                         <td>
-                            
-                            <a href="{{route('pacient_edit',$pacient->id)}}" class="button-3 btn-edit"><i class="fa-solid fa-user-pen"></i></a>
+                            <a href="{{route('pacient_edit',$pacient->id)}}" class="button-3 btn-edit"> Edita &nbsp;<i class="fa-solid fa-user-pen"></i></a>
                             <!--<a href="" class="button-3 btn-delete"><i class="fa-solid fa-user-slash"></i></a>-->
                         </td>
                     </tr>
