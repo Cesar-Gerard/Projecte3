@@ -32,7 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
 
 
-    //comportament del RecycleView al ser filtrat
+    //Filtre de la llista que gestiona el recycleview
     public void filtrarPorNumeroComidas(String entrada,String nom) {
 
         mFilteredObjects.clear();

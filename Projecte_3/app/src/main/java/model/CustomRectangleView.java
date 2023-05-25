@@ -36,7 +36,7 @@ public class CustomRectangleView extends View {
     private void init() {
         // Inicializar el arreglo de colores de los fragmentos
         fragmentColors = new int[]{ ORANGE,Color.GREEN,Color.YELLOW,  Color.RED};
-        fragmentNames = new String[]{"Peso\nInsuficiente", "Normopeso", "Sobrepeso", "Obesidad"};
+        fragmentNames = new String[]{"Peso\nInsuficient", "Pes Normal", "Sobrepes", "Obesitat"};
     }
 
     @Override
