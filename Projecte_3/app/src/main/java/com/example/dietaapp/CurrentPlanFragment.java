@@ -75,9 +75,11 @@ public class CurrentPlanFragment extends Fragment {
 
         binding.txvuser.setText("Hola " + user.getNameUser().toString());
 
+
+        // Convertir Bitmap a axiu File per poder fer la conversió a imatge
         Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
 
-        // Convertir Bitmap a archivo File
+
         if (!TextUtils.isEmpty(user.getImageUser())) {
             File file = new File(user.getImageUser());
             if (file.exists()) {
@@ -101,6 +103,8 @@ public class CurrentPlanFragment extends Fragment {
 
     }
 
+
+    //Metode que crida al dialog de insercio de dades
     private void InserirHistorial() {
         binding.btnTemporal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +114,7 @@ public class CurrentPlanFragment extends Fragment {
         });
     }
 
+    //Dialog de insercio de dades
     private void DialegInsert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
@@ -173,6 +178,8 @@ public class CurrentPlanFragment extends Fragment {
         dialog.show();
     }
 
+
+    //Metode de validacio de dades de inserció
     public boolean validateDoubleFormat(String input) {
         try {
             // Reemplazar coma por punto para el separador decimal
@@ -187,6 +194,7 @@ public class CurrentPlanFragment extends Fragment {
     }
 
 
+    //Metode que determina depenent de la darrera data de control y es pot o no tornar a inserir dades de control
     private void DeterminarTempsBoto(Date controlDate) {
         Date fechaActual = Calendar.getInstance().getTime();
 
@@ -204,7 +212,7 @@ public class CurrentPlanFragment extends Fragment {
     }
 
 
-    //Crea y gestiona la gràfica
+    //Crea y gestiona la gràfica de la llibreria de github
     private void elementsGrafica(List<Datum> historial, Date fechaInicial) throws ParseException {
 
         List<Entry> entradas = new ArrayList<>();
@@ -221,13 +229,13 @@ public class CurrentPlanFragment extends Fragment {
             }
         });
 
-        // Construye la lista de entradas
+        // Determinem el nombre de entrades
         for (int i = 0; i < historial.size(); i++) {
             Datum entrada = historial.get(i);
             float peso = Float.valueOf(entrada.getWeigth());
             Date fechaEntrada = entrada.getControlDate();
 
-            // Verifica si la fecha de la entrada está dentro del mes de la fecha inicial
+            // Verifica si la data de la entrada esta dins del mes de la data inicial
             Calendar calendarFechaInicial = Calendar.getInstance();
             calendarFechaInicial.setTime(fechaInicial);
             Calendar calendarFechaEntrada = Calendar.getInstance();
@@ -239,11 +247,11 @@ public class CurrentPlanFragment extends Fragment {
         }
 
         // Configura la línea de la gráfica
-        LineDataSet dataSet = new LineDataSet(entradas, "Peso");
+        LineDataSet dataSet = new LineDataSet(entradas, "Pes");
         dataSet.setColor(Color.RED);
         dataSet.setValueTextColor(Color.BLACK);
 
-        // Desactivar las etiquetas de los valores en el eje X
+        // Desactiva les etiquetes de valors del eix x
         XAxis xAxis = binding.graficoPeso.getXAxis();
         xAxis.setDrawLabels(false);
 
@@ -256,8 +264,6 @@ public class CurrentPlanFragment extends Fragment {
         binding.graficoPeso.setTouchEnabled(false);
 
     }
-
-
 
 
 
@@ -292,8 +298,6 @@ public class CurrentPlanFragment extends Fragment {
         });
 
     }
-
-
 
 
     //Executa el get que retorna la informació com a pacient del usuari
@@ -364,7 +368,7 @@ public class CurrentPlanFragment extends Fragment {
     }
 
 
-
+    //Metode que marca els dies que han passat de la dieta
     private void CanviColorImageViewDates(Date startDate){
         final int MAX_DIES=5;
 
@@ -384,15 +388,15 @@ public class CurrentPlanFragment extends Fragment {
 
 
         long diffInMillis = currentDate.getTime()-startDate.getTime();
-        int daysPassed = (int) (diffInMillis / (24 * 60 * 60 * 1000L)); // Obtener la diferencia en días
+        int daysPassed = (int) (diffInMillis / (24 * 60 * 60 * 1000L)); // Diferencia de dies
 
         for (int i = 0; i < llista_image.size(); i++) {
             ImageView imageView = llista_image.get(i);
             if (i <= daysPassed) {
-                // Cambiar el color de fondo si ha pasado el número de días correspondiente
+                // Cambia el color de fons si han passat la quantitat de dies
                 imageView.setBackgroundColor(Color.GREEN);
             } else {
-                // Restablecer el color de fondo
+                // Restableix el color de fons si no han passat pro dies
                 imageView.setBackgroundColor(Color.WHITE);
             }
         }

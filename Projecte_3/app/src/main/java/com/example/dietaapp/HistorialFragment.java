@@ -46,6 +46,8 @@ public class HistorialFragment extends Fragment implements HistorialAdapter.Hist
 
     }
 
+
+    //Metode que gestiona la seleccio de un item en el recycleview de historial y mostra el resultat fora d'aquest
     @Override
     public void onHistorialSelected(Datum seleccionat) {
 
@@ -74,6 +76,8 @@ public class HistorialFragment extends Fragment implements HistorialAdapter.Hist
 
     }
 
+
+    //Merode que calcula el IMC segons el pes i l'alçada de una persona
     public  double calcularIMC(double peso, double altura) {
 
 

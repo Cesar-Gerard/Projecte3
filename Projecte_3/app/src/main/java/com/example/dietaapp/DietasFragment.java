@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.example.dietaapp.databinding.FragmentDietasBinding;
 
@@ -62,6 +63,8 @@ public class DietasFragment extends Fragment  {
         return v;
     }
 
+
+    //Metode que gestiona el event onClick de la  CardView de dieta actual
     private void clickCardView() {
        binding.myCardView.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -74,26 +77,27 @@ public class DietasFragment extends Fragment  {
     }
 
 
+    //Getsiona i eomple el contingut del spinner
     private void omplirSpinner() {
 
         //Omplim els spinners amb les correspondents dades
 
-        // Crear una lista de elementos
+
         List<String> spinnerItems = new ArrayList<>();
         spinnerItems.add("5");
         spinnerItems.add("4");
         spinnerItems.add("3");
 
-        // Crear un ArrayAdapter personalizado
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, spinnerItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Establecer el adaptador en el spinner
+
         binding.spinnerApats.setAdapter(adapter);
     }
 
 
-    //Request de Get de dietes
+    //Request al WebService que retorna totes les dietes existents
     private void RequestDietes() {
 
         ApiManager.getInstance().getDietes(User_Retro.getToken(), new Callback<DietesResponse>() {
@@ -116,13 +120,15 @@ public class DietasFragment extends Fragment  {
 
             @Override
             public void onFailure(Call<DietesResponse> call, Throwable t) {
-
+                Toast.makeText(getContext(), "No s'han pogut carregar les dietes, torna a intentar-ho",Toast.LENGTH_LONG).show();
             }
         });
 
 
     }
 
+
+    //Metode que gestiona la programació del filtre de les dietes per nom y nombre de apats
     private void programarfiltre() {
 
         //Comportament del boto de cerca
@@ -130,9 +136,6 @@ public class DietasFragment extends Fragment  {
             @Override
             public void onClick(View v) {
                 String selectedItem = binding.spinnerApats.getSelectedItem().toString();
-
-                // Filtra el contenido del RecyclerView según el elemento seleccionado
-                // Llama al método filter() de tu adaptador pasando el elemento seleccionado como parámetro
 
 
                 String nom =  binding.busquedanom.getText().toString();

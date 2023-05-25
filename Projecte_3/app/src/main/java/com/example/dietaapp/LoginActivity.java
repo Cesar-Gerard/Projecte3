@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity{
 
 
                             }else if(response.code()==400){
-                                cridaError();
+                                Toast.makeText(LoginActivity.this, "Nom o contrasenya incorrectes",Toast.LENGTH_LONG).show();
 
                             }
 
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity{
                         @Override
                         public void onFailure(Call<LoginResponse> call, Throwable t) {
                             binding.progressBar.setVisibility(View.GONE);
-                            cridaErrorConnexio();
+                            Toast.makeText(LoginActivity.this, "Error de connexió, torna a provar",Toast.LENGTH_LONG).show();
                         }
                     });
 
@@ -82,15 +82,4 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
-
-    //Tira un missatge al usuari en cas de error o valor null a l'hora de fer login
-    private void cridaError() {
-        Toast.makeText(LoginActivity.this, "Nom o contrasenya incorrectes",Toast.LENGTH_LONG).show();
-
-    }
-
-    private void cridaErrorConnexio() {
-        Toast.makeText(LoginActivity.this, "Error de connexió, torna a provar",Toast.LENGTH_LONG).show();
-
-    }
 }

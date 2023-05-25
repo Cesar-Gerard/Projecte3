@@ -56,6 +56,8 @@ public class detall_dietaFragment extends Fragment implements DishAdapter.DishSe
     }
 
 
+
+    //Omple els camps amb les dades requerides
     private void omplirDades() {
         //Nom de la Dieta
         binding.txvDietaName.setText(dieta.getName());
@@ -75,6 +77,8 @@ public class detall_dietaFragment extends Fragment implements DishAdapter.DishSe
 
     }
 
+
+    //Request al Web Service que demana tots els plats de una dieta
     private void Dishes_DietaRequest() {
         ApiManager.getInstance().getDishes(User_Retro.getToken(), dieta.getIdDiet().toString(), new Callback<Dishes_DietaResponse>() {
             @Override
@@ -92,6 +96,8 @@ public class detall_dietaFragment extends Fragment implements DishAdapter.DishSe
 
     }
 
+
+    //Determina els apats que té una dieta segons el codi d'apat dels plats d'aquesta
     private void controldeApats(List<Dishes_Dieta> data) {
         for(Dishes_Dieta entrada : data){
             switch (entrada.getMeal()){
@@ -119,6 +125,8 @@ public class detall_dietaFragment extends Fragment implements DishAdapter.DishSe
         }
     }
 
+
+    //Assignació i configuració dels recycleview amb el seu contingut y adapters corresponents
     private void recycleviews(List<Dishes_Dieta> data) {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -136,6 +144,8 @@ public class detall_dietaFragment extends Fragment implements DishAdapter.DishSe
 
     }
 
+
+    //Metode que gestiona el event onClick del Adapter dels plats per poder rescatar el item seleccionat y poder fer-lo servir
     @Override
     public void onDishSelected(Dishes_Dieta seleccionat) {
 

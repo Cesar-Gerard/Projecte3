@@ -79,9 +79,10 @@ public class user_profile extends Fragment {
         preparabotons();
 
 
+        // Convertir Bitmap a arxiu File
         Bitmap bitmap = BitmapFactory.decodeFile(user.getImageUser());
 
-        // Convertir Bitmap a archivo File
+
         if (!TextUtils.isEmpty(user.getImageUser())) {
             File file = new File(user.getImageUser());
             if (file.exists()) {
@@ -97,6 +98,7 @@ public class user_profile extends Fragment {
         return v;
     }
 
+    //Programació del funcionament dels diferents botons de la pantalla
     private void preparabotons() {
         //Programem el comportament del canvi de contrasenya
         butoContrasenya();
@@ -105,7 +107,7 @@ public class user_profile extends Fragment {
         butoGuardarCanvis();
     }
 
-
+    //Comportament del boto de canviar la contrasenya
     private void butoContrasenya() {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +118,8 @@ public class user_profile extends Fragment {
 
     }
 
+
+    //Comportament del canvi de foto de perfil
     private void imagepicker() {
         binding.btnChangeImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,11 +132,13 @@ public class user_profile extends Fragment {
 
     }
 
+    //Metode que obre la galerioa de imatges
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_IMAGE_PICKER);
     }
 
+    //Metode que reb la imatge y la formata per guardarla en la base de dades y en el objecte usuari
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -268,6 +274,7 @@ public class user_profile extends Fragment {
         dialog.show();
     }
 
+    //Metode que valida els requeriments de contrasenya
     private boolean isPasswordValid(String contrasena) {
 
             if (contrasena.length() < 6) {
@@ -303,7 +310,7 @@ public class user_profile extends Fragment {
 
     }
 
-
+    //Programació del comportament del boto de desar els canvis
     private void butoGuardarCanvis() {
 
         binding.btnSaveChanges.setOnClickListener(new View.OnClickListener() {

@@ -39,18 +39,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         binding.drawerLayout.addDrawerListener(toogle);
         toogle.syncState();
 
-        //Sistema de notificacions
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // Crea un objeto NotificationChannel con tu configuración
-            NotificationChannel channel = new NotificationChannel("DietaApp_Notification", "Channel Name", NotificationManager.IMPORTANCE_DEFAULT);
-            // Configura otras opciones del canal de notificación, como descripción, sonido, etc.
-            // ...
-
-            // Obtiene una instancia del NotificationManager
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            // Crea el canal de notificación utilizando el objeto NotificationChannel
-            notificationManager.createNotificationChannel(channel);
-        }
 
     }
 
@@ -68,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
+    //Sistema de navegació entre els fragments
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -94,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        return true;
     }
 
+
+
+    //Metode de crida del drawerLayout per incompatibilitat de les capes dels layouts
     public void btnmenu_onClick(View view) {
         binding.drawerLayout.open();
     }
