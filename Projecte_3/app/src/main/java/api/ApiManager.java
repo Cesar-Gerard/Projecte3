@@ -19,7 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiManager {
 
-    private static final String BASE_URL="http://10.2.37.97/Projecte3/dietapp_ws/public/api/";
+
+    private static final String BASE_URL="http://169.254.70.172/Projecte3/dietapp_ws/public/api/";
     private static ApiManager mInstance;
     private ApiService mApiService;
 
